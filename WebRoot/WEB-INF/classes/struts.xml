@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.multipart.maxSize" value="9314572800"></constant>
+	<package name="trprebel" extends="json-default">
+		<action name="login" class="com.action.LoginAction" method="login">
+			<result name="error">/error.jsp</result>
+			<result name="success">/welcome.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+		<action name="modifypasswd" class="com.action.LoginAction" method="modifypasswd">
+			<result name="success">/welcome.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="*DRINKS" class="com.action.DrinksAction" method="{1}">
+			<result name="drinks">/drinks_manager.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+	</package>
+	
+</struts>
