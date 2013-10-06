@@ -18,6 +18,10 @@
 			<result name="drinks">/drinks_manager.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="*CUSTOMER" class="com.action.CustomerAction" method="{1}">
+			<result name="customer">/customer_manager.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 
 	</package>
 	

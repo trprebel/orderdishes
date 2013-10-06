@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="/jstl/c.tld"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -6,11 +7,10 @@
 			+ path + "/";
 %>
 
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<title>酒水管理</title>
+		<title>客户管理</title>
 		<style>
 body {
 	text-align: center;
@@ -21,7 +21,7 @@ body {
 	height: 631px;
 	margin: 0px auto;
 	display: block;
-	background: url(images/bg_all.png) no-repeat;
+	background: url(images/bg_info.png) no-repeat;
 	position: relative;
 	top: -15px;
 }
@@ -51,6 +51,7 @@ body {
 .login_input {
 	width: 270px;
 	height: 28px;
+	line-height: 28px;
 	border: 0px;
 	background-color: #f1f1f1;
 	font-size: 16px;
@@ -99,11 +100,8 @@ body {
 
 .infr_instroy {
 	font-size: 18px;
-	width: 300px;
 	color: #90a5c1;
-	font-weight: bold;
-	position: absolute;
-	top: 85px;
+	font-weight: bold
 }
 
 .tab_info td {
@@ -114,46 +112,6 @@ body {
 	color: #FFFFFF;
 	font-weight: bold;
 	text-align: center
-}
-
-.qiu li {
-	width: 205px;
-	height: 147px;
-	list-style: none;
-	float: left;
-	background: url(images/add.png) no-repeat;
-	margin-right: 8px;
-	margin-left: 10px;
-	margin-bottom: 20px; *
-	margin-bottom: 5px;
-}
-
-.name span {
-	float: left;
-	width: 100px;
-	margin-left: 2px;
-}
-
-.name {
-	font-size: 14px;
-	position: relative;
-	top: -13px; *
-	top: -20px;
-	float: left;
-	font-weight: bold;
-	color: #a9bfdb;
-	line-height: 22px;
-}
-
-.name img {
-	float: right;
-	margin-top: 1px;
-}
-
-#position {
-	position: relative;
-	top: -124px;
-	right: -190px;
 }
 </style>
 	</head>
@@ -215,10 +173,9 @@ body {
 				<tr>
 					<td rowspan="19" width="960" height="546">
 					</td>
-					<td colspan="4" rowspan="2" width="81" height="24">
-						<div class="infr_instroy">
-							处理第一条消息
-						</div>
+					<td colspan="4" rowspan="2" width="81" height="24"
+						class="infr_instroy">
+						客户管理
 					</td>
 					<td colspan="3" rowspan="5" width="470" height="80">
 					</td>
@@ -232,7 +189,7 @@ body {
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
 						class="list">
 						<img src="images/icon1.png" width="18" height="19">
-						所有菜管理
+						菜谱管理
 					</td>
 					<td width="1" height="10">
 					</td>
@@ -253,9 +210,9 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list_h">
-						<img src="images/icon7.png" width="21" height="20">
-						特色菜管理
+						class="list">
+						<img src="images/icon2.png" width="21" height="20">
+						酒水管理
 					</td>
 					<td width="1" height="22">
 					</td>
@@ -263,114 +220,58 @@ body {
 				<tr>
 					<td rowspan="14" width="81" height="466">
 					</td>
-					<td colspan="8" rowspan="14" width="712" height="466"
-						style="vertical-align: top" align="left">
-						<div class="qiu"
-							style="HEIGHT: 466; position: absolute; top: 110px; width: 712px; vertical-align: top;">
-							<ul>
-								<li>
-									<div>
-										<img src="images/img.png" width="205" height="125">
-										<img id="position" src="images/close.png" width="14"
-											height="15">
-									</div>
-									<div class="name">
-										<span>绿茶糕</span><span><img src="images/modify.png"
-												width="33" height="17">
-										</span>
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="images/img.png" width="205" height="125">
-										<img id="position" src="images/close.png" width="14"
-											height="15">
-									</div>
-									<div class="name">
-										<span>绿茶糕</span><span><img src="images/modify.png"
-												width="33" height="17">
-										</span>
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="images/img.png" width="205" height="125">
-										<img id="position" src="images/close.png" width="14"
-											height="15">
-									</div>
-									<div class="name">
-										<span>绿茶糕</span><span><img src="images/modify.png"
-												width="33" height="17">
-										</span>
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="images/img.png" width="205" height="125">
-										<img id="position" src="images/close.png" width="14"
-											height="15">
-									</div>
-									<div class="name">
-										<span>绿茶糕</span><span><img src="images/modify.png"
-												width="33" height="17">
-										</span>
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="images/img.png" width="205" height="125">
-										<img id="position" src="images/close.png" width="14"
-											height="15">
-									</div>
-									<div class="name">
-										<span>绿茶糕</span><span><img src="images/modify.png"
-												width="33" height="17">
-										</span>
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="images/img.png" width="205" height="125">
-										<img id="position" src="images/close.png" width="14"
-											height="15">
-									</div>
-									<div class="name">
-										<span>绿茶糕</span><span><img src="images/modify.png"
-												width="33" height="17">
-										</span>
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="images/img.png" width="205" height="125">
-										<img id="position" src="images/close.png" width="14"
-											height="15">
-									</div>
-									<div class="name">
-										<span>绿茶糕</span><span><img src="images/modify.png"
-												width="33" height="17">
-										</span>
-									</div>
-								</li>
-								<li>
-									<div>
-										<img src="images/img.png" width="205" height="125">
-										<img id="position" src="images/close.png" width="14"
-											height="15">
-									</div>
-									<div class="name">
-										<span>绿茶糕</span><span><img src="images/modify.png"
-												width="33" height="17">
-										</span>
-									</div>
-								</li>
-								<li>
+					<td colspan="8" rowspan="8" width="712" height="324"
+						style="vertical-align: top" align="center">
+						<div
+							style="HEIGHT: 324; margin-right: 30px; vertical-align: top; OVERFLOW: scroll; OVERFLOW-x: hidden; scrollbar-3dlight-color: #595959; scrollbar-arrow-color: #FFFFFF; scrollbar-base-color: #CFCFCF; scrollbar-darkshadow-color: #FFFFFF; scrollbar-face-color: #CFCFCF; scrollbar-highlight-color: #FFFFFF; scrollbar-shadow-color: #595959">
+							>
+							<table cellpadding="0" cellspacing="0" class="tab_info"
+								style="border-collapse: collapse">
+								<tr>
+									<td width="110">
+										姓名
+									</td>
+									<td width="100">
+										手机号
+									</td>
+									<td width="100">&nbsp;
+										
+									</td>
+									<td width="100">&nbsp;
+										
+									</td>
+									<td width="100">&nbsp;
+										
+									</td>
+									<td width="100">&nbsp;
+										
+									</td>
 
-								</li>
-
-							</ul>
-
-
+								</tr>
+								<c:forEach var="customer" items="${customers}">
+								<tr>
+									<td>
+										${customer.customer }
+									</td>
+									<td>
+										${customer.mobile }
+									</td>
+									<td>&nbsp;
+										
+									</td>
+									<td>&nbsp;
+										
+									</td>
+									<td>&nbsp;
+										
+									</td>
+									<td>&nbsp;
+										
+									</td>
+								</tr>
+								</c:forEach>
+							
+							</table>
 						</div>
 
 
@@ -389,9 +290,24 @@ body {
 					</td>
 				</tr>
 				<tr>
+					<td colspan="3" width="208" height="42" align="center"
+						class="list_h">
+						<img src="images/icon3.png" width="20" height="14">
+						信息发布
+					</td>
+					<td width="1" height="42">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" width="208" height="2">
+					</td>
+					<td width="1" height="2">
+					</td>
+				</tr>
+				<tr>
 					<td colspan="3" width="208" height="42" align="center" class="list">
-						<img src="images/icon6.png" width="20" height="20">
-						今日特价&nbsp;&nbsp;
+						<img src="images/icon4.png" width="20" height="20">
+						客户管理
 					</td>
 					<td width="1" height="42">
 					</td>
@@ -403,18 +319,10 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center"></td>
-					<td width="1" height="42">
+					<td colspan="3" width="208" height="42" align="center" class="list">
+						<img src="images/icon5.png" width="20" height="20">
+						历史信息
 					</td>
-				</tr>
-				<tr>
-					<td colspan="3" width="208" height="2">
-					</td>
-					<td width="1" height="2">
-					</td>
-				</tr>
-				<tr>
-					<td colspan="3" width="208" height="42" align="center"></td>
 					<td>
 						<img src="images/分隔符.gif" width="1" height="42" alt="">
 					</td>
@@ -427,28 +335,32 @@ body {
 					</td>
 				</tr>
 				<tr>
-
+					<td colspan="8" rowspan="2" width="712" height="86">
+					</td>
 					<td>
 						<img src="images/分隔符.gif" width="1" height="56" alt="">
 					</td>
 				</tr>
 				<tr>
 					<td rowspan="2" width="208" height="43" align="center">
-						<img style="margin-bottom: 10px;" src="images/last.png" width="78"
-							height="20">
+						<img src="images/last.png" width="78" height="20">
 					</td>
 					<td rowspan="5" width="2" height="86">
 					</td>
 					<td rowspan="2" width="103" height="43" align="center">
-						<img style="margin-bottom: 10px;" src="images/next.png" width="81"
-							height="20">
+						<img src="images/next.png" width="81" height="20">
 					</td>
 					<td width="1" height="30">
 					</td>
 				</tr>
 				<tr>
-
-
+					<td colspan="4" rowspan="4" width="712" height="56">
+					</td>
+					<td rowspan="3" width="182" height="44" style="vertical-align: top">
+						<img src="images/tab.png" width="180" height="41" onClick="location.href='exportCUSTOMER.action'">
+					</td>
+					<td colspan="3" rowspan="4" width="289" height="56">
+					</td>
 					<td>
 						<img src="images/分隔符.gif" width="1" height="13" alt="">
 					</td>
@@ -464,20 +376,21 @@ body {
 				</tr>
 				<tr>
 					<td rowspan="2" width="208" height="42" align="center">
-						<img style="margin-bottom: 15px;" src="images/home.png" width="73"
-							height="22">
+						<img src="images/home.png" width="73" height="22">
 					</td>
 					<td rowspan="2" width="103" height="42" align="center">
-						<img style="margin-bottom: 15px;" src="images/back.png" width="72"
-							height="20">
+						<img src="images/back.png" width="72" height="20">
 					</td>
 					<td>
 						<img src="images/分隔符.gif" width="1" height="30" alt="">
 					</td>
 				</tr>
 				<tr>
-
-
+					<td width="182" height="12">
+					</td>
+					<td>
+						<img src="images/分隔符.gif" width="1" height="12" alt="">
+					</td>
 				</tr>
 				<tr>
 					<td>

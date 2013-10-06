@@ -22,5 +22,10 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-json-plugin-2.1.8.1.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-2.1.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-core-2.1.6.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi-examples-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi-ooxml-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi-ooxml-schemas-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/poi-scratchpad-3.7-20101029.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
