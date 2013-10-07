@@ -16,15 +16,17 @@ import org.apache.struts2.ServletActionContext;
 import com.bean.Customer;
 import com.dao.impl.CustomerDao;
 import com.opensymphony.xwork2.ActionSupport;
+/**客户相关操作
+ * @author zxj
+ * 2013-10-06
+ */
 
 public class CustomerAction extends ActionSupport{
-
-	/**客户相关操作
-	 * @author zxj
-	 * @date 2013-10-06
-	 */
-	private CustomerDao cusdao;
+	
 	private static final long serialVersionUID = 1L;
+	private CustomerDao cusdao;
+
+
 	public String request()
 	{
 		HttpServletRequest request=ServletActionContext.getRequest();
@@ -45,6 +47,10 @@ public class CustomerAction extends ActionSupport{
 		}
 
 	}
+	/**
+	 * 导出客户信息
+	 * @return String
+	 */
 	public String export() {
 		HttpServletResponse response=ServletActionContext.getResponse();
 		

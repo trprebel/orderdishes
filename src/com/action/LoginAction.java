@@ -57,7 +57,6 @@ public class LoginAction extends ActionSupport{
 			HttpServletRequest request = ServletActionContext.getRequest();
 			HttpSession session = request.getSession();
 			
-
 			user=this.userdao.findUserByName(username);
 			if(user==null)
 			{
