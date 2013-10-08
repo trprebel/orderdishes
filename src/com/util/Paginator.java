@@ -19,7 +19,7 @@ public class Paginator {
 	// 默认的页面范围大小
 	public static final int DEFAULT_PAGE_RANGE_SIZE = 2;
 //	 默认的页面大小
-		public static final int DEFAULT_PAGE_SIZE =6;
+		public static final int DEFAULT_PAGE_SIZE =15;
 		/** 集合属性 */
 		private Collection items = new ArrayList();
 		/** 集合属性 */

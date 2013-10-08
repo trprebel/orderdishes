@@ -66,7 +66,7 @@ public class LoginAction extends ActionSupport{
 			}
 			else if(user.getPasswd().equals(password))
 			{
-				System.out.println(user.getPasswd());
+				//System.out.println(user.getPasswd());
 				session.setAttribute("user", user);
 				return "success";
 			}

@@ -11,6 +11,9 @@
 	<select id="findDrinksList" parameterClass="com.util.Program" resultClass="Drinks">
 		select * from drinks limit $start$,$lenth$
 	</select>
+	<delete id="deleteDrink" parameterClass="int">
+		delete from drinks where drinksid=$drinksid$
+	</delete>
 
 	
 
