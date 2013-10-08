@@ -270,7 +270,7 @@ body {
 										<div>
 											<img src="${drinks.small_pic }" width="205" height="125"> <img
 												id="position" src="images/close.png" width="14" height="15"
-												onClick="javascirpt:deletedrinks(${drinks.drinksid})">
+												onClick="javascirpt:deletedrinks('${drinks.drinksid}')">
 										</div>
 										<div class="name">
 											<span>${drinks.drinks }</span><span><img
@@ -279,7 +279,7 @@ body {
 									
 								</c:forEach>
 								<input type="hidden" name="drinksid" id="drinksid" value="123" />
-								<c:if test="${fn:length(paginator.items)<6}">
+								<c:if test="${fn:length(paginator.items)<9}">
 									<li onClick="javascript:adddrinks()"></li>
 								</c:if>
 

@@ -7,26 +7,16 @@ import com.util.Program;
 
 public class DrinksDao {
 
-	/**查找酒水总数
-	 * @return
-	 * @throws Exception
-	 */
+	/**查找酒水总数*/
 	public Integer findDrinksCount() throws Exception{
 		return (Integer) SqlMap.getSqlMapClient().queryForObject("findDrinksCount");
 	}
 
-	/**查找酒水列表
-	 * @param program
-	 * @return
-	 * @throws Exception
-	 */
+	/**查找酒水列表*/
 	public List<Drinks> findDrinksList(Program program ) throws Exception{
 		return (List<Drinks>) SqlMap.getSqlMapClient().queryForList("findDrinksList",program);
 	}
-	/**删除酒水
-	 * @param drinksid
-	 * @throws Exception
-	 */
+	/**删除酒水 */
 	public void deleteDrink(int drinksid) throws Exception{
 		SqlMap.getSqlMapClient().delete("deleteDrink",drinksid);
 	}

@@ -2,26 +2,32 @@ package com.action;
 
 import java.util.List;
 
-import com.bean.Drinks;
-import com.dao.impl.DrinksDao;
+import com.bean.Food;
+import com.dao.impl.FoodDao;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
 import com.util.Program;
 
 import filter.StringUtil;
-/**酒水饮料相关操作
+
+/**菜谱相关操作
  * @author zxj
- * 2013-10-04
+ * 2013-10-8
  */
-public class DrinksAction extends ActionSupport{
+public class FoodAction extends ActionSupport{
 
-	
 	private static final long serialVersionUID = 1L;
-	private String drinksid;
+	private String foodid;
 
-	private DrinksDao drinksdao;
-	public Paginator paginator=new Paginator(6);
+	private FoodDao fooddao;
+	public Paginator paginator=new Paginator(9);
 	private Program program=new Program();
+	public String getFoodid() {
+		return foodid;
+	}
+	public void setFoodid(String foodid) {
+		this.foodid = foodid;
+	}
 	public Paginator getPaginator() {
 		return paginator;
 	}
@@ -34,13 +40,7 @@ public class DrinksAction extends ActionSupport{
 	public void setProgram(Program program) {
 		this.program = program;
 	}
-	public String getDrinksid() {
-		return drinksid;
-	}
-	public void setDrinksid(String drinksid) {
-		this.drinksid = drinksid;
-	}
-	/**请求酒水列表
+	/**请求菜谱列表
 	 * @return String
 	 */
 	public String request()
@@ -49,8 +49,8 @@ public class DrinksAction extends ActionSupport{
 		try
 		{
 			String path=StringUtil.getSpPropeurl("imagePath");
-			drinksdao=new DrinksDao();
-			int count=drinksdao.findDrinksCount();
+			fooddao=new FoodDao();
+			int count=fooddao.findFoodCount();
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
 			//System.out.println(paginator.getOffset());
@@ -58,17 +58,17 @@ public class DrinksAction extends ActionSupport{
 			program.setLenth(paginator.getPageSize());
 			if(count==0){
 				paginator.setData(0, null);
-				return "drinks";
+				return "food";
 			}
-			List<Drinks> drinks=drinksdao.findDrinksList(program);
-			for (Drinks drink : drinks) {
-				drink.setSmall_pic(path+drink.getSmall_pic());
-				drink.setBig_pic(path+drink.getBig_pic());
+			List<Food> foodlist=fooddao.findFoodList(program);
+			for (Food food : foodlist) {
+				food.setSmall_pic(path+food.getSmall_pic());
+				food.setBig_pic(path+food.getBig_pic());
 				//System.out.println(drink.getSmall_pic());
 			}
-			paginator.setData(count, drinks);
-			//request.setAttribute("drinks", drinks);
-			return "drinks";
+			paginator.setData(count, foodlist);
+			//request.setAttribute("Food", Food);
+			return "food";
 		}
 		catch (Exception e)
 		{
@@ -76,17 +76,17 @@ public class DrinksAction extends ActionSupport{
 			return "error";
 		}
 	}
-	/**删除酒水
+	/**删除菜
 	 * @return
 	 */
 	public String delete()
 	{
 		try {
-			//System.out.println(drinksid);
+			//System.out.println(foodid);
 			
-			drinksdao=new DrinksDao();
+			fooddao=new FoodDao();
 			
-			drinksdao.deleteDrink(Integer.parseInt(drinksid));
+			fooddao.deleteFood(Integer.parseInt(foodid));
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -94,6 +94,4 @@ public class DrinksAction extends ActionSupport{
 			return "error";
 		}
 	}
-
-
 }

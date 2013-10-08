@@ -224,7 +224,6 @@ body {
 						style="vertical-align: top" align="center">
 						<div
 							style="HEIGHT: 324; margin-right: 30px; vertical-align: top; OVERFLOW: scroll; OVERFLOW-x: hidden; scrollbar-3dlight-color: #595959; scrollbar-arrow-color: #FFFFFF; scrollbar-base-color: #CFCFCF; scrollbar-darkshadow-color: #FFFFFF; scrollbar-face-color: #CFCFCF; scrollbar-highlight-color: #FFFFFF; scrollbar-shadow-color: #595959">
-							>
 							<table cellpadding="0" cellspacing="0" class="tab_info"
 								style="border-collapse: collapse">
 								<tr>

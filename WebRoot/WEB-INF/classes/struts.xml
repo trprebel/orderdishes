@@ -23,6 +23,11 @@
 			<result name="customer">/customer_manager.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="*FOOD" class="com.action.FoodAction" method="{1}">
+			<result name="food">/all_dishes_manager.jsp</result>
+			<result name="request" type="chain">requestFOOD</result>
+			<result name="error">/error.jsp</result>
+		</action>
 
 	</package>
 	
