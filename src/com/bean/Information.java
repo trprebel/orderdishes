@@ -4,7 +4,7 @@ public class Information {
 	private int numid;
 	private int type;
 	private int state;
-	private String desc;
+	private String descript;
 	private String send_time;
 	private String create_date;
 	private String use_date;
@@ -26,11 +26,11 @@ public class Information {
 	public void setState(int state) {
 		this.state = state;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescript() {
+		return descript;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescript(String descript) {
+		this.descript = descript;
 	}
 	public String getSend_time() {
 		return send_time;

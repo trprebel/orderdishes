@@ -8,7 +8,7 @@ public class Customer {
 	private String mobile;
 	private String email;
 	private String address;
-	private String desc;
+	private String descript;
 	private String create_date;
 	private String use_date;
 	private String last_login_time;
@@ -54,11 +54,11 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescript() {
+		return descript;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescript(String descript) {
+		this.descript = descript;
 	}
 	public String getCreate_date() {
 		return create_date;

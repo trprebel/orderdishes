@@ -118,8 +118,8 @@ function uploadStart(file) {
 		we can do is say we are uploading.
 		 */
 		//Capture start time
-		var currentTime = new Date()
-			iTime = currentTime;
+		var currentTime = new Date();
+		iTime = currentTime;
 		//Set Timeleft to estimating
 		Timeleft = "计算中...";
 

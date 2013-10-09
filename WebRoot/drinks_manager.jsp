@@ -201,7 +201,8 @@ body {
 					<td width="28" height="15"></td>
 					<td height="68" colspan="4" width="491" rowspan="4"><input
 						name="textfield" type="text" class="login_input_info"
-						value="暂无处理信息"></td>
+						value="暂无处理信息">
+					</td>
 					<td rowspan="3" width="141" height="57"><img
 						src="images/handing.png" width="141" height="57"></td>
 					<td colspan="5" rowspan="5" width="241" height="82"></td>
@@ -228,8 +229,9 @@ body {
 				</tr>
 				<tr>
 					<td rowspan="19" width="960" height="546"></td>
-					<td colspan="4" rowspan="2" width="81" height="24"
-						class="infr_instroy">酒水管理</td>
+					<td colspan="4" rowspan="2" width="81" height="24"><div
+							class="infr_instroy">酒水管理</div>
+					</td>
 					<td colspan="3" rowspan="5" width="470" height="80"></td>
 					<td><img src="images/分隔符.gif" width="1" height="14" alt="">
 					</td>
@@ -237,7 +239,7 @@ body {
 				<tr>
 					<td colspan="2" rowspan="4" width="241" height="66"></td>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list"><img src="images/icon1.png" width="18"
+						class="list" onclick="location.href='requestFOOD.action'"><img src="images/icon1.png" width="18"
 						height="19"> 菜谱管理</td>
 					<td width="1" height="10"></td>
 				</tr>
@@ -253,37 +255,34 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list"><img src="images/icon2.png" width="21"
-						height="20"> 酒水管理</td>
+						class="list_h" ><img
+						src="images/icon2.png" width="21" height="20"> 酒水管理</td>
 					<td width="1" height="22"></td>
 				</tr>
 				<tr>
 					<td rowspan="14" width="81" height="466"></td>
-					<td colspan="8" rowspan="10" width="712" height="410"
-						style="vertical-align: top" align="left">
-						<div class="qiu"
-							style="HEIGHT: 400; width: 712px; vertical-align: top;">
+					<td colspan="8" rowspan="14" width="712" height="466"
+						style="vertical-align:top" align="left"><div class="qiu"
+							style=" HEIGHT: 466; position:absolute; top:110px; width:712px;  vertical-align:top; ">
 							<ul>
 								<!-- 酒水列表 -->
-								<c:forEach var="drinks" items="${paginator.items}" varStatus="i">
+								<c:forEach var="drink" items="${paginator.items}">
 									<li>
 										<div>
-											<img src="${drinks.small_pic }" width="205" height="125"> <img
+											<img src="images/img.png" width="205" height="125"> <img
 												id="position" src="images/close.png" width="14" height="15"
-												onClick="javascirpt:deletedrinks('${drinks.drinksid}')">
+												onclick=" javascirpt:deletedrink('${drink.drinksid}')">
 										</div>
 										<div class="name">
-											<span>${drinks.drinks }</span><span><img
+											<span>${drink.drinks }</span><span><img
 												src="images/modify.png" width="33" height="17"> </span>
 										</div></li>
-									
+
 								</c:forEach>
-								<input type="hidden" name="drinksid" id="drinksid" value="123" />
+								<input type="hidden" name="drinkid" id="drinkid" value="123" />
 								<c:if test="${fn:length(paginator.items)<9}">
-									<li onClick="javascript:adddrinks()"></li>
+									<li onclick="javascript:adddrink()"></li>
 								</c:if>
-
-
 
 							</ul>
 
@@ -298,9 +297,8 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center"
-						class="list_h"><img src="images/icon3.png" width="20"
-						height="14"> 信息发布</td>
+					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='message_release.jsp'"><img
+						src="images/icon3.png" width="20" height="14"> 信息发布</td>
 					<td width="1" height="42"></td>
 				</tr>
 				<tr>
@@ -308,7 +306,7 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list">
+					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='requestCUSTOMER.action'">
 						<img src="images/icon4.png" width="20" height="20"> 客户管理</td>
 					<td width="1" height="42"></td>
 				</tr>
@@ -317,7 +315,7 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list">
+					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='history_info.jsp'">
 						<img src="images/icon5.png" width="20" height="20"> 历史信息</td>
 					<td><img src="images/分隔符.gif" width="1" height="42" alt="">
 					</td>
@@ -334,21 +332,19 @@ body {
 				</tr>
 				<tr>
 					<td rowspan="2" width="208" height="43" align="center"><a
-						href='javascript:goPage(<%=paginator.getCurrentPage()-1 %>)'>
+						href='javascript:goPage(<%=paginator.getCurrentPage() - 1%>)'>
 							<img src="images/last.png" width="78" height="20"> </a></td>
 					<td rowspan="5" width="2" height="86"></td>
 					<td rowspan="2" width="103" height="43" align="center"><input
 						name='paginator.currentPage' id='paginator.currentPage'
-						type='hidden' value='<%=paginator.getCurrentPage() %>' /> <a
-						href='javascript:goPage(<%=paginator.getCurrentPage()+1 %>)'>
+						type='hidden' value='<%=paginator.getCurrentPage()%>' /> <a
+						href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
 							<img src="images/next.png" width="81" height="20"> </a></td>
 					<td width="1" height="30"></td>
 				</tr>
 				<tr>
-					<td colspan="4" rowspan="4" width="712" height="56"></td>
-					<td rowspan="3" width="182" height="44" style="vertical-align: top">
-						<img src="images/compl.png" width="180" height="44"></td>
-					<td colspan="3" rowspan="4" width="289" height="56"></td>
+
+
 					<td><img src="images/分隔符.gif" width="1" height="13" alt="">
 					</td>
 				</tr>
@@ -360,16 +356,17 @@ body {
 				</tr>
 				<tr>
 					<td rowspan="2" width="208" height="42" align="center"><img
-						src="images/home.png" width="73" height="22"></td>
+						style="*margin-bottom:15px;" src="images/home.png" width="73"
+						height="22"></td>
 					<td rowspan="2" width="103" height="42" align="center"><img
-						src="images/back.png" width="72" height="20"></td>
+						style="*margin-bottom:15px;" src="images/back.png" width="72"
+						height="20"></td>
 					<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 					</td>
 				</tr>
 				<tr>
-					<td width="182" height="12"></td>
-					<td><img src="images/分隔符.gif" width="1" height="12" alt="">
-					</td>
+
+
 				</tr>
 				<tr>
 					<td><img src="images/分隔符.gif" width="27" height="1" alt="">

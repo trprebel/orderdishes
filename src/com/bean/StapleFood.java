@@ -9,7 +9,7 @@ public class StapleFood {
 	private int price;
 	private int num;
 	private int attribute;
-	private String desc;
+	private String descript;
 	private String create_date;
 	private String use_date;
 	public int getStapleid() {
@@ -60,11 +60,11 @@ public class StapleFood {
 	public void setAttribute(int attribute) {
 		this.attribute = attribute;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescript() {
+		return descript;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescript(String descript) {
+		this.descript = descript;
 	}
 	public String getCreate_date() {
 		return create_date;

@@ -187,7 +187,7 @@ body {
 					<td colspan="2" rowspan="4" width="241" height="66">
 					</td>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list">
+						class="list" onclick="location.href='requestFOOD.action'">
 						<img src="images/icon1.png" width="18" height="19">
 						菜谱管理
 					</td>
@@ -210,7 +210,7 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list">
+						class="list" onclick="location.href='requestDRINKS.action'">
 						<img src="images/icon2.png" width="21" height="20">
 						酒水管理
 					</td>
@@ -290,7 +290,7 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" width="208" height="42" align="center"
-						class="list_h">
+						class="list" onclick="location.href='message_release.jsp'">
 						<img src="images/icon3.png" width="20" height="14">
 						信息发布
 					</td>
@@ -304,7 +304,7 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list">
+					<td colspan="3" width="208" height="42" align="center" class="list_h">
 						<img src="images/icon4.png" width="20" height="20">
 						客户管理
 					</td>
@@ -318,7 +318,7 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list">
+					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='history_info.jsp'">
 						<img src="images/icon5.png" width="20" height="20">
 						历史信息
 					</td>

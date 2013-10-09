@@ -20,7 +20,7 @@ public class DrinksAction extends ActionSupport{
 	private String drinksid;
 
 	private DrinksDao drinksdao;
-	public Paginator paginator=new Paginator(6);
+	public Paginator paginator=new Paginator(9);
 	private Program program=new Program();
 	public Paginator getPaginator() {
 		return paginator;

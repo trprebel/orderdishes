@@ -10,7 +10,7 @@ public class Food {
 	private int num;
 	private int isfeature;
 	private int attribute;
-	private String desc;
+	private String descript;
 	private String create_date;
 	private String use_date;
 	public int getFoodid() {
@@ -67,11 +67,11 @@ public class Food {
 	public void setAttribute(int attribute) {
 		this.attribute = attribute;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescript() {
+		return descript;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescript(String descript) {
+		this.descript = descript;
 	}
 	public String getCreate_date() {
 		return create_date;

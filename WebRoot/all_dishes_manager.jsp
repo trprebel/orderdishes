@@ -244,7 +244,7 @@ body {
 				<tr>
 					<td colspan="2" rowspan="4" width="241" height="66"></td>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list"><img src="images/icon1.png" width="18"
+						class="list_h"><img src="images/icon1.png" width="18"
 						height="19"> 菜谱管理</td>
 					<td width="1" height="10"></td>
 				</tr>
@@ -260,8 +260,8 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list"><img src="images/icon2.png" width="21"
-						height="20"> 酒水管理</td>
+						class="list" onclick="location.href='requestDRINKS.action'"><img src="images/icon2.png" width="21"
+						height="20" > 酒水管理</td>
 					<td width="1" height="22"></td>
 				</tr>
 				<tr>
@@ -270,11 +270,11 @@ body {
 						style="vertical-align:top" align="left"><div class="qiu"
 							style=" HEIGHT: 466; position:absolute; top:110px; width:712px;  vertical-align:top; ">
 							<ul>
-								<!-- 酒水列表 -->
+								<!-- 菜单列表 -->
 								<c:forEach var="food" items="${paginator.items}" varStatus="i">
 									<li>
 										<div>
-											<img src="F:/J2EE/MyEclipse/MyProject/OrderDishes/WebRoot/images/img.png" width="205" height="125">
+											<img src="images/img.png" width="205" height="125">
 											<img id="position" src="images/close.png" width="14"
 												height="15"
 												onclick=" javascirpt:deletefood('${food.foodid}')">
@@ -288,7 +288,7 @@ body {
 								</c:forEach>
 								<input type="hidden" name="foodid" id="foodid" value="123" />
 								<c:if test="${fn:length(paginator.items)<9}">
-									<li onclick="javascript:addfood()"></li>
+									<li onclick="location.href='add_food.jsp'"></li>
 								</c:if>
 
 							</ul>
@@ -306,7 +306,7 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" width="208" height="42" align="center"
-						class="list_h"><img src="images/icon3.png" width="20"
+						class="list" onclick="location.href='message_release.jsp'"><img src="images/icon3.png" width="20"
 						height="14"> 信息发布</td>
 					<td width="1" height="42"></td>
 				</tr>
@@ -315,7 +315,7 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list">
+					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='requestCUSTOMER.action'">
 						<img src="images/icon4.png" width="20" height="20"> 客户管理</td>
 					<td width="1" height="42"></td>
 				</tr>
@@ -324,7 +324,7 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list">
+					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='history_info.jsp'">
 						<img src="images/icon5.png" width="20" height="20"> 历史信息</td>
 					<td><img src="images/分隔符.gif" width="1" height="42" alt="">
 					</td>

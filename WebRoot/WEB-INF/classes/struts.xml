@@ -7,7 +7,7 @@
 	<package name="trprebel" extends="json-default">
 		<action name="login" class="com.action.LoginAction" method="login">
 			<result name="error">/error.jsp</result>
-			<result name="success">/welcome.jsp</result>
+			<result name="success" type="redirectAction">requestFOOD</result>
 			<result name="login">/login.jsp</result>
 		</action>
 		<action name="modifypasswd" class="com.action.LoginAction" method="modifypasswd">
@@ -26,6 +26,10 @@
 		<action name="*FOOD" class="com.action.FoodAction" method="{1}">
 			<result name="food">/all_dishes_manager.jsp</result>
 			<result name="request" type="chain">requestFOOD</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="*INFORMATION" class="com.action.InformationAction" method="{1}">
+			<result name="success">/message_release.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 
