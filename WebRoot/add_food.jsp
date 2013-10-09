@@ -4,12 +4,13 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	//String small_pic=(String)request.getAttribute("small_pic");
-	//if(small_pic!=null)
-	//{
-	//	System.out.println(small_pic);
-	//}
-	//else System.out.println("null");
+	String small_pic=(String)request.getAttribute("small_pic");
+	if(small_pic!=null)
+	{
+		System.out.println("small_pic:"+small_pic);
+		request.setAttribute("small_pic", small_pic);
+	}
+	else System.out.println("null");
 	
 %>
 
@@ -227,7 +228,18 @@ body {
 		} else
 			return;
 	}
-
+	function finish()
+	{
+		//alert("<%=small_pic%>");
+		//alert("${small_pic}");
+		alert(document.getElementById("small_pic").value);
+		//var f1=document.getElementById("addform");
+		//f1.submit();
+		
+	}
+	//alert("${small_pic}");
+</script>
+<script type="text/javascript">
 	var swfu;
 
 	window.onload = function() {
@@ -414,6 +426,8 @@ body {
 									<input id="btnCancel" type="hidden" value="取消上传所有文件"
 									onclick="swfu.cancelQueue();" disabled="disabled"
 									style="margin-left: 2px; font-size: 8pt; height: 29px;" />
+									<input type="hidden" id="small_pic" name="small_pic" value="<%out.println("123"+small_pic); %>">
+									
 									<img src="images/select.png" width="98" height="39"></td>
 									<td colspan="7" width="301" height="6"></td>
 									<td width="1" height="6"></td>
@@ -521,8 +535,8 @@ body {
 								<tr>
 									<td colspan="3" rowspan="2" width="130" height="50"></td>
 									<td colspan="3" width="192" height="45"><img
-										src="images/compl.png" width="180" height="44"
-										onclick="submit()">
+										src="images/compl.png" width="180" height="44" 
+										onclick="javascript:finish()">
 									</td>
 									<td colspan="5" rowspan="2" width="192" height="50"></td>
 									<td width="1" height="45"></td>

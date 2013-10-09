@@ -5,16 +5,17 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Food;
-
 import com.dao.impl.FoodDao;
-
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
 import com.util.Program;
@@ -34,6 +35,7 @@ public class FoodAction extends ActionSupport{
 	private String isfeature;
 	private String num;
 	private String descript;
+	private String small_pic;
 	private File picture;   //保存上传的文件
 	private String pictureContentType;	 //保存上传的文件类型
 	private String pictureFileName;   //保存上传的文件名
@@ -90,6 +92,12 @@ public class FoodAction extends ActionSupport{
 	public void setDescript(String descript) {
 		this.descript = descript;
 	}
+	public String getSmall_pic() {
+		return small_pic;
+	}
+	public void setSmall_pic(String small_pic) {
+		this.small_pic = small_pic;
+	}
 	public File getPicture() {
 		return picture;
 	}
@@ -145,15 +153,16 @@ public class FoodAction extends ActionSupport{
 		}
 	}
 	public String add() {
-		HttpServletRequest request=ServletActionContext.getRequest();
+		//HttpServletRequest request=ServletActionContext.getRequest();
+		//HttpSession session=request.getSession();
 		try {
-			String small_pic=(String)request.getAttribute("small_pic");
 			System.out.println(food);
 			System.out.println(price);
 			System.out.println(isfeature);
 			System.out.println(num);
 			System.out.println(descript);
 			System.out.println(small_pic);
+			//session.removeAttribute("small_pic");
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -182,6 +191,7 @@ public class FoodAction extends ActionSupport{
 	public String upload() {
 
 		HttpServletRequest request=ServletActionContext.getRequest();
+		//HttpSession session=request.getSession();
 		//System.out.println("uploadfile");
 		try {
 
@@ -216,6 +226,8 @@ public class FoodAction extends ActionSupport{
 					fos.write(buffer, 0, count);
 				}
 				//System.out.println(filename);
+				request.setAttribute("small_pic", dbfilename);
+				//ActionContext ctx = ActionContext.getContext(); 
 
 			}
 			catch (Exception e) {
@@ -227,7 +239,7 @@ public class FoodAction extends ActionSupport{
 				fos.close();
 				is.close();
 			}
-			request.setAttribute("small_pic", dbfilename);
+			
 
 
 		} catch (Exception e) {
@@ -235,7 +247,7 @@ public class FoodAction extends ActionSupport{
 			e.printStackTrace();
 			return "error";
 		}
-		return null;
+		return "addfood";
 	}
 
 }
