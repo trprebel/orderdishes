@@ -7,12 +7,12 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	Object object=(Object)  request.getAttribute("paginator");
-	Paginator paginator=null;
-	if(object==null){//创建默认值
-		paginator=new Paginator(6);
-	}else{
-		paginator=(Paginator)  request.getAttribute("paginator");
+	Object object = (Object) request.getAttribute("paginator");
+	Paginator paginator = null;
+	if (object == null) {//创建默认值
+		paginator = new Paginator(6);
+	} else {
+		paginator = (Paginator) request.getAttribute("paginator");
 	}
 %>
 
@@ -169,17 +169,20 @@ body {
 	//{
 	//	alert("${fn:length(drinks)}");
 	//}
-	
-	function adddrinks()
-	{
-		alert("adddrinks");
-	}
-	function deletedrinks(id)
-	{
-		document.getElementById("drinksid").value=id;
+
+	function deletedrink(id) {
+		document.getElementById("drinksid").value = id;
 		//alert($("#drinksid").val());
-		var f1=document.getElementById("requestform");
-		f1.action="deleteDRINKS.action";
+		var f1 = document.getElementById("requestform");
+		f1.action = "deleteDRINKS.action";
+		f1.submit();
+	}
+	function modifydrink(id)
+	{
+		document.getElementById("drinksid").value = id;
+		//alert($("#drinksid").val());
+		var f1 = document.getElementById("requestform");
+		f1.action = "modifyDRINKS.action";
 		f1.submit();
 	}
 </script>
@@ -239,8 +242,8 @@ body {
 				<tr>
 					<td colspan="2" rowspan="4" width="241" height="66"></td>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list" onclick="location.href='requestFOOD.action'"><img src="images/icon1.png" width="18"
-						height="19"> 菜谱管理</td>
+						class="list" onclick="location.href='requestFOOD.action'"><img
+						src="images/icon1.png" width="18" height="19"> 菜谱管理</td>
 					<td width="1" height="10"></td>
 				</tr>
 				<tr>
@@ -255,8 +258,8 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list_h" ><img
-						src="images/icon2.png" width="21" height="20"> 酒水管理</td>
+						class="list_h"><img src="images/icon2.png" width="21"
+						height="20"> 酒水管理</td>
 					<td width="1" height="22"></td>
 				</tr>
 				<tr>
@@ -269,19 +272,20 @@ body {
 								<c:forEach var="drink" items="${paginator.items}">
 									<li>
 										<div>
-											<img src="images/img.png" width="205" height="125"> <img
+											<img src="${drink.small_pic}" width="205" height="125"> <img
 												id="position" src="images/close.png" width="14" height="15"
 												onclick=" javascirpt:deletedrink('${drink.drinksid}')">
 										</div>
 										<div class="name">
 											<span>${drink.drinks }</span><span><img
-												src="images/modify.png" width="33" height="17"> </span>
+												src="images/modify.png" width="33" height="17"
+												onclick=" javascirpt:modifydrink('${drink.drinksid}')"> </span>
 										</div></li>
 
 								</c:forEach>
-								<input type="hidden" name="drinkid" id="drinkid" value="123" />
+								<input type="hidden" name="drinksid" id="drinksid" value="123" />
 								<c:if test="${fn:length(paginator.items)<9}">
-									<li onclick="javascript:adddrink()"></li>
+									<li onclick="location.href='add_drink.jsp'"></li>
 								</c:if>
 
 							</ul>
@@ -297,7 +301,8 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='message_release.jsp'"><img
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='message_release.jsp'"><img
 						src="images/icon3.png" width="20" height="14"> 信息发布</td>
 					<td width="1" height="42"></td>
 				</tr>
@@ -306,8 +311,9 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='requestCUSTOMER.action'">
-						<img src="images/icon4.png" width="20" height="20"> 客户管理</td>
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='requestCUSTOMER.action'"><img
+						src="images/icon4.png" width="20" height="20"> 客户管理</td>
 					<td width="1" height="42"></td>
 				</tr>
 				<tr>
@@ -315,8 +321,9 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='history_info.jsp'">
-						<img src="images/icon5.png" width="20" height="20"> 历史信息</td>
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='history_info.jsp'"><img
+						src="images/icon5.png" width="20" height="20"> 历史信息</td>
 					<td><img src="images/分隔符.gif" width="1" height="42" alt="">
 					</td>
 				</tr>
@@ -333,24 +340,23 @@ body {
 				<tr>
 					<td rowspan="2" width="208" height="43" align="center"><a
 						href='javascript:goPage(<%=paginator.getCurrentPage() - 1%>)'>
-						<%
-						if(paginator.getCurrentPage()!=1)
-						{
-							out.print("<img src='images/last.png' width='78' height='20'>");
-						} 
-						%>
-						 </a></td>
+							<%
+								if (paginator.getCurrentPage() != 1) {
+									out.print("<img src='images/last.png' width='78' height='20'>");
+								}
+							%> </a></td>
 					<td rowspan="5" width="2" height="86"></td>
 					<td rowspan="2" width="103" height="43" align="center"><input
 						name='paginator.currentPage' id='paginator.currentPage'
-						type='hidden' value='<%=paginator.getCurrentPage()%>' /> <a
-						href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
-						<%
-						if(paginator.getCurrentPage()<paginator.getTotalPages())
-						{
-							out.print("<img src='images/next.png' width='81' height='20'>");
-						} 
-						%></td>
+						type='hidden' value='<%=paginator.getCurrentPage()%>' /> 
+						<a href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
+							<%
+								if (paginator.getCurrentPage() < paginator.getTotalPages()||(paginator.getItems().size()==9)) {
+									out.print("<img src='images/next.png' width='81' height='20'>");
+								}
+							%>
+						</a>
+					</td>
 					<td width="1" height="30"></td>
 				</tr>
 				<tr>

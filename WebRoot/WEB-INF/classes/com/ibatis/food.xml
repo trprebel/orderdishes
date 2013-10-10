@@ -21,7 +21,9 @@
 	<select id="findFoodById" parameterClass="int" resultClass="Food">
 		select * from food where foodid=$id$
 	</select>
-
+	<update id="modifyFood" parameterClass="Food">
+		update food set food=#food#,price=$price$,small_pic=#small_pic#,big_pic=#big_pic#,num=$num$,descript=#descript# where foodid=$foodid$
+	</update>
 	
 
 </sqlMap>

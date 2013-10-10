@@ -18,6 +18,7 @@
 			<result name="drinks">/drinks_manager.jsp</result>
 			<result name="request" type="chain">requestDRINKS</result>
 			<result name="error">/error.jsp</result>
+			<result name="modify">/modify_drink.jsp</result>
 		</action>
 		<action name="*CUSTOMER" class="com.action.CustomerAction" method="{1}">
 			<result name="customer">/customer_manager.jsp</result>
@@ -26,7 +27,6 @@
 		<action name="*FOOD" class="com.action.FoodAction" method="{1}">
 			<result name="food">/all_dishes_manager.jsp</result>
 			<result name="request" type="chain">requestFOOD</result>
-			<result name="addfood">/add_food.jsp</result>
 			<result name="modify">/modify_food.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>

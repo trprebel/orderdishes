@@ -1,9 +1,21 @@
 package com.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.List;
+import java.util.Random;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 
 import com.bean.Drinks;
+import com.bean.Food;
 import com.dao.impl.DrinksDao;
+import com.dao.impl.FoodDao;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
 import com.util.Program;
@@ -19,6 +31,16 @@ public class DrinksAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private String drinksid;
 
+	private String drinks;
+	private String price;
+	private String num;
+	private String descript;
+	private String small_pic;
+	private String big_pic;
+	private File picture;   //保存上传的文件
+	private String pictureContentType;	 //保存上传的文件类型
+	private String pictureFileName;   //保存上传的文件名
+	//private String uploadPath;
 	private DrinksDao drinksdao;
 	public Paginator paginator=new Paginator(9);
 	private Program program=new Program();
@@ -39,6 +61,60 @@ public class DrinksAction extends ActionSupport{
 	}
 	public void setDrinksid(String drinksid) {
 		this.drinksid = drinksid;
+	}
+	public String getDrinks() {
+		return drinks;
+	}
+	public void setDrinks(String drinks) {
+		this.drinks = drinks;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+	public String getDescript() {
+		return descript;
+	}
+	public void setDescript(String descript) {
+		this.descript = descript;
+	}
+	public String getSmall_pic() {
+		return small_pic;
+	}
+	public void setSmall_pic(String small_pic) {
+		this.small_pic = small_pic;
+	}
+	public String getBig_pic() {
+		return big_pic;
+	}
+	public void setBig_pic(String big_pic) {
+		this.big_pic = big_pic;
+	}
+	public File getPicture() {
+		return picture;
+	}
+	public void setPicture(File picture) {
+		this.picture = picture;
+	}
+	public String getPictureContentType() {
+		return pictureContentType;
+	}
+	public void setPictureContentType(String pictureContentType) {
+		this.pictureContentType = pictureContentType;
+	}
+	public String getPictureFileName() {
+		return pictureFileName;
+	}
+	public void setPictureFileName(String pictureFileName) {
+		this.pictureFileName = pictureFileName;
 	}
 	/**请求酒水列表
 	 * @return String
@@ -61,11 +137,7 @@ public class DrinksAction extends ActionSupport{
 				return "drinks";
 			}
 			List<Drinks> drinks=drinksdao.findDrinksList(program);
-			for (Drinks drink : drinks) {
-				drink.setSmall_pic(path+drink.getSmall_pic());
-				drink.setBig_pic(path+drink.getBig_pic());
-				//System.out.println(drink.getSmall_pic());
-			}
+			
 			paginator.setData(count, drinks);
 			//request.setAttribute("drinks", drinks);
 			return "drinks";
@@ -93,6 +165,99 @@ public class DrinksAction extends ActionSupport{
 			e.printStackTrace();
 			return "error";
 		}
+	}
+	/**
+	 * 上传图片
+	 */
+	public void upload() {
+
+		//HttpSession session=request.getSession();
+		//System.out.println("uploadfile");
+		try {
+
+
+			StringUtil.getSpPropeurl("imagePath");
+			String uploadPath=StringUtil.getSpPropeurl("imagePath");
+
+			String filename = pictureFileName; 
+			Random random = new Random();
+
+			//把上传的文件用生成的随机数重新命名
+			//并判断生成的文件名是否已经存在
+			//如果存在，则继续生成随机数命名，直到找打还没使用的随机数为止
+			String dbfilename="images/"+random.nextLong()+ filename.substring(filename.lastIndexOf("."));
+			filename = uploadPath + dbfilename;
+
+			while (new File(filename).exists()) {
+				dbfilename="images/"+random.nextLong()+ filename.substring(filename.lastIndexOf("."));
+				filename = uploadPath + dbfilename;
+			}
+
+			//System.out.println(dbfilename);
+			FileOutputStream fos = new FileOutputStream(filename);
+			//System.out.println(filename);
+			InputStream is = new FileInputStream(picture);
+			try
+			{
+
+				byte[] buffer = new byte[4*1024];
+				int count = 0;
+				while ((count = is.read(buffer)) > 0) {
+					fos.write(buffer, 0, count);
+				}
+				//System.out.println(filename);
+				
+				
+			  	PrintWriter out =  ServletActionContext.getResponse().getWriter();
+			  	out.write(dbfilename);
+			  	out.flush();
+			  	out.close();
+
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+			finally
+			{
+				fos.close();
+				is.close();
+			}
+			
+
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	public String requestone() {
+		HttpServletRequest request=ServletActionContext.getRequest();
+		try {
+			//System.out.println(drinksid);
+			drinksdao=new DrinksDao();
+			Drinks drinks=drinksdao.findDrinkById(Integer.parseInt(drinksid));
+			request.setAttribute("drink", drinks);
+			return "modify";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	public String modify() {
+		HttpServletRequest request=ServletActionContext.getRequest();
+		try {
+			//System.out.println(drinksid);
+			
+			return "request";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+		
 	}
 
 

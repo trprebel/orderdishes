@@ -14,10 +14,7 @@
 	} else {
 		paginator = (Paginator) request.getAttribute("paginator");
 	}
-	if((paginator.getCurrentPage()+1)>paginator.getTotalPages())
-	{
-		
-	}
+	//System.out.println(paginator.getItems().size());
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -370,7 +367,7 @@ body {
 						type='hidden' value='<%=paginator.getCurrentPage()%>' /> <a
 						href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
 						<%
-						if(paginator.getCurrentPage()<paginator.getTotalPages())
+						if(paginator.getCurrentPage()<paginator.getTotalPages()||(paginator.getItems().size()==9))
 						{
 							out.print("<img src='images/next.png' width='81' height='20'>");
 						} 

@@ -39,7 +39,7 @@ public class FoodAction extends ActionSupport{
 	private File picture;   //保存上传的文件
 	private String pictureContentType;	 //保存上传的文件类型
 	private String pictureFileName;   //保存上传的文件名
-	private String uploadPath;
+	//private String uploadPath;
 
 	private FoodDao fooddao;
 	public Paginator paginator=new Paginator(9);
@@ -215,8 +215,8 @@ public class FoodAction extends ActionSupport{
 		try {
 
 
-			StringUtil.getSpPropeurl("imagePath");
-			uploadPath=StringUtil.getSpPropeurl("imagePath");
+			//StringUtil.getSpPropeurl("imagePath");
+			String uploadPath=StringUtil.getSpPropeurl("imagePath");
 
 			String filename = pictureFileName; 
 			Random random = new Random();
@@ -273,9 +273,10 @@ public class FoodAction extends ActionSupport{
 	public String requestone() {
 		HttpServletRequest request=ServletActionContext.getRequest();
 		try {
-			System.out.println(foodid);
+			//System.out.println(foodid);
 			fooddao=new FoodDao();
 			Food foodbean=fooddao.findFoodById(Integer.parseInt(foodid));
+			//System.out.println(foodbean.getDescript());
 			request.setAttribute("food", foodbean);
 			return "modify";
 		} catch (Exception e) {
@@ -285,9 +286,20 @@ public class FoodAction extends ActionSupport{
 		}
 	}
 	public String modify() {
-		HttpServletRequest request=ServletActionContext.getRequest();
+		//HttpServletRequest request=ServletActionContext.getRequest();
 		try {
-			System.out.println(foodid);
+			//System.out.println(foodid);
+			fooddao=new FoodDao();
+			Food foodbean=new Food();
+			foodbean.setFoodid(Integer.parseInt(foodid));
+			foodbean.setFood(food);
+			foodbean.setPrice(Integer.parseInt(price));
+			foodbean.setSmall_pic(small_pic);
+			foodbean.setBig_pic(big_pic);
+			foodbean.setNum(Integer.parseInt(num));
+			foodbean.setIsfeature(Integer.parseInt(isfeature));
+			foodbean.setDescript(descript);
+			fooddao.modifyFood(foodbean);
 			
 			return "request";
 		} catch (Exception e) {

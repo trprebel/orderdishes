@@ -14,7 +14,13 @@
 	<delete id="deleteDrink" parameterClass="int">
 		delete from drinks where drinksid=$drinksid$
 	</delete>
-
+	<insert id="addDrink" parameterClass="Drinks">
+		insert into drinks (drinks,price,small_pic,big_pic,num,descript,create_date) 
+		values(#drinks#,$price$,#small_pic#,#big_pic#,$num$,#descript#,current_timestamp)
+	</insert>
+	<select id="findDrinkById" parameterClass="int" resultClass="Drinks">
+		select * from drinks where drinksid=$id$
+	</select>
 	
 
 </sqlMap>

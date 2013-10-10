@@ -322,7 +322,7 @@ body {
 </script>
 <body>
 	<div class="main">
-		<form action="modifyFOOD.action" name="addform" id="addform" 
+		<form action="addFOOD.action" name="addform" id="addform" 
 			method="post" enctype="multipart/form-data">
 			<table width="961" height="631" border="0" cellpadding="0"
 				cellspacing="0">
@@ -413,8 +413,7 @@ body {
 									<td rowspan="2" width="113" height="38" class="add_name">菜名
 									</td>
 									<td colspan="15" width="542" height="1"></td>
-									<td width="1" height="1"><input type="hidden" name="foodid" id="foodid" value="${food.foodid}">
-									</td>
+									<td width="1" height="1"></td>
 								</tr>
 								<tr>
 									<td colspan="3" rowspan="8" width="15" height="140"></td>
@@ -560,7 +559,7 @@ body {
 								<tr>
 									<td rowspan="5" width="4" height="151"></td>
 									<td colspan="11" rowspan="2" width="514" height="79"><textarea
-											class="add_input2" name="descript" id="descript">${food.descript }</textarea>
+											class="add_input2" name="descript" id="descript" value="${food.descript }"></textarea>
 									</td>
 									<td width="1" height="37"></td>
 								</tr>

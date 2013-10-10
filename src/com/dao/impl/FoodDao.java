@@ -29,4 +29,8 @@ public class FoodDao {
 		return (Food) SqlMap.getSqlMapClient().queryForObject("findFoodById",id);
 		
 	}
+	/**–ﬁ∏ƒ≤À Ù–‘*/
+	public void modifyFood(Food food) throws Exception {
+		SqlMap.getSqlMapClient().update("modifyFood",food);
+	}
 }
