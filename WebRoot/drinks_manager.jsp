@@ -333,13 +333,24 @@ body {
 				<tr>
 					<td rowspan="2" width="208" height="43" align="center"><a
 						href='javascript:goPage(<%=paginator.getCurrentPage() - 1%>)'>
-							<img src="images/last.png" width="78" height="20"> </a></td>
+						<%
+						if(paginator.getCurrentPage()!=1)
+						{
+							out.print("<img src='images/last.png' width='78' height='20'>");
+						} 
+						%>
+						 </a></td>
 					<td rowspan="5" width="2" height="86"></td>
 					<td rowspan="2" width="103" height="43" align="center"><input
 						name='paginator.currentPage' id='paginator.currentPage'
 						type='hidden' value='<%=paginator.getCurrentPage()%>' /> <a
 						href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
-							<img src="images/next.png" width="81" height="20"> </a></td>
+						<%
+						if(paginator.getCurrentPage()<paginator.getTotalPages())
+						{
+							out.print("<img src='images/next.png' width='81' height='20'>");
+						} 
+						%></td>
 					<td width="1" height="30"></td>
 				</tr>
 				<tr>
@@ -357,10 +368,10 @@ body {
 				<tr>
 					<td rowspan="2" width="208" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/home.png" width="73"
-						height="22"></td>
+						height="22" onclick="location.href='requestFOOD.action'"></td>
 					<td rowspan="2" width="103" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/back.png" width="72"
-						height="20"></td>
+						height="20" onclick="location.href=document.referrer"></td>
 					<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 					</td>
 				</tr>

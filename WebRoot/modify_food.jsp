@@ -4,13 +4,7 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	//String small_pic=(String)request.getAttribute("small_pic");
-	//if(small_pic!=null)
-	//{
-	//	System.out.println("small_pic11111:"+small_pic);
-	//	request.setAttribute("small_pic", small_pic);
-	//}
-	//else System.out.println("null");
+	
 	
 %>
 
@@ -424,7 +418,7 @@ body {
 								<tr>
 									<td colspan="3" rowspan="8" width="15" height="140"></td>
 									<td colspan="11" rowspan="2" width="514" height="40"><input
-										class="add_input1" type="text" name="food" id="food">
+										class="add_input1" type="text" name="food" id="food" value="${food.food }">
 									</td>
 									<td rowspan="26" width="13" height="492"></td>
 									<td width="1" height="37"></td>
@@ -443,7 +437,7 @@ body {
 								</tr>
 								<tr>
 									<td colspan="11" rowspan="2" width="514" height="40"><input
-										class="add_input1" type="text" name="price" id="price">
+										class="add_input1" type="text" name="price" id="price" value="${food.price }">
 									</td>
 									<td width="1" height="33"></td>
 								</tr>
@@ -467,13 +461,13 @@ body {
 									<input id="btnCancel" type="hidden" value="取消上传所有文件"
 									onclick="swfus.cancelQueue();" disabled="disabled"
 									style="margin-left: 2px; font-size: 8pt; height: 29px;" />
-									<input type="hidden" id="small_pic" name="small_pic" value="">
+									<input type="hidden" id="small_pic" name="small_pic" value="${food.small_pic }">
 									
 									<span id="spanButtonPlaceHolderB"></span>
 									<input id="btnCancelB" type="hidden" value="取消上传所有文件"
 									onclick="swfub.cancelQueue();" disabled="disabled"
 									style="margin-left: 2px; font-size: 8pt; height: 29px;" />
-									<input type="hidden" id="big_pic" name="big_pic" value=""></td>
+									<input type="hidden" id="big_pic" name="big_pic" value="${food.big_pic }"></td>
 									<td colspan="7" width="301" height="6"></td>
 									<td width="1" height="6"></td>
 								</tr>
@@ -523,7 +517,7 @@ body {
 										class="add_icon2" onclick="javascript:isspecial(0)">否</td>
 									<td><img src="images/分隔符.gif" width="1" height="38" alt="">
 									</td>
-									<input type="hidden" name="isfeature" id="isfeature" value="1">
+									<input type="hidden" name="isfeature" id="isfeature" value="${food.isfeature }">
 								</tr>
 								<tr>
 									<td width="113" height="29"></td>
@@ -540,7 +534,7 @@ body {
 								</tr>
 								<tr>
 									<td colspan="2" rowspan="2" width="94" height="38"
-										class="add_icon1"><input type="text" name="num" id="num">
+										class="add_icon1"><input type="text" name="num" id="num" value="${food.num }">
 									</td>
 									<td><img src="images/分隔符.gif" width="1" height="35" alt="">
 									</td>
@@ -565,7 +559,7 @@ body {
 								<tr>
 									<td rowspan="5" width="4" height="151"></td>
 									<td colspan="11" rowspan="2" width="514" height="79"><textarea
-											class="add_input2" name="descript" id="descript"></textarea>
+											class="add_input2" name="descript" id="descript" value="${food.descript }"></textarea>
 									</td>
 									<td width="1" height="37"></td>
 								</tr>

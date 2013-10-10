@@ -20,4 +20,13 @@ public class FoodDao {
 	public void deleteFood(int Foodid) throws Exception{
 		SqlMap.getSqlMapClient().delete("deleteFood",Foodid);
 	}
+	/**添加菜*/
+	public void addFood(Food food) throws Exception{
+		SqlMap.getSqlMapClient().insert("addFood",food);
+	}
+	/**通过ID查找菜*/
+	public Food findFoodById(int id) throws Exception{
+		return (Food) SqlMap.getSqlMapClient().queryForObject("findFoodById",id);
+		
+	}
 }

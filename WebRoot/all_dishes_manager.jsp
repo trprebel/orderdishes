@@ -14,6 +14,10 @@
 	} else {
 		paginator = (Paginator) request.getAttribute("paginator");
 	}
+	if((paginator.getCurrentPage()+1)>paginator.getTotalPages())
+	{
+		
+	}
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -188,6 +192,15 @@ body {
 		f1.submit();
 		//alert("deletefood");
 	}
+	function modifyfood(id)
+	{
+		document.getElementById("foodid").value=id;
+		//alert($("#foodid").val());
+		var f1=document.getElementById("requestform");
+		f1.action="requestoneFOOD.action";
+		f1.submit();
+		//alert("deletefood");
+	}
 </script>
 <body>
 	<div class="main">
@@ -208,7 +221,7 @@ body {
 						name="textfield" type="text" class="login_input_info"
 						value="暂无处理信息"></td>
 					<td rowspan="3" width="141" height="57"><img
-						src="images/handing.png" width="141" height="57">
+						src="images/handing.png" width="141" height="57" onclick="location.href='message_handle.jsp'">
 					</td>
 					<td colspan="5" rowspan="5" width="241" height="82"></td>
 					<td><img src="images/分隔符.gif" width="1" height="15" alt="">
@@ -274,14 +287,15 @@ body {
 								<c:forEach var="food" items="${paginator.items}" varStatus="i">
 									<li>
 										<div>
-											<img src="images/img.png" width="205" height="125">
+											<img src="${food.small_pic} " width="205" height="125">
 											<img id="position" src="images/close.png" width="14"
 												height="15"
 												onclick=" javascirpt:deletefood('${food.foodid}')">
 										</div>
 										<div class="name">
 											<span>${food.food }</span><span><img
-												src="images/modify.png" width="33" height="17"> </span>
+												src="images/modify.png" width="33" height="17"
+												onclick=" javascirpt:modifyfood('${food.foodid}')"> </span>
 										</div>
 									</li>
 
@@ -342,14 +356,25 @@ body {
 				<tr>
 					<td rowspan="2" width="208" height="43" align="center"><a
 						href='javascript:goPage(<%=paginator.getCurrentPage() - 1%>)'>
-							<img src="images/last.png" width="78" height="20"> </a>
+						<%
+						if(paginator.getCurrentPage()!=1)
+						{
+							out.print("<img src='images/last.png' width='78' height='20'>");
+						} 
+						%>
+						</a>
 					</td>
 					<td rowspan="5" width="2" height="86"></td>
 					<td rowspan="2" width="103" height="43" align="center"><input
 						name='paginator.currentPage' id='paginator.currentPage'
 						type='hidden' value='<%=paginator.getCurrentPage()%>' /> <a
 						href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
-							<img src="images/next.png" width="81" height="20"> </a>
+						<%
+						if(paginator.getCurrentPage()<paginator.getTotalPages())
+						{
+							out.print("<img src='images/next.png' width='81' height='20'>");
+						} 
+						%>	 </a>
 					</td>
 					<td width="1" height="30"></td>
 				</tr>
@@ -368,11 +393,11 @@ body {
 				<tr>
 					<td rowspan="2" width="208" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/home.png" width="73"
-						height="22">
+						height="22" onclick="location.href='requestFOOD.action'">
 					</td>
 					<td rowspan="2" width="103" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/back.png" width="72"
-						height="20">
+						height="20" onclick="location.href=document.referrer">
 					</td>
 					<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 					</td>

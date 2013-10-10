@@ -241,8 +241,8 @@ function modifypasswd()
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="103" height="42" align="center"><img src="images/home.png" width="73" height="22">			</td>
-		<td rowspan="2" width="103" height="42" align="center"><img src="images/back.png" width="72" height="20">	  </td>
+		<td rowspan="2" width="103" height="42" align="center"><img src="images/home.png" width="73" height="22" onclick="location.href='requestFOOD.action'">			</td>
+		<td rowspan="2" width="103" height="42" align="center"><img src="images/back.png" width="72" height="20" onclick="location.href=document.referrer">	  </td>
 		<td width="1" height="8">
 	  </td>
 	</tr>

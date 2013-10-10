@@ -4,19 +4,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Food;
 import com.dao.impl.FoodDao;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.util.Paginator;
 import com.util.Program;
 
@@ -36,6 +35,7 @@ public class FoodAction extends ActionSupport{
 	private String num;
 	private String descript;
 	private String small_pic;
+	private String big_pic;
 	private File picture;   //保存上传的文件
 	private String pictureContentType;	 //保存上传的文件类型
 	private String pictureFileName;   //保存上传的文件名
@@ -98,6 +98,12 @@ public class FoodAction extends ActionSupport{
 	public void setSmall_pic(String small_pic) {
 		this.small_pic = small_pic;
 	}
+	public String getBig_pic() {
+		return big_pic;
+	}
+	public void setBig_pic(String big_pic) {
+		this.big_pic = big_pic;
+	}
 	public File getPicture() {
 		return picture;
 	}
@@ -124,7 +130,7 @@ public class FoodAction extends ActionSupport{
 		//HttpServletRequest request=ServletActionContext.getRequest();
 		try
 		{
-			String path=StringUtil.getSpPropeurl("imagePath");
+			//String path=StringUtil.getSpPropeurl("imagePath");
 			fooddao=new FoodDao();
 			int count=fooddao.findFoodCount();
 			//System.out.println(paginator.getCurrentPage());
@@ -137,11 +143,11 @@ public class FoodAction extends ActionSupport{
 				return "food";
 			}
 			List<Food> foodlist=fooddao.findFoodList(program);
-			for (Food food : foodlist) {
-				food.setSmall_pic(path+food.getSmall_pic());
-				food.setBig_pic(path+food.getBig_pic());
-				//System.out.println(drink.getSmall_pic());
-			}
+//			for (Food food : foodlist) {
+//				food.setSmall_pic(path+food.getSmall_pic());
+//				food.setBig_pic(path+food.getBig_pic());
+//				//System.out.println(drink.getSmall_pic());
+//			}
 			paginator.setData(count, foodlist);
 			//request.setAttribute("Food", Food);
 			return "food";
@@ -156,13 +162,24 @@ public class FoodAction extends ActionSupport{
 		//HttpServletRequest request=ServletActionContext.getRequest();
 		//HttpSession session=request.getSession();
 		try {
-			System.out.println(food);
-			System.out.println(price);
-			System.out.println(isfeature);
-			System.out.println(num);
-			System.out.println(descript);
-			System.out.println(small_pic);
-			//session.removeAttribute("small_pic");
+//			System.out.println(food);
+//			System.out.println(price);
+//			System.out.println(isfeature);
+//			System.out.println(num);
+//			System.out.println(descript);
+//			System.out.println(small_pic);
+			Food foodbean=new Food();
+			foodbean.setFood(food);
+			foodbean.setPrice(Integer.parseInt(price));
+			foodbean.setIsfeature(Integer.parseInt(isfeature));
+			foodbean.setNum(Integer.parseInt(num));
+			foodbean.setSmall_pic(small_pic);
+			foodbean.setBig_pic(big_pic);
+			foodbean.setDescript(descript);
+			
+			fooddao=new FoodDao();
+			fooddao.addFood(foodbean);
+			
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -188,9 +205,11 @@ public class FoodAction extends ActionSupport{
 			return "error";
 		}
 	}
-	public String upload() {
+	/**
+	 * 上传图片
+	 */
+	public void upload() {
 
-		HttpServletRequest request=ServletActionContext.getRequest();
 		//HttpSession session=request.getSession();
 		//System.out.println("uploadfile");
 		try {
@@ -226,8 +245,12 @@ public class FoodAction extends ActionSupport{
 					fos.write(buffer, 0, count);
 				}
 				//System.out.println(filename);
-				request.setAttribute("small_pic", dbfilename);
-				//ActionContext ctx = ActionContext.getContext(); 
+				
+				
+			  	PrintWriter out =  ServletActionContext.getResponse().getWriter();
+			  	out.write(dbfilename);
+			  	out.flush();
+			  	out.close();
 
 			}
 			catch (Exception e) {
@@ -245,9 +268,34 @@ public class FoodAction extends ActionSupport{
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}
+	}
+	public String requestone() {
+		HttpServletRequest request=ServletActionContext.getRequest();
+		try {
+			System.out.println(foodid);
+			fooddao=new FoodDao();
+			Food foodbean=fooddao.findFoodById(Integer.parseInt(foodid));
+			request.setAttribute("food", foodbean);
+			return "modify";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 			return "error";
 		}
-		return "addfood";
+	}
+	public String modify() {
+		HttpServletRequest request=ServletActionContext.getRequest();
+		try {
+			System.out.println(foodid);
+			
+			return "request";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+		
 	}
 
 }

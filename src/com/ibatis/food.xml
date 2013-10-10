@@ -14,6 +14,13 @@
 	<delete id="deleteFood" parameterClass="int">
 		delete from food where foodid=$foodid$
 	</delete>
+	<insert id="addFood" parameterClass="Food">
+		insert into food (food,price,small_pic,big_pic,isfeature,num,descript,create_date) 
+		values(#food#,$price$,#small_pic#,#big_pic#,$isfeature$,$num$,#descript#,current_timestamp)
+	</insert>
+	<select id="findFoodById" parameterClass="int" resultClass="Food">
+		select * from food where foodid=$id$
+	</select>
 
 	
 

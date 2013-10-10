@@ -571,10 +571,10 @@ body {
 			<tr>
 				<td rowspan="2" width="208" height="42" align="center"><img
 					style="*margin-bottom:15px;" src="images/home.png" width="73"
-					height="22"></td>
+					height="22" onclick="location.href='requestFOOD.action'"></td>
 				<td rowspan="2" width="103" height="42" align="center"><img
 					style="*margin-bottom:15px;" src="images/back.png" width="72"
-					height="20"></td>
+					height="20" onclick="location.href=document.referrer"></td>
 				<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 				</td>
 			</tr>
