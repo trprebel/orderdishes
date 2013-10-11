@@ -206,6 +206,7 @@ body {
 }
 </style>
 </head>
+<script type="text/javascript" src="js/jquery-1.6.js"></script>
 <script type="text/javascript" src="js/swfupload.js"></script>
 <script type="text/javascript" src="js/swfupload.queue.js"></script>
 <script type="text/javascript" src="js/fileprogress.js"></script>
@@ -230,11 +231,24 @@ body {
 	}
 	function finish()
 	{
-		alert("finish");
-		//alert("${small_pic}");
-		alert(document.getElementById("small_pic").value);
-		//var f1=document.getElementById("addform");
-		//f1.submit();
+		var number = /^[0-9]{1,20}$/;
+		var price=$("#price").val();
+		if (!number.exec(price)) {
+			alert("价格只能由数字组成！");
+			return;
+		}
+		var num=$("#num").val();
+		if(!number.exec(num)){
+			alert("数量只能由数字组成！");
+			return;
+		}
+		var small_pic=$("#small_pic").val();
+		if(small_pic==""){
+			alert("请上传小图片");
+			return;
+		}
+		var f1=document.getElementById("addform");
+		f1.submit();
 		
 	}
 	//alert("${small_pic}");
@@ -249,8 +263,8 @@ body {
 			upload_url : "uploadDRINKS.action",
 			file_post_name : "picture",
 			//post_params: {"PHPSESSID" : "123"},
-			file_size_limit : "500 MB",
-			file_types : "*.*",
+			file_size_limit : "1 MB",
+			file_types :"*.jpg;*.jpeg;*.png;*.gif;*.bmp",
 			file_types_description : "All Files",
 			file_upload_limit : 0,
 			file_queue_limit : 0,
@@ -288,8 +302,8 @@ body {
 				upload_url : "uploadDRINKS.action",
 				file_post_name : "picture",
 				//post_params: {"PHPSESSID" : "123"},
-				file_size_limit : "500 MB",
-				file_types : "*.*",
+				file_size_limit : "10 MB",
+				file_types : "*.jpg;*.jpeg;*.png;*.gif;*.bmp",
 				file_types_description : "All Files",
 				file_upload_limit : 0,
 				file_queue_limit : 0,
@@ -582,7 +596,7 @@ body {
 									<td colspan="3" rowspan="2" width="130" height="50"></td>
 									<td colspan="3" width="192" height="45"><img
 										src="images/compl.png" width="180" height="44" 
-										onclick="submit()">
+										onclick="javascript:finish()">
 									</td>
 									<td colspan="5" rowspan="2" width="192" height="50"></td>
 									<td width="1" height="45"></td>

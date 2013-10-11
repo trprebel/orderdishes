@@ -4,8 +4,6 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	
-	
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -200,6 +198,7 @@ body {
 }
 </style>
 </head>
+<script type="text/javascript" src="js/jquery-1.6.js"></script>
 <script type="text/javascript" src="js/swfupload.js"></script>
 <script type="text/javascript" src="js/swfupload.queue.js"></script>
 <script type="text/javascript" src="js/fileprogress.js"></script>
@@ -222,14 +221,26 @@ body {
 		} else
 			return;
 	}
-	function finish()
-	{
-		alert("finish");
-		//alert("${small_pic}");
-		alert(document.getElementById("small_pic").value);
-		//var f1=document.getElementById("addform");
-		//f1.submit();
-		
+	function finish() {
+		var number = /^[0-9]{1,20}$/;
+		var price = $("#price").val();
+		if (!number.exec(price)) {
+			alert("价格只能由数字组成！");
+			return;
+		}
+		var num = $("#num").val();
+		if (!number.exec(num)) {
+			alert("数量只能由数字组成！");
+			return;
+		}
+		var small_pic = $("#small_pic").val();
+		if (small_pic == "") {
+			alert("请上传小图片");
+			return;
+		}
+		var f1 = document.getElementById("addform");
+		f1.submit();
+
 	}
 	//alert("${small_pic}");
 </script>
@@ -243,8 +254,8 @@ body {
 			upload_url : "uploadDRINKS.action",
 			file_post_name : "picture",
 			//post_params: {"PHPSESSID" : "123"},
-			file_size_limit : "500 MB",
-			file_types : "*.*",
+			file_size_limit : "1 MB",
+			file_types : "*.jpg;*.jpeg;*.png;*.gif;*.bmp",
 			file_types_description : "All Files",
 			file_upload_limit : 0,
 			file_queue_limit : 0,
@@ -278,58 +289,58 @@ body {
 
 		swfus = new SWFUpload(settings);
 		var settingsb = {
-				flash_url : "swfupload.swf",
-				upload_url : "uploadDRINKS.action",
-				file_post_name : "picture",
-				//post_params: {"PHPSESSID" : "123"},
-				file_size_limit : "500 MB",
-				file_types : "*.*",
-				file_types_description : "All Files",
-				file_upload_limit : 0,
-				file_queue_limit : 0,
-				custom_settings : {
-					progressTarget : "fsUploadProgress",
-					cancelButtonId : "btnCancelB"
-				},
-				debug : false,
+			flash_url : "swfupload.swf",
+			upload_url : "uploadDRINKS.action",
+			file_post_name : "picture",
+			//post_params: {"PHPSESSID" : "123"},
+			file_size_limit : "10 MB",
+			file_types : "*.jpg;*.jpeg;*.png;*.gif;*.bmp",
+			file_types_description : "All Files",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				progressTarget : "fsUploadProgress",
+				cancelButtonId : "btnCancelB"
+			},
+			debug : false,
 
-				// Button settings
-				button_image_url : "images/select.png",
-				button_width : "98",
-				button_height : "39",
-				button_placeholder_id : "spanButtonPlaceHolderB",
-				button_text_style : ".theFont { font-size: 16; }",
-				button_text_left_padding : 12,
-				button_text_top_padding : 3,
+			// Button settings
+			button_image_url : "images/select.png",
+			button_width : "98",
+			button_height : "39",
+			button_placeholder_id : "spanButtonPlaceHolderB",
+			button_text_style : ".theFont { font-size: 16; }",
+			button_text_left_padding : 12,
+			button_text_top_padding : 3,
 
-				// The event handler functions are defined in handlers.js
-				file_queued_handler : fileQueued,
-				file_queue_error_handler : fileQueueError,
-				file_dialog_complete_handler : fileDialogComplete,
-				upload_start_handler : uploadStart,
-				upload_progress_handler : uploadProgress,
-				upload_error_handler : uploadError,
-				upload_success_handler : uploadSuccessB,
-				upload_complete_handler : uploadComplete,
-				queue_complete_handler : queueComplete
-			// Queue plugin event
-			};
+			// The event handler functions are defined in handlers.js
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccessB,
+			upload_complete_handler : uploadComplete,
+			queue_complete_handler : queueComplete
+		// Queue plugin event
+		};
 
-			swfub = new SWFUpload(settingsb);
-		
+		swfub = new SWFUpload(settingsb);
+
 	};
-	
 </script>
 <body>
 	<div class="main">
-		<form action="modifyDRINKS.action" name="addform" id="addform" 
+		<form action="modifyDRINKS.action" name="addform" id="addform"
 			method="post" enctype="multipart/form-data">
 			<table width="961" height="631" border="0" cellpadding="0"
 				cellspacing="0">
 				<tr>
 					<td colspan="14" width="960" height="16"></td>
 					<td width="1" height="16"><img src="images/分隔符.gif" width="1"
-						height="16" alt=""></td>
+						height="16" alt="">
+					</td>
 				</tr>
 				<tr>
 					<td width="960" height="15"></td>
@@ -338,10 +349,10 @@ body {
 					<td width="28" height="15"></td>
 					<td height="68" colspan="4" width="491" rowspan="4"><input
 						name="textfield" type="text" class="login_input_info"
-						value="暂无处理信息"></td>
-					<td rowspan="3" width="141" height="57"><img
-						src="images/handing.png" width="141" height="57">
+						value="暂无处理信息">
 					</td>
+					<td rowspan="3" width="141" height="57"><img
+						src="images/handing.png" width="141" height="57"></td>
 					<td colspan="5" rowspan="5" width="241" height="82"></td>
 					<td><img src="images/分隔符.gif" width="1" height="15" alt="">
 					</td>
@@ -349,8 +360,7 @@ body {
 				<tr>
 					<td colspan="3" rowspan="3" width="960" height="53"></td>
 					<td width="28" height="28"><img src="images/qu.png" width="28"
-						height="28">
-					</td>
+						height="28"></td>
 
 					<td><img src="images/分隔符.gif" width="1" height="28" alt="">
 					</td>
@@ -368,7 +378,8 @@ body {
 				<tr>
 					<td rowspan="19" width="960" height="546"></td>
 					<td colspan="4" rowspan="2" width="81" height="24"><div
-							class="infr_instroy">菜谱管理→所有菜管理→新增</div></td>
+							class="infr_instroy">菜谱管理→所有菜管理→新增</div>
+					</td>
 					<td colspan="3" rowspan="5" width="470" height="80"></td>
 					<td><img src="images/分隔符.gif" width="1" height="14" alt="">
 					</td>
@@ -376,8 +387,8 @@ body {
 				<tr>
 					<td colspan="2" rowspan="4" width="241" height="66"></td>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list"><img src="images/icon1.png" width="18"
-						height="19">所有菜管理</td>
+						class="list" onclick="location.href='requestFOOD.action'"><img
+						src="images/icon1.png" width="18" height="19"> 菜谱管理</td>
 					<td width="1" height="10"></td>
 				</tr>
 				<tr>
@@ -392,8 +403,8 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list_h"><img src="images/icon7.png" width="21"
-						height="20">特色菜管理</td>
+						class="list" onclick="location.href='requestDRINKS.action'"><img
+						src="images/icon2.png" width="21" height="20"> 酒水管理</td>
 					<td width="1" height="22"></td>
 				</tr>
 				<tr>
@@ -418,8 +429,9 @@ body {
 								<tr>
 									<td colspan="3" rowspan="8" width="15" height="140"></td>
 									<td colspan="11" rowspan="2" width="514" height="40"><input
-										class="add_input1" type="text" name="drinks" id="drinks" value="${drink.drinks }">
-										<input type="hidden" name="drinksid" id="drinksid" value="${drink.drinksid }">
+										class="add_input1" type="text" name="drinks" id="drinks"
+										value="${drink.drinks }"> <input type="hidden"
+										name="drinksid" id="drinksid" value="${drink.drinksid }">
 									</td>
 									<td rowspan="26" width="13" height="492"></td>
 									<td width="1" height="37"></td>
@@ -438,8 +450,8 @@ body {
 								</tr>
 								<tr>
 									<td colspan="11" rowspan="2" width="514" height="40"><input
-										class="add_input1" type="text" name="price" id="price" value="${drink.price }">
-									</td>
+										class="add_input1" type="text" name="price" id="price"
+										value="${drink.price }"></td>
 									<td width="1" height="33"></td>
 								</tr>
 								<tr>
@@ -457,18 +469,20 @@ body {
 								</tr>
 								<tr>
 									<td rowspan="18" width="9" height="352"></td>
-									<td colspan="6" rowspan="5" width="219" height="39">
-									<span id="spanButtonPlaceHolder"></span>
-									<input id="btnCancel" type="hidden" value="取消上传所有文件"
-									onclick="swfus.cancelQueue();" disabled="disabled"
-									style="margin-left: 2px; font-size: 8pt; height: 29px;" />
-									<input type="hidden" id="small_pic" name="small_pic" value="${drink.small_pic }">
-									
-									<span id="spanButtonPlaceHolderB"></span>
-									<input id="btnCancelB" type="hidden" value="取消上传所有文件"
-									onclick="swfub.cancelQueue();" disabled="disabled"
-									style="margin-left: 2px; font-size: 8pt; height: 29px;" />
-									<input type="hidden" id="big_pic" name="big_pic" value="${drink.big_pic }"></td>
+									<td colspan="6" rowspan="5" width="219" height="39"><span
+										id="spanButtonPlaceHolder"></span> <input id="btnCancel"
+										type="hidden" value="取消上传所有文件" onclick="swfus.cancelQueue();"
+										disabled="disabled"
+										style="margin-left: 2px; font-size: 8pt; height: 29px;" /> <input
+										type="hidden" id="small_pic" name="small_pic"
+										value="${drink.small_pic }"> <span
+										id="spanButtonPlaceHolderB"></span> <input id="btnCancelB"
+										type="hidden" value="取消上传所有文件" onclick="swfub.cancelQueue();"
+										disabled="disabled"
+										style="margin-left: 2px; font-size: 8pt; height: 29px;" /> <input
+										type="hidden" id="big_pic" name="big_pic"
+										value="${drink.big_pic }">
+									</td>
 									<td colspan="7" width="301" height="6"></td>
 									<td width="1" height="6"></td>
 								</tr>
@@ -491,7 +505,8 @@ body {
 									<td colspan="3" rowspan="2" width="179" height="19"><img
 										src="images/schedule.png" width="63" height="8"><span
 										class="add_name">&nbsp;30%</span> <img
-										src="images/schedule.png" width="63" height="8"></td>
+										src="images/schedule.png" width="63" height="8">
+									</td>
 									<td rowspan="10" width="12" height="181"></td>
 									<td><img src="images/分隔符.gif" width="1" height="16" alt="">
 									</td>
@@ -517,9 +532,9 @@ body {
 									<td id="isspecial_f" colspan="2" width="94" height="38"
 										class="add_icon2" onclick="javascript:isspecial(0)">否</td>
 									<td><img src="images/分隔符.gif" width="1" height="38" alt="">
-									<input type="hidden" name="isfeature" id="isfeature" value="1">
+										<input type="hidden" name="isfeature" id="isfeature" value="1">
 									</td>
-									
+
 								</tr>
 								<tr>
 									<td width="113" height="29"></td>
@@ -536,8 +551,8 @@ body {
 								</tr>
 								<tr>
 									<td colspan="2" rowspan="2" width="94" height="38"
-										class="add_icon1"><input type="text" name="num" id="num" value="${drink.num }">
-									</td>
+										class="add_icon1"><input type="text" name="num" id="num"
+										value="${drink.num }"></td>
 									<td><img src="images/分隔符.gif" width="1" height="35" alt="">
 									</td>
 								</tr>
@@ -576,9 +591,8 @@ body {
 								<tr>
 									<td colspan="3" rowspan="2" width="130" height="50"></td>
 									<td colspan="3" width="192" height="45"><img
-										src="images/compl.png" width="180" height="44" 
-										onclick="submit()">
-									</td>
+										src="images/compl.png" width="180" height="44"
+										onclick="javascript:finish()"></td>
 									<td colspan="5" rowspan="2" width="192" height="50"></td>
 									<td width="1" height="45"></td>
 								</tr>
@@ -590,7 +604,8 @@ body {
 									<td><img src="images/分隔符.gif" width="8" height="1" alt="">
 									</td>
 									<td><img src="images/分隔符.gif" width="113" height="1"
-										alt=""></td>
+										alt="">
+									</td>
 									<td><img src="images/分隔符.gif" width="9" height="1" alt="">
 									</td>
 									<td><img src="images/分隔符.gif" width="2" height="1" alt="">
@@ -625,8 +640,7 @@ body {
 								</tr>
 							</table>
 
-						</div>
-					</td>
+						</div></td>
 					<td rowspan="14" width="10" height="466"></td>
 					<td width="1" height="20"></td>
 				</tr>
@@ -636,8 +650,9 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list"><img
-						src="images/icon6.png" width="20" height="20">今日特价&nbsp;&nbsp;</td>
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='message_release.jsp'"><img
+						src="images/icon3.png" width="20" height="14"> 信息发布</td>
 					<td width="1" height="42"></td>
 				</tr>
 				<tr>
@@ -645,7 +660,9 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center"></td>
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='requestCUSTOMER.action'"><img
+						src="images/icon4.png" width="20" height="20"> 客户管理</td>
 					<td width="1" height="42"></td>
 				</tr>
 				<tr>
@@ -653,7 +670,9 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center"></td>
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='history_info.jsp'"><img
+						src="images/icon5.png" width="20" height="20"> 历史信息</td>
 					<td><img src="images/分隔符.gif" width="1" height="42" alt="">
 					</td>
 				</tr>
@@ -668,11 +687,9 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td rowspan="2" width="208" height="43" align="center">
-					</td>
+					<td rowspan="2" width="208" height="43" align="center"></td>
 					<td rowspan="5" width="2" height="86"></td>
-					<td rowspan="2" width="103" height="43" align="center">
-					</td>
+					<td rowspan="2" width="103" height="43" align="center"></td>
 					<td width="1" height="30"></td>
 				</tr>
 				<tr>
@@ -690,12 +707,10 @@ body {
 				<tr>
 					<td rowspan="2" width="208" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/home.png" width="73"
-						height="22">
-					</td>
+						height="22" onclick="location.href='requestFOOD.action'"></td>
 					<td rowspan="2" width="103" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/back.png" width="72"
-						height="20">
-					</td>
+						height="20" onclick="location.href=document.referrer"></td>
 					<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 					</td>
 				</tr>
