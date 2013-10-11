@@ -30,4 +30,8 @@ public class DrinksDao {
 		return (Drinks) SqlMap.getSqlMapClient().queryForObject("findDrinkById",id);
 		
 	}
+	/**ÐÞ¸Ä¾ÆË®ÊôÐÔ*/
+	public void modifyDrink(Drinks drink) throws Exception{
+		SqlMap.getSqlMapClient().update("modifyDrink",drink);
+	}
 }

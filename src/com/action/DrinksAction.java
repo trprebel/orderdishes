@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Drinks;
-import com.bean.Food;
 import com.dao.impl.DrinksDao;
-import com.dao.impl.FoodDao;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
 import com.util.Program;
@@ -124,7 +122,7 @@ public class DrinksAction extends ActionSupport{
 		//HttpServletRequest request=ServletActionContext.getRequest();
 		try
 		{
-			String path=StringUtil.getSpPropeurl("imagePath");
+			//String path=StringUtil.getSpPropeurl("imagePath");
 			drinksdao=new DrinksDao();
 			int count=drinksdao.findDrinksCount();
 			//System.out.println(paginator.getCurrentPage());
@@ -231,6 +229,36 @@ public class DrinksAction extends ActionSupport{
 			e.printStackTrace();
 		}
 	}
+	public String add() {
+		//HttpServletRequest request=ServletActionContext.getRequest();
+		//HttpSession session=request.getSession();
+		try {
+//			System.out.println(drinks);
+//			System.out.println(price);
+////			System.out.println(isfeature);
+//			System.out.println(num);
+//			System.out.println(descript);
+//			System.out.println(small_pic);
+//			System.out.println(big_pic);
+			Drinks drinksbean=new Drinks();
+			drinksbean.setDrinks(drinks);
+			drinksbean.setPrice(Integer.parseInt(price));
+			//drinks.setIsfeature(Integer.parseInt(isfeature));
+			drinksbean.setNum(Integer.parseInt(num));
+			drinksbean.setSmall_pic(small_pic);
+			drinksbean.setBig_pic(big_pic);
+			drinksbean.setDescript(descript);
+			drinksdao=new DrinksDao();
+			drinksdao.addDrink(drinksbean);
+			
+			
+			return "request";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+	}
 	
 	public String requestone() {
 		HttpServletRequest request=ServletActionContext.getRequest();
@@ -247,10 +275,21 @@ public class DrinksAction extends ActionSupport{
 		}
 	}
 	public String modify() {
-		HttpServletRequest request=ServletActionContext.getRequest();
+		//HttpServletRequest request=ServletActionContext.getRequest();
 		try {
 			//System.out.println(drinksid);
-			
+			Drinks drink=new Drinks();
+			drink.setDrinksid(Integer.parseInt(drinksid));
+			drink.setDrinks(drinks);
+			drink.setPrice(Integer.parseInt(price));
+			drink.setNum(Integer.parseInt(price));
+			drink.setSmall_pic(small_pic);
+			drink.setBig_pic(big_pic);
+			drink.setDescript(descript);
+
+			drinksdao=new DrinksDao();
+			drinksdao.modifyDrink(drink);
+						
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception

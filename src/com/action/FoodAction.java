@@ -15,7 +15,6 @@ import org.apache.struts2.ServletActionContext;
 import com.bean.Food;
 import com.dao.impl.FoodDao;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.util.Paginator;
 import com.util.Program;
 
@@ -43,6 +42,7 @@ public class FoodAction extends ActionSupport{
 
 	private FoodDao fooddao;
 	public Paginator paginator=new Paginator(9);
+	
 	private Program program=new Program();
 	public String getFoodid() {
 		return foodid;
@@ -151,6 +151,39 @@ public class FoodAction extends ActionSupport{
 			paginator.setData(count, foodlist);
 			//request.setAttribute("Food", Food);
 			return "food";
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	public String request1()
+	{
+		//HttpServletRequest request=ServletActionContext.getRequest();
+		try
+		{
+			//String path=StringUtil.getSpPropeurl("imagePath");
+			fooddao=new FoodDao();
+			int count=fooddao.findFoodCount();
+			//System.out.println(paginator.getCurrentPage());
+			//paginator.setPageSize(6);
+			//System.out.println("start:"+paginator.getOffset());
+			program.setStart(paginator.getOffset());
+			program.setLenth(paginator.getPageSize());
+			if(count==0){
+				paginator.setData(0, null);
+				return "food1";
+			}
+			List<Food> foodlist=fooddao.findFoodList(program);
+//			for (Food food : foodlist) {
+//				food.setSmall_pic(path+food.getSmall_pic());
+//				food.setBig_pic(path+food.getBig_pic());
+//				//System.out.println(drink.getSmall_pic());
+//			}
+			paginator.setData(count, foodlist);
+			//request.setAttribute("Food", Food);
+			return "food1";
 		}
 		catch (Exception e)
 		{

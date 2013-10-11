@@ -22,7 +22,7 @@
 		select * from food where foodid=$id$
 	</select>
 	<update id="modifyFood" parameterClass="Food">
-		update food set food=#food#,price=$price$,small_pic=#small_pic#,big_pic=#big_pic#,num=$num$,descript=#descript# where foodid=$foodid$
+		update food set food=#food#,price=$price$,isfeature=$isfeature$,small_pic=#small_pic#,big_pic=#big_pic#,num=$num$,descript=#descript# where foodid=$foodid$
 	</update>
 	
 

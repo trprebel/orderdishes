@@ -26,6 +26,7 @@
 		</action>
 		<action name="*FOOD" class="com.action.FoodAction" method="{1}">
 			<result name="food">/all_dishes_manager.jsp</result>
+			<result name="food1">dishes_manager.jsp</result>
 			<result name="request" type="chain">requestFOOD</result>
 			<result name="modify">/modify_food.jsp</result>
 			<result name="error">/error.jsp</result>

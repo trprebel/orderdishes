@@ -10,7 +10,7 @@
 	Object object = (Object) request.getAttribute("paginator");
 	Paginator paginator = null;
 	if (object == null) {//创建默认值
-		paginator = new Paginator(6);
+		paginator = new Paginator(9);
 	} else {
 		paginator = (Paginator) request.getAttribute("paginator");
 	}
@@ -254,7 +254,7 @@ body {
 				<tr>
 					<td colspan="2" rowspan="4" width="241" height="66"></td>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list_h"><img src="images/icon1.png" width="18"
+						class="list" onclick="location.href='request1FOOD.action'"><img src="images/icon1.png" width="18"
 						height="19"> 菜谱管理</td>
 					<td width="1" height="10"></td>
 				</tr>
@@ -297,12 +297,13 @@ body {
 									</li>
 
 								</c:forEach>
-								<input type="hidden" name="foodid" id="foodid" value="123" />
+								
 								<c:if test="${fn:length(paginator.items)<9}">
 									<li onclick="location.href='add_food.jsp'"></li>
 								</c:if>
 
 							</ul>
+							<input type="hidden" name="foodid" id="foodid" value="123" />
 
 
 						</div>

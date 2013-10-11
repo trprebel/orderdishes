@@ -120,18 +120,18 @@ DROP TABLE IF EXISTS `drinks`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `drinks` (
   `DRINKSID` int(6) NOT NULL AUTO_INCREMENT,
-  `BUSINESSID` int(6) NOT NULL,
+  `BUSINESSID` int(6) NOT NULL DEFAULT '0',
   `DRINKS` varchar(100) DEFAULT NULL,
   `SMALL_PIC` varchar(1000) DEFAULT NULL,
   `BIG_PIC` varchar(1000) DEFAULT NULL,
   `PRICE` int(6) NOT NULL,
   `NUM` int(11) NOT NULL,
-  `ATTRIBUTE` int(1) NOT NULL,
+  `ATTRIBUTE` int(1) NOT NULL DEFAULT '0',
   `DESCRIPT` text,
   `CREATE_DATE` timestamp NOT NULL DEFAULT '2013-01-01 03:11:11',
   `USE_DATE` timestamp NOT NULL DEFAULT '2013-01-01 03:11:11',
   PRIMARY KEY (`DRINKSID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +140,7 @@ CREATE TABLE `drinks` (
 
 LOCK TABLES `drinks` WRITE;
 /*!40000 ALTER TABLE `drinks` DISABLE KEYS */;
-INSERT INTO `drinks` VALUES (1,0,'茅台','WebRoot/images/img.png','WebRoot/images/img.png',500,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(2,0,'五粮液','WebRoot/images/img.png','WebRoot/images/img.png',1000,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(3,0,'汾酒','WebRoot/images/img.png','WebRoot/images/img.png',300,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(4,0,'二锅头','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(5,0,'老白干','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(6,0,'马奶酒','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(7,0,'女儿红','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(8,0,'三沟','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(9,0,'111111',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(10,0,'2222',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(12,0,'44444',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(13,0,'55555',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11');
+INSERT INTO `drinks` VALUES (1,0,'茅台','WebRoot/images/img.png','WebRoot/images/img.png',500,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(2,0,'五粮液','WebRoot/images/img.png','WebRoot/images/img.png',1000,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(3,0,'汾酒','WebRoot/images/img.png','WebRoot/images/img.png',300,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(4,0,'二锅头','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(5,0,'老白干','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(6,0,'马奶酒','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(7,0,'女儿红','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(8,0,'三沟','images/-7059869585075280282.png','images/-413336769536885846.png',123,123,0,'test modify drinks','2013-01-01 03:11:11','2013-01-01 03:11:11'),(9,0,'111111',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(10,0,'2222',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(13,0,'55555',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(14,0,'qwe','images/-3713567433547818117.png','images/-3387340990448685939.png',123,21,0,'test add drinks','2013-10-11 04:21:18','2013-01-01 03:11:11');
 /*!40000 ALTER TABLE `drinks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +165,7 @@ CREATE TABLE `food` (
   `CREATE_DATE` timestamp NOT NULL DEFAULT '2013-01-01 03:11:11',
   `USE_DATE` timestamp NOT NULL DEFAULT '2013-01-01 03:11:11',
   PRIMARY KEY (`FOODID`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -174,7 +174,7 @@ CREATE TABLE `food` (
 
 LOCK TABLES `food` WRITE;
 /*!40000 ALTER TABLE `food` DISABLE KEYS */;
-INSERT INTO `food` VALUES (1,0,'面包','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(19,0,'1199','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(25,0,'132','images/-6945068204742625270.jpg','images/3191192357741597905.jpg',12,21,0,0,'asdqwefsd','2013-10-10 03:12:52','2013-01-01 03:11:11'),(26,0,'321','images/-6833054467051639827.jpg','images/2219988760523001448.jpg',12,22,1,0,'asdadsfsdfg','2013-10-10 03:19:20','2013-01-01 03:11:11'),(27,0,'123','images/2924328963579930024.png','images/-3024500831466288145.png',123,2,1,0,'test modify','2013-10-10 03:29:23','2013-01-01 03:11:11'),(28,0,'234','images/-5873740817500718251.png','images/8753498960101734214.png',234,23,1,0,'ssdfa','2013-10-10 03:34:42','2013-01-01 03:11:11'),(29,0,'123','images/2924328963579930024.png','images/-3024500831466288145.png',123,2,0,0,'','2013-10-10 09:59:09','2013-01-01 03:11:11'),(30,0,'332','images/8073301663562955469.jpg','',11,11,1,0,'1111','2013-10-10 10:00:53','2013-01-01 03:11:11'),(31,0,'asd','','',21,32,1,0,'fasdazxc','2013-10-10 12:59:21','2013-01-01 03:11:11'),(34,0,'123','images/2924328963579930024.png','images/-3024500831466288145.png',321,2,1,0,'test modify','2013-10-10 14:09:36','2013-01-01 03:11:11'),(35,0,'123','images/2924328963579930024.png','images/-3024500831466288145.png',321,2,1,0,'test modify','2013-10-10 14:11:28','2013-01-01 03:11:11');
+INSERT INTO `food` VALUES (1,0,'面包','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(19,0,'1199','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(25,0,'132','images/-6945068204742625270.jpg','images/3191192357741597905.jpg',12,21,0,0,'asdqwefsd','2013-10-10 03:12:52','2013-01-01 03:11:11'),(26,0,'321','images/-6833054467051639827.jpg','images/2219988760523001448.jpg',12,22,1,0,'asdadsfsdfg','2013-10-10 03:19:20','2013-01-01 03:11:11'),(27,0,'123','images/2924328963579930024.png','images/-3024500831466288145.png',123,2,1,0,'test modify','2013-10-10 03:29:23','2013-01-01 03:11:11'),(28,0,'234','images/-5873740817500718251.png','images/8753498960101734214.png',234,23,1,0,'ssdfa','2013-10-10 03:34:42','2013-01-01 03:11:11'),(29,0,'123','images/2924328963579930024.png','images/-3024500831466288145.png',123,2,0,0,'','2013-10-10 09:59:09','2013-01-01 03:11:11'),(30,0,'332','images/8073301663562955469.jpg','',11,11,1,0,'1111','2013-10-10 10:00:53','2013-01-01 03:11:11'),(31,0,'asd','','',21,32,1,0,'fasdazxc','2013-10-10 12:59:21','2013-01-01 03:11:11'),(34,0,'123','images/2924328963579930024.png','images/-3024500831466288145.png',321,2,1,0,'test modify','2013-10-10 14:09:36','2013-01-01 03:11:11'),(35,0,'123','images/2924328963579930024.png','images/-3024500831466288145.png',321,2,1,0,'test modify','2013-10-10 14:11:28','2013-01-01 03:11:11'),(36,0,'qwe','','',12,23,1,0,'asddfggjghjjlkk','2013-10-11 03:17:25','2013-01-01 03:11:11'),(37,0,'1111','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(38,0,'2222','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(39,0,'3333','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(40,0,'4444','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(41,0,'5555','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(42,0,'6666','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(43,0,'7777','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(44,0,'8888','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(45,0,'9999','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(46,0,'0000','','',0,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11');
 /*!40000 ALTER TABLE `food` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,4 +420,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-10 22:32:33
+-- Dump completed on 2013-10-11 18:08:10

@@ -328,7 +328,7 @@ body {
 </script>
 <body>
 	<div class="main">
-		<form action="addFOOD.action" name="addform" id="addform" 
+		<form action="addDRINKS.action" name="addform" id="addform" 
 			method="post" enctype="multipart/form-data">
 			<table width="961" height="631" border="0" cellpadding="0"
 				cellspacing="0">
@@ -382,8 +382,8 @@ body {
 				<tr>
 					<td colspan="2" rowspan="4" width="241" height="66"></td>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list"><img src="images/icon1.png" width="18"
-						height="19">所有菜管理</td>
+						class="list" onclick="location.href='requestFOOD.action'"><img src="images/icon1.png" width="18"
+						height="19" > 菜谱管理</td>
 					<td width="1" height="10"></td>
 				</tr>
 				<tr>
@@ -398,8 +398,8 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list_h"><img src="images/icon7.png" width="21"
-						height="20">特色菜管理</td>
+						class="list" onclick="location.href='requestDRINKS.action'"><img src="images/icon2.png" width="21"
+						height="20" > 酒水管理</td>
 					<td width="1" height="22"></td>
 				</tr>
 				<tr>
@@ -424,7 +424,7 @@ body {
 								<tr>
 									<td colspan="3" rowspan="8" width="15" height="140"></td>
 									<td colspan="11" rowspan="2" width="514" height="40"><input
-										class="add_input1" type="text" name="food" id="food">
+										class="add_input1" type="text" name="drinks" id="drinks">
 									</td>
 									<td rowspan="26" width="13" height="492"></td>
 									<td width="1" height="37"></td>
@@ -522,8 +522,9 @@ body {
 									<td id="isspecial_f" colspan="2" width="94" height="38"
 										class="add_icon2" onclick="javascript:isspecial(0)">否</td>
 									<td><img src="images/分隔符.gif" width="1" height="38" alt="">
-									</td>
 									<input type="hidden" name="isfeature" id="isfeature" value="1">
+									</td>
+									
 								</tr>
 								<tr>
 									<td width="113" height="29"></td>
@@ -640,8 +641,9 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list"><img
-						src="images/icon6.png" width="20" height="20">今日特价&nbsp;&nbsp;</td>
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='message_release.jsp'"><img
+						src="images/icon3.png" width="20" height="14"> 信息发布</td>
 					<td width="1" height="42"></td>
 				</tr>
 				<tr>
@@ -649,7 +651,9 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center"></td>
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='requestCUSTOMER.action'"><img
+						src="images/icon4.png" width="20" height="20"> 客户管理</td>
 					<td width="1" height="42"></td>
 				</tr>
 				<tr>
@@ -657,7 +661,9 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center"></td>
+					<td colspan="3" width="208" height="42" align="center" class="list"
+						onclick="location.href='history_info.jsp'"><img
+						src="images/icon5.png" width="20" height="20"> 历史信息</td>
 					<td><img src="images/分隔符.gif" width="1" height="42" alt="">
 					</td>
 				</tr>
@@ -694,11 +700,11 @@ body {
 				<tr>
 					<td rowspan="2" width="208" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/home.png" width="73"
-						height="22">
+						height="22" onclick="location.href='requestFOOD.action'">
 					</td>
 					<td rowspan="2" width="103" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/back.png" width="72"
-						height="20">
+						height="20" onclick="location.href=document.referrer">
 					</td>
 					<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 					</td>

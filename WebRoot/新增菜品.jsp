@@ -1,0 +1,569 @@
+﻿<html>
+<head>
+<title>bg_login1</title>
+<style>
+body {
+	text-align: center;
+}
+
+.main {
+	width: 961px;
+	height: 631px;
+	margin: 0px auto;
+	display: block;
+	background: url(images/bg_add.png) no-repeat;
+	position: relative;
+	top: -15px;
+}
+
+.01 {
+	*position: relative;
+	*top: -4px;
+	width: 961px;
+	height: 631px;
+	margin-top: 0px;
+	display: block;
+}
+
+.login_input_info {
+	width: 450px;
+	height: 38px;
+	line-height: 38px;
+	margin-left: 10px;
+	border: 0px;
+	margin-bottom: 10px;
+	background-color: #2eb376;
+	font-size: 24px;
+	color: #FFFFFF;
+	font-weight: bold
+}
+
+.login_input {
+	width: 270px;
+	height: 28px;
+	border: 0px;
+	background-color: #f1f1f1;
+	font-size: 16px;
+	color: #999999
+}
+
+.text_foot {
+	font-size: 20px;
+	color: #e1e1e1;
+	font-weight: bold;
+	line-height: 25px;
+}
+
+.list {
+	font-size: 18px;
+	cursor: pointer;
+	color: #e2e2e2;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+}
+
+.list:hover {
+	background: url(images/bg_list.png) repeat
+}
+
+.list img {
+	margin-right: 22px;
+	vertical-align: middle
+}
+
+.list_h {
+	font-size: 18px;
+	cursor: pointer;
+	color: #e2e2e2;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	background: url(images/bg_list.png) repeat
+}
+
+.list_h img {
+	margin-right: 22px;
+	vertical-align: middle
+}
+
+.infr_instroy {
+	font-size: 18px;
+	width: 300px;
+	color: #90a5c1;
+	font-weight: bold;
+	position: absolute;
+	top: 85px;
+}
+
+.tab_info td {
+	border: 2px solid #ffffff;
+	height: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	color: #FFFFFF;
+	font-weight: bold;
+	text-align: center
+}
+
+.qiu li {
+	width: 205px;
+	height: 147px;
+	list-style: none;
+	float: left;
+	background: url(images/add.png) no-repeat;
+	margin-right: 8px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	*margin-bottom: 5px;
+}
+
+.add_name {
+	color: #d9dddf;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+}
+
+.add_content {
+	margin-left: 13px;
+	margin-top: 6px;
+}
+
+.add_input1 {
+	border: 0px;
+	width: 514px;
+	height: 38px;
+	background-color: #d4d9df
+}
+
+.add_input2 {
+	border: 0px;
+	width: 514px;
+	height: 79px;
+	background-color: #d4d9df
+}
+
+.add_icon1 {
+	width: 94px;
+	height: 38px;
+	line-height: 38px;
+	background: url(images/yes.png) no-repeat;
+	font-size: 20px;
+	font-weight: bold;
+	color: #eeeeee;
+	text-align: center;
+}
+
+.add_icon2 {
+	color: #afcbe2;
+	width: 94px;
+	height: 38px;
+	line-height: 38px;
+	background: url(images/no.png) no-repeat;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<body>
+	<div class="main">
+		<table width="961" height="631" border="0" cellpadding="0"
+			cellspacing="0">
+			<tr>
+				<td colspan="14" width="960" height="16"></td>
+				<td width="1" height="16"><img src="images/分隔符.gif" width="1"
+					height="16" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td width="960" height="15"></td>
+				<td width="81" height="15"></td>
+				<td width="712" height="15"></td>
+				<td width="28" height="15"></td>
+				<td height="68" colspan="4" width="491" rowspan="4"><input
+					name="textfield" type="text" class="login_input_info"
+					value="暂无处理信息">
+				</td>
+				<td rowspan="3" width="141" height="57"><img
+					src="images/handing.png" width="141" height="57"></td>
+				<td colspan="5" rowspan="5" width="241" height="82"></td>
+				<td><img src="images/分隔符.gif" width="1" height="15" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" rowspan="3" width="960" height="53"></td>
+				<td width="28" height="28"><img src="images/qu.png" width="28"
+					height="28"></td>
+
+				<td><img src="images/分隔符.gif" width="1" height="28" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="2" width="28" height="25"></td>
+				<td><img src="images/分隔符.gif" width="1" height="14" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="6" width="141" height="91"></td>
+				<td><img src="images/分隔符.gif" width="1" height="11" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="19" width="960" height="546"></td>
+				<td colspan="4" rowspan="2" width="81" height="24"><div
+						class="infr_instroy">菜谱管理→所有菜管理→新增</div>
+				</td>
+				<td colspan="3" rowspan="5" width="470" height="80"></td>
+				<td><img src="images/分隔符.gif" width="1" height="14" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" rowspan="4" width="241" height="66"></td>
+				<td colspan="3" rowspan="2" width="208" height="42" align="center"
+					class="list"><img src="images/icon1.png" width="18"
+					height="19">所有菜管理</td>
+				<td width="1" height="10"></td>
+			</tr>
+			<tr>
+				<td colspan="4" rowspan="3" width="81" height="56"></td>
+				<td><img src="images/分隔符.gif" width="1" height="32" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" width="208" height="2"></td>
+				<td><img src="images/分隔符.gif" width="1" height="2" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" rowspan="2" width="208" height="42" align="center"
+					class="list_h"><img src="images/icon7.png" width="21"
+					height="20">特色菜管理</td>
+				<td width="1" height="22"></td>
+			</tr>
+			<tr>
+				<td rowspan="14" width="81" height="466"></td>
+				<td colspan="8" rowspan="14" width="712" height="466"
+					style="vertical-align:top" align="left"><div class="qiu"
+						style="  position:absolute; top:108px; width:712px; height:502px;  vertical-align:top;  ">
+
+						<table width="664" height="502" border="0" cellpadding="0"
+							cellspacing="0" class="add_content">
+							<tr>
+								<td colspan="17" width="663" height="8"></td>
+								<td width="1" height="8"></td>
+							</tr>
+							<tr>
+								<td rowspan="27" width="8" height="493"></td>
+								<td rowspan="2" width="113" height="38" class="add_name">菜名
+								</td>
+								<td colspan="15" width="542" height="1"></td>
+								<td width="1" height="1"></td>
+							</tr>
+							<tr>
+								<td colspan="3" rowspan="8" width="15" height="140"></td>
+								<td colspan="11" rowspan="2" width="514" height="40"><textarea
+										name="textarea" class="add_input1"></textarea>
+								</td>
+								<td rowspan="26" width="13" height="492"></td>
+								<td width="1" height="37"></td>
+							</tr>
+							<tr>
+								<td rowspan="2" width="113" height="30"></td>
+								<td width="1" height="3"></td>
+							</tr>
+							<tr>
+								<td colspan="11" rowspan="2" width="514" height="32"></td>
+								<td width="1" height="27"></td>
+							</tr>
+							<tr>
+								<td rowspan="2" width="113" height="38" class="add_name">价格</td>
+								<td width="1" height="5"></td>
+							</tr>
+							<tr>
+								<td colspan="11" rowspan="2" width="514" height="40"><textarea
+										name="textarea" class="add_input1"></textarea></td>
+								<td width="1" height="33"></td>
+							</tr>
+							<tr>
+								<td rowspan="2" width="113" height="33"></td>
+								<td width="1" height="7"></td>
+							</tr>
+							<tr>
+								<td colspan="11" rowspan="2" width="514" height="28"></td>
+								<td width="1" height="26"></td>
+							</tr>
+							<tr>
+								<td rowspan="5" width="113" height="38" class="add_name">图片
+								</td>
+								<td width="1" height="2"></td>
+							</tr>
+							<tr>
+								<td rowspan="18" width="9" height="352"></td>
+								<td colspan="6" rowspan="5" width="219" height="39"><img
+									src="images/select.png" width="219" height="39"></td>
+								<td colspan="7" width="301" height="6"></td>
+								<td width="1" height="6"></td>
+							</tr>
+							<tr>
+								<td rowspan="12" width="26" height="195"></td>
+								<td colspan="2" rowspan="2" width="87" height="14"></td>
+								<td colspan="4" width="188" height="9"></td>
+								<td><img src="images/分隔符.gif" width="1" height="9" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" width="104" height="5"></td>
+								<td rowspan="3" width="55" height="24" class="add_name">30%
+								</td>
+								<td rowspan="11" width="29" height="186"></td>
+								<td><img src="images/分隔符.gif" width="1" height="5" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" rowspan="2" width="179" height="19"><img
+									src="images/schedule.png" width="174" height="10"></td>
+								<td rowspan="10" width="12" height="181"></td>
+								<td><img src="images/分隔符.gif" width="1" height="16" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2" width="113" height="28"></td>
+								<td><img src="images/分隔符.gif" width="1" height="3" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="6" width="219" height="25"></td>
+								<td colspan="3" rowspan="8" width="179" height="162"></td>
+								<td rowspan="8" width="55" height="162"></td>
+								<td><img src="images/分隔符.gif" width="1" height="25" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td width="113" height="38" class="add_name">是否特色菜</td>
+								<td rowspan="12" width="2" height="288"></td>
+								<td colspan="2" width="94" height="38" class="add_icon1">是
+								</td>
+								<td rowspan="7" width="29" height="137"></td>
+								<td colspan="2" width="94" height="38" class="add_icon2">否
+								</td>
+								<td><img src="images/分隔符.gif" width="1" height="38" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td width="113" height="29"></td>
+								<td colspan="2" rowspan="2" width="94" height="33"></td>
+								<td colspan="2" rowspan="2" width="94" height="33"></td>
+								<td><img src="images/分隔符.gif" width="1" height="29" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2" width="113" height="39" class="add_name">剩余数量
+								</td>
+								<td><img src="images/分隔符.gif" width="1" height="4" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" rowspan="2" width="94" height="38"
+									class="add_icon1">充足</td>
+								<td colspan="2" rowspan="2" width="94" height="38"
+									class="add_icon2">估清</td>
+								<td><img src="images/分隔符.gif" width="1" height="35" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2" width="113" height="29"></td>
+								<td><img src="images/分隔符.gif" width="1" height="3" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" rowspan="2" width="94" height="28"></td>
+								<td colspan="2" rowspan="2" width="94" height="28"></td>
+								<td><img src="images/分隔符.gif" width="1" height="26" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="2" width="113" height="39" class="add_name">其它说明
+								</td>
+								<td><img src="images/分隔符.gif" width="1" height="2" alt="">
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="5" width="4" height="151"></td>
+								<td colspan="11" rowspan="2" width="514" height="79"><textarea
+										class="add_input2" name="textarea2"></textarea></td>
+								<td width="1" height="37"></td>
+							</tr>
+							<tr>
+								<td rowspan="4" width="113" height="114"></td>
+								<td width="1" height="42"></td>
+							</tr>
+							<tr>
+								<td colspan="11" width="514" height="22"></td>
+								<td width="1" height="22"></td>
+							</tr>
+							<tr>
+								<td colspan="3" rowspan="2" width="130" height="50"></td>
+								<td colspan="3" width="192" height="45"><img
+									src="images/compl.png" width="180" height="44"></td>
+								<td colspan="5" rowspan="2" width="192" height="50"></td>
+								<td width="1" height="45"></td>
+							</tr>
+							<tr>
+								<td colspan="3" width="192" height="5"></td>
+								<td width="1" height="5"></td>
+							</tr>
+							<tr>
+								<td><img src="images/分隔符.gif" width="8" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="113" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="9" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="2" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="4" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="90" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="29" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="11" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="83" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="26" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="83" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="4" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="92" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="12" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="55" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="29" height="1" alt="">
+								</td>
+								<td><img src="images/分隔符.gif" width="13" height="1" alt="">
+								</td>
+								<td></td>
+							</tr>
+						</table>
+
+					</div></td>
+				<td rowspan="14" width="10" height="466"></td>
+				<td width="1" height="20"></td>
+			</tr>
+			<tr>
+				<td colspan="3" width="208" height="2"></td>
+				<td><img src="images/分隔符.gif" width="1" height="2" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" width="208" height="42" align="center" class="list"><img
+					src="images/icon6.png" width="20" height="20">今日特价&nbsp;&nbsp;</td>
+				<td width="1" height="42"></td>
+			</tr>
+			<tr>
+				<td colspan="3" width="208" height="2"></td>
+				<td width="1" height="2"></td>
+			</tr>
+			<tr>
+				<td colspan="3" width="208" height="42" align="center"></td>
+				<td width="1" height="42"></td>
+			</tr>
+			<tr>
+				<td colspan="3" width="208" height="2"></td>
+				<td width="1" height="2"></td>
+			</tr>
+			<tr>
+				<td colspan="3" width="208" height="42" align="center"></td>
+				<td><img src="images/分隔符.gif" width="1" height="42" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" rowspan="2" width="208" height="228"></td>
+				<td><img src="images/分隔符.gif" width="1" height="172" alt="">
+				</td>
+			</tr>
+			<tr>
+
+				<td><img src="images/分隔符.gif" width="1" height="56" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="2" width="208" height="43" align="center"><img
+					style="*margin-bottom:10px;" src="images/last.png" width="78"
+					height="20"></td>
+				<td rowspan="5" width="2" height="86"></td>
+				<td rowspan="2" width="103" height="43" align="center"><img
+					style="*margin-bottom:10px;" src="images/next.png" width="81"
+					height="20"></td>
+				<td width="1" height="30"></td>
+			</tr>
+			<tr>
+
+
+				<td><img src="images/分隔符.gif" width="1" height="13" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td width="208" height="1"></td>
+				<td width="103" height="1"></td>
+				<td><img src="images/分隔符.gif" width="1" height="1" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="2" width="208" height="42" align="center"><img
+					style="*margin-bottom:15px;" src="images/home.png" width="73"
+					height="22"></td>
+				<td rowspan="2" width="103" height="42" align="center"><img
+					style="*margin-bottom:15px;" src="images/back.png" width="72"
+					height="20"></td>
+				<td><img src="images/分隔符.gif" width="1" height="30" alt="">
+				</td>
+			</tr>
+			<tr>
+
+
+			</tr>
+			<tr>
+				<td><img src="images/分隔符.gif" width="27" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="3" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="29" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="28" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="21" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="208" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="182" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="80" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="141" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="23" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="10" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="103" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="2" height="1" alt="">
+				</td>
+				<td><img src="images/分隔符.gif" width="103" height="1" alt="">
+				</td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

@@ -14,12 +14,15 @@
 	} else {
 		paginator = (Paginator) request.getAttribute("paginator");
 	}
+	//System.out.println(paginator.getItems().size());
+	//System.out.println("current"+paginator.getCurrentPage());
+	//System.out.println("total"+paginator.getTotalPages());
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>酒水管理</title>
+<title>所有菜管理</title>
 <style>
 body {
 	text-align: center;
@@ -30,14 +33,14 @@ body {
 	height: 631px;
 	margin: 0px auto;
 	display: block;
-	background: url(images/bg_info.png) no-repeat;
+	background: url(images/bg_all.png) no-repeat;
 	position: relative;
 	top: -15px;
 }
 
-.01 { *
-	position: relative; *
-	top: -4px;
+.01 {
+	*position: relative;
+	*top: -4px;
 	width: 961px;
 	height: 631px;
 	margin-top: 0px;
@@ -60,7 +63,6 @@ body {
 .login_input {
 	width: 270px;
 	height: 28px;
-	line-height: 28px;
 	border: 0px;
 	background-color: #f1f1f1;
 	font-size: 16px;
@@ -109,8 +111,11 @@ body {
 
 .infr_instroy {
 	font-size: 18px;
+	width: 300px;
 	color: #90a5c1;
-	font-weight: bold
+	font-weight: bold;
+	position: absolute;
+	top: 85px;
 }
 
 .tab_info td {
@@ -132,6 +137,7 @@ body {
 	margin-right: 8px;
 	margin-left: 10px;
 	margin-bottom: 20px;
+	*margin-bottom: 5px;
 }
 
 .name span {
@@ -144,6 +150,8 @@ body {
 	font-size: 14px;
 	position: relative;
 	top: -13px;
+	*top: -20px;
+	float: left;
 	font-weight: bold;
 	color: #a9bfdb;
 	line-height: 22px;
@@ -165,31 +173,34 @@ body {
 <script src="<%=basePath%>js/page.js" language="JavaScript"
 	type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-	//if(${fn:length(drinks)}<2)
+	//if(${fn:length(food)}<2)
 	//{
-	//	alert("${fn:length(drinks)}");
+	//	alert("${fn:length(food)}");
 	//}
 
-	function deletedrink(id) {
-		document.getElementById("drinksid").value = id;
-		//alert($("#drinksid").val());
-		var f1 = document.getElementById("requestform");
-		f1.action = "deleteDRINKS.action";
-		f1.submit();
+	function addfood() {
+		alert("addfood");
 	}
-	function modifydrink(id)
-	{
-		document.getElementById("drinksid").value = id;
-		//alert($("#drinksid").val());
+	function deletefood(id) {
+		document.getElementById("foodid").value = id;
+		//alert($("#foodid").val());
 		var f1 = document.getElementById("requestform");
-		f1.action = "requestoneDRINKS.action";
+		f1.action = "deleteFOOD.action";
 		f1.submit();
+		//alert("deletefood");
+	}
+	function modifyfood(id) {
+		document.getElementById("foodid").value = id;
+		//alert($("#foodid").val());
+		var f1 = document.getElementById("requestform");
+		f1.action = "requestoneFOOD.action";
+		f1.submit();
+		//alert("deletefood");
 	}
 </script>
 <body>
-
 	<div class="main">
-		<form action="requestDRINKS.action" id="requestform" method="post">
+		<form action="request1FOOD.action" id="requestform" method="post">
 			<table class="01" width="961" height="631" border="0" cellpadding="0"
 				cellspacing="0">
 				<tr>
@@ -207,7 +218,8 @@ body {
 						value="暂无处理信息">
 					</td>
 					<td rowspan="3" width="141" height="57"><img
-						src="images/handing.png" width="141" height="57"></td>
+						src="images/handing.png" width="141" height="57"
+						onclick="location.href='message_handle.jsp'"></td>
 					<td colspan="5" rowspan="5" width="241" height="82"></td>
 					<td><img src="images/分隔符.gif" width="1" height="15" alt="">
 					</td>
@@ -233,7 +245,7 @@ body {
 				<tr>
 					<td rowspan="19" width="960" height="546"></td>
 					<td colspan="4" rowspan="2" width="81" height="24"><div
-							class="infr_instroy">酒水管理</div>
+							class="infr_instroy">菜谱管理</div>
 					</td>
 					<td colspan="3" rowspan="5" width="470" height="80"></td>
 					<td><img src="images/分隔符.gif" width="1" height="14" alt="">
@@ -242,8 +254,8 @@ body {
 				<tr>
 					<td colspan="2" rowspan="4" width="241" height="66"></td>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list" onclick="location.href='requestFOOD.action'"><img
-						src="images/icon1.png" width="18" height="19"> 菜谱管理</td>
+						class="list_h"><img src="images/icon1.png" width="18"
+						height="19">所有菜管理</td>
 					<td width="1" height="10"></td>
 				</tr>
 				<tr>
@@ -258,8 +270,8 @@ body {
 				</tr>
 				<tr>
 					<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list_h"><img src="images/icon2.png" width="21"
-						height="20"> 酒水管理</td>
+						class="list"><img src="images/icon7.png" width="21"
+						height="20">特色菜管理</td>
 					<td width="1" height="22"></td>
 				</tr>
 				<tr>
@@ -268,28 +280,30 @@ body {
 						style="vertical-align:top" align="left"><div class="qiu"
 							style=" HEIGHT: 466; position:absolute; top:110px; width:712px;  vertical-align:top; ">
 							<ul>
-								<!-- 酒水列表 -->
-								<c:forEach var="drink" items="${paginator.items}">
+								<!-- 菜单列表 -->
+								<c:forEach var="food" items="${paginator.items}">
 									<li>
 										<div>
-											<img src="${drink.small_pic}" width="205" height="125"> <img
-												id="position" src="images/close.png" width="14" height="15"
-												onclick=" javascirpt:deletedrink('${drink.drinksid}')">
+											<img src="${food.small_pic} " width="205" height="125">
+											<img id="position" src="images/close.png" width="14"
+												height="15"
+												onclick=" javascirpt:deletefood('${food.foodid}')">
 										</div>
 										<div class="name">
-											<span>${drink.drinks }</span><span><img
+											<span>${food.food }</span><span><img
 												src="images/modify.png" width="33" height="17"
-												onclick=" javascirpt:modifydrink('${drink.drinksid}')"> </span>
+												onclick=" javascirpt:modifyfood('${food.foodid}')"> </span>
 										</div></li>
 
 								</c:forEach>
-								
+
 								<c:if test="${fn:length(paginator.items)<9}">
-									<li onclick="location.href='add_drink.jsp'"></li>
+									<li onclick="location.href='add_food.jsp'"></li>
 								</c:if>
 
 							</ul>
-							<input type="hidden" name="drinksid" id="drinksid" value="123" />
+							<input type="hidden" name="foodid" id="foodid" value="123" />
+
 
 						</div></td>
 					<td rowspan="14" width="10" height="466"></td>
@@ -301,9 +315,8 @@ body {
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list"
-						onclick="location.href='message_release.jsp'"><img
-						src="images/icon3.png" width="20" height="14"> 信息发布</td>
+					<td colspan="3" width="208" height="42" align="center" class="list"><img
+						src="images/icon6.png" width="20" height="20">今日特价&nbsp;&nbsp;</td>
 					<td width="1" height="42"></td>
 				</tr>
 				<tr>
@@ -311,9 +324,7 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list"
-						onclick="location.href='requestCUSTOMER.action'"><img
-						src="images/icon4.png" width="20" height="20"> 客户管理</td>
+					<td colspan="3" width="208" height="42" align="center"></td>
 					<td width="1" height="42"></td>
 				</tr>
 				<tr>
@@ -321,9 +332,7 @@ body {
 					<td width="1" height="2"></td>
 				</tr>
 				<tr>
-					<td colspan="3" width="208" height="42" align="center" class="list"
-						onclick="location.href='history_info.jsp'"><img
-						src="images/icon5.png" width="20" height="20"> 历史信息</td>
+					<td colspan="3" width="208" height="42" align="center"></td>
 					<td><img src="images/分隔符.gif" width="1" height="42" alt="">
 					</td>
 				</tr>
@@ -348,15 +357,14 @@ body {
 					<td rowspan="5" width="2" height="86"></td>
 					<td rowspan="2" width="103" height="43" align="center"><input
 						name='paginator.currentPage' id='paginator.currentPage'
-						type='hidden' value='<%=paginator.getCurrentPage()%>' /> 
-						<a href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
+						type='hidden' value='<%=paginator.getCurrentPage()%>' /> <a
+						href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
 							<%
-								if (paginator.getCurrentPage() < paginator.getTotalPages()||(paginator.getItems().size()==9)) {
+								if (paginator.getCurrentPage() < paginator.getTotalPages()
+										|| (paginator.getItems().size() == 9)) {
 									out.print("<img src='images/next.png' width='81' height='20'>");
 								}
-							%>
-						</a>
-					</td>
+							%> </a></td>
 					<td width="1" height="30"></td>
 				</tr>
 				<tr>

@@ -522,8 +522,9 @@ body {
 									<td id="isspecial_f" colspan="2" width="94" height="38"
 										class="add_icon2" onclick="javascript:isspecial(0)">否</td>
 									<td><img src="images/分隔符.gif" width="1" height="38" alt="">
-									</td>
 									<input type="hidden" name="isfeature" id="isfeature" value="1">
+									</td>
+									
 								</tr>
 								<tr>
 									<td width="113" height="29"></td>
@@ -694,11 +695,11 @@ body {
 				<tr>
 					<td rowspan="2" width="208" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/home.png" width="73"
-						height="22">
+						height="22" onclick="location.href='requestFOOD.action'">
 					</td>
 					<td rowspan="2" width="103" height="42" align="center"><img
 						style="*margin-bottom:15px;" src="images/back.png" width="72"
-						height="20">
+						height="20" onclick="location.href=document.referrer">
 					</td>
 					<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 					</td>

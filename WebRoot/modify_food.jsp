@@ -517,8 +517,9 @@ body {
 									<td id="isspecial_f" colspan="2" width="94" height="38"
 										class="add_icon2" onclick="javascript:isspecial(0)">否</td>
 									<td><img src="images/分隔符.gif" width="1" height="38" alt="">
-									</td>
 									<input type="hidden" name="isfeature" id="isfeature" value="${food.isfeature }">
+									</td>
+									
 								</tr>
 								<tr>
 									<td width="113" height="29"></td>
