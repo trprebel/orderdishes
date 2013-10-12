@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.bean.SystemUserInfo;
 import com.bean.User;
 import com.dao.impl.UserDao;
 import com.opensymphony.xwork2.ActionSupport;
@@ -66,6 +67,13 @@ public class LoginAction extends ActionSupport{
 			else if(user.getPasswd().equals(password))
 			{
 				//System.out.println(user.getPasswd());
+				
+				
+				SystemUserInfo messageuser = new SystemUserInfo(); // me
+				messageuser.setUserName(username); //
+				request.getSession().setAttribute("session_UserInfo", messageuser); //
+				
+				
 				session.setAttribute("user", user);
 				return "success";
 			}

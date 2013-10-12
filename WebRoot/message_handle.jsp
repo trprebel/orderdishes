@@ -1,4 +1,4 @@
-﻿
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -160,17 +160,9 @@ body {
 	float: left;
 	width: 467px;
 	height: 65px;
+	*position: relative;
+	*top: -9px;
 	background: #eaedf1
-}
-
-.top_xinxi {
-	height: 250px;
-	overflow-y: auto;
-	overflow-x: hidden;
-	margin-top: 10px;
-	margin-bottom: 14px;
-	width: 715px;
-	background: url(images/bg_line.png) center repeat-y;
 }
 
 .left_top_xinxi {
@@ -251,7 +243,10 @@ body {
 
 .replay_text {
 	width: 718px;
+	margin-left: 10px;
 	height: 240px;
+	margin-top: 24px;
+	*margin-top: 28px;
 }
 
 .replay_close {
@@ -264,6 +259,8 @@ body {
 .img_replay {
 	float: left;
 	margin-left: 40px;
+	*position: relative;
+	*top: -12px;
 }
 
 .icon_replay {
@@ -368,71 +365,23 @@ body {
 				<td rowspan="14" width="81" height="466"></td>
 				<td colspan="8" rowspan="14" width="712" height="466"
 					style="vertical-align:top" align="left"><div class="qiu"
-						style="  position:absolute; top:110px; width:712px;  vertical-align:top;  ">
+						style="  position:absolute; top:110px; width:712px; left:20px;  vertical-align:top;  ">
 
 						<div class="top_xinxi">
 
-							<div class="left_top_xinxi">
-
-								<div class="xinxi_replay">
-
-									<div class="top_xinxi_replay">&nbsp;&nbsp;12:16</div>
-									<div class="middle_xinxi_replay">&nbsp;&nbsp;我回复:几碗?</div>
-									<div class="bottom_xinxi_replay">&nbsp;</div>
-								</div>
-
-
-							</div>
-
-							<div class="right_top_xinxi">
-
-								<div class="left_top_xinxi2">
-
-									<div class="xinxi_replay">
-
-										<div class="top_xinxi_replay2">&nbsp;&nbsp;&nbsp;12:16</div>
-										<div class="middle_xinxi_replay2">&nbsp;&nbsp;我回复:几碗?</div>
-										<div class="bottom_xinxi_replay2">&nbsp;</div>
-									</div>
-
-
-								</div>
-
-							</div>
-							<div class="left_top_xinxi">
-
-								<div class="xinxi_replay">
-
-									<div class="top_xinxi_replay">&nbsp;&nbsp;12:16</div>
-									<div class="middle_xinxi_replay">&nbsp;&nbsp;我回复:几碗?</div>
-									<div class="bottom_xinxi_replay">&nbsp;</div>
-								</div>
-
-
-							</div>
-							<div class="right_top_xinxi">
-
-								<div class="left_top_xinxi2">
-
-									<div class="xinxi_replay">
-
-										<div class="top_xinxi_replay2">&nbsp;&nbsp;&nbsp;12:16</div>
-										<div class="middle_xinxi_replay2">&nbsp;&nbsp;我回复:几碗?</div>
-										<div class="bottom_xinxi_replay2">&nbsp;</div>
-									</div>
-
-
-								</div>
-
-							</div>
+							<iframe name="ContentListframe"
+								style="width:728px; height:250px; background-color:transparent; filter:chroma(color=#ffffff);  vertical-align:top;  "
+								src="serviceMESSAGE.action?page=ContentList" marginheight="0"
+								scrolling="no" frameborder=0></iframe>
 						</div>
+
 						<div class="replay_text">
 							<div class="replay_close">
 								<img src="images/close2.png" width="16" height="16">
 							</div>
 
 							<div
-								style="margin-left:35px; overflow-y:auto; width:620px; overflow-x:hidden; height:132px;">
+								style="margin-left:35px; overflow-y:auto; width:683px; overflow-x:hidden; height:132px;">
 								<table width="550" border="0" cellpadding="0" cellspacing="0"
 									style=" margin-left:9px;">
 									<tr>
@@ -474,14 +423,20 @@ body {
 								</table>
 
 							</div>
-							<div style="height:10px;">&nbsp;</div>
-							<div class="content_shoutong">
-								<textarea class="text_area" name="textarea"></textarea>
-								<img class="img_replay" src="images/replay.png" width="64"
-									height="61">
-							</div>
+							<form action="serviceMESSAGE.action?page=SpeakList" name="messageform"
+								id="messageform">
+								<div style="height:10px;">&nbsp;</div>
+								<div class="content_shoutong">
+									<textarea class="text_area" name="content"></textarea>
+									<img class="img_replay" src="images/replay.png" width="64"
+										height="61" onclick="submit()">
+									<input type="hidden" name="name" id="name" value="admin">
+									<input type="hidden" name="toUser" id="toUser" value="所有人">
+								</div>
+							</form>
 						</div>
-					</div></td>
+					</div>
+					</td>
 				<td rowspan="14" width="10" height="466"></td>
 				<td width="1" height="20"></td>
 			</tr>
@@ -549,10 +504,10 @@ body {
 			<tr>
 				<td rowspan="2" width="208" height="42" align="center"><img
 					style="*margin-bottom:15px;" src="images/home.png" width="73"
-					height="22" onclick="location.href='requestFOOD.action'"></td>
+					height="22"></td>
 				<td rowspan="2" width="103" height="42" align="center"><img
 					style="*margin-bottom:15px;" src="images/back.png" width="72"
-					height="20" onclick="location.href=document.referrer"></td>
+					height="20"></td>
 				<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 				</td>
 			</tr>

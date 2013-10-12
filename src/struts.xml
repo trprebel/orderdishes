@@ -35,6 +35,8 @@
 			<result name="success">/message_release.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="*MESSAGE" class="com.action.MessageAction" method="{1}">
+		</action>
 
 	</package>
 	
