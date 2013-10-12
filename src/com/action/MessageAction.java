@@ -8,10 +8,12 @@ import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.SystemUserInfo;
+import com.bean.User;
 import com.bean.UserSpeakContent;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.DateUtil;
@@ -33,14 +35,42 @@ public class MessageAction extends ActionSupport{
 	public SendMess sendMess = null;
 	/** 发送html的工具类 */
 	public SendHTML sendHTML = null;
-
+	//private String username;
+	private String content;
+	//private String fromuser;
+	private String touser;
+	
+//	public String getUsername() {
+//		return username;
+//	}
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+//	public String getFromuser() {
+//		return fromuser;
+//	}
+//	public void setFromuser(String fromuser) {
+//		this.fromuser = fromuser;
+//	}
+	public String getTouser() {
+		return touser;
+	}
+	public void setTouser(String touser) {
+		this.touser = touser;
+	}
 	/**
 	 * 初始化类
 	 */
 	public  MessageAction() {
 		if (vecUserList == null) {
 			vecUserList = new ArrayList();
-			vecUserList.add("所有人");
+			vecUserList.add("all");
 		}
 		if (vecContentList == null) {
 			vecContentList = new ArrayList();
@@ -62,38 +92,88 @@ public class MessageAction extends ActionSupport{
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	public void service() {
+//	public void service() {
+//		HttpServletRequest request=ServletActionContext.getRequest();
+//		HttpServletResponse response=ServletActionContext.getResponse();
+//		try {
+//			PrintWriter out = new PrintWriter(response.getOutputStream());
+//			sendHTML.setDefault(request, response);
+//			/* 请求的是哪个页面 */
+//			String strPage = request.getParameter("page");
+//
+//			/* 显示主页面 */
+//			if ("".equals(strPage) || strPage == null) {
+//				sendHTML.showMainframe(out);
+//			} else if ("ContentList".equals(strPage)) {
+//				/* 显示发言内容 */
+//				sendHTML.showDefault(out);
+//				// sendHTML.showContentList(out);
+//				showContentListframe(out, ((SystemUserInfo) request
+//						.getSession().getAttribute("session_UserInfo"))
+//						.getUserName(), request, DateUtil.getNowTime());
+//				
+//			}else if ("SpeakList".equals(strPage)) {
+//				saveSendMessage(out, request);
+//			}
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
+//
+//	}
+	public void message()
+	{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpServletResponse response=ServletActionContext.getResponse();
+		HttpSession session=request.getSession();
+		
 		try {
+			User user=(User)session.getAttribute("user");
+			String username=user.getUsername();
 			PrintWriter out = new PrintWriter(response.getOutputStream());
 			sendHTML.setDefault(request, response);
-			/* 请求的是哪个页面 */
-			String strPage = request.getParameter("page");
-
-			/* 显示主页面 */
-			if ("".equals(strPage) || strPage == null) {
-				sendHTML.showMainframe(out);
-			} else if ("ContentList".equals(strPage)) {
-				/* 显示发言内容 */
-				sendHTML.showDefault(out);
-				// sendHTML.showContentList(out);
-				
-				showContentListframe(out, ((SystemUserInfo) request
+			
+			sendHTML.showDefault(out);
+			UserSpeakContent userSpeakContent = new UserSpeakContent();
+			userSpeakContent.setSpeakTime(DateUtil.getNowTime());
+			userSpeakContent.setSpeakUser("***系统信息***");
+			userSpeakContent.setToSpeakUser("all");
+			userSpeakContent.setSpeakContent(username + "刚刚进入聊天室");
+			userSpeakContent.setSpeakType(1);
+			vecContentList.add(userSpeakContent);
+			// sendHTML.showContentList(out);
+			showContentListframe(out, ((SystemUserInfo) request
 						.getSession().getAttribute("session_UserInfo"))
 						.getUserName(), request, DateUtil.getNowTime());
-				
-			}else if ("SpeakList".equals(strPage)) {
-				saveSendMessage(out, request);
-			}
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
+	}
+	public void speak()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
+		//HttpServletResponse response=ServletActionContext.getResponse();
+		try {
+			User user=(User)session.getAttribute("user");
+			String username=user.getUsername();
+			//System.out.println(content);
+			//System.out.println(username);
+			//System.out.println(touser);
+			UserSpeakContent userSpeakContent = new UserSpeakContent();
+			userSpeakContent.setSpeakContent(content);
+			userSpeakContent.setSpeakTime(DateUtil.getNowTime());
+			userSpeakContent.setSpeakUser(username);
+			userSpeakContent.setToSpeakUser(touser);
+			vecContentList.add(userSpeakContent);
+			//saveSendMessage(request);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	/* 保存发言内容 */
-	public void saveSendMessage(PrintWriter out, HttpServletRequest request) {
+	public void saveSendMessage(HttpServletRequest request) {
 		/* 保存发言内容 */
 		String content = sendHTML.filter(request.getParameter("content"));
 		String isPrivate = request.getParameter("isPrivate");
@@ -106,19 +186,19 @@ public class MessageAction extends ActionSupport{
 		try {
 			if ("exit".equals(type)) {
 				UserSpeakContent closeSpeak = new UserSpeakContent();
-				if (vecUserList.indexOf(name) > 0) {
-					vecUserList.remove(name);
-					closeSpeak.setSpeakTime(DateUtil.getNowTime());
-					closeSpeak.setSpeakUser(name);
-					closeSpeak.setToSpeakUser("");
-					closeSpeak.setSpeakContent(name + "退出聊天室");
-					closeSpeak.setLogout(true);
-					closeSpeak.setSpeakType(1);
-					vecContentList.add(closeSpeak);
-				}
-				sendHTML.showDefault(out);
-				sendHTML.showSpeakListframe(out, name, closeSpeak
-						.getToSpeakUser(), closeSpeak.isPrivate());
+//				if (vecUserList.indexOf(name) > 0) {
+//					vecUserList.remove(name);
+//					closeSpeak.setSpeakTime(DateUtil.getNowTime());
+//					closeSpeak.setSpeakUser(name);
+//					closeSpeak.setToSpeakUser("");
+//					closeSpeak.setSpeakContent(name + "退出聊天室");
+//					closeSpeak.setLogout(true);
+//					closeSpeak.setSpeakType(1);
+//					vecContentList.add(closeSpeak);
+//				}
+//				sendHTML.showDefault(out);
+//				sendHTML.showSpeakListframe(out, name, closeSpeak
+//						.getToSpeakUser(), closeSpeak.isPrivate());
 			} else {
 				if ("".equals(toUser)) {
 					toUser = "";
@@ -128,7 +208,7 @@ public class MessageAction extends ActionSupport{
 				if (name != null && content == null) {
 					userSpeakContent.setSpeakTime(DateUtil.getNowTime());
 					userSpeakContent.setSpeakUser("***系统信息***");
-					userSpeakContent.setToSpeakUser("所有人");
+					userSpeakContent.setToSpeakUser("all");
 					userSpeakContent.setSpeakContent(name + "刚刚进入聊天室");
 					userSpeakContent.setSpeakType(1);
 				} else {
@@ -151,17 +231,17 @@ public class MessageAction extends ActionSupport{
 								.getToSpeakUser()) > 0) { // 说话人在线，聊天对象也在线
 					vecContentList.add(userSpeakContent);
 				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
-						&& userSpeakContent.getToSpeakUser().equals("所有人")) { // 说话人在线，聊天对象是所有人
+						&& userSpeakContent.getToSpeakUser().equals("all")) { // 说话人在线，聊天对象是所有人
 					vecContentList.add(userSpeakContent);
 				} else if (userSpeakContent.getSpeakType() == 1) { // 是系统信息
 					vecContentList.add(userSpeakContent);
-				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
-						&& vecUserList.indexOf(userSpeakContent
-								.getToSpeakUser()) < 0) { // 说话人在线，聊天对象不在线
-					out.println("<script>alert('"
-							+ userSpeakContent.getToSpeakUser()
-							+ "已经下线!');</script>");
-					out.flush();
+//				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
+//						&& vecUserList.indexOf(userSpeakContent
+//								.getToSpeakUser()) < 0) { // 说话人在线，聊天对象不在线
+//					out.println("<script>alert('"
+//							+ userSpeakContent.getToSpeakUser()
+//							+ "已经下线!');</script>");
+//					out.flush();
 				}
 				//sendHTML.showDefault(out);
 				//sendHTML.showSpeakListframe(out, name, userSpeakContent.getToSpeakUser(), userSpeakContent.isPrivate());
@@ -235,13 +315,13 @@ public class MessageAction extends ActionSupport{
 										userSpeakContent); // 显示信息信息
 							} else {
 								if (userSpeakContent.getToSpeakUser().equals(
-										"所有人")
+										"all")
 										&& userSpeakContent.getSpeakUser()
 										.equals(userName)) {
 									sendMess.showSelfToAllContent(out,
 											userSpeakContent);
 								} else if (userSpeakContent.getToSpeakUser()
-										.equals("所有人")
+										.equals("all")
 										&& !userSpeakContent.getSpeakUser()
 										.equals(userName)) {
 									sendMess.showOtherToAllContent(out,
@@ -299,8 +379,8 @@ public class MessageAction extends ActionSupport{
 				out.println("<script>window.scroll(0,10000000);</script>");
 				out.flush();
 			}
-			out.print("<SCRIPT>try{;"
-					+ "top.UserListframe.document.all.LIST.innerHTML=\"");
+			//out.print("<SCRIPT>try{;"
+			//		+ "top.UserListframe.document.all.LIST.innerHTML=\"");
 			//			for (int i = 0; i < vecUserList.size(); i++) {
 			//				out.print("<a href=# onclick="
 			//						+ "top.SpeakListframe.document.all.toUser.value='"

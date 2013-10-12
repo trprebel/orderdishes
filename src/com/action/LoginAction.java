@@ -1,6 +1,8 @@
 package com.action;
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -67,8 +69,13 @@ public class LoginAction extends ActionSupport{
 			else if(user.getPasswd().equals(password))
 			{
 				//System.out.println(user.getPasswd());
-				
-				
+				if (MessageAction.vecUserList == null) {
+					MessageAction.vecUserList = new ArrayList();
+					MessageAction.vecUserList.add("all");
+				}
+				if (MessageAction.vecUserList.indexOf(username) < 0) { // 在线用户中没有这个人
+					MessageAction.vecUserList.add(username);
+				}
 				SystemUserInfo messageuser = new SystemUserInfo(); // me
 				messageuser.setUserName(username); //
 				request.getSession().setAttribute("session_UserInfo", messageuser); //
