@@ -1,8 +1,8 @@
-#Sat Oct 12 16:23:50 CST 2013
+#Sun Oct 13 17:36:05 CST 2013
 eclipse.preferences.version=1
 encoding//WebRoot/js/handlers.js=UTF-8
 encoding//WebRoot/js/page.js=UTF-8
-encoding//WebRoot/message_handle.jsp=UTF-8
+encoding//WebRoot/message_list.jsp=UTF-8
 encoding//src/com/bean/SystemUserInfo.java=UTF-8
 encoding//src/com/bean/UserSpeakContent.java=UTF-8
 encoding//src/com/util/SendHTML.java=UTF-8

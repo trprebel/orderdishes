@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="information">
+
+	<typeAlias alias="Message" type="com.bean.Message" />
+	<select id="findunreadmsg" parameterClass="String" resultClass="Message">
+		select * from message where isread=0 and touser=#username#
+	</select>
+	<insert id="insertMessage" parameterClass="Message">
+		insert into message (fromuser,touser,content,isread,create_date)
+		values(#fromuser#,#touser#,#content#,0,current_timestamp)
+	</insert>
+
+</sqlMap>

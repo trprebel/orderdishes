@@ -208,6 +208,34 @@ INSERT INTO `information` VALUES (1,1,0,'qweasdfer','2012-12-31 16:00:00','2013-
 UNLOCK TABLES;
 
 --
+-- Table structure for table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `message` (
+  `msgid` int(11) NOT NULL AUTO_INCREMENT,
+  `fromuser` varchar(50) NOT NULL DEFAULT '',
+  `touser` varchar(50) NOT NULL DEFAULT '',
+  `content` text,
+  `isread` int(1) NOT NULL DEFAULT '0',
+  `create_date` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
+  PRIMARY KEY (`msgid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `message`
+--
+
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (1,'F8A7E832BD1DE74A00176333C4C92ABB','admin','游客想与您聊天！',0,'2013-10-13 14:43:16');
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `order_special`
 --
 
@@ -420,4 +448,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-12 23:33:36
+-- Dump completed on 2013-10-13 22:44:36

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,10 +13,13 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.bean.Message;
 import com.bean.SystemUserInfo;
 import com.bean.User;
 import com.bean.UserSpeakContent;
+import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.util.DateUtil;
 import com.util.SendHTML;
 import com.util.SendMess;
@@ -39,6 +43,7 @@ public class MessageAction extends ActionSupport{
 	private String content;
 	//private String fromuser;
 	private String touser;
+	private MsgDao msgdao=new MsgDao();
 	
 //	public String getUsername() {
 //		return username;
@@ -127,23 +132,43 @@ public class MessageAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		
 		try {
+			String username;
 			User user=(User)session.getAttribute("user");
-			String username=user.getUsername();
+			if (user!=null) {
+				username=user.getUsername();
+			}
+			else {
+				user=new User();
+				username=session.getId();
+				user.setUsername(username);
+				session.setAttribute("user", user);
+				vecUserList.add(username);
+				Message msg=new Message();
+				msg.setFromuser(username);
+				msg.setContent("游客想与您聊天！");
+				msg.setTouser(touser);
+				//System.out.println(username);
+				//System.out.println(touser);
+				
+				msgdao.insertMessage(msg);
+			}
 			PrintWriter out = new PrintWriter(response.getOutputStream());
 			sendHTML.setDefault(request, response);
 			
 			sendHTML.showDefault(out);
-			UserSpeakContent userSpeakContent = new UserSpeakContent();
-			userSpeakContent.setSpeakTime(DateUtil.getNowTime());
-			userSpeakContent.setSpeakUser("***系统信息***");
-			userSpeakContent.setToSpeakUser("all");
-			userSpeakContent.setSpeakContent(username + "刚刚进入聊天室");
-			userSpeakContent.setSpeakType(1);
-			vecContentList.add(userSpeakContent);
+//			UserSpeakContent userSpeakContent = new UserSpeakContent();
+//			userSpeakContent.setSpeakTime(DateUtil.getNowTime());
+//			userSpeakContent.setSpeakUser("***系统信息***");
+//			userSpeakContent.setToSpeakUser("all");
+//			userSpeakContent.setSpeakContent(username + "刚刚进入聊天室");
+//			userSpeakContent.setSpeakType(1);
+//			vecContentList.add(userSpeakContent);
+			
+			
+			
+			
 			// sendHTML.showContentList(out);
-			showContentListframe(out, ((SystemUserInfo) request
-						.getSession().getAttribute("session_UserInfo"))
-						.getUserName(), request, DateUtil.getNowTime());
+			showContentListframe(out, username, request, DateUtil.getNowTime());
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -165,10 +190,29 @@ public class MessageAction extends ActionSupport{
 			userSpeakContent.setSpeakTime(DateUtil.getNowTime());
 			userSpeakContent.setSpeakUser(username);
 			userSpeakContent.setToSpeakUser(touser);
+			userSpeakContent.setPrivate(true);
 			vecContentList.add(userSpeakContent);
 			//saveSendMessage(request);
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		}
+	}
+	public String requestlist()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
+		try {
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgdao.findUnreadMsg(user.getUsername());
+			request.setAttribute("msgs", msgs);
+			//System.out.println(msgs.get(0).getContent());
+			
+			return "list";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
 		}
 	}
 
@@ -259,6 +303,7 @@ public class MessageAction extends ActionSupport{
 	 */
 	private void showContentListframe(PrintWriter out, String userName,
 			HttpServletRequest request, Date logTime) {
+		//System.out.println(touser);
 		int inListCount = 0;
 		int inUserList = 0;
 		UserSpeakContent userSpeakContent = null;
@@ -340,7 +385,7 @@ public class MessageAction extends ActionSupport{
 								} else if (userSpeakContent.getSpeakUser()
 										.equals(userName)
 										&& !userSpeakContent.getToSpeakUser()
-										.equals(userName)) { // 你对别的说的
+										.equals(userName)&&(userSpeakContent.getToSpeakUser().equals(touser))) { // 你对别的说的
 									if (userSpeakContent.isPrivate()) {
 										sendMess.showSelfToOtherContentPrivate(
 												out, userSpeakContent); // 自己对别人说的悄悄话
@@ -363,7 +408,7 @@ public class MessageAction extends ActionSupport{
 								} else if (!userSpeakContent.getSpeakUser()
 										.equals(userName)
 										&& userSpeakContent.getToSpeakUser()
-										.equals(userName)) { // 别人对你说的
+										.equals(userName)&&(userSpeakContent.getSpeakUser().equals(touser))) { // 别人对你说的
 									if (userSpeakContent.isPrivate()) {
 										sendMess.showOtherToSelfContentPrivate(
 												out, userSpeakContent); // 别人对自己说的悄悄话

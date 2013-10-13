@@ -171,11 +171,11 @@ public class SendHTML {
 				//"<script language=\"Javascript\" src=\"htmlbox.syntax.js\"  type=\"text/javascript\"></script>",
 				//"<script language=\"Javascript\" src=\"xhtml.js\"  type=\"text/javascript\"></script>",
 				//"<script language=\"Javascript\" src=\"htmlbox.min.js\"  type=\"text/javascript\"></script>",
-				"<style type=\"text/css\">",
+				"<link href=\"css/iframe.css\" rel=\"stylesheet\" type=\"text/css\" />",
 				"<!--",
 				"body {overflow :auto; font-size: 9pt; background-color: #e0e0e0;}",
 				"-->", "</style>", "</head>",
-				"<script>window.status='聊天室';</script>", "<body>" };
+				"<script>window.status='聊天室';</script>", "<body>","<div class=\"top_xinxi\">" };
 		for (int i = 0; i < strOut.length; i++) {
 			out.println(strOut[i]);
 		}
