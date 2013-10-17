@@ -19,7 +19,6 @@ import com.bean.User;
 import com.bean.UserSpeakContent;
 import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.util.DateUtil;
 import com.util.SendHTML;
 import com.util.SendMess;

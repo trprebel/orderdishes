@@ -360,7 +360,7 @@ body {
 						name="textfield" type="text" class="login_input_info"
 						value="暂无处理信息"></td>
 					<td rowspan="3" width="141" height="57"><img
-						src="images/handing.png" width="141" height="57">
+						src="images/handing.png" width="141" height="57" onclick="location.href='requestlistMESSAGE.action'">
 					</td>
 					<td colspan="5" rowspan="5" width="241" height="82"></td>
 					<td><img src="images/分隔符.gif" width="1" height="15" alt="">

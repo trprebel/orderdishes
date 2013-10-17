@@ -9,12 +9,17 @@ import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Food;
+import com.bean.Message;
+import com.bean.User;
 import com.dao.impl.FoodDao;
+import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import com.util.Paginator;
 import com.util.Program;
 
@@ -41,6 +46,7 @@ public class FoodAction extends ActionSupport{
 	//private String uploadPath;
 
 	private FoodDao fooddao;
+	private MsgDao msgDao=new MsgDao();
 	public Paginator paginator=new Paginator(9);
 	
 	private Program program=new Program();
@@ -127,7 +133,8 @@ public class FoodAction extends ActionSupport{
 	 */
 	public String request()
 	{
-		//HttpServletRequest request=ServletActionContext.getRequest();
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try
 		{
 			//String path=StringUtil.getSpPropeurl("imagePath");
@@ -148,6 +155,14 @@ public class FoodAction extends ActionSupport{
 //				food.setBig_pic(path+food.getBig_pic());
 //				//System.out.println(drink.getSmall_pic());
 //			}
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				request.setAttribute("msgs", "暂无处理信息");
+			}
+			else request.setAttribute("msgs", "有客户想与您说话");
+			
 			paginator.setData(count, foodlist);
 			//request.setAttribute("Food", Food);
 			return "food";
