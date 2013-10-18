@@ -130,10 +130,10 @@ body {
 				<td width="28" height="15"></td>
 				<td height="68" colspan="4" width="491" rowspan="4"><input
 					name="textfield" type="text" class="login_input_info"
-					value="暂无处理信息">
+					value="${msgs }">
 				</td>
 				<td rowspan="3" width="141" height="57"><img
-					src="images/handing.png" width="141" height="57"></td>
+					src="images/handing.png" width="141" height="57" onclick="location.href='requestlistMESSAGE.action'"></td>
 				<td colspan="5" rowspan="5" width="241" height="82"></td>
 				<td><img src="images/分隔符.gif" width="1" height="15" alt="">
 				</td>

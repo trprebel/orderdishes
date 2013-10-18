@@ -358,7 +358,7 @@ body {
 					<td width="28" height="15"></td>
 					<td height="68" colspan="4" width="491" rowspan="4"><input
 						name="textfield" type="text" class="login_input_info"
-						value="暂无处理信息"></td>
+						value="${msgs }"></td>
 					<td rowspan="3" width="141" height="57"><img
 						src="images/handing.png" width="141" height="57" onclick="location.href='requestlistMESSAGE.action'">
 					</td>

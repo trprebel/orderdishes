@@ -159,9 +159,9 @@ public class FoodAction extends ActionSupport{
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				request.setAttribute("msgs", "暂无处理信息");
+				session.setAttribute("msgs", "暂无处理信息");
 			}
-			else request.setAttribute("msgs", "有客户想与您说话");
+			else session.setAttribute("msgs", "有客户想与您说话");
 			
 			paginator.setData(count, foodlist);
 			//request.setAttribute("Food", Food);
