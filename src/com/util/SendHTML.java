@@ -128,7 +128,7 @@ public class SendHTML {
 		response.setHeader("Cache-Control", "no-cache, must-revalidate");
 		response.setDateHeader("Expires", -1);
 		response.setContentType("text/html; charset=gbk");
-		request.setCharacterEncoding("GBK");
+		request.setCharacterEncoding("gbk");
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class SendHTML {
 		String[] strOut = new String[] {
 				"<html>",
 				"<head>",
-				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gbk\">",
+				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">",
 				"<title>聊天室</title>",
 				"</head>",
 				"<frameset rows=\"*\" cols=\"100,*\" frameborder=\"YES\" border=\"1\" framespacing=\"0\">",

@@ -345,7 +345,7 @@ body {
 			<tr>
 				<td colspan="2" rowspan="4" width="241" height="66"></td>
 				<td colspan="3" rowspan="2" width="208" height="42" align="center"
-					class="list"><img src="images/icon1.png" width="18"
+					class="list" onclick="location.href='requestFOOD.action'"><img src="images/icon1.png" width="18"
 					height="19">菜谱管理</td>
 				<td width="1" height="10"></td>
 			</tr>
@@ -361,8 +361,8 @@ body {
 			</tr>
 			<tr>
 				<td colspan="3" rowspan="2" width="208" height="42" align="center"
-					class="list_h"><img src="images/icon2.png" width="21"
-					height="20">酒水管理</td>
+					class="list" onclick="location.href='requestDRINKS.action'"><img src="images/icon2.png" width="21"
+					height="20" >酒水管理</td>
 				<td width="1" height="22"></td>
 			</tr>
 			<tr>
@@ -451,7 +451,7 @@ body {
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3" width="208" height="42" align="center" class="list"><img
+				<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='message_release.jsp'"><img
 					src="images/icon3.png" width="20" height="14">信息发布</td>
 				<td width="1" height="42"></td>
 			</tr>
@@ -460,7 +460,7 @@ body {
 				<td width="1" height="2"></td>
 			</tr>
 			<tr>
-				<td colspan="3" width="208" height="42" align="center" class="list"><img
+				<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='requestCUSTOMER.action'"><img
 					src="images/icon4.png" width="20" height="20">客户管理</td>
 				<td width="1" height="42"></td>
 			</tr>
@@ -469,7 +469,7 @@ body {
 				<td width="1" height="2"></td>
 			</tr>
 			<tr>
-				<td colspan="3" width="208" height="42" align="center" class="list"><img
+				<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='history_info.jsp'"><img
 					src="images/icon5.png" width="20" height="20">历史信息</td>
 				<td><img src="images/分隔符.gif" width="1" height="42" alt="">
 				</td>
@@ -509,10 +509,10 @@ body {
 			<tr>
 				<td rowspan="2" width="208" height="42" align="center"><img
 					style="*margin-bottom:15px;" src="images/home.png" width="73"
-					height="22"></td>
+					height="22" onclick="location.href='requestFOOD.action'"></td>
 				<td rowspan="2" width="103" height="42" align="center"><img
 					style="*margin-bottom:15px;" src="images/back.png" width="72"
-					height="20"></td>
+					height="20" onclick="location.href=document.referrer"></td>
 				<td><img src="images/分隔符.gif" width="1" height="30" alt="">
 				</td>
 			</tr>
