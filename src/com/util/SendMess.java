@@ -35,30 +35,28 @@ public class SendMess {
 	}
 
 	// 显示自己对别人说的悄悄话
-//	public void showSelfToOtherContentPrivate(PrintWriter out,
-//			UserSpeakContent userSpeakContent) {
-//		out.println("<LI>< " + DateUtil.getPreciseTime()
-//				+ " >&nbsp<B>你</B>&nbsp;对&nbsp;<a href=# onclick="
-//				+ "top.SpeakListframe.document.all.toUser.value='"
-//				+ userSpeakContent.getToSpeakUser() + "'>"
-//				+ userSpeakContent.getToSpeakUser() + "</a>"
-//				+ "&nbsp;悄悄地说:&nbsp;" + userSpeakContent.getSpeakContent()
-//				+ "</LI>");
-//	}
+	//	public void showSelfToOtherContentPrivate(PrintWriter out,
+	//			UserSpeakContent userSpeakContent) {
+	//		out.println("<LI>< " + DateUtil.getPreciseTime()
+	//				+ " >&nbsp<B>你</B>&nbsp;对&nbsp;<a href=# onclick="
+	//				+ "top.SpeakListframe.document.all.toUser.value='"
+	//				+ userSpeakContent.getToSpeakUser() + "'>"
+	//				+ userSpeakContent.getToSpeakUser() + "</a>"
+	//				+ "&nbsp;悄悄地说:&nbsp;" + userSpeakContent.getSpeakContent()
+	//				+ "</LI>");
+	//	}
 	public void showSelfToOtherContentPrivate(PrintWriter out,
 			UserSpeakContent userSpeakContent) {
 		out.println("<div class=\"left_top_xinxi\">"
-
-		+"<div class=\"xinxi_replay\">"
-
+			+"<div class=\"xinxi_replay\">"
 			+"<div class=\"top_xinxi_replay\">&nbsp;&nbsp;"+DateUtil.getPreciseTime()+"</div>"
 			+"<div class=\"middle_xinxi_replay\">&nbsp;&nbsp;我说:"+userSpeakContent.getSpeakContent()+"</div>"
 			+"<div class=\"bottom_xinxi_replay\">&nbsp;</div>"
-		+"</div>"
+			+"</div>"
 
 
 	+"</div>");
-		
+
 	}
 
 	// 显示自己对别人说的话
@@ -102,33 +100,27 @@ public class SendMess {
 	}
 
 	// 显示别人对自己说的悄悄话
-//	public void showOtherToSelfContentPrivate(PrintWriter out,
-//			UserSpeakContent userSpeakContent) {
-//		out.println("<LI><" + DateUtil.getPreciseTime()
-//				+ " >&nbsp<B><a href=# onclick=top.SpeakListframe.document."
-//				+ "all.toUser.value='" + userSpeakContent.getSpeakUser() + "'>"
-//				+ userSpeakContent.getSpeakUser()
-//				+ "</a></B>&nbsp;对你 悄悄地说:&nbsp;"
-//				+ userSpeakContent.getSpeakContent() + "</LI>");
-//	}
+	//	public void showOtherToSelfContentPrivate(PrintWriter out,
+	//			UserSpeakContent userSpeakContent) {
+	//		out.println("<LI><" + DateUtil.getPreciseTime()
+	//				+ " >&nbsp<B><a href=# onclick=top.SpeakListframe.document."
+	//				+ "all.toUser.value='" + userSpeakContent.getSpeakUser() + "'>"
+	//				+ userSpeakContent.getSpeakUser()
+	//				+ "</a></B>&nbsp;对你 悄悄地说:&nbsp;"
+	//				+ userSpeakContent.getSpeakContent() + "</LI>");
+	//	}
 	public void showOtherToSelfContentPrivate(PrintWriter out,
 			UserSpeakContent userSpeakContent) {
 		out.println("<div class=\"right_top_xinxi\">"
-
-		+"<div class=\"left_top_xinxi2\">"
-
-			+"<div class=\"xinxi_replay\">"
-
+				+"<div class=\"left_top_xinxi2\">"
+				+"<div class=\"xinxi_replay\">"
 				+"<div class=\"top_xinxi_replay2\">&nbsp;&nbsp;&nbsp;"+DateUtil.getPreciseTime()+"</div>"
 				+"<div class=\"middle_xinxi_replay2\">&nbsp;&nbsp;他说："+userSpeakContent.getSpeakContent()+"</div>"
 				+"<div class=\"bottom_xinxi_replay2\">&nbsp;</div>"
-			+"</div>"
-
-
-		+"</div>"
-
-	+"</div>");
-	}
+				+"</div>"
+				+"</div>"
+				+"</div>");
+		}
 
 	// 显示别人对自己说的话
 	public void showOtherToSelfContent(PrintWriter out,
