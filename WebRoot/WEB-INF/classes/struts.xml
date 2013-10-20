@@ -37,6 +37,7 @@
 		</action>
 		<action name="*MESSAGE" class="com.action.MessageAction" method="{1}">
 			<result name="list">/message_list.jsp</result>
+			<result name="chat">/chat.jsp</result>
 		</action>
 
 	</package>

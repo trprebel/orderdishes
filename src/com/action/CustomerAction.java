@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
@@ -14,7 +15,10 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Customer;
+import com.bean.Message;
+import com.bean.User;
 import com.dao.impl.CustomerDao;
+import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
 /**客户相关操作
  * @author zxj
@@ -25,11 +29,12 @@ public class CustomerAction extends ActionSupport{
 	
 	private static final long serialVersionUID = 1L;
 	private CustomerDao cusdao;
-
+	private MsgDao msgDao=new MsgDao();
 
 	public String request()
 	{
 		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try
 		{
 			//System.out.println("request customer");
@@ -37,7 +42,13 @@ public class CustomerAction extends ActionSupport{
 			List<Customer> customers=cusdao.findCustomerList();
 			//System.out.println(customers.get(0).getCustomer());
 			request.setAttribute("customers", customers);
-			
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				session.setAttribute("msgs", "暂无处理信息");
+			}
+			else session.setAttribute("msgs", "有客户想与您说话");
 			return "customer";
 		}
 		catch (Exception e)

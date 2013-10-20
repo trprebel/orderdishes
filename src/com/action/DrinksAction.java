@@ -9,11 +9,15 @@ import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Drinks;
+import com.bean.Message;
+import com.bean.User;
 import com.dao.impl.DrinksDao;
+import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
 import com.util.Program;
@@ -35,6 +39,7 @@ public class DrinksAction extends ActionSupport{
 	private String descript;
 	private String small_pic;
 	private String big_pic;
+	private MsgDao msgDao=new MsgDao();
 	private File picture;   //保存上传的文件
 	private String pictureContentType;	 //保存上传的文件类型
 	private String pictureFileName;   //保存上传的文件名
@@ -119,7 +124,8 @@ public class DrinksAction extends ActionSupport{
 	 */
 	public String request()
 	{
-		//HttpServletRequest request=ServletActionContext.getRequest();
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try
 		{
 			//String path=StringUtil.getSpPropeurl("imagePath");
@@ -137,6 +143,13 @@ public class DrinksAction extends ActionSupport{
 			List<Drinks> drinks=drinksdao.findDrinksList(program);
 			
 			paginator.setData(count, drinks);
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				session.setAttribute("msgs", "暂无处理信息");
+			}
+			else session.setAttribute("msgs", "有客户想与您说话");
 			//request.setAttribute("drinks", drinks);
 			return "drinks";
 		}
@@ -230,8 +243,8 @@ public class DrinksAction extends ActionSupport{
 		}
 	}
 	public String add() {
-		//HttpServletRequest request=ServletActionContext.getRequest();
-		//HttpSession session=request.getSession();
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
 //			System.out.println(drinks);
 //			System.out.println(price);
@@ -250,7 +263,13 @@ public class DrinksAction extends ActionSupport{
 			drinksbean.setDescript(descript);
 			drinksdao=new DrinksDao();
 			drinksdao.addDrink(drinksbean);
-			
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				session.setAttribute("msgs", "暂无处理信息");
+			}
+			else session.setAttribute("msgs", "有客户想与您说话");
 			
 			return "request";
 		} catch (Exception e) {
@@ -262,11 +281,19 @@ public class DrinksAction extends ActionSupport{
 	
 	public String requestone() {
 		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
 			//System.out.println(drinksid);
 			drinksdao=new DrinksDao();
 			Drinks drinks=drinksdao.findDrinkById(Integer.parseInt(drinksid));
 			request.setAttribute("drink", drinks);
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				session.setAttribute("msgs", "暂无处理信息");
+			}
+			else session.setAttribute("msgs", "有客户想与您说话");
 			return "modify";
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -379,7 +379,7 @@ body {
 
 										<div class="top_xinxi_replay">&nbsp;&nbsp;${msg.create_date}</div>
 										<div class="middle_xinxi_replay">&nbsp;&nbsp;${msg.content}&nbsp;&nbsp;
-										<a href="chat.jsp?touser=${msg.fromuser}" target="_blank">答复</a></div>
+										<a href="chatMESSAGE.action?touser=${msg.fromuser}" target="_blank">答复</a></div>
 										<div class="bottom_xinxi_replay">&nbsp;</div>
 									</div>
 								</div>

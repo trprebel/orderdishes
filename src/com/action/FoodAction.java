@@ -207,8 +207,8 @@ public class FoodAction extends ActionSupport{
 		}
 	}
 	public String add() {
-		//HttpServletRequest request=ServletActionContext.getRequest();
-		//HttpSession session=request.getSession();
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
 //			System.out.println(food);
 //			System.out.println(price);
@@ -227,7 +227,13 @@ public class FoodAction extends ActionSupport{
 			
 			fooddao=new FoodDao();
 			fooddao.addFood(foodbean);
-			
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				session.setAttribute("msgs", "暂无处理信息");
+			}
+			else session.setAttribute("msgs", "有客户想与您说话");
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -320,12 +326,20 @@ public class FoodAction extends ActionSupport{
 	}
 	public String requestone() {
 		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
 			//System.out.println(foodid);
 			fooddao=new FoodDao();
 			Food foodbean=fooddao.findFoodById(Integer.parseInt(foodid));
 			//System.out.println(foodbean.getDescript());
 			request.setAttribute("food", foodbean);
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				session.setAttribute("msgs", "暂无处理信息");
+			}
+			else session.setAttribute("msgs", "有客户想与您说话");
 			return "modify";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -334,7 +348,8 @@ public class FoodAction extends ActionSupport{
 		}
 	}
 	public String modify() {
-		//HttpServletRequest request=ServletActionContext.getRequest();
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
 			//System.out.println(foodid);
 			fooddao=new FoodDao();
@@ -348,7 +363,13 @@ public class FoodAction extends ActionSupport{
 			foodbean.setIsfeature(Integer.parseInt(isfeature));
 			foodbean.setDescript(descript);
 			fooddao.modifyFood(foodbean);
-			
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				session.setAttribute("msgs", "暂无处理信息");
+			}
+			else session.setAttribute("msgs", "有客户想与您说话");
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception

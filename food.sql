@@ -231,7 +231,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,'281671D25167B1A64F2B23A7915F444D','admin','游客想与您聊天！',0,'2013-10-17 08:36:52');
+INSERT INTO `message` VALUES (1,'0A9D9380E0F33F7C6B5DC1C5BA871D25','admin','游客想与您聊天！',0,'2013-10-20 10:35:47');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,10 +276,10 @@ DROP TABLE IF EXISTS `quickreplay`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `quickreplay` (
   `NUMID` int(6) NOT NULL AUTO_INCREMENT,
-  `REPLAY` int(6) NOT NULL,
-  `CRETEA_DATE` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `REPLAY` varchar(500) NOT NULL DEFAULT '0',
+  `CRETEA_DATE` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
   PRIMARY KEY (`NUMID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,6 +288,7 @@ CREATE TABLE `quickreplay` (
 
 LOCK TABLES `quickreplay` WRITE;
 /*!40000 ALTER TABLE `quickreplay` DISABLE KEYS */;
+INSERT INTO `quickreplay` VALUES (1,'好的，马上送到！','2012-12-31 16:00:00'),(2,'对不起，请稍等！','2012-12-31 16:00:00'),(3,'对不起，暂时没货！','2012-12-31 16:00:00');
 /*!40000 ALTER TABLE `quickreplay` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -448,4 +449,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-18 21:50:19
+-- Dump completed on 2013-10-20 20:52:42

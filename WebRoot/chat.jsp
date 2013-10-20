@@ -1,11 +1,13 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@page import="com.bean.QuickReplay"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
-	String touser=request.getParameter("touser");
+	//String touser=request.getParameter("touser");
 	//System.out.println(touser);
+	List<QuickReplay> quickReplays=(List<QuickReplay>)request.getAttribute("quickreplay");
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -294,7 +296,7 @@ function speak(){
 	
 	var postdata = {
 			content:$("#content").val(),
-			touser:"<%=touser%>"
+			touser:"${touser}"
     	};
   	
 	$.ajax({
@@ -308,6 +310,22 @@ function speak(){
     });
 	document.getElementById("content").value="";
 		
+}
+function quickreplay(replay){
+	var postdata = {
+			content:replay,
+			touser:"${touser}"
+    	};
+  	
+	$.ajax({
+     	type:'post',
+     	data:postdata,
+     	url:'speakMESSAGE.action',
+    	error:function(){
+       		alert("说话失败！");
+    	}
+
+    });
 }
 </script>
 <body>
@@ -393,7 +411,7 @@ function speak(){
 
 							<iframe name="ContentListframe"
 								style="width:728px; height:250px; background-color:transparent; filter:chroma(color=#ffffff);  vertical-align:top;  "
-								src="messageMESSAGE.action?touser=<%=touser%>" marginheight="0" scrolling="no"
+								src="messageMESSAGE.action?touser=${touser}" marginheight="0" scrolling="no"
 								frameborder=0></iframe>
 						
 						
@@ -408,42 +426,14 @@ function speak(){
 								style="margin-left:35px; overflow-y:auto; width:683px; overflow-x:hidden; height:132px;">
 								<table width="550" border="0" cellpadding="0" cellspacing="0"
 									style=" margin-left:9px;">
+									<%
+									int i=1;
+									for(QuickReplay quickReplay:quickReplays){ %>
 									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
+										<td colspan="2" width="453" height="33" class="content_replay"><%=quickReplay.getReplay() %></td>
+										<td colspan="3" width="122" height="33" class="icon_replay" onclick="quickreplay('<%=quickReplay.getReplay() %>')">快捷回复<%=i %></td>
 									</tr>
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
+									<%i++;} %>
 								</table>
 
 							</div>

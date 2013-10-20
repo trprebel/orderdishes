@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bean.Information;
 import com.dao.impl.InformationDao;
+import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
 
 /** 信息处理相关操作
@@ -15,7 +16,7 @@ public class InformationAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 
 	private List<String> infodesc;
-	InformationDao infodao;
+	private InformationDao infodao;
 
 	public List<String> getInfodesc() {
 		return infodesc;

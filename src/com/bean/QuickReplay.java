@@ -2,7 +2,7 @@ package com.bean;
 
 public class QuickReplay {
 	private int numid;
-	private int replay;
+	private String replay;
 	private String create_date;
 	public int getNumid() {
 		return numid;
@@ -10,10 +10,10 @@ public class QuickReplay {
 	public void setNumid(int numid) {
 		this.numid = numid;
 	}
-	public int getReplay() {
+	public String getReplay() {
 		return replay;
 	}
-	public void setReplay(int replay) {
+	public void setReplay(String replay) {
 		this.replay = replay;
 	}
 	public String getCreate_date() {

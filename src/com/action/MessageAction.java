@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Message;
+import com.bean.QuickReplay;
 import com.bean.SystemUserInfo;
 import com.bean.User;
 import com.bean.UserSpeakContent;
@@ -204,7 +205,7 @@ public class MessageAction extends ActionSupport{
 			User user=(User)session.getAttribute("user");
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgdao.findUnreadMsg(user.getUsername());
-			request.setAttribute("msgs", msgs);
+			session.setAttribute("msgs", msgs);
 			//System.out.println(msgs.get(0).getContent());
 			
 			return "list";
@@ -456,5 +457,20 @@ public class MessageAction extends ActionSupport{
 			}
 		}
 	}
+	public String chat()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		try {
+			List<QuickReplay> quickReplays=msgdao.findQuickReplay();
+			request.setAttribute("quickreplay", quickReplays);
+			request.setAttribute("touser", touser);
+			return "chat";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+	}
 
 }
+
