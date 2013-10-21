@@ -258,6 +258,9 @@ body {
 	margin-left: 702px;
 	position: relative;
 	top: -1px;
+	
+	*position: relative;
+	*top: 3px;
 	margin-bottom: 2px;
 }
 
@@ -292,83 +295,76 @@ body {
 </head>
 <body>
 	<div class="main">
-		<table class="01" width="961" height="631" border="0" cellpadding="0"
-			cellspacing="0">
-			<tr>
-				<td colspan="14" width="960" height="16"></td>
-				<td><img src="images/分隔符.gif" width="1" height="16" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td width="960" height="15"></td>
-				<td width="81" height="15"></td>
-				<td width="712" height="15"></td>
-				<td width="28" height="15"></td>
-				<td height="68" colspan="4" width="491" rowspan="4"><input
+		<table class="01" width="961" height="631" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="14" width="960" height="16">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="16" alt=""></td>
+	</tr>
+	<tr>
+		<td width="960" height="15">			</td>
+		<td width="81" height="15"></td>
+		<td width="712" height="15"></td>
+		<td width="28" height="15"></td>
+		<td height="68" colspan="4" width="491" rowspan="4"><input
 					name="textfield" type="text" class="login_input_info"
-					value="暂无处理信息">
-				</td>
-				<td rowspan="3" width="141" height="57"><img
-					src="images/handing.png" width="141" height="57"></td>
-				<td colspan="5" rowspan="5" width="241" height="82"></td>
-				<td><img src="images/分隔符.gif" width="1" height="15" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3" rowspan="3" width="960" height="53"></td>
-				<td width="28" height="28"><img src="images/qu3.png" width="28"
-					height="28">
-				</td>
-
-				<td><img src="images/分隔符.gif" width="1" height="28" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td rowspan="2" width="28" height="25"></td>
-				<td><img src="images/分隔符.gif" width="1" height="14" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td rowspan="6" width="141" height="91"></td>
-				<td><img src="images/分隔符.gif" width="1" height="11" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td rowspan="19" width="960" height="546"></td>
-				<td colspan="4" rowspan="2" width="81" height="24"><div
-						class="infr_instroy">处理第一条消息</div>
-				</td>
-				<td colspan="3" rowspan="5" width="470" height="80"></td>
-				<td><img src="images/分隔符.gif" width="1" height="14" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2" rowspan="4" width="241" height="66"></td>
-				<td colspan="3" rowspan="2" width="208" height="42" align="center"
-					class="list" onclick="location.href='requestFOOD.action'"><img src="images/icon1.png" width="18"
+					value="暂无处理信息"></td>
+		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" onclick="location.href='requestlistMESSAGE.action'"
+ width="141" height="57">		</td>
+		<td colspan="5" rowspan="5" width="241" height="82">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="15" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3" rowspan="3" width="960" height="53">	  </td>
+		<td width="28" height="28"><img src="images/qu3.png" width="28" height="28"></td>
+		
+		<td>
+			<img src="images/分隔符.gif" width="1" height="28" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2" width="28" height="25">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="14" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="6" width="141" height="91">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="11" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="19" width="960" height="546">			</td>
+		<td colspan="4" rowspan="2" width="81" height="24" ><div class="infr_instroy">处理第一条消息</div></td>
+		<td colspan="3" rowspan="5" width="470" height="80">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="14" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2" rowspan="4" width="241" height="66">			</td>
+		<td colspan="3" rowspan="2" width="208" height="42" align="center"
+					class="list" onClick="location.href='requestFOOD.action'"><img src="images/icon1.png" width="18"
 					height="19">菜谱管理</td>
-				<td width="1" height="10"></td>
-			</tr>
-			<tr>
-				<td colspan="4" rowspan="3" width="81" height="56"></td>
-				<td><img src="images/分隔符.gif" width="1" height="32" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3" width="208" height="2"></td>
-				<td><img src="images/分隔符.gif" width="1" height="2" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3" rowspan="2" width="208" height="42" align="center"
-					class="list" onclick="location.href='requestDRINKS.action'"><img src="images/icon2.png" width="21"
+		<td width="1" height="10">			</td>
+	</tr>
+	<tr>
+		<td colspan="4" rowspan="3" width="81" height="56">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="32" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="2">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="2" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3" rowspan="2" width="208" height="42" align="center"
+					class="list" onClick="location.href='requestDRINKS.action'"><img src="images/icon2.png" width="21"
 					height="20" >酒水管理</td>
-				<td width="1" height="22"></td>
-			</tr>
-			<tr>
-				<td rowspan="14" width="81" height="466"></td>
-				<td colspan="8" rowspan="14" width="712" height="466"
-					style="vertical-align:top" align="left"><div class="qiu"
+		<td width="1" height="22">			</td>
+	</tr>
+	<tr>
+		<td rowspan="14" width="81" height="466">		</td>
+		<td colspan="8" rowspan="14" width="712" height="466" style="vertical-align:top" align="left"><div class="qiu"
 						style="  position:absolute; top:110px; width:712px;  vertical-align:top;  ">
 
 						<div class="top_xinxi">
@@ -441,117 +437,113 @@ body {
 									height="61">
 							</div>
 						</div>
-					</div></td>
-				<td rowspan="14" width="10" height="466"></td>
-				<td width="1" height="20"></td>
-			</tr>
-			<tr>
-				<td colspan="3" width="208" height="2"></td>
-				<td><img src="images/分隔符.gif" width="1" height="2" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='message_release.jsp'"><img
+					</div>
+		
+		
+		
+		</td>
+		<td rowspan="14" width="10" height="466">			</td>
+		<td width="1" height="20">			</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="2">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="2" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='message_release.jsp'"><img
 					src="images/icon3.png" width="20" height="14">信息发布</td>
-				<td width="1" height="42"></td>
-			</tr>
-			<tr>
-				<td colspan="3" width="208" height="2"></td>
-				<td width="1" height="2"></td>
-			</tr>
-			<tr>
-				<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='requestCUSTOMER.action'"><img
+		<td width="1" height="42">			</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="2">			</td>
+		<td width="1" height="2">			</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='requestCUSTOMER.action'"><img
 					src="images/icon4.png" width="20" height="20">客户管理</td>
-				<td width="1" height="42"></td>
-			</tr>
-			<tr>
-				<td colspan="3" width="208" height="2"></td>
-				<td width="1" height="2"></td>
-			</tr>
-			<tr>
-				<td colspan="3" width="208" height="42" align="center" class="list" onclick="location.href='history_info.jsp'"><img
+		<td width="1" height="42">			</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="2">			</td>
+		<td width="1" height="2">			</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='history_info.jsp'"><img
 					src="images/icon5.png" width="20" height="20">历史信息</td>
-				<td><img src="images/分隔符.gif" width="1" height="42" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3" rowspan="2" width="208" height="228"></td>
-				<td><img src="images/分隔符.gif" width="1" height="172" alt="">
-				</td>
-			</tr>
-			<tr>
-
-				<td><img src="images/分隔符.gif" width="1" height="56" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td rowspan="2" width="208" height="43" align="center"><img
-					style="*margin-bottom:10px;" src="images/last.png" width="78"
-					height="20"></td>
-				<td rowspan="5" width="2" height="86"></td>
-				<td rowspan="2" width="103" height="43" align="center"><img
-					style="*margin-bottom:10px;" src="images/next.png" width="81"
-					height="20"></td>
-				<td width="1" height="30"></td>
-			</tr>
-			<tr>
-
-
-				<td><img src="images/分隔符.gif" width="1" height="13" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td width="208" height="1"></td>
-				<td width="103" height="1"></td>
-				<td><img src="images/分隔符.gif" width="1" height="1" alt="">
-				</td>
-			</tr>
-			<tr>
-				<td rowspan="2" width="208" height="42" align="center"><img
-					style="*margin-bottom:15px;" src="images/home.png" width="73"
-					height="22" onclick="location.href='requestFOOD.action'"></td>
-				<td rowspan="2" width="103" height="42" align="center"><img
-					style="*margin-bottom:15px;" src="images/back.png" width="72"
-					height="20" onclick="location.href=document.referrer"></td>
-				<td><img src="images/分隔符.gif" width="1" height="30" alt="">
-				</td>
-			</tr>
-			<tr>
-
-
-			</tr>
-			<tr>
-				<td><img src="images/分隔符.gif" width="27" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="3" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="29" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="28" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="21" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="208" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="182" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="80" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="141" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="23" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="10" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="103" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="2" height="1" alt="">
-				</td>
-				<td><img src="images/分隔符.gif" width="103" height="1" alt="">
-				</td>
-				<td></td>
-			</tr>
-		</table>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="42" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3" rowspan="2" width="208" height="228">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>
+	</tr>
+	<tr>
+		
+		<td>
+			<img src="images/分隔符.gif" width="1" height="56" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2" width="208" height="43" align="center"><img style="*margin-bottom:10px;" src="images/last.png" width="78" height="20">			</td>
+		<td rowspan="5" width="2" height="86">			</td>
+		<td rowspan="2" width="103" height="43" align="center"><img style="*margin-bottom:10px;" src="images/next.png" width="81" height="20">			</td>
+		<td width="1" height="30">			</td>
+	</tr>
+	<tr>
+		
+		
+		<td>
+			<img src="images/分隔符.gif" width="1" height="13" alt=""></td>
+	</tr>
+	<tr>
+		<td width="208" height="1">			</td>
+		<td width="103" height="1">			</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;" src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'">			</td>
+		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;" src="images/back.png" width="72" height="20" onClick="location.href=document.referrer">		</td>
+		<td>
+			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
+	</tr>
+	<tr>
+		
+		
+	</tr>
+	<tr>
+		<td>
+			<img src="images/分隔符.gif" width="27" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="3" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="29" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="28" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="21" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="208" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="182" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="80" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="141" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="23" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="10" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="103" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="2" height="1" alt=""></td>
+		<td>
+			<img src="images/分隔符.gif" width="103" height="1" alt=""></td>
+		<td></td>
+	</tr>
+</table>
 	</div>
 </body>
 </html>
