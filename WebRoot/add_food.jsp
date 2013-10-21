@@ -477,6 +477,7 @@ body {
 								<tr>
 									<td rowspan="18" width="9" height="352"></td>
 									<td colspan="6" rowspan="5" width="219" height="39">
+									<div class="fieldset flash" id="fsUploadProgress"></div>
 									<span id="spanButtonPlaceHolder"></span>
 									<input id="btnCancel" type="hidden" value="取消上传所有文件"
 									onclick="swfus.cancelQueue();" disabled="disabled"
