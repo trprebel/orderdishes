@@ -206,6 +206,7 @@ body {
 }
 </style>
 </head>
+<link href="css/default.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.6.js"></script>
 <script type="text/javascript" src="js/swfupload.js"></script>
 <script type="text/javascript" src="js/swfupload.queue.js"></script>
