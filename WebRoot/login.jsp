@@ -49,6 +49,7 @@ body {
 .login_input {
 	width: 270px;
 	height: 28px;
+	vertical-align:text-top;
 	line-height: 28px;
 	border: 0px;
 	background-color: #f1f1f1;
@@ -272,7 +273,7 @@ body {
 	<tr>
 		<td rowspan="2" width="3" height="168">
 	  </td>
-		<td width="189" height="50" align="center"><img
+		<td width="189" height="50" align="center"><img style="cursor:pointer"
 						src="images/login.png" width="182" height="45"
 						onClick="javascript:login()">			</td>
 		<td colspan="3" rowspan="2" width="78" height="168">

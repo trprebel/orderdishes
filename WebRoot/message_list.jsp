@@ -102,7 +102,7 @@ body {
 	color: #90a5c1;
 	font-weight: bold;
 	position: absolute;
-	top: 85px;
+	top: 25px;
 }
 
 .tab_info td {
@@ -164,7 +164,7 @@ body {
 }
 
 .top_xinxi {
-	height: 250px;
+	height: 480px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	margin-top: 10px;
@@ -306,18 +306,15 @@ body {
 		<td width="81" height="15"></td>
 		<td width="712" height="15"></td>
 		<td width="28" height="15"></td>
-		<td height="68" colspan="4" width="491" rowspan="4"><input
-					name="textfield" type="text" class="login_input_info"
-					value="暂无处理信息"></td>
-		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" onclick="location.href='requestlistMESSAGE.action'"
- width="141" height="57">		</td>
+		<td height="68" colspan="4" width="491" rowspan="4">&nbsp;</td>
+		<td rowspan="3" width="141" height="57">&nbsp;</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="15" alt=""></td>
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="3" width="960" height="53">	  </td>
-		<td width="28" height="28"><img src="images/qu3.png" width="28" height="28"></td>
+		<td width="28" height="28">&nbsp;</td>
 		
 		<td>
 			<img src="images/分隔符.gif" width="1" height="28" alt=""></td>
@@ -365,7 +362,7 @@ body {
 	<tr>
 		<td rowspan="14" width="81" height="466">		</td>
 		<td colspan="8" rowspan="14" width="712" height="466" style="vertical-align:top" align="left"><div class="qiu"
-						style="  position:absolute; top:110px; width:712px;  vertical-align:top;  ">
+						style="  position:absolute; top:50px; width:712px;  vertical-align:top;  ">
 
 						<div class="top_xinxi">
 							<c:forEach var="msg" items="${msgs}">
@@ -382,66 +379,7 @@ body {
 							</c:forEach>
 						</div>
 
-						<div class="replay_text">
-							<div class="replay_close">
-								<img src="images/close2.png" width="16" height="16">
-							</div>
-
-							<div
-								style="margin-left:35px; overflow-y:auto; width:620px; overflow-x:hidden; height:132px;">
-								<table width="550" border="0" cellpadding="0" cellspacing="0"
-									style=" margin-left:9px;">
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay">好的,马上送到!</td>
-										<td colspan="3" width="122" height="33" class="icon_replay">快捷回复1</td>
-									</tr>
-									<tr>
-										<td colspan="5" width="575" height="11"></td>
-									</tr>
-								</table>
-
-							</div>
-							<div style="height:10px;">&nbsp;</div>
-							<div class="content_shoutong">
-								<textarea class="text_area" name="textarea"></textarea>
-								<img class="img_replay" src="images/replay.png" width="64"
-									height="61">
-							</div>
-						</div>
-					</div>
-		
-		
-		
-		</td>
+						</div></td>
 		<td rowspan="14" width="10" height="466">			</td>
 		<td width="1" height="20">			</td>
 	</tr>
@@ -485,9 +423,9 @@ body {
 			<img src="images/分隔符.gif" width="1" height="56" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="43" align="center"><img style="*margin-bottom:10px;" src="images/last.png" width="78" height="20">			</td>
+		<td rowspan="2" width="208" height="43" align="center">&nbsp;</td>
 		<td rowspan="5" width="2" height="86">			</td>
-		<td rowspan="2" width="103" height="43" align="center"><img style="*margin-bottom:10px;" src="images/next.png" width="81" height="20">			</td>
+		<td rowspan="2" width="103" height="43" align="center">&nbsp;</td>
 		<td width="1" height="30">			</td>
 	</tr>
 	<tr>

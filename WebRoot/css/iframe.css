@@ -151,15 +151,15 @@ body {
 }
 
 .top_xinxi {
-	height: 250px;
+	height: 330px;
 	text-align: left;
 	overflow-y: auto;
 	overflow-x: hidden;
 	margin-top: 10px;
 	margin-bottom: 14px;
-	width: 710px;
+	width: 720px;
 	padding-right: 8px;
-	background: url(../images/bg_line.png) center repeat-y;
+	background: url(../images/bg_line.png) 355px repeat-y;
 }
 
 .left_top_xinxi {

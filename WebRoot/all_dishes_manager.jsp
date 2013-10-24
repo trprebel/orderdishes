@@ -216,7 +216,7 @@ body {
 		<td height="68" colspan="4" width="491" rowspan="4"><input
 						name="textfield" type="text" class="login_input_info"
 						value="${msgs }"></td>
-		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57">		</td>
+		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57"onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="15" alt=""></td>
@@ -292,7 +292,7 @@ body {
 								</c:forEach>
 								
 								<c:if test="${fn:length(paginator.items)<9}">
-									<li onClick="location.href='add_food.jsp'"></li>
+									<li style="cursor:pointer" onClick="location.href='add_food.jsp'"></li>
 								</c:if>
 
 							</ul>

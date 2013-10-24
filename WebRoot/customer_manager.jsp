@@ -21,7 +21,7 @@ body {
 	height: 631px;
 	margin: 0px auto;
 	display: block;
-	background: url(images/bg_info.png) no-repeat;
+	background: url(images/bg_info_d.png) no-repeat;
 	position: relative;
 	top: -15px;
 }
@@ -130,7 +130,7 @@ body {
 		<td width="28" height="15"></td>
 		<td height="68" colspan="4" width="491" rowspan="4"><input name="textfield" type="text" class="login_input_info"
 							value="${msgs }"></td>
-		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" onclick="location.href='requestlistMESSAGE.action'">		</td>
+		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="15" alt=""></td>
@@ -292,9 +292,9 @@ body {
 			<img src="images/分隔符.gif" width="1" height="56" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="43" align="center"><img src="images/last.png" width="78" height="20">			</td>
+		<td rowspan="2" width="208" height="43" align="center">&nbsp;</td>
 		<td rowspan="5" width="2" height="86">			</td>
-		<td rowspan="2" width="103" height="43" align="center"><img src="images/next.png" width="81" height="20">			</td>
+		<td rowspan="2" width="103" height="43" align="center">&nbsp;</td>
 		<td width="1" height="30">			</td>
 	</tr>
 	<tr>
