@@ -324,6 +324,9 @@ public class FoodAction extends ActionSupport{
 			e.printStackTrace();
 		}
 	}
+	/**获取要修改的食物属性
+	 * @return
+	 */
 	public String requestone() {
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
@@ -347,6 +350,9 @@ public class FoodAction extends ActionSupport{
 			return "error";
 		}
 	}
+	/**修改食物
+	 * @return
+	 */
 	public String modify() {
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
@@ -378,5 +384,44 @@ public class FoodAction extends ActionSupport{
 		}
 		
 	}
+	public String requestfeature()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
+		try {
+			fooddao=new FoodDao();
+			int count=fooddao.findFeatureCount();
+			//System.out.println(paginator.getCurrentPage());
+			//paginator.setPageSize(6);
+			//System.out.println(paginator.getOffset());
+			program.setStart(paginator.getOffset());
+			program.setLenth(paginator.getPageSize());
+			if(count==0){
+				paginator.setData(0, null);
+				return "feature";
+			}
+			List<Food> foodlist=fooddao.findFeatureList(program);
+//			for (Food food : foodlist) {
+//				food.setSmall_pic(path+food.getSmall_pic());
+//				food.setBig_pic(path+food.getBig_pic());
+//				//System.out.println(drink.getSmall_pic());
+//			}
+			User user=(User)session.getAttribute("user");
+			//System.out.println(user.getUsername());
+			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
+			if (msgs.isEmpty()) {
+				session.setAttribute("msgs", "暂无处理信息");
+			}
+			else session.setAttribute("msgs", "有客户想与您说话");
+			
+			paginator.setData(count, foodlist);
+			return "feature";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+	}
+
 
 }

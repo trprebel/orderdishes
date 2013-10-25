@@ -233,12 +233,19 @@ body {
 	}
 	function finish()
 	{
+		var food=$("#food").val();
 		var number = /^[0-9]{1,20}$/;
 		var price=$("#price").val();
+		if(food==""||food==null)
+		{
+			alert("酒水名不能为空！");
+			return;
+		}
 		if (!number.exec(price)) {
 			alert("价格只能由数字组成！");
 			return;
 		}
+		
 		var num=$("#num").val();
 		if(!number.exec(num)){
 			alert("数量只能由数字组成！");

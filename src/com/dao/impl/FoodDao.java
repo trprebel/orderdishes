@@ -33,4 +33,24 @@ public class FoodDao {
 	public void modifyFood(Food food) throws Exception {
 		SqlMap.getSqlMapClient().update("modifyFood",food);
 	}
+	/**特价数量*/
+	public Integer findSpecialPriceCount() throws Exception
+	{
+		return (Integer) SqlMap.getSqlMapClient().queryForObject("findSpecialPriceCount");
+	}
+	/**特价菜列表*/
+	public List<Food> findSpecialPriceList(Program program) throws Exception
+	{
+		return (List<Food>) SqlMap.getSqlMapClient().queryForList("findSpecialPriceList",program);
+	}
+	/**特色数量*/
+	public Integer findFeatureCount() throws Exception
+	{
+		return (Integer) SqlMap.getSqlMapClient().queryForObject("findFeatureCount");
+	}
+	/**特色菜列表*/
+	public List<Food> findFeatureList(Program program) throws Exception
+	{
+		return (List<Food>) SqlMap.getSqlMapClient().queryForList("findFeatureList",program);
+	}
 }

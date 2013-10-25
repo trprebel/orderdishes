@@ -200,6 +200,8 @@ body {
 	text-align: center;
 	background: #6a7188
 }
+#specialprice{  position:absolute; top:219px; left:390px; }
+.add_icon2 input{width:94px; height:38px; border:0px;  font-size:20px; font-weight:bold; color:#eeeeee; text-align:center; background:#6a7188}
 </style>
 </head>
 <script type="text/javascript" src="js/jquery-1.6.js"></script>
@@ -208,29 +210,45 @@ body {
 <script type="text/javascript" src="js/fileprogress.js"></script>
 <script type="text/javascript" src="js/handlers.js"></script>
 <script type="text/javascript">
-	function isspecial(i) {
-		//alert(i);
-		var t = document.getElementById("isspecial_t");
-		var f = document.getElementById("isspecial_f");
-		if (i == 1) {
-			t.className = "add_icon1";
-			f.className = "add_icon2";
-			document.getElementById("isfeature").value = "1";
-			//alert("y");
-		} else if (i == 0) {
-			t.className = "add_icon2";
-			f.className = "add_icon1";
-			document.getElementById("isfeature").value = "0";
-			//alert("f");
-		} else
-			return;
-	}
+function isspecial(i) {
+	//alert(i);
+	var general = document.getElementById("general");
+	var feature = document.getElementById("feature");
+	var specialprice = document.getElementById("specialprice");
+	if (i == 0) {
+		general.className = "add_icon1";
+		feature.className = "add_icon2";
+		specialprice.className = "add_icon1";
+		document.getElementById("isfeature").value = "0";
+		//alert("y");
+	} else if (i == 1) {
+		general.className = "add_icon2";
+		feature.className = "add_icon1";
+		specialprice.className = "add_icon2";
+		document.getElementById("isfeature").value = "1";
+		//alert("f");
+	} else if (i == 2) {
+		//alert("2");
+		general.className = "add_icon2";
+		feature.className = "add_icon2";
+		specialprice.className = "add_icon1";
+		document.getElementById("isfeature").value = "2";
+		//alert("f");
+	} else
+		return;
+}
 	function finish()
 	{
 		//alert("finish");
 		//alert("${small_pic}");
 		var number = /^[0-9]{1,20}$/;
 		var price=$("#price").val();
+		var food=$("#food").val();
+		if (food==""||food==null)
+		{
+			alert("菜名不能为空!");
+			return;
+		}
 		if (!number.exec(price)) {
 			alert("价格只能由数字组成！");
 			return;
@@ -249,7 +267,7 @@ body {
 		f1.submit();
 		
 	}
-	
+	isspecial("${isfeature}");
 	//alert("${small_pic}");
 </script>
 <script type="text/javascript">
@@ -546,15 +564,17 @@ body {
 		<td width="113" height="38" class="add_name">是否特色菜</td>
 		<td rowspan="12" width="2" height="288">
 			</td>
-		<td id="isspecial_t" colspan="2" width="94" height="38"
-										
-										class="add_icon1"
-										
-										 onClick="javascript:isspecial(1)">是</td>
+		<td id="general" colspan="2" width="94" height="38"
+										class="add_icon1" onClick="isspecial(0)">普通
+			</td>
 		<td rowspan="7" width="29" height="137">
 			</td>
-		<td id="isspecial_f" colspan="2" width="94" height="38"
-										class="add_icon2" onClick="javascript:isspecial(0)">否</td>
+		<td id="feature" colspan="2" width="94" height="38"
+										class="add_icon2" onClick="isspecial(1)">特色
+			</td>
+		<td id="specialprice" colspan="2" width="94" height="38"
+										class="add_icon2" onClick="isspecial(2)">特价
+			</td>
 		<td width="1" height="38"><input type="hidden" name="isfeature" id="isfeature" value="${food.isfeature }">
 			</td>
 	</tr>

@@ -29,6 +29,7 @@
 			<result name="food1">dishes_manager.jsp</result>
 			<result name="request" type="chain">requestFOOD</result>
 			<result name="modify">/modify_food.jsp</result>
+			<result name="feature">/feature.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="*INFORMATION" class="com.action.InformationAction" method="{1}">
@@ -38,6 +39,9 @@
 		<action name="*MESSAGE" class="com.action.MessageAction" method="{1}">
 			<result name="list">/message_list.jsp</result>
 			<result name="chat">/chat.jsp</result>
+		</action>
+		<action name="specialprice" class="com.action.SpecialAction" method="specialprice">
+			<result name="special">/specialprice.jsp</result>
 		</action>
 
 	</package>
