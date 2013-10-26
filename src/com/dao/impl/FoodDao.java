@@ -3,6 +3,7 @@ package com.dao.impl;
 import java.util.List;
 
 import com.bean.Food;
+import com.bean.OrderSpecial;
 import com.util.Program;
 
 public class FoodDao {
@@ -52,5 +53,10 @@ public class FoodDao {
 	public List<Food> findFeatureList(Program program) throws Exception
 	{
 		return (List<Food>) SqlMap.getSqlMapClient().queryForList("findFeatureList",program);
+	}
+	/**Ô¤¶¨*/
+	public void orderFood(OrderSpecial orderSpecial) throws Exception
+	{
+		SqlMap.getSqlMapClient().insert("orderFood",orderSpecial);
 	}
 }

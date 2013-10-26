@@ -277,7 +277,7 @@ body {
 								<c:forEach var="food" items="${paginator.items}" varStatus="i">
 									<li>
 										<div>
-											<img src="${food.small_pic} " width="205" height="125">
+											<img src="${food.small_pic}" width="205" height="125">
 											<img id="position" src="images/close.png" width="14"
 												height="15"
 												onclick=" javascirpt:deletefood('${food.foodid}')">

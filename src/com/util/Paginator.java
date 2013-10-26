@@ -183,6 +183,7 @@ public class Paginator {
 
 		public void setPageSize(int i) {
 			pageSize = i;
+			offset = getStartOfPage(currentPage, pageSize);
 		}
 
 		public void setTotalPages(int i) {

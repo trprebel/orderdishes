@@ -75,7 +75,7 @@ width:205px; height:147px;  list-style:none; float:left; background:url(images/a
 		if (i == 0) {
 			general.className = "add_icon1";
 			feature.className = "add_icon2";
-			specialprice.className = "add_icon1";
+			specialprice.className = "add_icon2";
 			document.getElementById("isfeature").value = "0";
 			//alert("y");
 		} else if (i == 1) {

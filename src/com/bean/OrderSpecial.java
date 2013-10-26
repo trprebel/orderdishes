@@ -3,15 +3,25 @@ package com.bean;
 public class OrderSpecial {
 	private int orderid;
 	private int customerid;
+	private String tempcus;
 	private int businessid;
 	private int foodid;
+	private String food;
 	private String specialname;
+	private String small_pic;
 	private int price;
 	private int count;
 	private int state;
 	private int type;
 	private String create_date;
 	private String update_date;
+	
+	public String getFood() {
+		return food;
+	}
+	public void setFood(String food) {
+		this.food = food;
+	}
 	public int getOrderid() {
 		return orderid;
 	}
@@ -24,8 +34,20 @@ public class OrderSpecial {
 	public void setCustomerid(int customerid) {
 		this.customerid = customerid;
 	}
+	public String getTempcus() {
+		return tempcus;
+	}
+	public void setTempcus(String tempcus) {
+		this.tempcus = tempcus;
+	}
 	public int getBusinessid() {
 		return businessid;
+	}
+	public String getSmall_pic() {
+		return small_pic;
+	}
+	public void setSmall_pic(String small_pic) {
+		this.small_pic = small_pic;
 	}
 	public void setBusinessid(int businessid) {
 		this.businessid = businessid;

@@ -19,6 +19,10 @@
 			<result name="request" type="chain">requestDRINKS</result>
 			<result name="error">/error.jsp</result>
 			<result name="modify">/modify_drink.jsp</result>
+			<result name="wedrinks">/wechat/drinks.jsp</result>
+			<result name="ajaxresult" type="json">
+				<param name="root">resultString</param>
+			</result>
 		</action>
 		<action name="*CUSTOMER" class="com.action.CustomerAction" method="{1}">
 			<result name="customer">/customer_manager.jsp</result>
@@ -30,6 +34,12 @@
 			<result name="request" type="chain">requestFOOD</result>
 			<result name="modify">/modify_food.jsp</result>
 			<result name="feature">/feature.jsp</result>
+			<result name="wefood">/wechat/food.jsp</result>
+			<result name="wefeature">/wechat/feature.jsp</result>
+			<result name="wespecial">/wechat/preferential.jsp</result>
+			<result name="ajaxresult" type="json">
+				<param name="root">resultString</param>
+			</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="*INFORMATION" class="com.action.InformationAction" method="{1}">
@@ -42,6 +52,12 @@
 		</action>
 		<action name="specialprice" class="com.action.SpecialAction" method="specialprice">
 			<result name="special">/specialprice.jsp</result>
+		</action>
+		<action name="*ORDER" class="com.action.OrderAction" method="{1}">
+			<result name="myorder">/wechat/myorder.jsp</result>
+			<result name="pay">/wechat/pay.jsp</result>
+			<result name="welcome">/wechat/welcome.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
 
 	</package>

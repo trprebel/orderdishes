@@ -14,9 +14,12 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Drinks;
+import com.bean.Food;
 import com.bean.Message;
+import com.bean.OrderSpecial;
 import com.bean.User;
 import com.dao.impl.DrinksDao;
+import com.dao.impl.FoodDao;
 import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
@@ -39,13 +42,16 @@ public class DrinksAction extends ActionSupport{
 	private String descript;
 	private String small_pic;
 	private String big_pic;
-	private MsgDao msgDao=new MsgDao();
+	
+	private String resultString;
+	private String resultPage;
 	private File picture;   //保存上传的文件
 	private String pictureContentType;	 //保存上传的文件类型
 	private String pictureFileName;   //保存上传的文件名
 	//private String uploadPath;
-	private DrinksDao drinksdao;
+	private DrinksDao drinksdao=new DrinksDao();
 	public Paginator paginator=new Paginator(9);
+	private MsgDao msgDao=new MsgDao();
 	private Program program=new Program();
 	public Paginator getPaginator() {
 		return paginator;
@@ -100,6 +106,18 @@ public class DrinksAction extends ActionSupport{
 	}
 	public void setBig_pic(String big_pic) {
 		this.big_pic = big_pic;
+	}
+	public String getResultString() {
+		return resultString;
+	}
+	public void setResultString(String resultString) {
+		this.resultString = resultString;
+	}
+	public String getResultPage() {
+		return resultPage;
+	}
+	public void setResultPage(String resultPage) {
+		this.resultPage = resultPage;
 	}
 	public File getPicture() {
 		return picture;
@@ -324,6 +342,64 @@ public class DrinksAction extends ActionSupport{
 			return "error";
 		}
 		
+	}
+	/**微信页面请求菜谱列表
+	 * @return
+	 */
+	public String werequest()
+	{
+		try {
+			int count;
+			List<Drinks> drinklist;
+			paginator.setPageSize(5);
+			program.setStart(paginator.getOffset());
+			program.setLenth(paginator.getPageSize());
+			
+
+			count=drinksdao.findDrinksCount();
+			drinklist=drinksdao.findDrinksList(program);
+
+			if(count==0){
+				paginator.setData(0, null);
+				return resultPage;
+			}
+						
+			paginator.setData(count, drinklist);
+			return resultPage;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	/**预定
+	 * @return
+	 */
+	public String order()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
+		try {
+			FoodDao fooddao=new FoodDao();
+			Drinks drinks=drinksdao.findDrinkById(Integer.parseInt(drinksid));
+			
+			OrderSpecial orderSpecial=new OrderSpecial();
+			orderSpecial.setTempcus(session.getId());
+			orderSpecial.setFoodid(drinks.getDrinksid());
+			orderSpecial.setFood(drinks.getDrinks());
+			orderSpecial.setSmall_pic(drinks.getSmall_pic());
+			orderSpecial.setPrice(drinks.getPrice());
+			orderSpecial.setCount(1);
+			orderSpecial.setType(2);
+			orderSpecial.setState(0);
+			fooddao.orderFood(orderSpecial);
+			resultString="预定成功！";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			resultString="预定失败！";
+		}
+		return "ajaxresult";
 	}
 
 

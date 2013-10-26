@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="order">
+
+	<typeAlias alias="OrderSpecial" type="com.bean.OrderSpecial" />
+	<select id="findMyOrder" parameterClass="String" resultClass="OrderSpecial">
+		select * from order_special where tempcus=#tempcus#
+	</select>
+	<update id="overBook" parameterClass="OrderSpecial">
+		update order_special set state=1,count=$count$,update_date=current_timestamp where foodid=$foodid$ and type=$type$ and tempcus=#tempcus#
+	</update>
+
+</sqlMap>
+

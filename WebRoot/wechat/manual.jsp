@@ -31,7 +31,7 @@ body{ font-size:16px; font-family:"微软雅黑"; font-weight:bold; letter-spaci
 <body>
 <div class="main">
 <div class="top">
-<div class="top_back"><img src="images/back.png" width="49" height="21" onclick="location.href=document.referrer"/></div>
+<div class="top_back"><img src="images/back.png" width="49" height="21" onclick="history.go(-1)"/></div>
 <div class="top_title">饭店名称</div>
 </div>
 <div class="bank"></div>

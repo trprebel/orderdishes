@@ -149,7 +149,7 @@ body {
 	<div class="main">
 		<div class="top">
 			<div class="top_back">
-				<img src="images/back.png" width="49" height="21" onclick="location.href=document.referrer"/>
+				<img src="images/back.png" width="49" height="21" onclick="history.go(-1)"/>
 			</div>
 			<div class="top_title">饭店名称</div>
 		</div>
@@ -157,7 +157,7 @@ body {
 		<div class="operating">
 			<div class="top_opreating"></div>
 			<div class="welcome_operating">XXX饭店/我的预定</div>
-
+			
 			<div class="list_operating2">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
@@ -170,18 +170,27 @@ body {
 					</tr>
 				</table>
 			</div>
+			
 			<div class="bottom_opreating"></div>
 		</div>
 		<div class="operating">
 			<div class="top_opreating"></div>
+			<c:forEach var="food" items="${myorders}">
 			<div class="list_operating0">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="75" align="left"><img src="images/img.png"
+						<td width="75" align="left"><img src="<%=basePath %>${food.small_pic}"
 							width="67" height="48" />
 						</td>
 						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span>
+								${food.food }<span>${food.price}元&nbsp;
+								<c:choose>
+								<c:when test="${food.count>10}">充足
+								</c:when>
+								<c:otherwise>${food.count }
+								</c:otherwise>
+								</c:choose>
+								</span>
 							</div>
 						</td>
 						<td width="25"><img src="images/left_arrow.png" width="11"
@@ -190,54 +199,7 @@ body {
 					</tr>
 				</table>
 			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="75" align="left"><img src="images/img.png"
-							width="67" height="48" />
-						</td>
-						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span>
-							</div>
-						</td>
-						<td width="25"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="75" align="left"><img src="images/img.png"
-							width="67" height="48" />
-						</td>
-						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span>
-							</div>
-						</td>
-						<td width="25"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="75" align="left"><img src="images/img.png"
-							width="67" height="48" />
-						</td>
-						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span>
-							</div>
-						</td>
-						<td width="25"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
+			</c:forEach>
 			<div class="bottom_opreating"></div>
 		</div>
 	</div>

@@ -117,7 +117,7 @@ body {
 	<div class="main">
 		<div class="top">
 			<div class="top_back">
-				<img src="images/back.png" width="49" height="21" onclick="location.href=document.referrer"/>
+				<img src="images/back.png" width="49" height="21" onclick="history.go(-1)"/>
 			</div>
 			<div class="top_title">饭店名称</div>
 		</div>
@@ -140,7 +140,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='drinks.jsp'">
+					<tr onclick="location.href='werequestDRINKS.action?resultPage=wedrinks'">
 						<td width="57" align="center"><img src="images/icon2.png"
 							width="25" height="25" />
 						</td>
@@ -153,7 +153,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='myorder.jsp'">
+					<tr onclick="location.href='requestmyORDER.action?resultPage=myorder'">
 						<td width="57" align="center"><img src="images/icon3.png"
 							width="18" height="22" />
 						</td>
@@ -179,7 +179,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='food.jsp'">
+					<tr onclick="location.href='werequestFOOD.action?resultPage=wefood'">
 						<td width="57" align="center"><img src="images/icon5.png"
 							width="21" height="19" />
 						</td>
@@ -197,7 +197,7 @@ body {
 
 			<div class="list_operating0">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='pay.jsp'">
+					<tr onclick="location.href='requestmyORDER.action?resultPage=pay'">
 						<td width="57" align="center"><img src="images/icon6.png"
 							width="19" height="24" />
 						</td>

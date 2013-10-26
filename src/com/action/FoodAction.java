@@ -15,6 +15,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.bean.Food;
 import com.bean.Message;
+import com.bean.OrderSpecial;
 import com.bean.User;
 import com.dao.impl.FoodDao;
 import com.dao.impl.MsgDao;
@@ -40,12 +41,14 @@ public class FoodAction extends ActionSupport{
 	private String descript;
 	private String small_pic;
 	private String big_pic;
+	private String resultString;
+	private String resultPage;
 	private File picture;   //保存上传的文件
 	private String pictureContentType;	 //保存上传的文件类型
 	private String pictureFileName;   //保存上传的文件名
 	//private String uploadPath;
 
-	private FoodDao fooddao;
+	private FoodDao fooddao=new FoodDao();
 	private MsgDao msgDao=new MsgDao();
 	public Paginator paginator=new Paginator(9);
 	
@@ -128,6 +131,18 @@ public class FoodAction extends ActionSupport{
 	public void setPictureFileName(String pictureFileName) {
 		this.pictureFileName = pictureFileName;
 	}
+	public String getResultString() {
+		return resultString;
+	}
+	public void setResultString(String resultString) {
+		this.resultString = resultString;
+	}
+	public String getResultPage() {
+		return resultPage;
+	}
+	public void setResultPage(String resultPage) {
+		this.resultPage = resultPage;
+	}
 	/**请求菜谱列表
 	 * @return String
 	 */
@@ -142,6 +157,7 @@ public class FoodAction extends ActionSupport{
 			int count=fooddao.findFoodCount();
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
+			
 			//System.out.println(paginator.getOffset());
 			program.setStart(paginator.getOffset());
 			program.setLenth(paginator.getPageSize());
@@ -421,6 +437,77 @@ public class FoodAction extends ActionSupport{
 			e.printStackTrace();
 			return "error";
 		}
+	}
+	/**微信页面请求菜谱列表
+	 * @return
+	 */
+	public String werequest()
+	{
+		try {
+			int count;
+			List<Food> foodlist;
+			fooddao=new FoodDao();
+			paginator.setPageSize(5);
+			program.setStart(paginator.getOffset());
+			program.setLenth(paginator.getPageSize());
+			
+			if (resultPage.equals("wefood")) {
+				count=fooddao.findFoodCount();
+				foodlist=fooddao.findFoodList(program);
+			}
+			else if(resultPage.equals("wefeature"))
+			{
+				
+				count=fooddao.findFeatureCount();
+				foodlist=fooddao.findFeatureList(program);
+			}else if(resultPage.equals("wespecial"))
+			{
+				paginator.setPageSize(3);
+				program.setStart(paginator.getOffset());
+				program.setLenth(paginator.getPageSize());
+				count=fooddao.findSpecialPriceCount();
+				foodlist=fooddao.findSpecialPriceList(program);
+			}
+			else return "error";
+			if(count==0){
+				paginator.setData(0, null);
+				return resultPage;
+			}
+						
+			paginator.setData(count, foodlist);
+			return resultPage;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	/**预定
+	 * @return
+	 */
+	public String order()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
+		try {
+			Food food=fooddao.findFoodById(Integer.parseInt(foodid));
+			OrderSpecial orderSpecial=new OrderSpecial();
+			orderSpecial.setTempcus(session.getId());
+			orderSpecial.setFoodid(food.getFoodid());
+			orderSpecial.setFood(food.getFood());
+			orderSpecial.setSmall_pic(food.getSmall_pic());
+			orderSpecial.setPrice(food.getPrice());
+			orderSpecial.setCount(1);
+			orderSpecial.setType(0);
+			orderSpecial.setState(0);
+			fooddao.orderFood(orderSpecial);
+			resultString="预定成功！";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			resultString="预定失败！";
+		}
+		return "ajaxresult";
 	}
 
 

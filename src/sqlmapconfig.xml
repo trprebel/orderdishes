@@ -22,4 +22,5 @@ PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN" "http://www.ibatis.com/dtd/sq
 	<sqlMap resource="com/ibatis/food.xml"/>
 	<sqlMap resource="com/ibatis/information.xml"/>
 	<sqlMap resource="com/ibatis/message.xml"/>
+	<sqlMap resource="com/ibatis/order.xml"/>
 </sqlMapConfig>

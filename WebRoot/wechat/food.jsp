@@ -19,7 +19,6 @@ body {
 	letter-spacing: 1px;
 	margin: 0px;
 }
-
 .main {
 	width: 320px;
 	height: 507px;
@@ -27,7 +26,6 @@ body {
 	display: block;
 	background: url(images/mc_top.png) top repeat-x #e0e1dc
 }
-
 .top {
 	height: 42px;
 }
@@ -118,13 +116,44 @@ body {
 	height: 8px;
 }
 </style>
+<script type="text/javascript" src="<%=basePath%>js/jquery-1.6.js"></script>
+<script type="text/javascript">
+
+function order(id)
+{
+	//alert(id);
+	var postdata = {
+  			foodid :id
+    	};
+  	
+		$.ajax({
+     		type:'post',
+     		data:postdata,
+     		url:'orderFOOD.action',
+     		dataType:'json',
+     		success:function(data){
+     			//var obj = $.parseJSON(data);        
+				alert(data);
+				
+     		},
+    		error:function(){
+       			alert("预定失败！");
+    		}
+
+    	});
+}
+
+</script>
 </head>
 
+
+
 <body>
+	<form action="werequestFOOD.action?resultPage=wefood" name="werequestform" id="werequestform">
 	<div class="main">
 		<div class="top">
 			<div class="top_back">
-				<img src="images/back.png" width="49" height="21" onclick="location.href=document.referrer"/>
+				<img src="images/back.png" width="49" height="21" onclick="history.go(-1)"/>
 			</div>
 			<div class="top_title">饭店名称</div>
 		</div>
@@ -132,15 +161,24 @@ body {
 		<div class="operating">
 			<div class="top_opreating"></div>
 			<div class="welcome_operating">XXX饭店/主食:</div>
+			
+			<c:forEach var="food" items="${paginator.items}">
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="75" align="left"><img src="images/img.png"
+						<td width="75" align="left"><img src="<%=basePath %>${food.small_pic}"
 							width="67" height="48" />
 						</td>
 						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span><br /> <img src="images/button.png"
-									width="47" height="20" />
+								${food.food }<span>${food.price}元&nbsp;
+								<c:choose>
+								<c:when test="${food.num>10}">充足
+								</c:when>
+								<c:otherwise>${food.num }
+								</c:otherwise>
+								</c:choose>
+								</span><br /> <img src="images/button.png"
+									width="47" height="20" onclick="order('${food.foodid}')"/>
 							</div>
 						</td>
 						<td width="25"><img src="images/left_arrow.png" width="11"
@@ -149,76 +187,11 @@ body {
 					</tr>
 				</table>
 			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="75" align="left"><img src="images/img.png"
-							width="67" height="48" />
-						</td>
-						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span><br /> <img src="images/button.png"
-									width="47" height="20" />
-							</div>
-						</td>
-						<td width="25"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="75" align="left"><img src="images/img.png"
-							width="67" height="48" />
-						</td>
-						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span><br /> <img src="images/button.png"
-									width="47" height="20" />
-							</div>
-						</td>
-						<td width="25"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="75" align="left"><img src="images/img.png"
-							width="67" height="48" />
-						</td>
-						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span><br /> <img src="images/button.png"
-									width="47" height="20" />
-							</div>
-						</td>
-						<td width="25"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="75" align="left"><img src="images/img.png"
-							width="67" height="48" />
-						</td>
-						<td width="167" align="left"><div>
-								樱桃甜品<span>38元 充足</span><br /> <img src="images/button.png"
-									width="47" height="20" />
-							</div>
-						</td>
-						<td width="25"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
+			</c:forEach>
+			
 			<div class="bottom_opreating"></div>
 		</div>
 	</div>
+	</form>
 </body>
 </html>

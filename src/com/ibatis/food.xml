@@ -36,5 +36,8 @@
 	<select id="findFeatureList" parameterClass="com.util.Program" resultClass="Food">
 		select * from food where isfeature=1 limit $start$,$lenth$
 	</select>
+	<insert id="orderFood" parameterClass="com.bean.OrderSpecial">
+		insert into order_special (tempcus,foodid,food,price,small_pic,count,state,type,create_date) values(#tempcus#,$foodid$,#food#,$price$,#small_pic#,$count$,$state$,$type$,current_timestamp)
+	</insert>
 
 </sqlMap>
