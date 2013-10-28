@@ -21,14 +21,14 @@
 <meta name="format-detection" content="telephone=no" />
 <style>
 body {
-	min-font-size: 16px;
+	font-size: 16px;
 	font-family: "微软雅黑";
 	font-weight: bold;
 	letter-spacing: 1px;
 	margin: 0px;
 }
 .main {
-	width: 320px;
+	min-width: 320px;
 	height: 507px;
 	margin: 0 auto;
 	display: block;
