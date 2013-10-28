@@ -9,6 +9,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="expires" content="0">   
+<meta content="text/html; charset=gbk2312" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no" />
 <title>001</title>
 <style>
 body {
@@ -20,7 +28,7 @@ body {
 }
 
 .main {
-	width: 320px;
+	min-width: 320px;
 	height: 507px;
 	margin: 0 auto;
 	display: block;
@@ -140,6 +148,19 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
+					<tr onclick="location.href='werequestFOOD.action?resultPage=wefood'">
+						<td width="57" align="center"><img src="images/icon5.png"
+							width="21" height="19" />
+						</td>
+						<td width="192" align="left">主食</td>
+						<td width="20"><img src="images/left_arrow.png" width="11"
+							height="17" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="list_operating">
+				<table cellpadding="0" cellspacing="0">
 					<tr onclick="location.href='werequestDRINKS.action?resultPage=wedrinks'">
 						<td width="57" align="center"><img src="images/icon2.png"
 							width="25" height="25" />
@@ -164,32 +185,8 @@ body {
 					</tr>
 				</table>
 			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='manual.jsp'">
-						<td width="57" align="center"><img src="images/icon4.png"
-							width="22" height="23" />
-						</td>
-						<td width="192" align="left">人工服务</td>
-						<td width="20"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestFOOD.action?resultPage=wefood'">
-						<td width="57" align="center"><img src="images/icon5.png"
-							width="21" height="19" />
-						</td>
-						<td width="192" align="left">主食</td>
-						<td width="20"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
+			
+			
 			<div class="bottom_opreating"></div>
 		</div>
 		<div class="operating">
@@ -202,6 +199,19 @@ body {
 							width="19" height="24" />
 						</td>
 						<td width="192" align="left">买单速算</td>
+						<td width="20"><img src="images/left_arrow.png" width="11"
+							height="17" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="list_operating">
+				<table cellpadding="0" cellspacing="0">
+					<tr onclick="location.href='../chatMESSAGE.action?touser=admin'">
+						<td width="57" align="center"><img src="images/icon4.png"
+							width="22" height="23" />
+						</td>
+						<td width="192" align="left">人工服务</td>
 						<td width="20"><img src="images/left_arrow.png" width="11"
 							height="17" />
 						</td>

@@ -154,8 +154,10 @@ public class MessageAction extends ActionSupport{
 			}
 			PrintWriter out = new PrintWriter(response.getOutputStream());
 			sendHTML.setDefault(request, response);
-			
-			sendHTML.showDefault(out);
+			String basePath = request.getScheme() + "://"
+					+ request.getServerName() + ":" + request.getServerPort()
+					+ request.getContextPath() + "/";
+			sendHTML.showDefault(out,basePath);
 //			UserSpeakContent userSpeakContent = new UserSpeakContent();
 //			userSpeakContent.setSpeakTime(DateUtil.getNowTime());
 //			userSpeakContent.setSpeakUser("***系统信息***");

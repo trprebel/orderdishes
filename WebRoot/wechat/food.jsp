@@ -9,7 +9,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="expires" content="0">   
+<meta content="text/html; charset=gbk2312" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no" />
 <title>001</title>
 <style>
 body {
@@ -20,8 +27,8 @@ body {
 	margin: 0px;
 }
 .main {
-	width: 320px;
-	height: 507px;
+	min-width: 320px;
+	height:100%;
 	margin: 0 auto;
 	display: block;
 	background: url(images/mc_top.png) top repeat-x #e0e1dc

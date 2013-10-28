@@ -2,10 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="expires" content="0">   
+<meta content="text/html; charset=gbk2312" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no" />
 <title>001</title>
 <style>
 body{ font-size:16px; font-family:"微软雅黑"; font-weight:bold; letter-spacing:1px; margin:0px;}
-.main{ width:320px; height:507px; margin:0 auto; display:block; background:url(images/mc_top.png) top repeat-x #e0e1dc}
+.main{ min-width:320px; height:507px; margin:0 auto; display:block; background:url(images/mc_top.png) top repeat-x #e0e1dc}
 .top{ height:42px;}
 .top_title{ height:42px; width:220px; float:left; line-height:42px; color:#ffffff; text-align:center}
 .top_back{ width:49px; height:21px; margin-top:13px; margin-left:8px; float:left;}

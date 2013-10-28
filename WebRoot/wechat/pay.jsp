@@ -10,6 +10,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="expires" content="0">   
+<meta content="text/html; charset=gbk2312" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no" />
 <title>001</title>
 <style>
 body {
@@ -21,7 +29,7 @@ body {
 }
 
 .main {
-	width: 320px;
+	min-width: 320px;
 	height: 507px;
 	margin: 0 auto;
 	display: block;
@@ -169,14 +177,17 @@ body {
 	float: right;
 	margin-top: 5px;
 }
+.carte_input{ height:30px; text-align:right; line-height:30px; border:0px; color:#555555; font-weight:bold; font-size:16px;}
 </style>
 <script type="text/javascript">
 function addition(i)
 {
 	var count=document.getElementById("count"+i);
+	var count1=document.getElementById("count1"+i);
 	var total=document.getElementById("total"+i);
 	var price=document.getElementById("price"+i).value;
 	count.value=parseInt(count.value)+1;
+	count1.value=count.value;
 	total.value=parseInt(total.value)+parseInt(price);
 	totalpay();
 	//alert(total);
@@ -234,8 +245,8 @@ function totalpay()
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="154" align="left">菜名:${food.food }</td>
-						<td width="38" align="right"><div>${food.count }份</div>
+						<td width="140" align="left">菜名:${food.food }</td>
+						<td width="52" align="right"><div><input id="count1${i.index }" name="count1" type="text" class="carte_input" value="${food.count }" style="width:20px;" readonly="readonly" />份</div>
 						</td>
 						<td width="80"><img src="images/jian.png" width="33"
 							height="25" onclick="subtraction('${i.index}')"/><img src="images/jia.png" width="33" height="25" onclick="addition('${i.index}')"/>
@@ -265,11 +276,9 @@ function totalpay()
 						<!-- <input type="text" id="food${i.index }" name="food" value="${food.food }"/> -->
 						<input type="hidden" id="foodid${i.index }" name="foodid" value="${food.foodid }"/>
 						</td>
-						<td width="102" align="right"><div>${food.count }份&nbsp;</div>
-						<input type="text" id="count${i.index }" name="count" value="${food.count }"/>
+						<td width="102" align="right"><div><input id="count${i.index }" name="count" type="text" class="carte_input" value="${food.count }" style="width:35px;" readonly="readonly" />份&nbsp;</div>
 						</td>
-						<td width="117" align="center">${food.price }元
-						<input type="text" id="total${i.index }" name="total" value="${food.price }"/>
+						<td width="117" align="center"><input id="total${i.index }" name="total" type="text" class="carte_input" value="${food.price }" style="width:68px;" readonly="readonly" />元
 						<input type="hidden" id="price${i.index }" name="price" value="${food.price }"/>
 						<input type="hidden" id="type${i.index }" name="type" value="${food.type }"/>
 						</td>
@@ -280,8 +289,8 @@ function totalpay()
 			<div class="bottom_opreating"></div>
 		</div>
 		<div class="list_operating4">
-			总计消费:XXX元<img src="images/submit.png" width="96" height="32" onclick="submit()"/>
-			<input type="text" name="totalpay" id="totalpay" value=""/>
+			总计消费:<input name="totalpay" id="totalpay" type="text" class="carte_input" value="" style="width:68px; background-color:#e0e1dc" readonly="readonly" />元<img src="images/submit.png" width="96" height="32" onclick="submit()"/>
+			
 		</div>
 	</form>
 	</div>

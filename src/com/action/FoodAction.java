@@ -447,7 +447,7 @@ public class FoodAction extends ActionSupport{
 			int count;
 			List<Food> foodlist;
 			fooddao=new FoodDao();
-			paginator.setPageSize(5);
+			paginator.setPageSize(100);
 			program.setStart(paginator.getOffset());
 			program.setLenth(paginator.getPageSize());
 			
@@ -462,9 +462,9 @@ public class FoodAction extends ActionSupport{
 				foodlist=fooddao.findFeatureList(program);
 			}else if(resultPage.equals("wespecial"))
 			{
-				paginator.setPageSize(3);
-				program.setStart(paginator.getOffset());
-				program.setLenth(paginator.getPageSize());
+				//paginator.setPageSize(3);
+				//program.setStart(paginator.getOffset());
+				//program.setLenth(paginator.getPageSize());
 				count=fooddao.findSpecialPriceCount();
 				foodlist=fooddao.findSpecialPriceList(program);
 			}

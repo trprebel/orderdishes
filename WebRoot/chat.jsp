@@ -24,7 +24,7 @@ body {
 	height: 631px;
 	margin: 0px auto;
 	display: block;
-	background: url(images/bg_hand_xinxi_replay.png) no-repeat;
+	background: url(images/bg_hand_xinxi_replay2.png) no-repeat;
 	position: relative;
 	top: -15px;
 }
@@ -162,7 +162,7 @@ body {
 .text_area {
 	border: 0px;
 	float: left;
-	width: 467px;
+	width: 567px;
 	height: 65px;
 	*position: relative;
 	*top: -12px;
@@ -246,15 +246,15 @@ body {
 }
 
 .replay_text {
-	width: 718px;
+	width: 940px;
 	margin-left: 10px;
 	height: 240px;
-	margin-top: 24px;
-	*margin-top: 28px;
+	margin-top: 4px;
+	*margin-top: 8px;
 }
 
 .replay_close {
-	margin-left: 702px;
+	margin-left: 912px;
 	position: relative;
 	top: -1px;
 	margin-bottom: 2px;
@@ -277,7 +277,7 @@ cursor:pointer;
 	font-size: 18px;
 	color: #515151;
 	font-weight: bold;
-	background: url(images/button.png) center center no-repeat
+	background: url(<%=basePath%>images/button.png) center center no-repeat
 }
 
 .content_replay {
@@ -292,7 +292,7 @@ cursor:pointer;
 }
 </style>
 </head>
-<script type="text/javascript" src="js/jquery-1.6.js"></script>
+<script type="text/javascript" src="<%= basePath%>js/jquery-1.6.js"></script>
 <script type="text/javascript">
 function speak(){
 	
@@ -304,7 +304,7 @@ function speak(){
 	$.ajax({
      	type:'post',
      	data:postdata,
-     	url:'speakMESSAGE.action',
+     	url:'<%=basePath%>speakMESSAGE.action',
     	error:function(){
        		alert("说话失败！");
     	}
@@ -376,8 +376,7 @@ function quickreplay(replay){
 	<tr>
 		<td colspan="2" rowspan="4" width="241" height="66">			</td>
 		<td colspan="3" rowspan="2" width="208" height="42" align="center"
-					class="list" onClick="location.href='requestFOOD.action'"><img src="images/icon1.png" width="18"
-					height="19">菜谱管理</td>
+					class="list" onClick="location.href='requestFOOD.action'">&nbsp;</td>
 		<td width="1" height="10">			</td>
 	</tr>
 	<tr>
@@ -392,19 +391,18 @@ function quickreplay(replay){
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="2" width="208" height="42" align="center"
-					class="list" onClick="location.href='requestDRINKS.action'"><img src="images/icon2.png" width="21"
-					height="20" >酒水管理</td>
+					class="list" onClick="location.href='requestDRINKS.action'">&nbsp;</td>
 		<td width="1" height="22">			</td>
 	</tr>
 	<tr>
 		<td rowspan="14" width="81" height="466">		</td>
 		<td colspan="8" rowspan="14" width="712" height="466" style="vertical-align:top" align="left"><div class="qiu"
-						style="  position:absolute; top:30px; width:712px; left:20px;  vertical-align:top;  ">
+						style="  position:absolute; top:30px; width:940px; left:20px;  vertical-align:top;  ">
 
 						<div class="top_xinxi">
 
 							<iframe name="ContentListframe"
-								style="width:728px; height:330px; background-color:transparent; filter:chroma(color=#ffffff);  vertical-align:top;  "
+								style="width:940px; height:350px; background-color:transparent; filter:chroma(color=#ffffff);vertical-align:top;  "
 								src="messageMESSAGE.action?touser=${touser}" marginheight="0" scrolling="no"
 								frameborder=0></iframe>
 						
@@ -417,17 +415,17 @@ function quickreplay(replay){
 							</div>
 
 							<div
-								style="margin-left:35px; overflow-y:auto; width:683px; overflow-x:hidden; height:132px;">
-								<table width="550" border="0" cellpadding="0" cellspacing="0"
+								style="margin-left:35px; overflow-y:auto; width:883px; overflow-x:hidden; height:132px;">
+								<table width="750" border="0" cellpadding="0" cellspacing="0"
 									style=" margin-left:9px;">
 									<%
 									int i=1;
 									for(QuickReplay quickReplay:quickReplays){ %>
 									<tr>
-										<td colspan="2" width="453" height="33" class="content_replay"><%=quickReplay.getReplay() %></td>
+										<td colspan="2" width="653" height="33" class="content_replay"><%=quickReplay.getReplay() %></td>
 										<td colspan="3" width="122" height="33" class="icon_replay" onClick="quickreplay('<%=quickReplay.getReplay() %>')">快捷回复<%=i %></td>
 									</tr><tr>
-										<td colspan="5" width="575" height="11"></td>
+										<td colspan="5" width="775" height="11"></td>
 									</tr>
 									<%i++;} %>
 								</table>
@@ -454,8 +452,7 @@ function quickreplay(replay){
 			<img src="images/分隔符.gif" width="1" height="2" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='message_release.jsp'"><img
-					src="images/icon3.png" width="20" height="14">信息发布</td>
+		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='message_release.jsp'">&nbsp;</td>
 		<td width="1" height="42">			</td>
 	</tr>
 	<tr>
@@ -463,8 +460,7 @@ function quickreplay(replay){
 		<td width="1" height="2">			</td>
 	</tr>
 	<tr>
-		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='requestCUSTOMER.action'"><img
-					src="images/icon4.png" width="20" height="20">客户管理</td>
+		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='requestCUSTOMER.action'">&nbsp;</td>
 		<td width="1" height="42">			</td>
 	</tr>
 	<tr>
@@ -472,8 +468,7 @@ function quickreplay(replay){
 		<td width="1" height="2">			</td>
 	</tr>
 	<tr>
-		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='history_info.jsp'"><img
-					src="images/icon5.png" width="20" height="20">历史信息</td>
+		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='history_info.jsp'">&nbsp;</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="42" alt=""></td>
 	</tr>
@@ -506,8 +501,8 @@ function quickreplay(replay){
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;" src="images/home.png" width="73" height="22">			</td>
-		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;" src="images/back.png" width="72" height="20">		</td>
+		<td rowspan="2" width="208" height="42" align="center">&nbsp;</td>
+		<td rowspan="2" width="103" height="42" align="center">&nbsp;</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
 	</tr>

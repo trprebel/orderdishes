@@ -11,6 +11,14 @@
 <head>
 
 <title>001</title>
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="expires" content="0">   
+<meta content="text/html; charset=gbk2312" http-equiv="Content-Type" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="format-detection" content="telephone=no" />
 <style>
 body {
 	font-size: 16px;
@@ -20,7 +28,7 @@ body {
 	margin: 0px;
 }
 .main {
-	width: 320px;
+	min-width: 320px;
 	height: 507px;
 	margin: 0 auto;
 	display: block;

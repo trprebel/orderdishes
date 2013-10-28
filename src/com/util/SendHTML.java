@@ -159,7 +159,7 @@ public class SendHTML {
 	 * 
 	 * @param out
 	 */
-	public void showDefault(PrintWriter out) {
+	public void showDefault(PrintWriter out,String basePath) {
 		String[] strOut = new String[] {
 				"<html>",
 				"<head>",
@@ -171,7 +171,7 @@ public class SendHTML {
 				//"<script language=\"Javascript\" src=\"htmlbox.syntax.js\"  type=\"text/javascript\"></script>",
 				//"<script language=\"Javascript\" src=\"xhtml.js\"  type=\"text/javascript\"></script>",
 				//"<script language=\"Javascript\" src=\"htmlbox.min.js\"  type=\"text/javascript\"></script>",
-				"<link href=\"css/iframe.css\" rel=\"stylesheet\" type=\"text/css\" />",
+				"<link href=\""+basePath+"css/iframe.css\" rel=\"stylesheet\" type=\"text/css\" />",
 				"<!--",
 				"body {overflow :auto; font-size: 9pt; background-color: #e0e0e0;}",
 				"-->", "</style>", "</head>",
