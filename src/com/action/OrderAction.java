@@ -80,6 +80,7 @@ public class OrderAction extends ActionSupport{
 				OrderSpecial orderSpecial=new OrderSpecial();
 				orderSpecial.setFoodid(Integer.parseInt(foodid.get(i)));
 				orderSpecial.setCount(Integer.parseInt(count.get(i)));
+				//System.out.println(Integer.parseInt(count.get(i)));
 				orderSpecial.setType(Integer.parseInt(type.get(i)));
 				orderSpecial.setTempcus(session.getId());
 				orderDao.overBook(orderSpecial);

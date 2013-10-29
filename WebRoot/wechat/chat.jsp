@@ -254,7 +254,7 @@ function speak(){
 				<div>聊天记录</div>
 			</div>
 			<div style="vertical-align:top">
-				<iframe
+				<iframe id="frame_content" 
 					style=" width:286px; min-height:300px; background:transparent;  vertical-align:top;"
 					src="messageMESSAGE.action?touser=admin&totype=wechat" marginheight="0" scrolling="yes" frameborder=0></iframe>
 			</div>
@@ -264,5 +264,22 @@ function speak(){
 		<div class="bank"></div>
 		<div class="bank"></div>
 	</div>
+<script type="text/javascript">
+
+function reinitIframe(){
+
+var iframe = document.getElementById("frame_content");
+
+try{
+
+iframe.height = iframe.contentWindow.document.documentElement.scrollHeight;
+
+}catch (ex){}
+
+}
+
+window.setInterval("reinitIframe()", 200);
+
+</script>
 </body>
 </html>
