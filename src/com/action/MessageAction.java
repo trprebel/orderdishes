@@ -43,6 +43,7 @@ public class MessageAction extends ActionSupport{
 	private String content;
 	//private String fromuser;
 	private String touser;
+	private String totype;
 	private MsgDao msgdao=new MsgDao();
 	
 //	public String getUsername() {
@@ -68,6 +69,12 @@ public class MessageAction extends ActionSupport{
 	}
 	public void setTouser(String touser) {
 		this.touser = touser;
+	}
+	public String getTotype() {
+		return totype;
+	}
+	public void setTotype(String totype) {
+		this.totype = totype;
 	}
 	/**
 	 * 初始化类
@@ -157,7 +164,16 @@ public class MessageAction extends ActionSupport{
 			String basePath = request.getScheme() + "://"
 					+ request.getServerName() + ":" + request.getServerPort()
 					+ request.getContextPath() + "/";
-			sendHTML.showDefault(out,basePath);
+			if (totype.equals("web")) {
+				sendHTML.showDefault(out,basePath);
+			}
+			else if (totype.equals("wechat")) {
+				sendHTML.showWeDefault(out, basePath);
+			}
+			else {
+				return;
+			}
+			
 //			UserSpeakContent userSpeakContent = new UserSpeakContent();
 //			userSpeakContent.setSpeakTime(DateUtil.getNowTime());
 //			userSpeakContent.setSpeakUser("***系统信息***");
@@ -377,20 +393,25 @@ public class MessageAction extends ActionSupport{
 										.equals(userName)
 										&& userSpeakContent.getToSpeakUser()
 										.equals(userName)) {// 你对自己说的
-									if (userSpeakContent.isPrivate()) {
-										sendMess.showSelfToSelfContentPrivate(
-												out, userSpeakContent); // 自己对自己说悄悄话
-									} else {
-										sendMess.showSelfToSelfContent(out,
-												userSpeakContent); // 自己对自己说
-									}
+//									if (userSpeakContent.isPrivate()) {
+//										sendMess.showSelfToSelfContentPrivate(
+//												out, userSpeakContent); // 自己对自己说悄悄话
+//									} else {
+//										sendMess.showSelfToSelfContent(out,
+//												userSpeakContent); // 自己对自己说
+//									}
 								} else if (userSpeakContent.getSpeakUser()
 										.equals(userName)
 										&& !userSpeakContent.getToSpeakUser()
 										.equals(userName)&&(userSpeakContent.getToSpeakUser().equals(touser))) { // 你对别的说的
 									if (userSpeakContent.isPrivate()) {
-										sendMess.showSelfToOtherContentPrivate(
-												out, userSpeakContent); // 自己对别人说的悄悄话
+										if (totype.equals("web")) {
+											sendMess.showSelfToOtherContentPrivate(
+													out, userSpeakContent); // 对商人说的话
+										}else if(totype.equals("wechat")){
+											sendMess.showWeSelfToOtherContentPrivate(out, userSpeakContent);
+										}
+										
 									} else {
 										sendMess.showSelfToOtherContent(out,
 												userSpeakContent); // 自己对别人说的话
@@ -412,8 +433,14 @@ public class MessageAction extends ActionSupport{
 										&& userSpeakContent.getToSpeakUser()
 										.equals(userName)&&(userSpeakContent.getSpeakUser().equals(touser))) { // 别人对你说的
 									if (userSpeakContent.isPrivate()) {
-										sendMess.showOtherToSelfContentPrivate(
-												out, userSpeakContent); // 别人对自己说的悄悄话
+										if (totype.equals("web")) {
+											sendMess.showOtherToSelfContentPrivate(
+													out, userSpeakContent); // 别人对自己说的悄悄话
+										}
+										else if (totype.equals("wechat")) {
+											sendMess.showWeOtherToSelfContentPrivate(out, userSpeakContent);
+										}
+										
 									} else {
 										sendMess.showOtherToSelfContent(out,
 												userSpeakContent); // 别人对自己说的话

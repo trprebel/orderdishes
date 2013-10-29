@@ -1,0 +1,29 @@
+body{ font-size:16px; font-family:"Î¢ÈíÑÅºÚ"; font-weight:bold; letter-spacing:1px; margin:0px;}
+.main{ width:320px;  margin:0 auto; display:block; background:url(images/mc_top.png) top repeat-x #e0e1dc}
+.top{ height:42px;}
+.top_title{ height:42px; width:220px; float:left; line-height:42px; color:#ffffff; text-align:center}
+.top_back{ width:49px; height:21px; margin-top:13px; margin-left:8px; float:left;}
+.operating{ width:286px;  clear:both; height:auto; margin:0 auto; display:block; margin-top:9px;}
+.top_opreating{ width:286px; height:8px; background:url(images/top_bg.png) no-repeat; }
+.bottom_opreating{width:286px; height:8px; background:url(images/bottom_bg.png) no-repeat;}
+.welcome_operating{ color:#555555;background:#FFFFFF; line-height:56px; height:56px; padding-left:15px; width:267px;  border-left:2px solid #c7c7c4; border-right:2px solid #c7c7c4}
+.list_operating{ min-height:36px;background:#FFFFFF; color:#555555; line-height:36px; border-top:2px solid #c7c7c4; border-left:2px solid #c7c7c4; border-right:2px solid #c7c7c4}
+.list_operating img{ margin-left:4px;}
+.list_operating0{ height:36px;background:#FFFFFF; color:#555555; line-height:36px; border-left:2px solid #c7c7c4; border-right:2px solid #c7c7c4}
+.list_operating0 div{ margin-left:11px;}
+.list_operating div{ margin-left:5px; margin-right:5px;}
+.list_operating0 img{ margin-left:7px;}
+
+.list_operating2{ height:40px;background:#FFFFFF; color:#555555; line-height:40px; border-left:2px solid #c7c7c4; border-right:2px solid #c7c7c4}
+.list_operating2 table{ margin-left:8px;}
+.list_operating2 img{ margin-left:7px;}
+
+.list_operating3{ height:44px;background:#FFFFFF; color:#555555; line-height:44px; border-top:2px solid #c7c7c4; border-left:2px solid #c7c7c4; border-right:2px solid #c7c7c4}
+.list_operating3 table{ margin-left:8px;}
+.list_operating3 img{ margin-left:7px;}
+.list_operating table{ margin-left:8px;}
+.bank{ height:8px;}
+
+.list_operating4{ height:44px; width:286px; margin:0 auto; display:block; color:#555555; line-height:44px; }
+.list_operating4 img{ vertical-align:middle; float:right; margin-top:5px;}
+.carte_input{ height:30px; text-align:right; line-height:30px; border:0px; color:#555555; font-weight:bold; font-size:16px;}

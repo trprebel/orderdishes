@@ -207,7 +207,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='../chatMESSAGE.action?touser=admin'">
+					<tr onclick="location.href='chat.jsp?touser=admin'">
 						<td width="57" align="center"><img src="images/icon4.png"
 							width="22" height="23" />
 						</td>

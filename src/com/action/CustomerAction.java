@@ -33,6 +33,7 @@ public class CustomerAction extends ActionSupport{
 
 	public String request()
 	{
+		//0755-26608866
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		try

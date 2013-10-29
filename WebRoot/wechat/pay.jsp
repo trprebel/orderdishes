@@ -213,6 +213,11 @@ function totalpay()
 		totalpay.value=parseInt(totalpay.value)+parseInt(total.value);
 	}
 }
+function submit()
+{
+	var f1=document.getElementById("accountform");
+	f1.submit();
+}
 
 </script>
 </head>

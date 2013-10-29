@@ -403,7 +403,7 @@ function quickreplay(replay){
 
 							<iframe name="ContentListframe"
 								style="width:940px; height:350px; background-color:transparent; filter:chroma(color=#ffffff);vertical-align:top;  "
-								src="messageMESSAGE.action?touser=${touser}" marginheight="0" scrolling="no"
+								src="messageMESSAGE.action?touser=${touser}&totype=web" marginheight="0" scrolling="no"
 								frameborder=0></iframe>
 						
 						
