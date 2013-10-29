@@ -219,12 +219,34 @@ function speak(){
 	$.ajax({
      	type:'post',
      	data:postdata,
+     	async:true,
      	url:'<%=basePath%>speakMESSAGE.action',
     	error:function(){
        		alert("说话失败！");
     	}
 
     });
+	
+//	var xmlhttp;
+//	if (window.XMLHttpRequest)
+//  	{// code for IE7+, Firefox, Chrome, Opera, Safari
+// 		xmlhttp=new XMLHttpRequest();
+//  	}
+//	else
+//  	{// code for IE6, IE5
+//  		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+//  	}
+//	xmlhttp.onreadystatechange=function()
+//  	{
+//  		if (xmlhttp.readyState==4 && xmlhttp.status==404)
+//    	{
+//    		alert("说话失败！");
+//    	}
+//  	}
+//	var content=document.getElementById("content").value;
+//	xmlhttp.open("POST","",true);
+//	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//	xmlhttp.send("content="+content+"&touser=admin");
 	document.getElementById("content").value="";
 		
 }
