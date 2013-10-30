@@ -219,7 +219,7 @@ function speak(){
 	$.ajax({
      	type:'post',
      	data:postdata,
-     	async:true,
+     	async:false,
      	url:'<%=basePath%>speakMESSAGE.action',
     	error:function(){
        		alert("说话失败！");
@@ -279,6 +279,7 @@ function speak(){
 				<iframe id="frame_content" 
 					style=" width:286px; min-height:300px; background:transparent;  vertical-align:top;"
 					src="messageMESSAGE.action?touser=admin&totype=wechat" marginheight="0" scrolling="yes" frameborder=0></iframe>
+		
 			</div>
 
 		</div>

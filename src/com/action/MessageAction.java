@@ -203,6 +203,7 @@ public class MessageAction extends ActionSupport{
 			//System.out.println(content);
 			//System.out.println(username);
 			//System.out.println(touser);
+			content = sendHTML.filter(content);
 			UserSpeakContent userSpeakContent = new UserSpeakContent();
 			userSpeakContent.setSpeakContent(content);
 			userSpeakContent.setSpeakTime(DateUtil.getNowTime());

@@ -65,7 +65,8 @@ public class SendMess {
 					+"<div>"
 					+"<font color=\"#00adb3\">我说："+userSpeakContent.getSpeakContent()+"</font>"
 					+"</div>"
-					+"</div>");
+					+"</div>"
+					);
 
 	}
 
