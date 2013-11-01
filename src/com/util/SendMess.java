@@ -58,7 +58,7 @@ public class SendMess {
 			+"</div>");
 
 	}
-	//微信别人对自己说的话
+	//微信自己对别人说的话
 	public void showWeSelfToOtherContentPrivate(PrintWriter out,
 			UserSpeakContent userSpeakContent) {
 		out.println("<div class=\"list_operating\">"
@@ -66,7 +66,8 @@ public class SendMess {
 					+"<font color=\"#00adb3\">我说："+userSpeakContent.getSpeakContent()+"</font>"
 					+"</div>"
 					+"</div>"
-					);
+					+"</body>"
+					+"</html>");
 
 	}
 
@@ -110,7 +111,7 @@ public class SendMess {
 				+ userSpeakContent.getSpeakContent() + "</LI>");
 	}
 
-	// 显示别人对自己说的悄悄话
+	
 	//	public void showOtherToSelfContentPrivate(PrintWriter out,
 	//			UserSpeakContent userSpeakContent) {
 	//		out.println("<LI><" + DateUtil.getPreciseTime()
@@ -120,6 +121,8 @@ public class SendMess {
 	//				+ "</a></B>&nbsp;对你 悄悄地说:&nbsp;"
 	//				+ userSpeakContent.getSpeakContent() + "</LI>");
 	//	}
+	
+	// 显示别人对自己说的悄悄话
 	public void showOtherToSelfContentPrivate(PrintWriter out,
 			UserSpeakContent userSpeakContent) {
 		out.println("<div class=\"right_top_xinxi\">"
@@ -130,16 +133,19 @@ public class SendMess {
 				+"<div class=\"bottom_xinxi_replay2\">&nbsp;</div>"
 				+"</div>"
 				+"</div>"
-				+"</div>");
+				+"</div>"
+				);
 		}
-	
+	//微信别人对自己说的话
 	public void showWeOtherToSelfContentPrivate(PrintWriter out,
 			UserSpeakContent userSpeakContent) {
 		out.println("<div class=\"list_operating\">"
 					+"<div>"
 					+"<font color=\"#e76049\">他说："+userSpeakContent.getSpeakContent()+"</font>"
 					+"</div>"
-					+"</div>");
+					+"</div>"
+					+"</body>"
+					+"</html>");
 
 	}
 	

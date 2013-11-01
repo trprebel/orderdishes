@@ -157,6 +157,37 @@ public class MessageAction extends ActionSupport{
 				//System.out.println(username);
 				//System.out.println(touser);
 				
+				
+				//System.out.println(content);
+				//System.out.println(username);
+				//System.out.println(touser);
+				content ="您好！";
+				UserSpeakContent userSpeakContent = new UserSpeakContent();
+				userSpeakContent.setSpeakContent(content);
+				userSpeakContent.setSpeakTime(DateUtil.getNowTime());
+				userSpeakContent.setSpeakUser(touser);
+				userSpeakContent.setToSpeakUser(username);
+				userSpeakContent.setPrivate(true);
+				vecContentList.add(userSpeakContent);
+				content ="欢迎使用XX饭店点菜系统，我们将为您提供最便捷，最真诚的服务！";
+				UserSpeakContent userSpeakContent1 = new UserSpeakContent();
+				userSpeakContent1.setSpeakContent(content);
+				userSpeakContent1.setSpeakTime(DateUtil.getNowTime());
+				userSpeakContent1.setSpeakUser(touser);
+				userSpeakContent1.setToSpeakUser(username);
+				userSpeakContent1.setPrivate(true);
+				vecContentList.add(userSpeakContent1);
+				content ="祝您用餐愉快！";
+				UserSpeakContent userSpeakContent2 = new UserSpeakContent();
+				userSpeakContent2.setSpeakContent(content);
+				userSpeakContent2.setSpeakTime(DateUtil.getNowTime());
+				userSpeakContent2.setSpeakUser(touser);
+				userSpeakContent2.setToSpeakUser(username);
+				userSpeakContent2.setPrivate(true);
+				vecContentList.add(userSpeakContent2);
+				
+				
+				
 				msgdao.insertMessage(msg);
 			}
 			PrintWriter out = new PrintWriter(response.getOutputStream());
@@ -203,6 +234,7 @@ public class MessageAction extends ActionSupport{
 			//System.out.println(content);
 			//System.out.println(username);
 			//System.out.println(touser);
+			
 			content = sendHTML.filter(content);
 			UserSpeakContent userSpeakContent = new UserSpeakContent();
 			userSpeakContent.setSpeakContent(content);
@@ -235,84 +267,6 @@ public class MessageAction extends ActionSupport{
 		}
 	}
 
-	/* 保存发言内容 */
-	public void saveSendMessage(HttpServletRequest request) {
-		/* 保存发言内容 */
-		String content = sendHTML.filter(request.getParameter("content"));
-		String isPrivate = request.getParameter("isPrivate");
-		String name = ((SystemUserInfo) request.getSession().getAttribute(
-				"session_UserInfo")).getUserName();
-		// 聊的对象
-		String toUser = sendHTML.filter(request.getParameter("toUser"));
-		// 是否退出聊天室
-		String type = request.getParameter("type");
-		try {
-			if ("exit".equals(type)) {
-				UserSpeakContent closeSpeak = new UserSpeakContent();
-//				if (vecUserList.indexOf(name) > 0) {
-//					vecUserList.remove(name);
-//					closeSpeak.setSpeakTime(DateUtil.getNowTime());
-//					closeSpeak.setSpeakUser(name);
-//					closeSpeak.setToSpeakUser("");
-//					closeSpeak.setSpeakContent(name + "退出聊天室");
-//					closeSpeak.setLogout(true);
-//					closeSpeak.setSpeakType(1);
-//					vecContentList.add(closeSpeak);
-//				}
-//				sendHTML.showDefault(out);
-//				sendHTML.showSpeakListframe(out, name, closeSpeak
-//						.getToSpeakUser(), closeSpeak.isPrivate());
-			} else {
-				if ("".equals(toUser)) {
-					toUser = "";
-				}
-				UserSpeakContent userSpeakContent = new UserSpeakContent();
-				/* 表示刚刚进入聊天室 */
-				if (name != null && content == null) {
-					userSpeakContent.setSpeakTime(DateUtil.getNowTime());
-					userSpeakContent.setSpeakUser("***系统信息***");
-					userSpeakContent.setToSpeakUser("all");
-					userSpeakContent.setSpeakContent(name + "刚刚进入聊天室");
-					userSpeakContent.setSpeakType(1);
-				} else {
-					if ("私聊".equals(isPrivate)) {
-						userSpeakContent.setPrivate(true);
-					}
-					userSpeakContent.setSpeakContent(content);
-					userSpeakContent.setSpeakTime(DateUtil.getNowTime());
-					userSpeakContent.setSpeakUser(name);
-					userSpeakContent.setToSpeakUser(toUser);
-				}
-				/* 刚刚进入聊天室 */
-				if (name != null && content == null) {
-					if (vecUserList.indexOf(name) < 0) { // 在线用户中没有这个人
-						vecUserList.add(name);
-					}
-				}
-				if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
-						&& vecUserList.indexOf(userSpeakContent
-								.getToSpeakUser()) > 0) { // 说话人在线，聊天对象也在线
-					vecContentList.add(userSpeakContent);
-				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
-						&& userSpeakContent.getToSpeakUser().equals("all")) { // 说话人在线，聊天对象是所有人
-					vecContentList.add(userSpeakContent);
-				} else if (userSpeakContent.getSpeakType() == 1) { // 是系统信息
-					vecContentList.add(userSpeakContent);
-//				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
-//						&& vecUserList.indexOf(userSpeakContent
-//								.getToSpeakUser()) < 0) { // 说话人在线，聊天对象不在线
-//					out.println("<script>alert('"
-//							+ userSpeakContent.getToSpeakUser()
-//							+ "已经下线!');</script>");
-//					out.flush();
-				}
-				//sendHTML.showDefault(out);
-				//sendHTML.showSpeakListframe(out, name, userSpeakContent.getToSpeakUser(), userSpeakContent.isPrivate());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 显示用户发言内容
@@ -469,6 +423,7 @@ public class MessageAction extends ActionSupport{
 				Thread.sleep(500);
 			} catch (Exception e) {
 				out.println("线程出错:" + e.getMessage());
+				out.flush();
 			}
 			if (canLogout) {
 				UserSpeakContent closeSpeak = new UserSpeakContent();
@@ -479,8 +434,8 @@ public class MessageAction extends ActionSupport{
 				closeSpeak.setLogout(true);
 				closeSpeak.setSpeakType(1);
 				vecContentList.add(closeSpeak);
-				out.println("<LI><B>***系统信息***&nbsp;"
-						+ "你由于30分钟没发言,已经自动退出聊天室!</LI></B>");
+				//out.println("<LI><B>***系统信息***&nbsp;"
+				//		+ "你由于30分钟没发言,已经自动退出聊天室!</LI></B>");
 				out.flush();
 				canLogout = false;
 				break;
@@ -501,6 +456,109 @@ public class MessageAction extends ActionSupport{
 			return "error";
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	/* 保存发言内容 */
+	public void saveSendMessage(HttpServletRequest request) {
+		/* 保存发言内容 */
+		String content = sendHTML.filter(request.getParameter("content"));
+		String isPrivate = request.getParameter("isPrivate");
+		String name = ((SystemUserInfo) request.getSession().getAttribute(
+				"session_UserInfo")).getUserName();
+		// 聊的对象
+		String toUser = sendHTML.filter(request.getParameter("toUser"));
+		// 是否退出聊天室
+		String type = request.getParameter("type");
+		try {
+			if ("exit".equals(type)) {
+				UserSpeakContent closeSpeak = new UserSpeakContent();
+//				if (vecUserList.indexOf(name) > 0) {
+//					vecUserList.remove(name);
+//					closeSpeak.setSpeakTime(DateUtil.getNowTime());
+//					closeSpeak.setSpeakUser(name);
+//					closeSpeak.setToSpeakUser("");
+//					closeSpeak.setSpeakContent(name + "退出聊天室");
+//					closeSpeak.setLogout(true);
+//					closeSpeak.setSpeakType(1);
+//					vecContentList.add(closeSpeak);
+//				}
+//				sendHTML.showDefault(out);
+//				sendHTML.showSpeakListframe(out, name, closeSpeak
+//						.getToSpeakUser(), closeSpeak.isPrivate());
+			} else {
+				if ("".equals(toUser)) {
+					toUser = "";
+				}
+				UserSpeakContent userSpeakContent = new UserSpeakContent();
+				/* 表示刚刚进入聊天室 */
+				if (name != null && content == null) {
+					userSpeakContent.setSpeakTime(DateUtil.getNowTime());
+					userSpeakContent.setSpeakUser("***系统信息***");
+					userSpeakContent.setToSpeakUser("all");
+					userSpeakContent.setSpeakContent(name + "刚刚进入聊天室");
+					userSpeakContent.setSpeakType(1);
+				} else {
+					if ("私聊".equals(isPrivate)) {
+						userSpeakContent.setPrivate(true);
+					}
+					userSpeakContent.setSpeakContent(content);
+					userSpeakContent.setSpeakTime(DateUtil.getNowTime());
+					userSpeakContent.setSpeakUser(name);
+					userSpeakContent.setToSpeakUser(toUser);
+				}
+				/* 刚刚进入聊天室 */
+				if (name != null && content == null) {
+					if (vecUserList.indexOf(name) < 0) { // 在线用户中没有这个人
+						vecUserList.add(name);
+					}
+				}
+				if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
+						&& vecUserList.indexOf(userSpeakContent
+								.getToSpeakUser()) > 0) { // 说话人在线，聊天对象也在线
+					vecContentList.add(userSpeakContent);
+				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
+						&& userSpeakContent.getToSpeakUser().equals("all")) { // 说话人在线，聊天对象是所有人
+					vecContentList.add(userSpeakContent);
+				} else if (userSpeakContent.getSpeakType() == 1) { // 是系统信息
+					vecContentList.add(userSpeakContent);
+				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
+						&& vecUserList.indexOf(userSpeakContent
+								.getToSpeakUser()) < 0) { // 说话人在线，聊天对象不在线
+					vecContentList.add(userSpeakContent);
+//					out.println("<script>alert('"
+//							+ userSpeakContent.getToSpeakUser()
+//							+ "已经下线!');</script>");
+//					out.flush();
+				}
+				//sendHTML.showDefault(out);
+				//sendHTML.showSpeakListframe(out, name, userSpeakContent.getToSpeakUser(), userSpeakContent.isPrivate());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

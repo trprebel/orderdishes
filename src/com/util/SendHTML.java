@@ -186,11 +186,16 @@ public class SendHTML {
 				
 				"<html>",
 				"<head>",
-				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />",
+				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gbk\" />",
 				"<title>无标题文档</title>",
 				"<link href=\"css/iframe.css\" rel=\"stylesheet\" type=\"text/css\" />",
 				"</head>",
 				"<body>"
+//				"<div class=\"list_operating\">",
+//				"<div>",
+//				"<img src=\"images/blank.png\" width=\"255\" height=\"120\" />",
+//				"</div>",
+//				"</div>"
 		};
 		for (int i = 0; i < strOut.length; i++) {
 			out.println(strOut[i]);
