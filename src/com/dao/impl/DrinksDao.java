@@ -1,4 +1,4 @@
-package com.dao.impl;
+ï»¿package com.dao.impl;
 
 import java.util.List;
 
@@ -8,29 +8,29 @@ import com.util.Program;
 
 public class DrinksDao {
 
-	/**²éÕÒ¾ÆË®×ÜÊý*/
+	/**æŸ¥æ‰¾é…’æ°´æ€»æ•°*/
 	public Integer findDrinksCount() throws Exception{
 		return (Integer) SqlMap.getSqlMapClient().queryForObject("findDrinksCount");
 	}
 
-	/**²éÕÒ¾ÆË®ÁÐ±í*/
+	/**æŸ¥æ‰¾é…’æ°´åˆ—è¡¨*/
 	public List<Drinks> findDrinksList(Program program ) throws Exception{
 		return (List<Drinks>) SqlMap.getSqlMapClient().queryForList("findDrinksList",program);
 	}
-	/**É¾³ý¾ÆË® */
+	/**åˆ é™¤é…’æ°´ */
 	public void deleteDrink(int drinksid) throws Exception{
 		SqlMap.getSqlMapClient().delete("deleteDrink",drinksid);
 	}
-	/**Ìí¼Ó¾ÆË®*/
+	/**æ·»åŠ é…’æ°´*/
 	public void addDrink(Drinks drinks) throws Exception{
 		SqlMap.getSqlMapClient().insert("addDrink",drinks);
 	}
-	/**Í¨¹ýID²éÕÒ¾ÆË®*/
+	/**é€šè¿‡IDæŸ¥æ‰¾é…’æ°´*/
 	public Drinks findDrinkById(int id) throws Exception{
 		return (Drinks) SqlMap.getSqlMapClient().queryForObject("findDrinkById",id);
 		
 	}
-	/**ÐÞ¸Ä¾ÆË®ÊôÐÔ*/
+	/**ä¿®æ”¹é…’æ°´å±žæ€§*/
 	public void modifyDrink(Drinks drink) throws Exception{
 		SqlMap.getSqlMapClient().update("modifyDrink",drink);
 	}

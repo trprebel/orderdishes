@@ -1,15 +1,15 @@
-package com.dao.impl;
+ï»¿package com.dao.impl;
 
 import com.bean.User;
 
 public class UserDao {
 
-	//Í¨¹ıÓÃ»§Ãû²éÑ¯ĞÅÏ¢
+	//é€šè¿‡ç”¨æˆ·åæŸ¥è¯¢ä¿¡æ¯
 	public User findUserByName(String username) throws Exception {
 		//System.out.println(username);
 		return (User)SqlMap.getSqlMapClient().queryForObject("findUserByName",username);
 	}
-	//ĞŞ¸ÄÃÜÂë
+	//ä¿®æ”¹å¯†ç 
 	public void modifyPassWord(User user) throws Exception{
 		SqlMap.getSqlMapClient().update("modifypasswd",user);
 	}

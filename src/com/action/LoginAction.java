@@ -1,4 +1,4 @@
-package com.action;
+ï»¿package com.action;
 
 
 import java.util.ArrayList;
@@ -62,8 +62,8 @@ public class LoginAction extends ActionSupport{
 			user=this.userdao.findUserByName(username);
 			if(user==null)
 			{
-				messages="ÓÃ»§Ãû²»´æÔÚ£¡";
-				//System.out.println("ÓÃ»§Ãû²»´æÔÚ");
+				messages="ç”¨æˆ·åä¸å­˜åœ¨ï¼";
+				//System.out.println("ç”¨æˆ·åä¸å­˜åœ¨");
 				return "login";
 			}
 			else if(user.getPasswd().equals(password))
@@ -73,7 +73,7 @@ public class LoginAction extends ActionSupport{
 					MessageAction.vecUserList = new ArrayList();
 					MessageAction.vecUserList.add("all");
 				}
-				if (MessageAction.vecUserList.indexOf(username) < 0) { // ÔÚÏßÓÃ»§ÖĞÃ»ÓĞÕâ¸öÈË
+				if (MessageAction.vecUserList.indexOf(username) < 0) { // åœ¨çº¿ç”¨æˆ·ä¸­æ²¡æœ‰è¿™ä¸ªäºº
 					MessageAction.vecUserList.add(username);
 				}
 				SystemUserInfo messageuser = new SystemUserInfo(); // me
@@ -86,8 +86,8 @@ public class LoginAction extends ActionSupport{
 			}
 			else
 			{
-				//System.out.println("ÃÜÂë´íÎó!");
-				messages="ÃÜÂë´íÎó£¡";
+				//System.out.println("å¯†ç é”™è¯¯!");
+				messages="å¯†ç é”™è¯¯ï¼";
 				return "login";
 			}
 			//System.out.println(user.getUsername());
@@ -108,7 +108,7 @@ public class LoginAction extends ActionSupport{
 			user.setUsername(username);
 			user.setPasswd(password);
 			userdao.modifyPassWord(user);
-			messages="ĞŞ¸Ä³É¹¦£¡";
+			messages="ä¿®æ”¹æˆåŠŸï¼";
 			return "success";
 		}
 		catch(Exception e)

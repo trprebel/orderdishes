@@ -1,4 +1,4 @@
-package com.util;
+﻿package com.util;
 
 import java.io.PrintWriter;
 
@@ -213,7 +213,7 @@ public class SendHTML {
 		String[] strOut = new String[] {
 				"<html>",
 				"<head>",
-				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">",
+				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gbk\">",
 				"<title>聊天室</title>",
 				"</head>",
 				"<frameset rows=\"*\" cols=\"100,*\" frameborder=\"YES\" border=\"1\" framespacing=\"0\">",

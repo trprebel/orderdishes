@@ -1,4 +1,4 @@
-package com.util;
+ï»¿package com.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,50 +16,50 @@ public class Paginator {
 	
 	
 
-	// Ä¬ÈÏµÄÒ³Ãæ·¶Î§´óĞ¡
+	// é»˜è®¤çš„é¡µé¢èŒƒå›´å¤§å°
 	public static final int DEFAULT_PAGE_RANGE_SIZE = 2;
-//	 Ä¬ÈÏµÄÒ³Ãæ´óĞ¡
+//	 é»˜è®¤çš„é¡µé¢å¤§å°
 		public static final int DEFAULT_PAGE_SIZE =15;
-		/** ¼¯ºÏÊôĞÔ */
+		/** é›†åˆå±æ€§ */
 		private Collection items = new ArrayList();
-		/** ¼¯ºÏÊôĞÔ */
+		/** é›†åˆå±æ€§ */
 		private Map<Date, Integer> items2 = new TreeMap<Date, Integer>();
-		/** ¼¯ºÏÊôĞÔ */
+		/** é›†åˆå±æ€§ */
 		private Collection items3 ;
-		/** ¼¯ºÏÊôĞÔ */
+		/** é›†åˆå±æ€§ */
 		private Map itemsMap ;
-		/** ×ÜĞĞÊı */
+		/** æ€»è¡Œæ•° */
 		private int totalRowsAmount=0;
 
-		/** Ã¿Ò³ĞĞÊı */
+		/** æ¯é¡µè¡Œæ•° */
 		private int pageSize = DEFAULT_PAGE_SIZE;
 
-		/** µ±Ç°Ò³Âë */
+		/** å½“å‰é¡µç  */
 		private int currentPage = 1;
 		private int go;
 
-		/** ×ÜÒ³Êı */
+		/** æ€»é¡µæ•° */
 		private int totalPages;
 
-		/** Æ«ÒÆ±êÖ¾£¬¼ÆËã¸ÃÒ³ÆğÊ¼ĞĞ */
+		/** åç§»æ ‡å¿—ï¼Œè®¡ç®—è¯¥é¡µèµ·å§‹è¡Œ */
 		private int offset;
 		private String javascript;
 		private int colum;
 		private int total;
 		private int total1;
 		private int total2;
-		/* Ò³Ãæ·¶Î§¿ØÖÆ : ÀıÈç < < < 1,2,3,4,5,6,7 >>> */
+		/* é¡µé¢èŒƒå›´æ§åˆ¶ : ä¾‹å¦‚ < < < 1,2,3,4,5,6,7 >>> */
 
-		// ÇøÓò´óĞ¡
+		// åŒºåŸŸå¤§å°
 		private int pageRangeSize = DEFAULT_PAGE_RANGE_SIZE;
 
-		// ÇøÓò×ÜÊı
+		// åŒºåŸŸæ€»æ•°
 		private int totalPageRanges;
         
-		// µ±Ç°ÇøÓòËù°üº¬µÄÒ³Âë
+		// å½“å‰åŒºåŸŸæ‰€åŒ…å«çš„é¡µç 
 		private int[] currentRangePages;
 
-		/** ĞÂ²éÑ¯Ò³ */
+		/** æ–°æŸ¥è¯¢é¡µ */
 		private int nev;
 		
 		public String toString() {
@@ -71,7 +71,7 @@ public class Paginator {
 		}
 
 		/**
-		 * Ä¬ÈÏ¹¹Ôìº¯Êı
+		 * é»˜è®¤æ„é€ å‡½æ•°
 		 */
 		public Paginator() {
 			setPageSize(DEFAULT_PAGE_SIZE);
@@ -84,7 +84,7 @@ public class Paginator {
 
 		
 		/**
-		 * »ñÈ¡ÈÎÒ»Ò³µÚÒ»ÌõÊı¾İÔÚÊı¾İ¿âÖĞµÄÎ»ÖÃ
+		 * è·å–ä»»ä¸€é¡µç¬¬ä¸€æ¡æ•°æ®åœ¨æ•°æ®åº“ä¸­çš„ä½ç½®
 
 		 */
 		protected static int getStartOfPage(int pageNo, int pageSize) {
@@ -93,16 +93,16 @@ public class Paginator {
 		}
 /**
  * 
- * @param pagesize Ã¿Ò³ÏÔÊ¾µÄÊıÁ¿
- * @param total ×Ü¼ÇÂ¼Êı
+ * @param pagesize æ¯é¡µæ˜¾ç¤ºçš„æ•°é‡
+ * @param total æ€»è®°å½•æ•°
  */
 		public void setTotalRowsAmount(int total,	Collection collection) {
 			totalRowsAmount = total;
 			this.setItems(collection);
 			if (total > 0&&collection!=null&&collection.size()>0) {
-				// ¼ÆËãÒ³Âë
+				// è®¡ç®—é¡µç 
 				totalPages = totalRowsAmount % pageSize == 0 ? totalRowsAmount/pageSize:totalRowsAmount/pageSize + 1;
-				// ÉèÖÃµ±Ç°Ò³
+				// è®¾ç½®å½“å‰é¡µ
 				currentPage = currentPage > 1 && currentPage > totalPages ? totalPages:currentPage;
 				offset = getStartOfPage(currentPage, pageSize);
 				
@@ -113,9 +113,9 @@ public class Paginator {
 		totalRowsAmount = total;
 		this.setItems(collection);
 		if (total > 0&&collection!=null&&collection.size()>0) {
-			// ¼ÆËãÒ³Âë
+			// è®¡ç®—é¡µç 
 			totalPages = totalRowsAmount % pageSize == 0 ? totalRowsAmount/pageSize:totalRowsAmount/pageSize + 1;
-			// ÉèÖÃµ±Ç°Ò³
+			// è®¾ç½®å½“å‰é¡µ
 			currentPage = currentPage > 1 && currentPage > totalPages ? totalPages:currentPage;
 			offset = getStartOfPage(currentPage, pageSize);
 			
@@ -126,16 +126,16 @@ public class Paginator {
 	public void setTotalRowsAmount(int i) {
 		totalRowsAmount = i;
 		if (i > 0) {
-			// ¼ÆËãÒ³Âë
+			// è®¡ç®—é¡µç 
 			totalPages = totalRowsAmount % pageSize == 0 ? totalRowsAmount/pageSize:totalRowsAmount/pageSize + 1;
-			// ÉèÖÃµ±Ç°Ò³
+			// è®¾ç½®å½“å‰é¡µ
 			currentPage = currentPage > 1 && currentPage > totalPages ? totalPages:currentPage;
 		}
 	}
 	
 	
 		/**
-		 * ÉèÖÃµ±Ç°Ò³
+		 * è®¾ç½®å½“å‰é¡µ
 		 */
 		public void setCurrentPage(int currentPageNumber) {
 			if(currentPageNumber>0){

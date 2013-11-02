@@ -1,4 +1,4 @@
-package com.bean;
+﻿package com.bean;
 
 public class Information {
 	private int numid;

@@ -1,4 +1,4 @@
-package com.util;
+ï»¿package com.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,25 +24,25 @@ public class NavigatorTag extends TagSupport{
 	private static final String PAGE_KEY = "PAGE_KEY";
 	private static final String NO_RESULT_KEY = "NO_ROW_KEY";
 	private static final String LINE = "LINE";
-	private static final String CURRPAGE_INPUT = "CURRPAGE_INPUT";//µ±Ç°Ò³µÄÊäÈë¿ò
-	private static final String PAGESIZE_INPUT = "PAGESIZE_INPUT";//Ã¿Ò³³¤¶ÈµÄÊäÈë¿ò
-	private static final String GOJUMP = "GOJUMP";//Ìø×ª°´Å¥
-	// ¸ù¾İ±¾µØ»·¾³»ñµÃ×ÊÔ´Map
+	private static final String CURRPAGE_INPUT = "CURRPAGE_INPUT";//å½“å‰é¡µçš„è¾“å…¥æ¡†
+	private static final String PAGESIZE_INPUT = "PAGESIZE_INPUT";//æ¯é¡µé•¿åº¦çš„è¾“å…¥æ¡†
+	private static final String GOJUMP = "GOJUMP";//è·³è½¬æŒ‰é’®
+	// æ ¹æ®æœ¬åœ°ç¯å¢ƒè·å¾—èµ„æºMap
 	private Map getResMap(String basePath) {
 		Map map = new HashMap();
 		// ~ for chinese
-			map.put(LAST_PAGE_KEY, "<img src='"+basePath+"images/grid/page-last.gif' />");//Î²Ò³
-			map.put(NEXT_PAGE_KEY, "<img src='"+basePath+"images/grid/page-next.gif' />");////ÏÂÒ»Ò³
-			map.put(PRE_PAGE_KEY, "<img src='"+basePath+"images/grid/page-prev.gif' />");//ÉÏÒ»Ò³
-			map.put(FIRST_PAGE_KEY, "<img src='"+basePath+"images/grid/page-first.gif' />");//µÚÒ»Ò³
-			map.put(LINE, "<img src='"+basePath+"images/grid/line.gif' />");//¼ıÍ·Ğ¡Í¼±ê
+			map.put(LAST_PAGE_KEY, "<img src='"+basePath+"images/grid/page-last.gif' />");//å°¾é¡µ
+			map.put(NEXT_PAGE_KEY, "<img src='"+basePath+"images/grid/page-next.gif' />");////ä¸‹ä¸€é¡µ
+			map.put(PRE_PAGE_KEY, "<img src='"+basePath+"images/grid/page-prev.gif' />");//ä¸Šä¸€é¡µ
+			map.put(FIRST_PAGE_KEY, "<img src='"+basePath+"images/grid/page-first.gif' />");//ç¬¬ä¸€é¡µ
+			map.put(LINE, "<img src='"+basePath+"images/grid/line.gif' />");//ç®­å¤´å°å›¾æ ‡
 			
 			
 			
-			map.put(TOTAL_RECORD_KEY, "×Ü¼ÍÂ¼Êı");
-			map.put(NO_KEY, "µÚ");
-			map.put(PAGE_KEY, "Ò³");
-			map.put(NO_RESULT_KEY, "Ã»ÓĞÕÒµ½ÈÎºÎ¼ÍÂ¼");
+			map.put(TOTAL_RECORD_KEY, "æ€»çºªå½•æ•°");
+			map.put(NO_KEY, "ç¬¬");
+			map.put(PAGE_KEY, "é¡µ");
+			map.put(NO_RESULT_KEY, "æ²¡æœ‰æ‰¾åˆ°ä»»ä½•çºªå½•");
 			return map;
 		
 	}
@@ -57,17 +57,17 @@ public class NavigatorTag extends TagSupport{
 			Map resMap = getResMap(basePath);
 			 Object object=(Object)  request.getAttribute("paginator");
 			 Paginator paginator=null;
-			 if(object==null){//´´½¨Ä¬ÈÏÖµ
+			 if(object==null){//åˆ›å»ºé»˜è®¤å€¼
 				 paginator=new Paginator();
 			 }else{
 			  paginator=(Paginator)  request.getAttribute("paginator");
 			 }
-		    //µ±Ç°Ò³
-			 resMap.put(CURRPAGE_INPUT, "µÚ<input class='textfield-input01' name='intputCurrentPage' id='intputCurrentPage' type='text'  value='"+paginator.getCurrentPage()+"' size='5' onkeyup=' if(this.value>99999) this.value=1;' />Ò³");
-			//Ìø×ª°´Å¥
+		    //å½“å‰é¡µ
+			 resMap.put(CURRPAGE_INPUT, "ç¬¬<input class='textfield-input01' name='intputCurrentPage' id='intputCurrentPage' type='text'  value='"+paginator.getCurrentPage()+"' size='5' onkeyup=' if(this.value>99999) this.value=1;' />é¡µ");
+			//è·³è½¬æŒ‰é’®
 			 resMap.put(GOJUMP, "<a href='#' onclick='goPage(document.forms[0].intputCurrentPage.value);return false;'><img src='"+basePath+"images/grid/done.gif'  border='0'/></a>");
 			 
-		// ÅĞ¶ÏÊÇ·ñÏÔÊ¾
+		// åˆ¤æ–­æ˜¯å¦æ˜¾ç¤º
 			 if(paginator.getPageSize()<=0)
 				 paginator.setPageSize(0);
 			 if(paginator.getTotalRowsAmount()<=0)
@@ -79,12 +79,12 @@ public class NavigatorTag extends TagSupport{
 
 	private String defaultHref(Map resMap){
 		
-		String result="ÕÒ²»µ½¶ÔÏó";
+		String result="æ‰¾ä¸åˆ°å¯¹è±¡";
 		return  result;
 	}
 	
 	
-	// ´òÓ¡µ¼º½Ìõ
+	// æ‰“å°å¯¼èˆªæ¡
 
 	private String printNavigation(Paginator paginator, Map resMap) {
 		
@@ -96,7 +96,7 @@ public class NavigatorTag extends TagSupport{
 	   return	html_body.toString();	
 	}
 
-	// µÚ 2/16 Ò³
+	// ç¬¬ 2/16 é¡µ
 
 	private String getCurrentPage(Paginator paginator, Map resMap) {
 		StringBuffer buf = new StringBuffer();
@@ -105,23 +105,23 @@ public class NavigatorTag extends TagSupport{
 		return buf.toString();
 	}
 
-	// ×Ü¼ÍÂ¼Êı 301
+	// æ€»çºªå½•æ•° 301
 	private String getTotalPages(Paginator paginator, Map resMap) {
 		StringBuffer buf = new StringBuffer();
 		buf.append(resMap.get(TOTAL_RECORD_KEY)).append(paginator.getTotalRowsAmount());
 		return buf.toString();
 	}
 
-	// Ê×Ò³ ÉÏÒ»Ò³ ÏÂÒ»Ò³ Î²Ò³
+	// é¦–é¡µ ä¸Šä¸€é¡µ ä¸‹ä¸€é¡µ å°¾é¡µ
 	private String getNavigations(Paginator paginator, Map resMap) {
 		StringBuffer buf = new StringBuffer();
 		buf.append("<input  name='paginator.currentPage' id='paginator.currentPage'   type='hidden' value='"+paginator.getCurrentPage()+"'  />");
 		buf.append("<ul id='pageUl'>");
 		buf.append("<li>");
-		buf.append(getHref(paginator, 1, (String)resMap.get(FIRST_PAGE_KEY),resMap,FIRST_PAGE_KEY)+"");//Ê×Ò³
+		buf.append(getHref(paginator, 1, (String)resMap.get(FIRST_PAGE_KEY),resMap,FIRST_PAGE_KEY)+"");//é¦–é¡µ
 		buf.append("</li>");
 		buf.append("<li>");
-		buf.append(getHref(paginator, paginator.getCurrentPage() - 1, (String)resMap.get(PRE_PAGE_KEY),resMap,PRE_PAGE_KEY)+"");//ÉÏÒ»Ò³
+		buf.append(getHref(paginator, paginator.getCurrentPage() - 1, (String)resMap.get(PRE_PAGE_KEY),resMap,PRE_PAGE_KEY)+"");//ä¸Šä¸€é¡µ
 		buf.append("</li>");
 		buf.append("<li>"+resMap.get(LINE)+"</li>");
 		buf.append("<li>");
@@ -137,10 +137,10 @@ public class NavigatorTag extends TagSupport{
 		buf.append(resMap.get(LINE));
 		buf.append("</li>");
 		buf.append("<li>");
-		buf.append(getHref(paginator, paginator.getCurrentPage() + 1, (String)resMap.get(NEXT_PAGE_KEY),resMap,NEXT_PAGE_KEY)+"");//ÏÂÒ»Ò³
+		buf.append(getHref(paginator, paginator.getCurrentPage() + 1, (String)resMap.get(NEXT_PAGE_KEY),resMap,NEXT_PAGE_KEY)+"");//ä¸‹ä¸€é¡µ
 		buf.append("</li>");
 		buf.append("<li>");
-		buf.append(getHref(paginator, paginator.getTotalPages(), (String)resMap.get(LAST_PAGE_KEY),resMap,LAST_PAGE_KEY)+"");//Î²Ò³
+		buf.append(getHref(paginator, paginator.getTotalPages(), (String)resMap.get(LAST_PAGE_KEY),resMap,LAST_PAGE_KEY)+"");//å°¾é¡µ
 		buf.append("</li>");
 		buf.append("<li>"+resMap.get(LINE)+"</li>");
 		buf.append("<li>"+resMap.get(GOJUMP)+" </li>");
@@ -163,23 +163,23 @@ public class NavigatorTag extends TagSupport{
 	
 	
 	
-	// ¸ù¾İÏÔÊ¾¶àÉÙÌõµÄÄÚÈİ
+	// æ ¹æ®æ˜¾ç¤ºå¤šå°‘æ¡çš„å†…å®¹
 	private String showContent(Paginator paginator) {
 		Collection collection=paginator.getItems();
 		StringBuffer buf = new StringBuffer();
 		if(collection==null||collection.size()==0){
-			buf.append("ÕÒ²»µ½Ïà¹Ø¼ÇÂ¼");
+			buf.append("æ‰¾ä¸åˆ°ç›¸å…³è®°å½•");
 		}else{
 			
-			//buf.append("ÏÔÊ¾µÚ<label id='beginRows'>"+(paginator.getOffset()+1)+"</label>Ìõµ½<label id='endRows'>"+(paginator.getOffset()+collection.size())+"</label>Ìõ¼ÇÂ¼,");
-			buf.append("×Ü¼ÇÂ¼Êı:<label id='totalRows'>"+paginator.getTotalRowsAmount()+"</label>,×ÜÒ³Êı:<label id='totalPages'>"+paginator.getTotalPages()+"</label>");
+			//buf.append("æ˜¾ç¤ºç¬¬<label id='beginRows'>"+(paginator.getOffset()+1)+"</label>æ¡åˆ°<label id='endRows'>"+(paginator.getOffset()+collection.size())+"</label>æ¡è®°å½•,");
+			buf.append("æ€»è®°å½•æ•°:<label id='totalRows'>"+paginator.getTotalRowsAmount()+"</label>,æ€»é¡µæ•°:<label id='totalPages'>"+paginator.getTotalPages()+"</label>");
 		}
 			return buf.toString();
 	}	
 	
 	
 	
-	// ¸ù¾İµ±Ç°Ò³»ñÈ¡Á´½Ó×Ö
+	// æ ¹æ®å½“å‰é¡µè·å–é“¾æ¥å­—
 	private String getHref(Paginator paginator, int pageNum, String textBody,Map resMap,String labId) {
 		if (pageNum < 1 || pageNum > paginator.getTotalPages() || pageNum == paginator.getCurrentPage()) {
 			if(textBody.equals((String)resMap.get(PRE_PAGE_KEY)))
@@ -191,7 +191,7 @@ public class NavigatorTag extends TagSupport{
 		int pagesize=paginator.getPageSize();
 		Collection collection=   paginator.getItems();
 		if(collection==null||collection.size()==0){
-			pageNum=1;//ÕÒ²»µ½¼ÇÂ¼Ä¬ÈÏÎª1
+			pageNum=1;//æ‰¾ä¸åˆ°è®°å½•é»˜è®¤ä¸º1
 			pagesize=10;
 		}
 		
@@ -207,7 +207,7 @@ public class NavigatorTag extends TagSupport{
 	
 	
 	
-	// ´òÓ¡
+	// æ‰“å°
 	private void pageContextWrite(String html) {
 
 		try {

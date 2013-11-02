@@ -1,4 +1,4 @@
-package com.action;
+锘縫ackage com.action;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import com.dao.impl.InformationDao;
 import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
 
-/** 信息处理相关操作
+/** 淇℃伅澶勭悊鐩稿叧鎿嶄綔
  * @author zxj
  * 2013-10-9
  */

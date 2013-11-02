@@ -1,4 +1,4 @@
-package com.action;
+锘縫ackage com.action;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.bean.OrderSpecial;
 import com.dao.impl.OrderDao;
 import com.opensymphony.xwork2.ActionSupport;
 
-/**订单相关操作
+/**璁㈠崟鐩稿叧鎿嶄綔
  * @author zxj
  * 2013-10-26
  */

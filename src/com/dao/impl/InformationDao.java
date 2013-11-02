@@ -1,10 +1,10 @@
-package com.dao.impl;
+锘縫ackage com.dao.impl;
 
 import com.bean.Information;
 
 public class InformationDao {
 
-	/**发布消息
+	/**鍙戝竷娑堟伅
 	 * @throws Exception
 	 */
 	public void releaseInfo(Information info) throws Exception{

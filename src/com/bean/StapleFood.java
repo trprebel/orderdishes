@@ -1,4 +1,4 @@
-package com.bean;
+﻿package com.bean;
 
 public class StapleFood {
 	private int stapleid;

@@ -1,4 +1,4 @@
-#Tue Oct 29 10:06:59 CST 2013
+#Sat Nov 02 12:36:55 CST 2013
 eclipse.preferences.version=1
 encoding//WebRoot/images/bg_info.png=UTF-8
 encoding//WebRoot/js/handlers.js=UTF-8
@@ -16,5 +16,3 @@ encoding//WebRoot/wechat/preferential.jsp=UTF-8
 encoding//WebRoot/wechat/welcome.jsp=UTF-8
 encoding//src/com/bean/SystemUserInfo.java=UTF-8
 encoding//src/com/bean/UserSpeakContent.java=UTF-8
-encoding//src/com/util/SendHTML.java=UTF-8
-encoding//src/com/util/SendMess.java=UTF-8

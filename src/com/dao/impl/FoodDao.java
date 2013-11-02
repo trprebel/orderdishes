@@ -1,4 +1,4 @@
-package com.dao.impl;
+ï»¿package com.dao.impl;
 
 import java.util.List;
 
@@ -8,53 +8,53 @@ import com.util.Program;
 
 public class FoodDao {
 
-	/**²éÕÒ²Ëµ¥×ÜÊı*/
+	/**æŸ¥æ‰¾èœå•æ€»æ•°*/
 	public Integer findFoodCount() throws Exception{
 		return (Integer) SqlMap.getSqlMapClient().queryForObject("findFoodCount");
 	}
 
-	/**²éÕÒ²Ëµ¥ÁĞ±í*/
+	/**æŸ¥æ‰¾èœå•åˆ—è¡¨*/
 	public List<Food> findFoodList(Program program ) throws Exception{
 		return (List<Food>) SqlMap.getSqlMapClient().queryForList("findFoodList",program);
 	}
-	/**É¾³ı²Ë*/
+	/**åˆ é™¤èœ*/
 	public void deleteFood(int Foodid) throws Exception{
 		SqlMap.getSqlMapClient().delete("deleteFood",Foodid);
 	}
-	/**Ìí¼Ó²Ë*/
+	/**æ·»åŠ èœ*/
 	public void addFood(Food food) throws Exception{
 		SqlMap.getSqlMapClient().insert("addFood",food);
 	}
-	/**Í¨¹ıID²éÕÒ²Ë*/
+	/**é€šè¿‡IDæŸ¥æ‰¾èœ*/
 	public Food findFoodById(int id) throws Exception{
 		return (Food) SqlMap.getSqlMapClient().queryForObject("findFoodById",id);
 		
 	}
-	/**ĞŞ¸Ä²ËÊôĞÔ*/
+	/**ä¿®æ”¹èœå±æ€§*/
 	public void modifyFood(Food food) throws Exception {
 		SqlMap.getSqlMapClient().update("modifyFood",food);
 	}
-	/**ÌØ¼ÛÊıÁ¿*/
+	/**ç‰¹ä»·æ•°é‡*/
 	public Integer findSpecialPriceCount() throws Exception
 	{
 		return (Integer) SqlMap.getSqlMapClient().queryForObject("findSpecialPriceCount");
 	}
-	/**ÌØ¼Û²ËÁĞ±í*/
+	/**ç‰¹ä»·èœåˆ—è¡¨*/
 	public List<Food> findSpecialPriceList(Program program) throws Exception
 	{
 		return (List<Food>) SqlMap.getSqlMapClient().queryForList("findSpecialPriceList",program);
 	}
-	/**ÌØÉ«ÊıÁ¿*/
+	/**ç‰¹è‰²æ•°é‡*/
 	public Integer findFeatureCount() throws Exception
 	{
 		return (Integer) SqlMap.getSqlMapClient().queryForObject("findFeatureCount");
 	}
-	/**ÌØÉ«²ËÁĞ±í*/
+	/**ç‰¹è‰²èœåˆ—è¡¨*/
 	public List<Food> findFeatureList(Program program) throws Exception
 	{
 		return (List<Food>) SqlMap.getSqlMapClient().queryForList("findFeatureList",program);
 	}
-	/**Ô¤¶¨*/
+	/**é¢„å®š*/
 	public void orderFood(OrderSpecial orderSpecial) throws Exception
 	{
 		SqlMap.getSqlMapClient().insert("orderFood",orderSpecial);

@@ -1,4 +1,4 @@
-package com.dao.impl;
+ï»¿package com.dao.impl;
 
 import java.util.List;
 
@@ -7,17 +7,17 @@ import com.bean.QuickReplay;
 
 public class MsgDao {
 
-	/**²éÕÒÓÃ»§ÏûÏ¢*/
+	/**æŸ¥æ‰¾ç”¨æˆ·æ¶ˆæ¯*/
 	public List<Message> findUnreadMsg(String username) throws Exception
 	{
 		return (List<Message>) SqlMap.getSqlMapClient().queryForList("findunreadmsg",username);
 	}
-	/**Ìí¼ÓÓÃ»§ÏûÏ¢*/
+	/**æ·»åŠ ç”¨æˆ·æ¶ˆæ¯*/
 	public void insertMessage(Message msg) throws Exception
 	{
 		SqlMap.getSqlMapClient().insert("insertMessage",msg);
 	}
-	/**²éÕÒ¿ìËÙ»Ø¸´ĞÅÏ¢*/
+	/**æŸ¥æ‰¾å¿«é€Ÿå›å¤ä¿¡æ¯*/
 	public List<QuickReplay> findQuickReplay() throws Exception
 	{
 		return (List<QuickReplay>)SqlMap.getSqlMapClient().queryForList("findQuickReplay");

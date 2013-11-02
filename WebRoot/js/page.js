@@ -1,10 +1,10 @@
-function goPage(pageNum) {
+﻿function goPage(pageNum) {
           
               var f=   document.forms[0];
               document.getElementById("paginator.currentPage").value=pageNum;
               var regex = /^[0-9]{1,}$/;
 				if (!regex.test(pageNum)) {
-					alert("跳转页只能由数字组成！！");
+					alert("璺宠浆椤靛彧鑳界敱鏁板瓧缁勬垚锛侊紒");
 					document.getElementById("intputCurrentPage").value='1';
 					return false;
 				}
@@ -40,7 +40,7 @@ function goPage(pageNum) {
 	function successMethod(msg){
 			 document.getElementById("showpage").innerHTML=document.getElementById("jscode").value;
      }     			   
-	//验证checkBox是否选择
+	//楠岃瘉checkBox鏄惁阃夋嫨
    function checkBoxIsChecked(checkName){
     var c=  document.getElementsByName(checkName);
     var k=0;
@@ -54,7 +54,7 @@ function goPage(pageNum) {
       return true;
       }
       else{
-        alert("至少选择一个再进行提交!");
+        alert("镊冲皯阃夋嫨涓€涓啀杩涜鎻愪氦!");
         return false;
       }
    }			   

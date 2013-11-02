@@ -1,4 +1,4 @@
-package com.action;
+ï»¿package com.action;
 
 import java.io.OutputStream;
 import java.util.List;
@@ -20,7 +20,7 @@ import com.bean.User;
 import com.dao.impl.CustomerDao;
 import com.dao.impl.MsgDao;
 import com.opensymphony.xwork2.ActionSupport;
-/**¿Í»§Ïà¹Ø²Ù×÷
+/**å®¢æˆ·ç›¸å…³æ“ä½œ
  * @author zxj
  * 2013-10-06
  */
@@ -47,9 +47,9 @@ public class CustomerAction extends ActionSupport{
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
+				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
 			}
-			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
+			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
 			return "customer";
 		}
 		catch (Exception e)
@@ -60,7 +60,7 @@ public class CustomerAction extends ActionSupport{
 
 	}
 	/**
-	 * µ¼³ö¿Í»§ĞÅÏ¢
+	 * å¯¼å‡ºå®¢æˆ·ä¿¡æ¯
 	 * @return String
 	 */
 	public String export() {
@@ -68,7 +68,7 @@ public class CustomerAction extends ActionSupport{
 		
 		try {
 			
-			String[] excelHeader = { "ĞÕÃû", "ÊÖ»úºÅ"};
+			String[] excelHeader = { "å§“å", "æ‰‹æœºå·"};
 			cusdao=new CustomerDao();
 			List<Customer> customers=cusdao.findCustomerList(); 
 			HSSFWorkbook wb = new HSSFWorkbook();  

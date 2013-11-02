@@ -1,4 +1,4 @@
-package com.bean;
+﻿package com.bean;
 
 public class OrderSpecial {
 	private int orderid;

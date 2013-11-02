@@ -1,11 +1,11 @@
-package com.dao.impl;
+锘縫ackage com.dao.impl;
 
 import java.util.List;
 
 import com.bean.Customer;
 
 public class CustomerDao {
-	//查找客户列表
+	//鏌ユ壘瀹㈡埛鍒楄〃
 	public List<Customer> findCustomerList() throws Exception{
 		return (List<Customer>) SqlMap.getSqlMapClient().queryForList("findCustomerList");
 	}

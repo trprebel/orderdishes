@@ -1,4 +1,4 @@
-package com.bean;
+﻿package com.bean;
 
 public class Resource_R_Role {
 	private int roleid;

@@ -1,4 +1,4 @@
-package com.action;
+ï»¿package com.action;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,7 +26,7 @@ import com.util.Program;
 
 import filter.StringUtil;
 
-/**²ËÆ×Ïà¹Ø²Ù×÷
+/**èœè°±ç›¸å…³æ“ä½œ
  * @author zxj
  * 2013-10-8
  */
@@ -43,9 +43,9 @@ public class FoodAction extends ActionSupport{
 	private String big_pic;
 	private String resultString;
 	private String resultPage;
-	private File picture;   //±£´æÉÏ´«µÄÎÄ¼ş
-	private String pictureContentType;	 //±£´æÉÏ´«µÄÎÄ¼şÀàĞÍ
-	private String pictureFileName;   //±£´æÉÏ´«µÄÎÄ¼şÃû
+	private File picture;   //ä¿å­˜ä¸Šä¼ çš„æ–‡ä»¶
+	private String pictureContentType;	 //ä¿å­˜ä¸Šä¼ çš„æ–‡ä»¶ç±»å‹
+	private String pictureFileName;   //ä¿å­˜ä¸Šä¼ çš„æ–‡ä»¶å
 	//private String uploadPath;
 
 	private FoodDao fooddao=new FoodDao();
@@ -143,7 +143,7 @@ public class FoodAction extends ActionSupport{
 	public void setResultPage(String resultPage) {
 		this.resultPage = resultPage;
 	}
-	/**ÇëÇó²ËÆ×ÁĞ±í
+	/**è¯·æ±‚èœè°±åˆ—è¡¨
 	 * @return String
 	 */
 	public String request()
@@ -175,9 +175,9 @@ public class FoodAction extends ActionSupport{
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
+				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
 			}
-			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
+			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
 			
 			paginator.setData(count, foodlist);
 			//request.setAttribute("Food", Food);
@@ -247,9 +247,9 @@ public class FoodAction extends ActionSupport{
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
+				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
 			}
-			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
+			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -257,7 +257,7 @@ public class FoodAction extends ActionSupport{
 			return "error";
 		}
 	}
-	/**É¾³ı²Ë
+	/**åˆ é™¤èœ
 	 * @return
 	 */
 	public String delete()
@@ -276,7 +276,7 @@ public class FoodAction extends ActionSupport{
 		}
 	}
 	/**
-	 * ÉÏ´«Í¼Æ¬
+	 * ä¸Šä¼ å›¾ç‰‡
 	 */
 	public void upload() {
 
@@ -291,9 +291,9 @@ public class FoodAction extends ActionSupport{
 			String filename = pictureFileName; 
 			Random random = new Random();
 
-			//°ÑÉÏ´«µÄÎÄ¼şÓÃÉú³ÉµÄËæ»úÊıÖØĞÂÃüÃû
-			//²¢ÅĞ¶ÏÉú³ÉµÄÎÄ¼şÃûÊÇ·ñÒÑ¾­´æÔÚ
-			//Èç¹û´æÔÚ£¬Ôò¼ÌĞøÉú³ÉËæ»úÊıÃüÃû£¬Ö±µ½ÕÒ´ò»¹Ã»Ê¹ÓÃµÄËæ»úÊıÎªÖ¹
+			//æŠŠä¸Šä¼ çš„æ–‡ä»¶ç”¨ç”Ÿæˆçš„éšæœºæ•°é‡æ–°å‘½å
+			//å¹¶åˆ¤æ–­ç”Ÿæˆçš„æ–‡ä»¶åæ˜¯å¦å·²ç»å­˜åœ¨
+			//å¦‚æœå­˜åœ¨ï¼Œåˆ™ç»§ç»­ç”Ÿæˆéšæœºæ•°å‘½åï¼Œç›´åˆ°æ‰¾æ‰“è¿˜æ²¡ä½¿ç”¨çš„éšæœºæ•°ä¸ºæ­¢
 			String dbfilename="images/"+random.nextLong()+ filename.substring(filename.lastIndexOf("."));
 			filename = uploadPath + dbfilename;
 
@@ -340,7 +340,7 @@ public class FoodAction extends ActionSupport{
 			e.printStackTrace();
 		}
 	}
-	/**»ñÈ¡ÒªĞŞ¸ÄµÄÊ³ÎïÊôĞÔ
+	/**è·å–è¦ä¿®æ”¹çš„é£Ÿç‰©å±æ€§
 	 * @return
 	 */
 	public String requestone() {
@@ -356,9 +356,9 @@ public class FoodAction extends ActionSupport{
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
+				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
 			}
-			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
+			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
 			return "modify";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -366,7 +366,7 @@ public class FoodAction extends ActionSupport{
 			return "error";
 		}
 	}
-	/**ĞŞ¸ÄÊ³Îï
+	/**ä¿®æ”¹é£Ÿç‰©
 	 * @return
 	 */
 	public String modify() {
@@ -389,9 +389,9 @@ public class FoodAction extends ActionSupport{
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
+				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
 			}
-			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
+			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -426,9 +426,9 @@ public class FoodAction extends ActionSupport{
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
+				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
 			}
-			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
+			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
 			
 			paginator.setData(count, foodlist);
 			return "feature";
@@ -438,7 +438,7 @@ public class FoodAction extends ActionSupport{
 			return "error";
 		}
 	}
-	/**Î¢ĞÅÒ³ÃæÇëÇó²ËÆ×ÁĞ±í
+	/**å¾®ä¿¡é¡µé¢è¯·æ±‚èœè°±åˆ—è¡¨
 	 * @return
 	 */
 	public String werequest()
@@ -482,7 +482,7 @@ public class FoodAction extends ActionSupport{
 			return "error";
 		}
 	}
-	/**Ô¤¶¨
+	/**é¢„å®š
 	 * @return
 	 */
 	public String order()
@@ -501,11 +501,11 @@ public class FoodAction extends ActionSupport{
 			orderSpecial.setType(0);
 			orderSpecial.setState(0);
 			fooddao.orderFood(orderSpecial);
-			resultString="Ô¤¶¨³É¹¦£¡";
+			resultString="é¢„å®šæˆåŠŸï¼";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			resultString="Ô¤¶¨Ê§°Ü£¡";
+			resultString="é¢„å®šå¤±è´¥ï¼";
 		}
 		return "ajaxresult";
 	}

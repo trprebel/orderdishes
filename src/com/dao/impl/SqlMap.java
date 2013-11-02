@@ -1,4 +1,4 @@
-package com.dao.impl;
+ï»¿package com.dao.impl;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -11,7 +11,7 @@ public class SqlMap {
 
 	private static SqlMapClient sqlMapClient = null; 
 	
-	// ¶ÁÈ¡ÅäÖÃÎÄ¼ş 
+	// è¯»å–é…ç½®æ–‡ä»¶ 
 	static { 
 		try { 
 			Reader reader = Resources.getResourceAsReader("sqlmapconfig.xml"); 

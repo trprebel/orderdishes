@@ -1,4 +1,4 @@
-package com.action;
+﻿package com.action;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
 import com.util.Program;
 
-/**��ɫ�ؼ۲���ʾ
+/**特色特价菜显示
  * @author zxj
  * 2013-10-25
  */

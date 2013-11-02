@@ -1,4 +1,4 @@
-package com.action;
+ï»¿package com.action;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,14 +30,14 @@ public class MessageAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	/* ±£´æÓÃ»§ÁĞ±í */
+	/* ä¿å­˜ç”¨æˆ·åˆ—è¡¨ */
 	static public ArrayList vecUserList = null;
 
-	/* ±£´æÓÃ»§·¢ÑÔÄÚÈİ */
+	/* ä¿å­˜ç”¨æˆ·å‘è¨€å†…å®¹ */
 	static public ArrayList vecContentList = null;
-	/** ·¢ËÍĞÅÏ¢µÄ¹¤¾ßÀà */
+	/** å‘é€ä¿¡æ¯çš„å·¥å…·ç±» */
 	public SendMess sendMess = null;
-	/** ·¢ËÍhtmlµÄ¹¤¾ßÀà */
+	/** å‘é€htmlçš„å·¥å…·ç±» */
 	public SendHTML sendHTML = null;
 	//private String username;
 	private String content;
@@ -77,7 +77,7 @@ public class MessageAction extends ActionSupport{
 		this.totype = totype;
 	}
 	/**
-	 * ³õÊ¼»¯Àà
+	 * åˆå§‹åŒ–ç±»
 	 */
 	public  MessageAction() {
 		if (vecUserList == null) {
@@ -97,7 +97,7 @@ public class MessageAction extends ActionSupport{
 
 
 	/**
-	 * ¿ØÖÆ³ÌĞò
+	 * æ§åˆ¶ç¨‹åº
 	 * 
 	 * @param request
 	 * @param response
@@ -110,14 +110,14 @@ public class MessageAction extends ActionSupport{
 //		try {
 //			PrintWriter out = new PrintWriter(response.getOutputStream());
 //			sendHTML.setDefault(request, response);
-//			/* ÇëÇóµÄÊÇÄÄ¸öÒ³Ãæ */
+//			/* è¯·æ±‚çš„æ˜¯å“ªä¸ªé¡µé¢ */
 //			String strPage = request.getParameter("page");
 //
-//			/* ÏÔÊ¾Ö÷Ò³Ãæ */
+//			/* æ˜¾ç¤ºä¸»é¡µé¢ */
 //			if ("".equals(strPage) || strPage == null) {
 //				sendHTML.showMainframe(out);
 //			} else if ("ContentList".equals(strPage)) {
-//				/* ÏÔÊ¾·¢ÑÔÄÚÈİ */
+//				/* æ˜¾ç¤ºå‘è¨€å†…å®¹ */
 //				sendHTML.showDefault(out);
 //				// sendHTML.showContentList(out);
 //				showContentListframe(out, ((SystemUserInfo) request
@@ -152,7 +152,7 @@ public class MessageAction extends ActionSupport{
 				vecUserList.add(username);
 				Message msg=new Message();
 				msg.setFromuser(username);
-				msg.setContent("ÓÎ¿ÍÏëÓëÄúÁÄÌì£¡");
+				msg.setContent("æ¸¸å®¢æƒ³ä¸æ‚¨èŠå¤©ï¼");
 				msg.setTouser(touser);
 				//System.out.println(username);
 				//System.out.println(touser);
@@ -161,7 +161,7 @@ public class MessageAction extends ActionSupport{
 				//System.out.println(content);
 				//System.out.println(username);
 				//System.out.println(touser);
-				content ="ÄúºÃ£¡";
+				content ="æ‚¨å¥½ï¼";
 				UserSpeakContent userSpeakContent = new UserSpeakContent();
 				userSpeakContent.setSpeakContent(content);
 				userSpeakContent.setSpeakTime(DateUtil.getNowTime());
@@ -169,7 +169,7 @@ public class MessageAction extends ActionSupport{
 				userSpeakContent.setToSpeakUser(username);
 				userSpeakContent.setPrivate(true);
 				vecContentList.add(userSpeakContent);
-				content ="»¶Ó­Ê¹ÓÃXX·¹µêµã²ËÏµÍ³£¬ÎÒÃÇ½«ÎªÄúÌá¹©×î±ã½İ£¬×îÕæ³ÏµÄ·şÎñ£¡";
+				content ="æ¬¢è¿ä½¿ç”¨XXé¥­åº—ç‚¹èœç³»ç»Ÿï¼Œæˆ‘ä»¬å°†ä¸ºæ‚¨æä¾›æœ€ä¾¿æ·ï¼Œæœ€çœŸè¯šçš„æœåŠ¡ï¼";
 				UserSpeakContent userSpeakContent1 = new UserSpeakContent();
 				userSpeakContent1.setSpeakContent(content);
 				userSpeakContent1.setSpeakTime(DateUtil.getNowTime());
@@ -177,7 +177,7 @@ public class MessageAction extends ActionSupport{
 				userSpeakContent1.setToSpeakUser(username);
 				userSpeakContent1.setPrivate(true);
 				vecContentList.add(userSpeakContent1);
-				content ="×£ÄúÓÃ²ÍÓä¿ì£¡";
+				content ="ç¥æ‚¨ç”¨é¤æ„‰å¿«ï¼";
 				UserSpeakContent userSpeakContent2 = new UserSpeakContent();
 				userSpeakContent2.setSpeakContent(content);
 				userSpeakContent2.setSpeakTime(DateUtil.getNowTime());
@@ -190,6 +190,7 @@ public class MessageAction extends ActionSupport{
 				
 				msgdao.insertMessage(msg);
 			}
+			//response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = new PrintWriter(response.getOutputStream());
 			sendHTML.setDefault(request, response);
 			String basePath = request.getScheme() + "://"
@@ -207,9 +208,9 @@ public class MessageAction extends ActionSupport{
 			
 //			UserSpeakContent userSpeakContent = new UserSpeakContent();
 //			userSpeakContent.setSpeakTime(DateUtil.getNowTime());
-//			userSpeakContent.setSpeakUser("***ÏµÍ³ĞÅÏ¢***");
+//			userSpeakContent.setSpeakUser("***ç³»ç»Ÿä¿¡æ¯***");
 //			userSpeakContent.setToSpeakUser("all");
-//			userSpeakContent.setSpeakContent(username + "¸Õ¸Õ½øÈëÁÄÌìÊÒ");
+//			userSpeakContent.setSpeakContent(username + "åˆšåˆšè¿›å…¥èŠå¤©å®¤");
 //			userSpeakContent.setSpeakType(1);
 //			vecContentList.add(userSpeakContent);
 			
@@ -269,7 +270,7 @@ public class MessageAction extends ActionSupport{
 
 
 	/**
-	 * ÏÔÊ¾ÓÃ»§·¢ÑÔÄÚÈİ
+	 * æ˜¾ç¤ºç”¨æˆ·å‘è¨€å†…å®¹
 	 * 
 	 * @param out
 	 * @throws java.lang.Exception
@@ -288,13 +289,13 @@ public class MessageAction extends ActionSupport{
 				userSpeakContent = (UserSpeakContent) vecContentList.get(i);
 				if (userSpeakContent.getSpeakUser().equals(userName)) {
 					isSpeak = true;
-					// Èç¹ûÓÃ»§ÔÚÏßÉÏ£¬²¢ÇÒ´óÓà30·ÖÖÓ²»·¢ÑÔ£¬ÍË³ö
+					// å¦‚æœç”¨æˆ·åœ¨çº¿ä¸Šï¼Œå¹¶ä¸”å¤§ä½™30åˆ†é’Ÿä¸å‘è¨€ï¼Œé€€å‡º
 					if (vecUserList.indexOf(userName) > 0
 							&& userSpeakContent.getSpeakType() == 0
 							&& userSpeakContent.getUserType() == 1) {
 						if (DateUtil.getTwoTimeSub(DateUtil.getNowTime(),
 								userSpeakContent.getSpeakTime()) >= 30) {
-							// ÔÚÏßÁĞ±íÖĞÉ¾³ıuserNameÕâ¸öÈË
+							// åœ¨çº¿åˆ—è¡¨ä¸­åˆ é™¤userNameè¿™ä¸ªäºº
 							vecUserList.remove(userName);
 							canLogout = true;
 							break;
@@ -325,12 +326,12 @@ public class MessageAction extends ActionSupport{
 					userSpeakContent = sendMess.filterSelfMessage(
 							userSpeakContent, userName);
 					if (userSpeakContent != null) {
-						// ÏÔÊ¾ÔÚµÇÂ¼Ç°5·ÖÖÓµÄĞÅÏ¢
+						// æ˜¾ç¤ºåœ¨ç™»å½•å‰5åˆ†é’Ÿçš„ä¿¡æ¯
 						if (DateUtil.getTwoTimeSub(userSpeakContent
 								.getSpeakTime(), logTime) >= -5) {
-							if (userSpeakContent.getSpeakType() == 1) { // ÏµÍ³ĞÅÏ¢
+							if (userSpeakContent.getSpeakType() == 1) { // ç³»ç»Ÿä¿¡æ¯
 								sendMess.showSystemContent(out,
-										userSpeakContent); // ÏÔÊ¾ĞÅÏ¢ĞÅÏ¢
+										userSpeakContent); // æ˜¾ç¤ºä¿¡æ¯ä¿¡æ¯
 							} else {
 								if (userSpeakContent.getToSpeakUser().equals(
 										"all")
@@ -347,50 +348,50 @@ public class MessageAction extends ActionSupport{
 								} else if (userSpeakContent.getSpeakUser()
 										.equals(userName)
 										&& userSpeakContent.getToSpeakUser()
-										.equals(userName)) {// Äã¶Ô×Ô¼ºËµµÄ
+										.equals(userName)) {// ä½ å¯¹è‡ªå·±è¯´çš„
 //									if (userSpeakContent.isPrivate()) {
 //										sendMess.showSelfToSelfContentPrivate(
-//												out, userSpeakContent); // ×Ô¼º¶Ô×Ô¼ºËµÇÄÇÄ»°
+//												out, userSpeakContent); // è‡ªå·±å¯¹è‡ªå·±è¯´æ‚„æ‚„è¯
 //									} else {
 //										sendMess.showSelfToSelfContent(out,
-//												userSpeakContent); // ×Ô¼º¶Ô×Ô¼ºËµ
+//												userSpeakContent); // è‡ªå·±å¯¹è‡ªå·±è¯´
 //									}
 								} else if (userSpeakContent.getSpeakUser()
 										.equals(userName)
 										&& !userSpeakContent.getToSpeakUser()
-										.equals(userName)&&(userSpeakContent.getToSpeakUser().equals(touser))) { // Äã¶Ô±ğµÄËµµÄ
+										.equals(userName)&&(userSpeakContent.getToSpeakUser().equals(touser))) { // ä½ å¯¹åˆ«çš„è¯´çš„
 									if (userSpeakContent.isPrivate()) {
 										if (totype.equals("web")) {
 											sendMess.showSelfToOtherContentPrivate(
-													out, userSpeakContent); // ¶ÔÉÌÈËËµµÄ»°
+													out, userSpeakContent); // å¯¹å•†äººè¯´çš„è¯
 										}else if(totype.equals("wechat")){
 											sendMess.showWeSelfToOtherContentPrivate(out, userSpeakContent);
 										}
 										
 									} else {
 										sendMess.showSelfToOtherContent(out,
-												userSpeakContent); // ×Ô¼º¶Ô±ğÈËËµµÄ»°
+												userSpeakContent); // è‡ªå·±å¯¹åˆ«äººè¯´çš„è¯
 									}
 								} else if (!userSpeakContent.getSpeakUser()
 										.equals(userName)
 										&& !userSpeakContent.getToSpeakUser()
-										.equals(userName)) { // ²»ÊÇÄãËµµÄ£¬Ò²²»ÊÇ¶ÔÄãËµµÄ
+										.equals(userName)) { // ä¸æ˜¯ä½ è¯´çš„ï¼Œä¹Ÿä¸æ˜¯å¯¹ä½ è¯´çš„
 									if (userSpeakContent.isPrivate()) {
 										sendMess
 										.showOtherToOtherContentPrivate(
-												out, userSpeakContent); // ±ğÈË¶Ô±ğÈËËµµÄÇÄÇÄ»°
+												out, userSpeakContent); // åˆ«äººå¯¹åˆ«äººè¯´çš„æ‚„æ‚„è¯
 									} else {
 										sendMess.showOtherToOtherContent(out,
-												userSpeakContent); // ±ğÈË¶Ô±ğÈËËµµÄ»°
+												userSpeakContent); // åˆ«äººå¯¹åˆ«äººè¯´çš„è¯
 									}
 								} else if (!userSpeakContent.getSpeakUser()
 										.equals(userName)
 										&& userSpeakContent.getToSpeakUser()
-										.equals(userName)&&(userSpeakContent.getSpeakUser().equals(touser))) { // ±ğÈË¶ÔÄãËµµÄ
+										.equals(userName)&&(userSpeakContent.getSpeakUser().equals(touser))) { // åˆ«äººå¯¹ä½ è¯´çš„
 									if (userSpeakContent.isPrivate()) {
 										if (totype.equals("web")) {
 											sendMess.showOtherToSelfContentPrivate(
-													out, userSpeakContent); // ±ğÈË¶Ô×Ô¼ºËµµÄÇÄÇÄ»°
+													out, userSpeakContent); // åˆ«äººå¯¹è‡ªå·±è¯´çš„æ‚„æ‚„è¯
 										}
 										else if (totype.equals("wechat")) {
 											sendMess.showWeOtherToSelfContentPrivate(out, userSpeakContent);
@@ -398,7 +399,7 @@ public class MessageAction extends ActionSupport{
 										
 									} else {
 										sendMess.showOtherToSelfContent(out,
-												userSpeakContent); // ±ğÈË¶Ô×Ô¼ºËµµÄ»°
+												userSpeakContent); // åˆ«äººå¯¹è‡ªå·±è¯´çš„è¯
 									}
 								}
 							}
@@ -422,7 +423,7 @@ public class MessageAction extends ActionSupport{
 			try {
 				Thread.sleep(500);
 			} catch (Exception e) {
-				out.println("Ïß³Ì³ö´í:" + e.getMessage());
+				out.println("çº¿ç¨‹å‡ºé”™:" + e.getMessage());
 				out.flush();
 			}
 			if (canLogout) {
@@ -430,12 +431,12 @@ public class MessageAction extends ActionSupport{
 				closeSpeak.setSpeakTime(DateUtil.getNowTime());
 				closeSpeak.setSpeakUser(userName);
 				closeSpeak.setToSpeakUser("");
-				closeSpeak.setSpeakContent(userName + "ÍË³öÁÄÌìÊÒ");
+				closeSpeak.setSpeakContent(userName + "é€€å‡ºèŠå¤©å®¤");
 				closeSpeak.setLogout(true);
 				closeSpeak.setSpeakType(1);
 				vecContentList.add(closeSpeak);
-				//out.println("<LI><B>***ÏµÍ³ĞÅÏ¢***&nbsp;"
-				//		+ "ÄãÓÉÓÚ30·ÖÖÓÃ»·¢ÑÔ,ÒÑ¾­×Ô¶¯ÍË³öÁÄÌìÊÒ!</LI></B>");
+				//out.println("<LI><B>***ç³»ç»Ÿä¿¡æ¯***&nbsp;"
+				//		+ "ä½ ç”±äº30åˆ†é’Ÿæ²¡å‘è¨€,å·²ç»è‡ªåŠ¨é€€å‡ºèŠå¤©å®¤!</LI></B>");
 				out.flush();
 				canLogout = false;
 				break;
@@ -468,16 +469,16 @@ public class MessageAction extends ActionSupport{
 	
 	
 
-	/* ±£´æ·¢ÑÔÄÚÈİ */
+	/* ä¿å­˜å‘è¨€å†…å®¹ */
 	public void saveSendMessage(HttpServletRequest request) {
-		/* ±£´æ·¢ÑÔÄÚÈİ */
+		/* ä¿å­˜å‘è¨€å†…å®¹ */
 		String content = sendHTML.filter(request.getParameter("content"));
 		String isPrivate = request.getParameter("isPrivate");
 		String name = ((SystemUserInfo) request.getSession().getAttribute(
 				"session_UserInfo")).getUserName();
-		// ÁÄµÄ¶ÔÏó
+		// èŠçš„å¯¹è±¡
 		String toUser = sendHTML.filter(request.getParameter("toUser"));
-		// ÊÇ·ñÍË³öÁÄÌìÊÒ
+		// æ˜¯å¦é€€å‡ºèŠå¤©å®¤
 		String type = request.getParameter("type");
 		try {
 			if ("exit".equals(type)) {
@@ -487,7 +488,7 @@ public class MessageAction extends ActionSupport{
 //					closeSpeak.setSpeakTime(DateUtil.getNowTime());
 //					closeSpeak.setSpeakUser(name);
 //					closeSpeak.setToSpeakUser("");
-//					closeSpeak.setSpeakContent(name + "ÍË³öÁÄÌìÊÒ");
+//					closeSpeak.setSpeakContent(name + "é€€å‡ºèŠå¤©å®¤");
 //					closeSpeak.setLogout(true);
 //					closeSpeak.setSpeakType(1);
 //					vecContentList.add(closeSpeak);
@@ -500,15 +501,15 @@ public class MessageAction extends ActionSupport{
 					toUser = "";
 				}
 				UserSpeakContent userSpeakContent = new UserSpeakContent();
-				/* ±íÊ¾¸Õ¸Õ½øÈëÁÄÌìÊÒ */
+				/* è¡¨ç¤ºåˆšåˆšè¿›å…¥èŠå¤©å®¤ */
 				if (name != null && content == null) {
 					userSpeakContent.setSpeakTime(DateUtil.getNowTime());
-					userSpeakContent.setSpeakUser("***ÏµÍ³ĞÅÏ¢***");
+					userSpeakContent.setSpeakUser("***ç³»ç»Ÿä¿¡æ¯***");
 					userSpeakContent.setToSpeakUser("all");
-					userSpeakContent.setSpeakContent(name + "¸Õ¸Õ½øÈëÁÄÌìÊÒ");
+					userSpeakContent.setSpeakContent(name + "åˆšåˆšè¿›å…¥èŠå¤©å®¤");
 					userSpeakContent.setSpeakType(1);
 				} else {
-					if ("Ë½ÁÄ".equals(isPrivate)) {
+					if ("ç§èŠ".equals(isPrivate)) {
 						userSpeakContent.setPrivate(true);
 					}
 					userSpeakContent.setSpeakContent(content);
@@ -516,28 +517,28 @@ public class MessageAction extends ActionSupport{
 					userSpeakContent.setSpeakUser(name);
 					userSpeakContent.setToSpeakUser(toUser);
 				}
-				/* ¸Õ¸Õ½øÈëÁÄÌìÊÒ */
+				/* åˆšåˆšè¿›å…¥èŠå¤©å®¤ */
 				if (name != null && content == null) {
-					if (vecUserList.indexOf(name) < 0) { // ÔÚÏßÓÃ»§ÖĞÃ»ÓĞÕâ¸öÈË
+					if (vecUserList.indexOf(name) < 0) { // åœ¨çº¿ç”¨æˆ·ä¸­æ²¡æœ‰è¿™ä¸ªäºº
 						vecUserList.add(name);
 					}
 				}
 				if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
 						&& vecUserList.indexOf(userSpeakContent
-								.getToSpeakUser()) > 0) { // Ëµ»°ÈËÔÚÏß£¬ÁÄÌì¶ÔÏóÒ²ÔÚÏß
+								.getToSpeakUser()) > 0) { // è¯´è¯äººåœ¨çº¿ï¼ŒèŠå¤©å¯¹è±¡ä¹Ÿåœ¨çº¿
 					vecContentList.add(userSpeakContent);
 				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
-						&& userSpeakContent.getToSpeakUser().equals("all")) { // Ëµ»°ÈËÔÚÏß£¬ÁÄÌì¶ÔÏóÊÇËùÓĞÈË
+						&& userSpeakContent.getToSpeakUser().equals("all")) { // è¯´è¯äººåœ¨çº¿ï¼ŒèŠå¤©å¯¹è±¡æ˜¯æ‰€æœ‰äºº
 					vecContentList.add(userSpeakContent);
-				} else if (userSpeakContent.getSpeakType() == 1) { // ÊÇÏµÍ³ĞÅÏ¢
+				} else if (userSpeakContent.getSpeakType() == 1) { // æ˜¯ç³»ç»Ÿä¿¡æ¯
 					vecContentList.add(userSpeakContent);
 				} else if (vecUserList.indexOf(userSpeakContent.getSpeakUser()) > 0
 						&& vecUserList.indexOf(userSpeakContent
-								.getToSpeakUser()) < 0) { // Ëµ»°ÈËÔÚÏß£¬ÁÄÌì¶ÔÏó²»ÔÚÏß
+								.getToSpeakUser()) < 0) { // è¯´è¯äººåœ¨çº¿ï¼ŒèŠå¤©å¯¹è±¡ä¸åœ¨çº¿
 					vecContentList.add(userSpeakContent);
 //					out.println("<script>alert('"
 //							+ userSpeakContent.getToSpeakUser()
-//							+ "ÒÑ¾­ÏÂÏß!');</script>");
+//							+ "å·²ç»ä¸‹çº¿!');</script>");
 //					out.flush();
 				}
 				//sendHTML.showDefault(out);
