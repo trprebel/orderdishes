@@ -159,8 +159,15 @@ public class FoodAction extends ActionSupport{
 			//paginator.setPageSize(6);
 			
 			//System.out.println(paginator.getOffset());
-			program.setStart(paginator.getOffset());
-			program.setLenth(paginator.getPageSize());
+			if (paginator.getCurrentPage()==1) {
+				program.setStart(paginator.getOffset());
+				program.setLenth(paginator.getPageSize()-1);
+			}
+			else {
+				program.setStart(paginator.getOffset()-1);
+				program.setLenth(paginator.getPageSize());
+			}
+			
 			if(count==0){
 				paginator.setData(0, null);
 				return "food";
@@ -200,8 +207,14 @@ public class FoodAction extends ActionSupport{
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
 			//System.out.println("start:"+paginator.getOffset());
-			program.setStart(paginator.getOffset());
-			program.setLenth(paginator.getPageSize());
+			if (paginator.getCurrentPage()==1) {
+				program.setStart(paginator.getOffset());
+				program.setLenth(paginator.getPageSize()-1);
+			}
+			else {
+				program.setStart(paginator.getOffset()-1);
+				program.setLenth(paginator.getPageSize());
+			}
 			if(count==0){
 				paginator.setData(0, null);
 				return "food1";

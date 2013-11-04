@@ -441,8 +441,8 @@ body {
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;" src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'">			</td>
-		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;" src="images/back.png" width="72" height="20" onClick="location.href=document.referrer">		</td>
+		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;" src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'" style="cursor:pointer">			</td>
+		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;" src="images/back.png" width="72" height="20" onClick="location.href=document.referrer" style="cursor:pointer">		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
 	</tr>

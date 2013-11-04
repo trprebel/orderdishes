@@ -130,7 +130,7 @@ body {
 		<td width="28" height="15"></td>
 		<td height="68" colspan="4" width="491" rowspan="4"><input name="textfield" type="text" class="login_input_info"
 							value="${msgs }"></td>
-		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" onClick="location.href='requestlistMESSAGE.action'">		</td>
+		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="15" alt=""></td>
@@ -282,7 +282,7 @@ body {
 			<img src="images/分隔符.gif" width="1" height="42" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="3" rowspan="2" width="208" height="228">			</td>
+		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; " onclick="location.href='requestFEEDBACK.action'"><div class="list" style="height:42px;" ><img src="images/icon7.png" width="20" height="23"> 反馈信息</div>			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>
 	</tr>
@@ -299,7 +299,7 @@ body {
 	</tr>
 	<tr>
 		<td colspan="4" rowspan="4" width="712" height="56">			</td>
-		<td rowspan="3" width="182" height="44" style="vertical-align:top"><img src="images/tab.png" width="180" height="41" onClick="location.href='exportCUSTOMER.action'"> </td>
+		<td rowspan="3" width="182" height="44" style="vertical-align:top"><img src="images/tab.png" width="180" height="41" style="cursor:pointer" onClick="location.href='exportCUSTOMER.action'"> </td>
 		<td colspan="3" rowspan="4" width="289" height="56">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="13" alt=""></td>
@@ -311,8 +311,8 @@ body {
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="42" align="center"><img src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'">			</td>
-		<td rowspan="2" width="103" height="42" align="center"><img src="images/back.png" width="72" height="20" onClick="location.href=document.referrer">		</td>
+		<td rowspan="2" width="208" height="42" align="center"><img src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'" style="cursor:pointer">			</td>
+		<td rowspan="2" width="103" height="42" align="center"><img src="images/back.png" width="72" height="20" onClick="location.href=document.referrer" style="cursor:pointer">		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
 	</tr>

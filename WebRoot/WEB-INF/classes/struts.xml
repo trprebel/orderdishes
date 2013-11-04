@@ -24,6 +24,16 @@
 				<param name="root">resultString</param>
 			</result>
 		</action>
+		<action name="*STAPLE" class="com.action.StapleFoodAction" method="{1}">
+			<result name="staplelist">/staple_manager.jsp</result>
+			<result name="request" type="chain">requestSTAPLE</result>
+			<result name="error">/error.jsp</result>
+			<result name="modify">/modify_staple.jsp</result>
+			<result name="westaple">/wechat/food.jsp</result>
+			<result name="ajaxresult" type="json">
+				<param name="root">resultString</param>
+			</result>
+		</action>
 		<action name="*CUSTOMER" class="com.action.CustomerAction" method="{1}">
 			<result name="customer">/customer_manager.jsp</result>
 			<result name="error">/error.jsp</result>
@@ -57,6 +67,11 @@
 			<result name="myorder">/wechat/myorder.jsp</result>
 			<result name="pay">/wechat/pay.jsp</result>
 			<result name="welcome">/wechat/welcome.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="*FEEDBACK" class="com.action.FeedBackAction" method="{1}">
+			<result name="welcome">/wechat/welcome.jsp</result>
+			<result name="feedbacklist">/feedback.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 

@@ -230,7 +230,7 @@ width:205px; height:147px;  list-style:none; float:left; background:url(images/a
 						name="textfield" type="text" class="login_input_info"
 						value="${msgs }"></td>
 		<td rowspan="3" width="141" height="57">	<img
-						src="images/handing.png" width="141" height="57" onClick="location.href='requestlistMESSAGE.action'">		</td>
+						src="images/handing.png" width="141" height="57" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="15" alt=""></td>
@@ -427,7 +427,7 @@ width:205px; height:147px;  list-style:none; float:left; background:url(images/a
 		<td id="specialprice" colspan="2" width="94" height="38"
 										class="add_icon2" onClick="isspecial(2)">特价
 			</td>
-		<td width="1" height="38"><input type="hidden" name="isfeature" id="isfeature" value="1">
+		<td width="1" height="38"><input type="hidden" name="isfeature" id="isfeature" value="0">
 			</td>
 	</tr>
 	<tr>
@@ -614,10 +614,10 @@ width:205px; height:147px;  list-style:none; float:left; background:url(images/a
 	<tr>
 		<td rowspan="2" width="208" height="42" align="center"><img
 						style="*padding-bottom:15px; position:relative; top:-10px;" src="images/home.png" width="73"
-						height="22" onClick="location.href='requestFOOD.action'">			</td>
+						height="22" onClick="location.href='requestFOOD.action'" style="cursor:pointer">			</td>
 		<td rowspan="2" width="103" height="42" align="center" ><img
 						style="*padding-bottom:15px; position:relative; top:-10px;" src="images/back.png" width="72"
-						height="20" onClick="location.href=document.referrer">		</td>
+						height="20" onClick="location.href=document.referrer" style="cursor:pointer">		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
 	</tr>

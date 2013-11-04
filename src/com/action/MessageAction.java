@@ -427,17 +427,17 @@ public class MessageAction extends ActionSupport{
 				out.flush();
 			}
 			if (canLogout) {
-				UserSpeakContent closeSpeak = new UserSpeakContent();
-				closeSpeak.setSpeakTime(DateUtil.getNowTime());
-				closeSpeak.setSpeakUser(userName);
-				closeSpeak.setToSpeakUser("");
-				closeSpeak.setSpeakContent(userName + "退出聊天室");
-				closeSpeak.setLogout(true);
-				closeSpeak.setSpeakType(1);
-				vecContentList.add(closeSpeak);
-				//out.println("<LI><B>***系统信息***&nbsp;"
-				//		+ "你由于30分钟没发言,已经自动退出聊天室!</LI></B>");
-				out.flush();
+//				UserSpeakContent closeSpeak = new UserSpeakContent();
+//				closeSpeak.setSpeakTime(DateUtil.getNowTime());
+//				closeSpeak.setSpeakUser(userName);
+//				closeSpeak.setToSpeakUser("");
+//				closeSpeak.setSpeakContent(userName + "退出聊天室");
+//				closeSpeak.setLogout(true);
+//				closeSpeak.setSpeakType(1);
+//				vecContentList.add(closeSpeak);
+//				out.println("<LI><B>***系统信息***&nbsp;"
+//						+ "你由于30分钟没发言,已经自动退出聊天室!</LI></B>");
+//				out.flush();
 				canLogout = false;
 				break;
 			}
@@ -466,7 +466,7 @@ public class MessageAction extends ActionSupport{
 	
 	
 	
-	
+
 	
 
 	/* 保存发言内容 */

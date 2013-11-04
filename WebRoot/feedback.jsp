@@ -5,11 +5,11 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
+<%@taglib prefix="c" uri="/jstl/c.tld"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>历史信息</title>
+<title>意见反馈</title>
 <style>
 body {
 	text-align: center;
@@ -107,14 +107,23 @@ body {
 	border: 2px solid #ffffff;
 	height: 50px;
 	line-height: 50px;
-	font-size: 18px;
+	font-size: 13px;
 	color: #FFFFFF;
 	font-weight: bold;
 	text-align: center
 }
 </style>
+<script type="text/javascript">
+function ignore(id)
+{
+	document.getElementById("id").value=id;
+	var f1=document.getElementById("handleform");
+	f1.submit();
+}
+</script>
 </head>
 <body>
+	<form action="ignoreFEEDBACK.action" name="handleform" id="handleform" method="post">
 	<div class="main">
 		<table class="01" width="961" height="631" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -185,51 +194,29 @@ body {
 	</tr>
 	<tr>
 		<td rowspan="14" width="81" height="466">		</td>
-		<td colspan="8" rowspan="8" width="712" height="324" style="vertical-align:top" align="center"><div style=" HEIGHT: 324; margin-right:30px; vertical-align:top; OVERFLOW: scroll; OVERFLOW-x:hidden; scrollbar-3dlight-color:#595959; scrollbar-arrow-color:#FFFFFF; scrollbar-base-color:#CFCFCF; scrollbar-darkshadow-color:#FFFFFF; scrollbar-face-color:#CFCFCF; scrollbar-highlight-color:#FFFFFF; scrollbar-shadow-color:#595959">
+		<td colspan="8" rowspan="8" width="712" height="324" style="vertical-align:top" align="center"><div
+							style=" HEIGHT: 324; margin-right:30px; vertical-align:top; OVERFLOW: scroll; OVERFLOW-x:hidden; scrollbar-3dlight-color:#595959; scrollbar-arrow-color:#FFFFFF; scrollbar-base-color:#CFCFCF; scrollbar-darkshadow-color:#FFFFFF; scrollbar-face-color:#CFCFCF; scrollbar-highlight-color:#FFFFFF; scrollbar-shadow-color:#595959">
 
-		<table cellpadding="0" cellspacing="0" class="tab_info" style="border-collapse:collapse" >
-		<tr>
-		<td width="100">序号</td>
-		<td width="300">消息</td>
-		<td width="100">时间</td>
-		<td width="110">处理时间</td>
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		</tr>
-		<tr>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		<td>&nbsp;</td>
-		</tr>
-		</table>
-		</div>
-		
-		
-		
-		</td>
+							<table cellpadding="0" cellspacing="0" class="tab_info"
+								style="border-collapse:collapse">
+								<tr>
+									<td width="100">序号</td>
+									<td width="300">内容</td>
+									<td width="160">时间</td>
+									<td width="50">操作</td>
+								</tr>
+
+								<c:forEach var="feedback" items="${feedbacks }">
+									<tr>
+										<td>${feedback.id }</td>
+										<td>${feedback.content }</td>
+										<td>${feedback.create_date }</td>
+										<td onclick="ignore('${feedback.id}')" style="cursor:pointer">忽略</td>
+									</tr>
+								</c:forEach>
+							</table>
+							<input type="hidden" name="id" id="id" value=""/>
+						</div></td>
 		<td rowspan="14" width="10" height="466">			</td>
 		<td width="1" height="20">			</td>
 	</tr>
@@ -258,13 +245,13 @@ body {
 		<td width="1" height="2">			</td>
 	</tr>
 	<tr>
-		<td colspan="3" width="208" height="42" align="center" class="list_h"><img
+		<td colspan="3" width="208" height="42" align="center" class="list"><img
 					src="images/icon5.png" width="20" height="20">历史信息</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="42" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; " onclick="location.href='requestFEEDBACK.action'"><div class="list" style="height:42px;" ><img src="images/icon7.png" width="20" height="23">反馈信息</div>			</td>
+		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; "><div class="list_h" style="height:42px;" ><img src="images/icon7.png" width="20" height="23">反馈信息</div>			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>
 	</tr>
@@ -336,5 +323,6 @@ body {
 	</tr>
 </table>
 	</div>
+	</form>
 </body>
 </html>

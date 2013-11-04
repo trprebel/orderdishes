@@ -104,7 +104,7 @@ function modifyfood(id) {
 		<td width="712" height="15"></td>
 		<td width="28" height="15"></td>
 		<td height="68" colspan="4" width="491" rowspan="4"><input name="textfield" type="text" class="login_input_info" value="${msgs }"></td>
-		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" onClick="location.href='requestlistMESSAGE.action'">		</td>
+		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" style="cursor:pointer" width="141" height="57" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="15" alt=""></td>
@@ -266,8 +266,8 @@ function modifyfood(id) {
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="42" align="center"><img src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'">			</td>
-		<td rowspan="2" width="103" height="42" align="center"><img src="images/back.png" width="72" height="20" onClick="location.href=document.referrer">		</td>
+		<td rowspan="2" width="208" height="42" align="center"><img src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'" style="cursor:pointer">			</td>
+		<td rowspan="2" width="103" height="42" align="center"><img src="images/back.png" width="72" height="20" onClick="location.href=document.referrer" style="cursor:pointer">		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
 	</tr>

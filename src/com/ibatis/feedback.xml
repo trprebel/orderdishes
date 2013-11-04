@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="feedback">
+
+	<typeAlias alias="FeedBack" type="com.bean.FeedBack" />
+	<insert id="addFeedBack" parameterClass="FeedBack">
+		insert into feedback (content,isshow,create_date) values(#content#,$isshow$,current_timestamp)
+	</insert>
+	<select id="findShowFeedBack" resultClass="FeedBack">
+		select * from feedback where isshow=1
+	</select>
+	<update id="ignoreFeedBack" parameterClass="int">
+		update feedback set isshow=0 where id=$id$
+	</update>
+	
+
+</sqlMap>

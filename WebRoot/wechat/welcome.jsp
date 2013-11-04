@@ -220,6 +220,19 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
+					<tr onclick="location.href='feedback.jsp'">
+						<td width="57" align="center"><img src="images/icon4.png"
+							width="22" height="23" />
+						</td>
+						<td width="192" align="left">意见反馈</td>
+						<td width="20"><img src="images/left_arrow.png" width="11"
+							height="17" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="list_operating">
+				<table cellpadding="0" cellspacing="0">
 					<tr onclick="location.href='more.jsp'">
 						<td width="57" align="center"><img src="images/icon7.png"
 							width="20" height="20" />

@@ -323,7 +323,7 @@ body {
 		<td height="68" colspan="4" width="491" rowspan="4"><input
 					name="textfield" type="text" class="login_input_info"
 					value="${msgs }"></td>
-		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" onClick="location.href='requestlistMESSAGE.action'"
+		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'"
  width="141" height="57">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
@@ -523,7 +523,7 @@ body {
 		<td rowspan="2" width="103" height="48">
 			</td>
 		<td width="188" height="46" align="center"><img border="0"
-									src="images/compl.png" width="180" height="44" onClick="submit()">			</td>
+									src="images/compl.png" width="180" height="44" style="cursor:pointer" onClick="submit()">			</td>
 		<td rowspan="2" width="226" height="48">
 			</td>
 		<td  width="1" height="46">
@@ -574,7 +574,7 @@ body {
 			<img src="images/分隔符.gif" width="1" height="42" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="3" rowspan="2" width="208" height="228">			</td>
+		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; " onclick="location.href='requestFEEDBACK.action'"><div class="list" style="height:42px;" ><img src="images/icon7.png" width="20" height="23">反馈信息</div>			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>
 	</tr>
@@ -602,8 +602,8 @@ body {
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;" src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'">			</td>
-		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;" src="images/back.png" width="72" height="20" onClick="location.href=document.referrer">		</td>
+		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px; cursor:pointer" src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'">			</td>
+		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px; cursor:pointer" src="images/back.png" width="72" height="20" onClick="location.href=document.referrer">		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
 	</tr>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="staple">
+
+	<typeAlias alias="Staple" type="com.bean.Staple" />
+	<select id="findStapleCount" resultClass="int">
+		select count(*) from staplefood
+	</select>
+	<select id="findStapleList" parameterClass="com.util.Program" resultClass="Staple">
+		select * from staplefood limit $start$,$lenth$
+	</select>
+	<delete id="deleteStaple" parameterClass="int">
+		delete from staplefood where Stapleid=$Stapleid$
+	</delete>
+	<insert id="addStaple" parameterClass="Staple">
+		insert into staplefood (Staplefood,price,small_pic,big_pic,num,descript,create_date) 
+		values(#Staplefood#,$price$,#small_pic#,#big_pic#,$num$,#descript#,current_timestamp)
+	</insert>
+	<select id="findStapleById" parameterClass="int" resultClass="Staple">
+		select * from staplefood where Stapleid=$id$
+	</select>
+	<update id="modifyStaple" parameterClass="Staple">
+		update staplefood set staplefood=#staplefood#,price=$price$,small_pic=#small_pic#,big_pic=#big_pic#,num=$num$,descript=#descript# where Stapleid=$Stapleid$
+	</update>
+
+</sqlMap>

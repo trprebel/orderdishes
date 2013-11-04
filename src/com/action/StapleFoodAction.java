@@ -1,4 +1,4 @@
-ï»¿package com.action;
+package com.action;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,29 +14,29 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.bean.Drinks;
-import com.bean.Food;
 import com.bean.Message;
 import com.bean.OrderSpecial;
+import com.bean.Staple;
 import com.bean.User;
 import com.dao.impl.DrinksDao;
 import com.dao.impl.FoodDao;
 import com.dao.impl.MsgDao;
+import com.dao.impl.StapleDao;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
 import com.util.Program;
 
 import filter.StringUtil;
-/**é…’æ°´é¥®æ–™ç›¸å…³æ“ä½œ
+
+/**Ö÷Ê³Ïà¹Ø²Ù×÷
  * @author zxj
- * 2013-10-04
+ * 2013-11-4
  */
-public class DrinksAction extends ActionSupport{
+public class StapleFoodAction extends ActionSupport{
 
-	
 	private static final long serialVersionUID = 1L;
-	private String drinksid;
-
-	private String drinks;
+	private String stapleid;
+	private String staplefood;
 	private String price;
 	private String num;
 	private String descript;
@@ -45,11 +45,11 @@ public class DrinksAction extends ActionSupport{
 	
 	private String resultString;
 	private String resultPage;
-	private File picture;   //ä¿å­˜ä¸Šä¼ çš„æ–‡ä»¶
-	private String pictureContentType;	 //ä¿å­˜ä¸Šä¼ çš„æ–‡ä»¶ç±»å‹
-	private String pictureFileName;   //ä¿å­˜ä¸Šä¼ çš„æ–‡ä»¶å
+	private File picture;   //±£´æÉÏ´«µÄÎÄ¼ş
+	private String pictureContentType;	 //±£´æÉÏ´«µÄÎÄ¼şÀàĞÍ
+	private String pictureFileName;   //±£´æÉÏ´«µÄÎÄ¼şÃû
 	//private String uploadPath;
-	private DrinksDao drinksdao=new DrinksDao();
+	private StapleDao stapleDao=new StapleDao();
 	public Paginator paginator=new Paginator(9);
 	private MsgDao msgDao=new MsgDao();
 	private Program program=new Program();
@@ -65,17 +65,18 @@ public class DrinksAction extends ActionSupport{
 	public void setProgram(Program program) {
 		this.program = program;
 	}
-	public String getDrinksid() {
-		return drinksid;
+
+	public String getStapleid() {
+		return stapleid;
 	}
-	public void setDrinksid(String drinksid) {
-		this.drinksid = drinksid;
+	public void setStapleid(String stapleid) {
+		this.stapleid = stapleid;
 	}
-	public String getDrinks() {
-		return drinks;
+	public String getStaplefood() {
+		return staplefood;
 	}
-	public void setDrinks(String drinks) {
-		this.drinks = drinks;
+	public void setStaplefood(String staplefood) {
+		this.staplefood = staplefood;
 	}
 	public String getPrice() {
 		return price;
@@ -137,7 +138,7 @@ public class DrinksAction extends ActionSupport{
 	public void setPictureFileName(String pictureFileName) {
 		this.pictureFileName = pictureFileName;
 	}
-	/**è¯·æ±‚é…’æ°´åˆ—è¡¨
+	/**ÇëÇó¾ÆË®ÁĞ±í
 	 * @return String
 	 */
 	public String request()
@@ -147,8 +148,8 @@ public class DrinksAction extends ActionSupport{
 		try
 		{
 			//String path=StringUtil.getSpPropeurl("imagePath");
-			drinksdao=new DrinksDao();
-			int count=drinksdao.findDrinksCount();
+
+			int count=stapleDao.findStapleCount();
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
 			//System.out.println(paginator.getOffset());
@@ -162,20 +163,19 @@ public class DrinksAction extends ActionSupport{
 			}
 			if(count==0){
 				paginator.setData(0, null);
-				return "drinks";
+				return "staplelist";
 			}
-			List<Drinks> drinks=drinksdao.findDrinksList(program);
-			
-			paginator.setData(count, drinks);
+			List<Staple> staples=stapleDao.findStapleList(program);
+			paginator.setData(count, staples);
 			User user=(User)session.getAttribute("user");
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
+				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
 			}
-			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
+			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
 			//request.setAttribute("drinks", drinks);
-			return "drinks";
+			return "staplelist";
 		}
 		catch (Exception e)
 		{
@@ -183,7 +183,7 @@ public class DrinksAction extends ActionSupport{
 			return "error";
 		}
 	}
-	/**åˆ é™¤é…’æ°´
+	/**É¾³ı¾ÆË®
 	 * @return
 	 */
 	public String delete()
@@ -191,9 +191,7 @@ public class DrinksAction extends ActionSupport{
 		try {
 			//System.out.println(drinksid);
 			
-			drinksdao=new DrinksDao();
-			
-			drinksdao.deleteDrink(Integer.parseInt(drinksid));
+			stapleDao.deleteStaple(Integer.parseInt(stapleid));
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -202,7 +200,7 @@ public class DrinksAction extends ActionSupport{
 		}
 	}
 	/**
-	 * ä¸Šä¼ å›¾ç‰‡
+	 * ÉÏ´«Í¼Æ¬
 	 */
 	public void upload() {
 
@@ -217,9 +215,9 @@ public class DrinksAction extends ActionSupport{
 			String filename = pictureFileName; 
 			Random random = new Random();
 
-			//æŠŠä¸Šä¼ çš„æ–‡ä»¶ç”¨ç”Ÿæˆçš„éšæœºæ•°é‡æ–°å‘½å
-			//å¹¶åˆ¤æ–­ç”Ÿæˆçš„æ–‡ä»¶åæ˜¯å¦å·²ç»å­˜åœ¨
-			//å¦‚æœå­˜åœ¨ï¼Œåˆ™ç»§ç»­ç”Ÿæˆéšæœºæ•°å‘½åï¼Œç›´åˆ°æ‰¾æ‰“è¿˜æ²¡ä½¿ç”¨çš„éšæœºæ•°ä¸ºæ­¢
+			//°ÑÉÏ´«µÄÎÄ¼şÓÃÉú³ÉµÄËæ»úÊıÖØĞÂÃüÃû
+			//²¢ÅĞ¶ÏÉú³ÉµÄÎÄ¼şÃûÊÇ·ñÒÑ¾­´æÔÚ
+			//Èç¹û´æÔÚ£¬Ôò¼ÌĞøÉú³ÉËæ»úÊıÃüÃû£¬Ö±µ½ÕÒ´ò»¹Ã»Ê¹ÓÃµÄËæ»úÊıÎªÖ¹
 			String dbfilename="images/"+random.nextLong()+ filename.substring(filename.lastIndexOf("."));
 			filename = uploadPath + dbfilename;
 
@@ -270,30 +268,25 @@ public class DrinksAction extends ActionSupport{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		try {
-//			System.out.println(drinks);
-//			System.out.println(price);
-////			System.out.println(isfeature);
-//			System.out.println(num);
-//			System.out.println(descript);
-//			System.out.println(small_pic);
-//			System.out.println(big_pic);
-			Drinks drinksbean=new Drinks();
-			drinksbean.setDrinks(drinks);
-			drinksbean.setPrice(Integer.parseInt(price));
-			//drinks.setIsfeature(Integer.parseInt(isfeature));
-			drinksbean.setNum(Integer.parseInt(num));
-			drinksbean.setSmall_pic(small_pic);
-			drinksbean.setBig_pic(big_pic);
-			drinksbean.setDescript(descript);
-			drinksdao=new DrinksDao();
-			drinksdao.addDrink(drinksbean);
+
+			
+			
+			Staple staple=new Staple();
+			staple.setStaplefood(staplefood);
+			staple.setPrice(Integer.parseInt(price));
+			staple.setNum(Integer.parseInt(num));
+			staple.setSmall_pic(small_pic);
+			staple.setBig_pic(big_pic);
+			staple.setDescript(descript);
+			stapleDao.addStaple(staple);
+			
 			User user=(User)session.getAttribute("user");
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
+				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
 			}
-			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
+			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
 			
 			return "request";
 		} catch (Exception e) {
@@ -308,16 +301,15 @@ public class DrinksAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		try {
 			//System.out.println(drinksid);
-			drinksdao=new DrinksDao();
-			Drinks drinks=drinksdao.findDrinkById(Integer.parseInt(drinksid));
-			request.setAttribute("drink", drinks);
+			Staple staple=stapleDao.findStapleById(Integer.parseInt(stapleid));
+			request.setAttribute("staple", staple);
 			User user=(User)session.getAttribute("user");
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
-				session.setAttribute("msgs", "æš‚æ— å¤„ç†ä¿¡æ¯");
+				session.setAttribute("msgs", "ÔİÎŞ´¦ÀíĞÅÏ¢");
 			}
-			else session.setAttribute("msgs", "æœ‰å®¢æˆ·æƒ³ä¸æ‚¨è¯´è¯");
+			else session.setAttribute("msgs", "ÓĞ¿Í»§ÏëÓëÄúËµ»°");
 			return "modify";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -328,19 +320,16 @@ public class DrinksAction extends ActionSupport{
 	public String modify() {
 		//HttpServletRequest request=ServletActionContext.getRequest();
 		try {
-			//System.out.println(drinksid);
-			Drinks drink=new Drinks();
-			drink.setDrinksid(Integer.parseInt(drinksid));
-			drink.setDrinks(drinks);
-			drink.setPrice(Integer.parseInt(price));
-			drink.setNum(Integer.parseInt(price));
-			drink.setSmall_pic(small_pic);
-			drink.setBig_pic(big_pic);
-			drink.setDescript(descript);
-
-			drinksdao=new DrinksDao();
-			drinksdao.modifyDrink(drink);
 						
+			Staple staple=new Staple();
+			staple.setStapleid(Integer.parseInt(stapleid));
+			staple.setStaplefood(staplefood);
+			staple.setPrice(Integer.parseInt(price));
+			staple.setNum(Integer.parseInt(num));
+			staple.setSmall_pic(small_pic);
+			staple.setBig_pic(big_pic);
+			staple.setDescript(descript);
+			stapleDao.modifyStaple(staple);
 			return "request";
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -349,28 +338,28 @@ public class DrinksAction extends ActionSupport{
 		}
 		
 	}
-	/**å¾®ä¿¡é¡µé¢è¯·æ±‚èœè°±åˆ—è¡¨
+	/**Î¢ĞÅÒ³ÃæÇëÇó²ËÆ×ÁĞ±í
 	 * @return
 	 */
 	public String werequest()
 	{
 		try {
 			int count;
-			List<Drinks> drinklist;
+			List<Staple> staplelist;
 			paginator.setPageSize(100);
 			program.setStart(paginator.getOffset());
 			program.setLenth(paginator.getPageSize());
 			
-
-			count=drinksdao.findDrinksCount();
-			drinklist=drinksdao.findDrinksList(program);
+			
+			count=stapleDao.findStapleCount();
+			staplelist=stapleDao.findStapleList(program);
 
 			if(count==0){
 				paginator.setData(0, null);
 				return resultPage;
 			}
 						
-			paginator.setData(count, drinklist);
+			paginator.setData(count, staplelist);
 			return resultPage;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -378,7 +367,7 @@ public class DrinksAction extends ActionSupport{
 			return "error";
 		}
 	}
-	/**é¢„å®š
+	/**Ô¤¶¨
 	 * @return
 	 */
 	public String order()
@@ -387,26 +376,24 @@ public class DrinksAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		try {
 			FoodDao fooddao=new FoodDao();
-			Drinks drinks=drinksdao.findDrinkById(Integer.parseInt(drinksid));
-			
+			//Drinks drinks=drinksdao.findDrinkById(Integer.parseInt(drinksid));
+			Staple staple=stapleDao.findStapleById(Integer.parseInt(stapleid));
 			OrderSpecial orderSpecial=new OrderSpecial();
 			orderSpecial.setTempcus(session.getId());
-			orderSpecial.setFoodid(drinks.getDrinksid());
-			orderSpecial.setFood(drinks.getDrinks());
-			orderSpecial.setSmall_pic(drinks.getSmall_pic());
-			orderSpecial.setPrice(drinks.getPrice());
+			orderSpecial.setFoodid(staple.getStapleid());
+			orderSpecial.setFood(staple.getStaplefood());
+			orderSpecial.setSmall_pic(staple.getSmall_pic());
+			orderSpecial.setPrice(staple.getPrice());
 			orderSpecial.setCount(1);
-			orderSpecial.setType(2);
+			orderSpecial.setType(1);
 			orderSpecial.setState(0);
 			fooddao.orderFood(orderSpecial);
-			resultString="é¢„å®šæˆåŠŸï¼";
+			resultString="Ô¤¶¨³É¹¦£¡";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			resultString="é¢„å®šå¤±è´¥ï¼";
+			resultString="Ô¤¶¨Ê§°Ü£¡";
 		}
 		return "ajaxresult";
 	}
-
-
 }

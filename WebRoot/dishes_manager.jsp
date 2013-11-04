@@ -215,7 +215,7 @@ body {
 		<td height="68" colspan="4" width="491" rowspan="4"><input
 						name="textfield" type="text" class="login_input_info"
 						value="${msgs }"></td>
-		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" onClick="location.href='requestlistMESSAGE.action'">		</td>
+		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="15" alt=""></td>
@@ -268,26 +268,27 @@ body {
 		<td colspan="8" rowspan="14" width="712" height="466" style="vertical-align:top" align="left"><div class="qiu"
 							style=" HEIGHT: 466; position:absolute; top:110px; width:712px;  vertical-align:top; ">
 							<ul>
+								<c:if test="${fn:length(paginator.items)<9}">
+									<li onClick="location.href='add_food.jsp'"></li>
+								</c:if>
 								<!-- 菜单列表 -->
 								<c:forEach var="food" items="${paginator.items}">
 									<li>
 										<div>
 											<img src="${food.small_pic} " width="205" height="125">
 											<img id="position" src="images/close.png" width="14"
-												height="15"
+												height="15" style="cursor:pointer"
 												onclick=" javascirpt:deletefood('${food.foodid}')">
 										</div>
 										<div class="name">
 											<span>${food.food }</span><span><img
-												src="images/modify.png" width="33" height="17"
+												src="images/modify.png" width="33" height="17" style="cursor:pointer"
 												onclick=" javascirpt:modifyfood('${food.foodid}')"> </span>
 										</div></li>
 
 								</c:forEach>
 
-								<c:if test="${fn:length(paginator.items)<9}">
-									<li onClick="location.href='add_food.jsp'"></li>
-								</c:if>
+								
 
 							</ul>
 							<input type="hidden" name="foodid" id="foodid" value="123" />
@@ -351,8 +352,7 @@ body {
 						type='hidden' value='<%=paginator.getCurrentPage()%>' /> <a
 						href='javascript:goPage(<%=paginator.getCurrentPage() + 1%>)'>
 							<%
-								if (paginator.getCurrentPage() < paginator.getTotalPages()
-										|| (paginator.getItems().size() == 9)) {
+								if (paginator.getCurrentPage() < paginator.getTotalPages()) {
 									out.print("<img src='images/next.png' style='*margin-bottom:10px;' border='0' width='81' height='20'>");
 								}
 							%> </a></td>
@@ -371,8 +371,8 @@ body {
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;" src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'">			</td>
-		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;" src="images/back.png" width="72" height="20" onClick="location.href=document.referrer">		</td>
+		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;" src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'" style="cursor:pointer">			</td>
+		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;" src="images/back.png" width="72" height="20" onClick="location.href=document.referrer" style="cursor:pointer">		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
 	</tr>
