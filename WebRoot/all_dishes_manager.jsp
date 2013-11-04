@@ -273,7 +273,7 @@ body {
 		<td colspan="8" rowspan="14" width="712" height="466" style="vertical-align:top" align="left"><div class="qiu"
 							style=" HEIGHT: 466; position:absolute; top:110px; width:712px;  vertical-align:top; ">
 							<ul>
-								<c:if test="${fn:length(paginator.items)<9}">
+								<c:if test="${paginator.currentPage == 1}">
 									<li style="cursor:pointer" onClick="location.href='add_food.jsp'"></li>
 								</c:if>
 								<!-- 菜单列表 -->

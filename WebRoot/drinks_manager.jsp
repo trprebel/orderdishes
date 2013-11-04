@@ -265,7 +265,7 @@ body {
 						style="vertical-align:top" align="left"><div class="qiu"
 							style=" HEIGHT: 466; position:absolute; top:110px; width:712px;  vertical-align:top; ">
 							<ul>
-								<c:if test="${fn:length(paginator.items)<9}">
+								<c:if test="${paginator.currentPage == 1}">
 									<li style=" cursor:pointer" onClick="location.href='add_drink.jsp'"></li>
 								</c:if>
 								<!-- 酒水列表 -->

@@ -226,12 +226,6 @@ body {
 	function finish() {
 		var number = /^[0-9]{1,20}$/;
 		var price = $("#price").val();
-		var drinks = $("#drinks").val();
-		if(drinks==null||drinks=="")
-		{
-			alert("酒水名不能为空！");
-			return;
-		}
 		if (!number.exec(price)) {
 			alert("价格只能由数字组成！");
 			return;
@@ -259,7 +253,7 @@ body {
 		//alert("script");
 		var settings = {
 			flash_url : "swfupload.swf",
-			upload_url : "uploadDRINKS.action",
+			upload_url : "uploadSTAPLE.action",
 			file_post_name : "picture",
 			//post_params: {"PHPSESSID" : "123"},
 			file_size_limit : "1 MB",
@@ -298,7 +292,7 @@ body {
 		swfus = new SWFUpload(settings);
 		var settingsb = {
 			flash_url : "swfupload.swf",
-			upload_url : "uploadDRINKS.action",
+			upload_url : "uploadSTAPLE.action",
 			file_post_name : "picture",
 			//post_params: {"PHPSESSID" : "123"},
 			file_size_limit : "10 MB",
@@ -340,7 +334,7 @@ body {
 </script>
 <body>
 	<div class="main">
-		<form action="modifyDRINKS.action" name="addform" id="addform"
+		<form action="modifySTAPLE.action" name="addform" id="addform"
 			method="post" enctype="multipart/form-data">
 			<table  width="961" height="631" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -381,7 +375,7 @@ body {
 	</tr>
 	<tr>
 		<td rowspan="19" width="960" height="546">			</td>
-		<td colspan="4" rowspan="2" width="81" height="24" ><div class="infr_instroy">酒水管理→修改</div></td>
+		<td colspan="4" rowspan="2" width="81" height="24" ><div class="infr_instroy">主食管理→修改</div></td>
 		<td colspan="3" rowspan="5" width="470" height="80">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="14" alt=""></td>
@@ -423,9 +417,9 @@ body {
 	<tr>
 		<td rowspan="27" width="8" height="493">
 			</td>
-		<td rowspan="2" width="113" height="38" class="add_name">酒水名
+		<td rowspan="2" width="113" height="38" class="add_name">主食名
 			</td>
-		<td colspan="15" width="542" height="1"> <input type="hidden" name="drinksid" id="drinksid" value="${drink.drinksid }">
+		<td colspan="15" width="542" height="1"> <input type="hidden" name="stapleid" id="stapleid" value="${staple.stapleid }">
 			</td>
 		<td width="1" height="1">
 			</td>
@@ -434,8 +428,8 @@ body {
 		<td colspan="3" rowspan="8" width="15" height="140">
 			</td>
 		<td colspan="11" rowspan="2" width="514" height="40" ><input
-										class="add_input1" type="text" name="drinks" id="drinks"
-										value="${drink.drinks }"></td>
+										class="add_input1" type="text" name="staplefood" id="staplefood"
+										value="${staple.staplefood }"></td>
 		<td rowspan="26" width="13" height="492">
 			</td>
 		<td width="1" height="37">
@@ -461,7 +455,7 @@ body {
 	<tr>
 		<td colspan="11" rowspan="2" width="514" height="40"><input
 										class="add_input1" type="text" name="price" id="price"
-										value="${drink.price }"></td>
+										value="${staple.price }"></td>
 		<td width="1" height="33">
 			</td>
 	</tr>
@@ -492,13 +486,13 @@ body {
 										disabled="disabled"
 										style="margin-left: 2px; font-size: 8pt; height: 29px;" /> <input
 										type="hidden" id="small_pic" name="small_pic"
-										value="${drink.small_pic }"> <span
+										value="${staple.small_pic }"> <span
 										id="spanButtonPlaceHolderB"></span> <input id="btnCancelB"
 										type="hidden" value="取消上传所有文件" onClick="swfub.cancelQueue();"
 										disabled="disabled"
 										style="margin-left: 2px; font-size: 8pt; height: 29px;" /> <input
 										type="hidden" id="big_pic" name="big_pic"
-										value="${drink.big_pic }">
+										value="${staple.big_pic }">
 									</td>
 		<td colspan="7" width="301" height="6">
 			</td>
@@ -578,7 +572,7 @@ body {
 	</tr>
 	<tr>
 		<td colspan="2" rowspan="2" width="94" height="38" class="add_icon1"><input type="text" name="num" id="num"
-										value="${drink.num }"></td>
+										value="${staple.num }"></td>
 		<td colspan="2" rowspan="2" width="94" height="38" >
 			</td>
 		<td width="1" height="35">
@@ -608,7 +602,7 @@ body {
 		<td rowspan="5" width="4" height="151">
 			</td>
 		<td colspan="11" rowspan="2" width="514" height="79"><textarea
-											class="add_input2" name="descript" id="descript">${drink.descript }</textarea>			</td>
+											class="add_input2" name="descript" id="descript">${staple.descript }</textarea>			</td>
 		<td width="1" height="37">
 			</td>
 	</tr>

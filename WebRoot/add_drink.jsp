@@ -233,10 +233,10 @@ body {
 	}
 	function finish()
 	{
-		var food=$("#food").val();
+		var drinks=$("#drinks").val();
 		var number = /^[0-9]{1,20}$/;
 		var price=$("#price").val();
-		if(food==""||food==null)
+		if(drinks==""||drinks==null)
 		{
 			alert("酒水名不能为空！");
 			return;
@@ -392,7 +392,7 @@ body {
 	</tr>
 	<tr>
 		<td rowspan="19" width="960" height="546">			</td>
-		<td colspan="4" rowspan="2" width="81" height="24" ><div class="infr_instroy">菜谱管理→所有菜管理→新增</div></td>
+		<td colspan="4" rowspan="2" width="81" height="24" ><div class="infr_instroy">酒水管理→新增</div></td>
 		<td colspan="3" rowspan="5" width="470" height="80">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="14" alt=""></td>
@@ -445,7 +445,7 @@ body {
 		<td colspan="3" rowspan="8" width="15" height="140">
 			</td>
 		<td colspan="11" rowspan="2" width="514" height="40" ><input
-										class="add_input1" type="text" name="food" id="food"></td>
+										class="add_input1" type="text" name="drinks" id="drinks"></td>
 		<td rowspan="26" width="13" height="492">
 			</td>
 		<td width="1" height="37">

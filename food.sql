@@ -131,7 +131,7 @@ CREATE TABLE `drinks` (
   `CREATE_DATE` timestamp NOT NULL DEFAULT '2013-01-01 03:11:11',
   `USE_DATE` timestamp NOT NULL DEFAULT '2013-01-01 03:11:11',
   PRIMARY KEY (`DRINKSID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +140,7 @@ CREATE TABLE `drinks` (
 
 LOCK TABLES `drinks` WRITE;
 /*!40000 ALTER TABLE `drinks` DISABLE KEYS */;
-INSERT INTO `drinks` VALUES (1,0,'茅台','WebRoot/images/img.png','WebRoot/images/img.png',500,34,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(2,0,'五粮液','WebRoot/images/img.png','WebRoot/images/img.png',1000,23,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(3,0,'汾酒','WebRoot/images/img.png','WebRoot/images/img.png',300,23,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(4,0,'二锅头','WebRoot/images/img.png','WebRoot/images/img.png',0,2,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(5,0,'老白干','WebRoot/images/img.png','WebRoot/images/img.png',0,12,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(6,0,'马奶酒','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(7,0,'女儿红','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(8,0,'三沟','images/-7059869585075280282.png','images/-413336769536885846.png',123,123,0,'test modify drinks','2013-01-01 03:11:11','2013-01-01 03:11:11'),(9,0,'111111',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(10,0,'2222',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(13,0,'55555',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(14,0,'qwe','images/-3713567433547818117.png','images/-3387340990448685939.png',123,21,0,'test add drinks','2013-10-11 04:21:18','2013-01-01 03:11:11'),(15,0,'dfdfg','images/-1708899676249080847.png','images/7237209600112743493.jpg',12,12,0,'sdfgtydfg','2013-10-24 09:13:17','2013-01-01 03:11:11');
+INSERT INTO `drinks` VALUES (1,0,'茅台','WebRoot/images/img.png','WebRoot/images/img.png',500,34,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(2,0,'五粮液','WebRoot/images/img.png','WebRoot/images/img.png',1000,23,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(3,0,'汾酒','WebRoot/images/img.png','WebRoot/images/img.png',300,23,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(4,0,'二锅头','WebRoot/images/img.png','WebRoot/images/img.png',0,2,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(5,0,'老白干','WebRoot/images/img.png','WebRoot/images/img.png',0,12,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(6,0,'马奶酒','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(7,0,'女儿红','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(8,0,'三沟','images/-7059869585075280282.png','images/-413336769536885846.png',123,123,0,'test modify drinks','2013-01-01 03:11:11','2013-01-01 03:11:11'),(9,0,'111111',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(10,0,'2222',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(13,0,'55555',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(14,0,'qwe','images/-3713567433547818117.png','images/-3387340990448685939.png',123,21,0,'test add drinks','2013-10-11 04:21:18','2013-01-01 03:11:11'),(15,0,'dfdfg','images/-1708899676249080847.png','images/7237209600112743493.jpg',12,12,0,'sdfgtydfg','2013-10-24 09:13:17','2013-01-01 03:11:11'),(17,0,NULL,'images/1013914772118532757.png','images/-6167885494313671798.png',12,12,0,'qweradfrtrtytry','2013-11-04 12:50:11','2013-01-01 03:11:11');
 /*!40000 ALTER TABLE `drinks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -414,18 +414,18 @@ DROP TABLE IF EXISTS `staplefood`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `staplefood` (
   `STAPLEID` int(6) NOT NULL AUTO_INCREMENT,
-  `BUSINESSID` int(6) NOT NULL,
+  `BUSINESSID` int(6) NOT NULL DEFAULT '0',
   `STAPLEFOOD` varchar(100) DEFAULT NULL,
   `SMALL_PIC` varchar(1000) DEFAULT NULL,
   `BIG_PIC` varchar(1000) DEFAULT NULL,
   `PRICE` int(6) NOT NULL,
   `NUM` int(11) NOT NULL,
-  `ATTRIBUTE` int(1) NOT NULL,
-  `DESCCRIPT` text,
-  `CRETEA_DATE` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
+  `ATTRIBUTE` int(1) NOT NULL DEFAULT '0',
+  `DESCRIPT` text,
+  `CREATE_DATE` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
   `USE_DATE` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
   PRIMARY KEY (`STAPLEID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -434,6 +434,7 @@ CREATE TABLE `staplefood` (
 
 LOCK TABLES `staplefood` WRITE;
 /*!40000 ALTER TABLE `staplefood` DISABLE KEYS */;
+INSERT INTO `staplefood` VALUES (1,0,'qweasd','images/-7213942456950524769.png','images/-7213942456950524769.png',12,21,0,'dwqe','2012-12-31 16:00:00','2012-12-31 16:00:00'),(2,0,'qweert','images/-729325709557358011.png','images/3434655586732718009.png',123,21,0,'asdffghfgyu','2013-11-04 12:54:25','2012-12-31 16:00:00'),(3,0,'sfdrt','images/-7213942456950524769.png','images/-7213942456950524769.png',12,12,0,'afwer','2012-12-31 16:00:00','2012-12-31 16:00:00'),(4,0,'sdfgret','images/-7213942456950524769.png','images/-7213942456950524769.png',12,34,0,'test modify','2012-12-31 16:00:00','2012-12-31 16:00:00'),(6,0,'qweert','images/-729325709557358011.png','images/3434655586732718009.png',123,21,0,'asdffghfgyu','2013-11-04 12:57:28','2012-12-31 16:00:00');
 /*!40000 ALTER TABLE `staplefood` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,4 +480,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-04 18:10:10
+-- Dump completed on 2013-11-04 23:05:50

@@ -4,6 +4,14 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	//String small_pic=(String)request.getAttribute("small_pic");
+	//if(small_pic!=null)
+	//{
+	//	System.out.println("small_pic11111:"+small_pic);
+	//	request.setAttribute("small_pic", small_pic);
+	//}
+	//else System.out.println("null");
+	
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -223,32 +231,34 @@ body {
 		} else
 			return;
 	}
-	function finish() {
+	function finish()
+	{
+		var staplefood=$("#staplefood").val();
 		var number = /^[0-9]{1,20}$/;
-		var price = $("#price").val();
-		var drinks = $("#drinks").val();
-		if(drinks==null||drinks=="")
+		var price=$("#price").val();
+		if(staplefood==""||staplefood==null)
 		{
-			alert("酒水名不能为空！");
+			alert("主食名不能为空！");
 			return;
 		}
 		if (!number.exec(price)) {
 			alert("价格只能由数字组成！");
 			return;
 		}
-		var num = $("#num").val();
-		if (!number.exec(num)) {
+		
+		var num=$("#num").val();
+		if(!number.exec(num)){
 			alert("数量只能由数字组成！");
 			return;
 		}
-		var small_pic = $("#small_pic").val();
-		if (small_pic == "") {
+		var small_pic=$("#small_pic").val();
+		if(small_pic==""){
 			alert("请上传小图片");
 			return;
 		}
-		var f1 = document.getElementById("addform");
+		var f1=document.getElementById("addform");
 		f1.submit();
-
+		
 	}
 	//alert("${small_pic}");
 </script>
@@ -259,11 +269,11 @@ body {
 		//alert("script");
 		var settings = {
 			flash_url : "swfupload.swf",
-			upload_url : "uploadDRINKS.action",
+			upload_url : "uploadSTAPLE.action",
 			file_post_name : "picture",
 			//post_params: {"PHPSESSID" : "123"},
 			file_size_limit : "1 MB",
-			file_types : "*.jpg;*.jpeg;*.png;*.gif;*.bmp",
+			file_types :"*.jpg;*.jpeg;*.png;*.gif;*.bmp",
 			file_types_description : "All Files",
 			file_upload_limit : 0,
 			file_queue_limit : 0,
@@ -297,50 +307,51 @@ body {
 
 		swfus = new SWFUpload(settings);
 		var settingsb = {
-			flash_url : "swfupload.swf",
-			upload_url : "uploadDRINKS.action",
-			file_post_name : "picture",
-			//post_params: {"PHPSESSID" : "123"},
-			file_size_limit : "10 MB",
-			file_types : "*.jpg;*.jpeg;*.png;*.gif;*.bmp",
-			file_types_description : "All Files",
-			file_upload_limit : 0,
-			file_queue_limit : 0,
-			custom_settings : {
-				progressTarget : "fsUploadProgress",
-				cancelButtonId : "btnCancelB"
-			},
-			debug : false,
+				flash_url : "swfupload.swf",
+				upload_url : "uploadSTAPLE.action",
+				file_post_name : "picture",
+				//post_params: {"PHPSESSID" : "123"},
+				file_size_limit : "10 MB",
+				file_types : "*.jpg;*.jpeg;*.png;*.gif;*.bmp",
+				file_types_description : "All Files",
+				file_upload_limit : 0,
+				file_queue_limit : 0,
+				custom_settings : {
+					progressTarget : "fsUploadProgress",
+					cancelButtonId : "btnCancelB"
+				},
+				debug : false,
 
-			// Button settings
-			button_image_url : "images/select2.png",
-			button_width : "98",
-			button_height : "39",
-			button_placeholder_id : "spanButtonPlaceHolderB",
-			button_text_style : ".theFont { font-size: 16; }",
-			button_text_left_padding : 12,
-			button_text_top_padding : 3,
+				// Button settings
+				button_image_url : "images/select2.png",
+				button_width : "98",
+				button_height : "39",
+				button_placeholder_id : "spanButtonPlaceHolderB",
+				button_text_style : ".theFont { font-size: 16; }",
+				button_text_left_padding : 12,
+				button_text_top_padding : 3,
 
-			// The event handler functions are defined in handlers.js
-			file_queued_handler : fileQueued,
-			file_queue_error_handler : fileQueueError,
-			file_dialog_complete_handler : fileDialogComplete,
-			upload_start_handler : uploadStart,
-			upload_progress_handler : uploadProgress,
-			upload_error_handler : uploadError,
-			upload_success_handler : uploadSuccessB,
-			upload_complete_handler : uploadComplete,
-			queue_complete_handler : queueComplete
-		// Queue plugin event
-		};
+				// The event handler functions are defined in handlers.js
+				file_queued_handler : fileQueued,
+				file_queue_error_handler : fileQueueError,
+				file_dialog_complete_handler : fileDialogComplete,
+				upload_start_handler : uploadStart,
+				upload_progress_handler : uploadProgress,
+				upload_error_handler : uploadError,
+				upload_success_handler : uploadSuccessB,
+				upload_complete_handler : uploadComplete,
+				queue_complete_handler : queueComplete
+			// Queue plugin event
+			};
 
-		swfub = new SWFUpload(settingsb);
-
+			swfub = new SWFUpload(settingsb);
+		
 	};
+	
 </script>
 <body>
 	<div class="main">
-		<form action="modifyDRINKS.action" name="addform" id="addform"
+		<form action="addSTAPLE.action" name="addform" id="addform" 
 			method="post" enctype="multipart/form-data">
 			<table  width="961" height="631" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -381,7 +392,7 @@ body {
 	</tr>
 	<tr>
 		<td rowspan="19" width="960" height="546">			</td>
-		<td colspan="4" rowspan="2" width="81" height="24" ><div class="infr_instroy">酒水管理→修改</div></td>
+		<td colspan="4" rowspan="2" width="81" height="24" ><div class="infr_instroy">主食管理→新增</div></td>
 		<td colspan="3" rowspan="5" width="470" height="80">			</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="14" alt=""></td>
@@ -423,9 +434,9 @@ body {
 	<tr>
 		<td rowspan="27" width="8" height="493">
 			</td>
-		<td rowspan="2" width="113" height="38" class="add_name">酒水名
+		<td rowspan="2" width="113" height="38" class="add_name">主食名
 			</td>
-		<td colspan="15" width="542" height="1"> <input type="hidden" name="drinksid" id="drinksid" value="${drink.drinksid }">
+		<td colspan="15" width="542" height="1">
 			</td>
 		<td width="1" height="1">
 			</td>
@@ -434,8 +445,7 @@ body {
 		<td colspan="3" rowspan="8" width="15" height="140">
 			</td>
 		<td colspan="11" rowspan="2" width="514" height="40" ><input
-										class="add_input1" type="text" name="drinks" id="drinks"
-										value="${drink.drinks }"></td>
+										class="add_input1" type="text" name="staplefood" id="staplefood"></td>
 		<td rowspan="26" width="13" height="492">
 			</td>
 		<td width="1" height="37">
@@ -460,8 +470,7 @@ body {
 	</tr>
 	<tr>
 		<td colspan="11" rowspan="2" width="514" height="40"><input
-										class="add_input1" type="text" name="price" id="price"
-										value="${drink.price }"></td>
+										class="add_input1" type="text" name="price" id="price"></td>
 		<td width="1" height="33">
 			</td>
 	</tr>
@@ -486,20 +495,18 @@ body {
 	<tr>
 		<td rowspan="18" width="9" height="352">
 			</td>
-		<td colspan="6" rowspan="5" width="219" height="39"><span
-										id="spanButtonPlaceHolder"></span> <input id="btnCancel"
-										type="hidden" value="取消上传所有文件" onClick="swfus.cancelQueue();"
-										disabled="disabled"
-										style="margin-left: 2px; font-size: 8pt; height: 29px;" /> <input
-										type="hidden" id="small_pic" name="small_pic"
-										value="${drink.small_pic }"> <span
-										id="spanButtonPlaceHolderB"></span> <input id="btnCancelB"
-										type="hidden" value="取消上传所有文件" onClick="swfub.cancelQueue();"
-										disabled="disabled"
-										style="margin-left: 2px; font-size: 8pt; height: 29px;" /> <input
-										type="hidden" id="big_pic" name="big_pic"
-										value="${drink.big_pic }">
-									</td>
+		<td colspan="6" rowspan="5" width="219" height="39">
+									<span id="spanButtonPlaceHolder"></span>
+									<input id="btnCancel" type="hidden" value="取消上传所有文件"
+									onclick="swfus.cancelQueue();" disabled="disabled"
+									style="margin-left: 2px; font-size: 8pt; height: 29px;" />
+									<input type="hidden" id="small_pic" name="small_pic" value="">
+									
+									<span id="spanButtonPlaceHolderB"></span>
+									<input id="btnCancelB" type="hidden" value="取消上传所有文件"
+									onclick="swfub.cancelQueue();" disabled="disabled"
+									style="margin-left: 2px; font-size: 8pt; height: 29px;" />
+									<input type="hidden" id="big_pic" name="big_pic" value=""></td>
 		<td colspan="7" width="301" height="6">
 			</td>
 		<td width="1" height="6">
@@ -544,7 +551,7 @@ body {
 			</td>
 		<td rowspan="8" width="55" height="162">
 			</td>
-		<td width="1" height="25" >
+		<td width="1" height="25">
 			</td>
 	</tr>
 	<tr>
@@ -557,7 +564,7 @@ body {
 			</td>
 		<td id="isspecial_f" colspan="2" width="94" height="38"
 										class="add_icon2" onClick="javascript:isspecial(0)">否</td>
-		<td width="1" height="38">
+		<td width="1" height="38"><input type="hidden" name="isfeature" id="isfeature" value="1">
 			</td>
 	</tr>
 	<tr>
@@ -577,8 +584,7 @@ body {
 			</td>
 	</tr>
 	<tr>
-		<td colspan="2" rowspan="2" width="94" height="38" class="add_icon1"><input type="text" name="num" id="num"
-										value="${drink.num }"></td>
+		<td colspan="2" rowspan="2" width="94" height="38" class="add_icon1"><input type="text" name="num" id="num"></td>
 		<td colspan="2" rowspan="2" width="94" height="38" >
 			</td>
 		<td width="1" height="35">
@@ -595,7 +601,7 @@ body {
 			</td>
 		<td colspan="2" rowspan="2" width="94" height="28">
 			</td>
-		<td  width="1" height="26">
+		<td width="1" height="26">
 			</td>
 	</tr>
 	<tr>
@@ -608,7 +614,7 @@ body {
 		<td rowspan="5" width="4" height="151">
 			</td>
 		<td colspan="11" rowspan="2" width="514" height="79"><textarea
-											class="add_input2" name="descript" id="descript">${drink.descript }</textarea>			</td>
+											class="add_input2" name="descript" id="descript"></textarea>			</td>
 		<td width="1" height="37">
 			</td>
 	</tr>
@@ -628,7 +634,7 @@ body {
 		<td colspan="3" rowspan="2" width="130" height="50">
 			</td>
 		<td colspan="3" width="192" height="45"><img
-										src="images/compl.png" style="cursor:pointer" width="180" height="44"
+										src="images/compl.png" style="cursor:pointer" width="180" height="44" 
 										onclick="javascript:finish()">			</td>
 		<td colspan="5" rowspan="2" width="192" height="50">
 			</td>
@@ -641,7 +647,7 @@ body {
 		<td width="1" height="5">
 			</td>
 	</tr>
-<tr>
+	<tr>
 		<td width="8" height="1">
 			</td>
 		<td width="113" height="1">

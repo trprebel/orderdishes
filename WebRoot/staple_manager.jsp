@@ -19,7 +19,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>酒水管理</title>
+<title>主食管理</title>
 <style>
 body {
 	text-align: center;
@@ -173,26 +173,26 @@ body {
 	//	alert("${fn:length(drinks)}");
 	//}
 
-	function deletedrink(id) {
-		document.getElementById("drinksid").value = id;
+	function deletestaple(id) {
+		document.getElementById("stapleid").value = id;
 		//alert($("#drinksid").val());
 		var f1 = document.getElementById("requestform");
-		f1.action = "deleteDRINKS.action";
+		f1.action = "deleteSTAPLE.action";
 		f1.submit();
 	}
-	function modifydrink(id)
+	function modifystaple(id)
 	{
-		document.getElementById("drinksid").value = id;
+		document.getElementById("stapleid").value = id;
 		//alert($("#drinksid").val());
 		var f1 = document.getElementById("requestform");
-		f1.action = "requestoneDRINKS.action";
+		f1.action = "requestoneSTAPLE.action";
 		f1.submit();
 	}
 </script>
 <body>
 
 	<div class="main">
-		<form action="requestDRINKS.action" id="requestform" method="post">
+		<form action="requestSTAPLE.action" id="requestform" method="post">
 			<table class="01" width="961" height="631" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td colspan="14" width="960" height="16">			</td>
@@ -265,21 +265,21 @@ body {
 						style="vertical-align:top" align="left"><div class="qiu"
 							style=" HEIGHT: 466; position:absolute; top:110px; width:712px;  vertical-align:top; ">
 							<ul>
-								<c:if test="${fn:length(paginator.items)<9}">
-									<li style=" cursor:pointer" onClick="location.href='add_drink.jsp'"></li>
+								<c:if test="${paginator.currentPage == 1}">
+									<li style=" cursor:pointer" onClick="location.href='add_staple.jsp'"></li>
 								</c:if>
-								<!-- 酒水列表 -->
-								<c:forEach var="drink" items="${paginator.items}">
+								<!-- 主食列表 -->
+								<c:forEach var="staple" items="${paginator.items}">
 									<li>
 										<div>
-											<img src="${drink.small_pic}" width="205" height="125"> <img
+											<img src="${staple.small_pic}" width="205" height="125"> <img
 												id="position" src="images/close.png" width="14" height="15" style="cursor:pointer"
-												onclick=" javascirpt:deletedrink('${drink.drinksid}')">
+												onclick=" javascirpt:deletestaple('${staple.stapleid}')">
 										</div>
 										<div class="name">
-											<span>${drink.drinks }</span><span><img
+											<span>${staple.staplefood }</span><span><img
 												src="images/modify.png" width="33" height="17" style="cursor:pointer"
-												onclick=" javascirpt:modifydrink('${drink.drinksid}')"> </span>
+												onclick=" javascirpt:modifystaple('${staple.stapleid}')"> </span>
 										</div></li>
 
 								</c:forEach>
@@ -287,7 +287,7 @@ body {
 								
 
 							</ul>
-							<input type="hidden" name="drinksid" id="drinksid" value="123" />
+							<input type="hidden" name="stapleid" id="stapleid" value="123" />
 
 						</div>
 		

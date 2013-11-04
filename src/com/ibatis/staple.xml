@@ -12,17 +12,17 @@
 		select * from staplefood limit $start$,$lenth$
 	</select>
 	<delete id="deleteStaple" parameterClass="int">
-		delete from staplefood where Stapleid=$Stapleid$
+		delete from staplefood where stapleid=$stapleid$
 	</delete>
 	<insert id="addStaple" parameterClass="Staple">
-		insert into staplefood (Staplefood,price,small_pic,big_pic,num,descript,create_date) 
-		values(#Staplefood#,$price$,#small_pic#,#big_pic#,$num$,#descript#,current_timestamp)
+		insert into staplefood (staplefood,price,small_pic,big_pic,num,descript,create_date) 
+		values(#staplefood#,$price$,#small_pic#,#big_pic#,$num$,#descript#,current_timestamp)
 	</insert>
 	<select id="findStapleById" parameterClass="int" resultClass="Staple">
-		select * from staplefood where Stapleid=$id$
+		select * from staplefood where stapleid=$id$
 	</select>
 	<update id="modifyStaple" parameterClass="Staple">
-		update staplefood set staplefood=#staplefood#,price=$price$,small_pic=#small_pic#,big_pic=#big_pic#,num=$num$,descript=#descript# where Stapleid=$Stapleid$
+		update staplefood set staplefood=#staplefood#,price=$price$,small_pic=#small_pic#,big_pic=#big_pic#,num=$num$,descript=#descript# where stapleid=$stapleid$
 	</update>
 
 </sqlMap>
