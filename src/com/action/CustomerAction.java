@@ -27,6 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class CustomerAction extends ActionSupport{
 	
+	
 	private static final long serialVersionUID = 1L;
 	private CustomerDao cusdao;
 	private MsgDao msgDao=new MsgDao();
