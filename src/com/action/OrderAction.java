@@ -68,16 +68,7 @@ public class OrderAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		try {
 			//System.out.println(session.getId());
-			List<Food> foods=orderDao.findAllFood();
-			List<Staple> staples=orderDao.findAllStaple();
-			List<Drinks> drinks=orderDao.findAllDrinks();
 			List<OrderSpecial> orderSpecials=orderDao.findMyOrder(session.getId());
-			
-			request.setAttribute("foods", foods);
-			request.setAttribute("drinks", drinks);
-			request.setAttribute("staples", staples);
-		
-			
 			request.setAttribute("myorders", orderSpecials);
 			return resultPage;
 		} catch (Exception e) {
@@ -86,14 +77,61 @@ public class OrderAction extends ActionSupport{
 			return "error";
 		}
 	}
-	public String requestAllDishes()
+	public String requestall()
 	{
+		//System.out.println("requestall");
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		try {
-			//List<OrderSpecial> orderSpecials=orderDao.findMyOrder(session.getId());
+			List<Food> foods=orderDao.findAllFood();
+			List<Staple> staples=orderDao.findAllStaple();
+			List<Drinks> drinks=orderDao.findAllDrinks();
+			List<OrderSpecial> orderSpecials=orderDao.findMyOrder(session.getId());
+			
+			for (Food food : foods) {
+				food.setNum(0);
+				if (!orderSpecials.isEmpty()) {
+					for (OrderSpecial orderSpecial : orderSpecials) {
+						if (orderSpecial.getType()==0&&orderSpecial.getFoodid()==food.getFoodid()) {
+							food.setNum(orderSpecial.getCount());
+							orderSpecials.remove(orderSpecial);
+							break;
+						}
+					}
+				}
+			}
+			for (Staple staple : staples) {
+				staple.setNum(0);
+				if (!orderSpecials.isEmpty()) {
+					for (OrderSpecial orderSpecial : orderSpecials) {
+						if (orderSpecial.getType()==1&&orderSpecial.getFoodid()==staple.getStapleid()) {
+							staple.setNum(orderSpecial.getCount());
+							orderSpecials.remove(orderSpecial);
+							break;
+						}
+					}
+				}
+			}
+			for (Drinks drink : drinks) {
+				drink.setNum(0);
+				if (!orderSpecials.isEmpty()) {
+					for (OrderSpecial orderSpecial : orderSpecials) {
+						if (orderSpecial.getType()==2&&orderSpecial.getFoodid()==drink.getDrinksid()) {
+							drink.setNum(orderSpecial.getCount());
+							orderSpecials.remove(orderSpecial);
+							break;
+						}
+					}
+				}
+			}
+			
+			
+			
+			request.setAttribute("foods", foods);
+			request.setAttribute("drinks", drinks);
+			request.setAttribute("staples", staples);
 
-			return "alldishes";
+			return "pay2";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

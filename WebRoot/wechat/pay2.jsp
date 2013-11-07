@@ -1,4 +1,6 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+﻿<%@page import="com.bean.Staple"%>
+<%@page import="com.bean.Food"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="/jstl/c.tld"%>
 <%@taglib prefix="fn" uri="/jstl/fn.tld"%>
 <%
@@ -10,9 +12,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="pragma" content="no-cache"> 
-<meta http-equiv="cache-control" content="no-cache"> 
-<meta http-equiv="expires" content="0">   
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
 <meta content="text/html; charset=gbk2312" http-equiv="Content-Type" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 <meta content="yes" name="apple-mobile-web-app-capable" />
@@ -177,39 +179,57 @@ body {
 	float: right;
 	margin-top: 5px;
 }
-.carte_input{ height:26px; text-align:right; line-height:26px; border:0px; color:#555555; font-weight:bold; font-size:16px;}
+
+.carte_input {
+	height: 26px;
+	text-align: right;
+	line-height: 26px;
+	border: 0px;
+	color: #555555;
+	font-weight: bold;
+	font-size: 16px;
+}
 </style>
 <script type="text/javascript">
 function addition(i)
 {
-	var count=document.getElementById("count"+i);
-	var count1=document.getElementById("count1"+i);
-	var total=document.getElementById("total"+i);
 	var price=document.getElementById("price"+i).value;
+	
+	var count=document.getElementById("count"+i);
+	var total=document.getElementById("total"+i);
+	if(count.value==0)
+	{
+		document.getElementById("dishes"+i).style.display="block";
+	}
 	count.value=parseInt(count.value)+1;
-	count1.value=count.value;
 	total.value=parseInt(total.value)+parseInt(price);
-	totalpay();
-	//alert(total);
+	var totalpay=document.getElementById("totalpay");
+	totalpay.value=parseInt(totalpay.value)+parseInt(price);
+	//totalpay();
+
+	
 }
 function subtraction(i)
 {
-	var count=document.getElementById("count"+i);
-	var count1=document.getElementById("count1"+i);
-	var total=document.getElementById("total"+i);
 	var price=document.getElementById("price"+i).value;
+	var count=document.getElementById("count"+i);
+	var total=document.getElementById("total"+i);
 	if(parseInt(count.value)>0)
 	{
 		count.value=parseInt(count.value)-1;
-		count1.value=count.value;
 		total.value=parseInt(total.value)-parseInt(price);
-		totalpay();
+		var totalpay=document.getElementById("totalpay");
+		totalpay.value=parseInt(totalpay.value)-parseInt(price);
+		if(count.value==0)
+		{
+			document.getElementById("dishes"+i).style.display="none";
+		}
 	}
 	
 }
 function totalpay()
 {
-	var totalnum="${fn:length(myorders)}";
+	var totalnum="${fn:length(foods)+fn:length(staples)+fn:length(drinks)}";
 	//alert(totalnum);
 	var totalpay=document.getElementById("totalpay");
 	totalpay.value=0;
@@ -219,8 +239,9 @@ function totalpay()
 		totalpay.value=parseInt(totalpay.value)+parseInt(total.value);
 	}
 }
-function submit()
+function onsubmit1()
 {
+	
 	var f1=document.getElementById("accountform");
 	f1.submit();
 }
@@ -232,8 +253,7 @@ function submit()
 	<div class="main">
 		<div class="top">
 			<div class="top_back">
-				<img src="images/back.png" width="49" height="21"
-					onclick="history.go(-1)" />
+				<img src="images/back.png" width="49" height="21" onclick="history.go(-1)" />
 			</div>
 			<div class="top_title">饭店名称</div>
 		</div>
@@ -252,109 +272,127 @@ function submit()
 					</tr>
 				</table>
 			</div>
-			<c:forEach var="food" items="${myorders}" varStatus="i">
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="120" align="left">菜名:${food.food }</td>
-						<td width="72" align="right">
-						</td>
-						<td width="80"><img src="images/jian.png" width="33"
-							height="25" onclick="subtraction('${i.index}')"/><img src="images/jia.png" width="33" height="25" onclick="addition('${i.index}')"/>
-						</td>
-					</tr>
-				</table>
-			</div>
-			</c:forEach>
 			<c:forEach var="food" items="${foods}" varStatus="i">
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="120" align="left">菜名:${food.food }</td>
-						<td width="72" align="right">
-						</td>
-						<td width="80"><img src="images/jian.png" width="33"
-							height="25" onclick="subtraction('${i.index}')"/><img src="images/jia.png" width="33" height="25" onclick="addition('${i.index}')"/>
-						</td>
-					</tr>
-				</table>
-			</div>
+				<div class="list_operating">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="120" align="left">菜名:${food.food }</td>
+							<td width="72" align="right"><div>
+									<input id="price${i.index }" name="price" type="text" class="carte_input" value="${food.price }" style="width:20px;" readonly="readonly" />
+								</div></td>
+							<td width="80"><img src="images/jian.png" width="33" height="25" onclick="subtraction('${i.index}')" />
+							<img src="images/jia.png" width="33" height="25" onclick="addition('${i.index}')" /></td>
+						</tr>
+					</table>
+				</div>
 			</c:forEach>
-			<c:forEach var="food" items="${myorders}" varStatus="i">
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="120" align="left">菜名:${food.food }</td>
-						<td width="72" align="right">
-						</td>
-						<td width="80"><img src="images/jian.png" width="33"
-							height="25" onclick="subtraction('${i.index}')"/><img src="images/jia.png" width="33" height="25" onclick="addition('${i.index}')"/>
-						</td>
-					</tr>
-				</table>
-			</div>
+			<c:forEach var="staple" items="${staples}" varStatus="i">
+				<div class="list_operating">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="120" align="left">主食名:${staple.staplefood }</td>
+							<td width="72" align="right"><div>
+									<input id="price${i.index+fn:length(foods) }" name="price" type="text" class="carte_input" value="${staple.price }" style="width:20px;" readonly="readonly" />
+								</div></td>
+							<td width="80">
+							<img src="images/jian.png" width="33" height="25" onclick="subtraction('${i.index+fn:length(foods)}')" />
+							<img src="images/jia.png" width="33" height="25" onclick="addition('${i.index+fn:length(foods)}')" /></td>
+						</tr>
+					</table>
+				</div>
+			</c:forEach>
+			<c:forEach var="drink" items="${drinks}" varStatus="i">
+				<div class="list_operating">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="120" align="left">酒水名:${drink.drinks }</td>
+							<td width="72" align="right"><div>
+									<input id="price${i.index+fn:length(foods)+fn:length(staples) }" name="price" type="text" class="carte_input" value="${drink.price }" style="width:20px;" readonly="readonly" />
+								</div></td>
+							<td width="80">
+							<img src="images/jian.png" width="33" height="25" onclick="subtraction('${i.index+fn:length(foods)+fn:length(staples)}')" />
+							<img src="images/jia.png" width="33" height="25" onclick="addition('${i.index+fn:length(foods)+fn:length(staples)}')" />
+							</td>
+						</tr>
+					</table>
+				</div>
 			</c:forEach>
 			<div class="bottom_opreating"></div>
 		</div>
 		<form action="payORDER.action" name="accountform" id="accountform">
-		<div class="operating">
-			<div class="top_opreating"></div>
-			<div class="list_operating2">
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td width="379" align="left">您的消费清单如下：</td>
-					</tr>
-				</table>
-			</div>
+			<div class="operating">
+				<div class="top_opreating"></div>
+				<div class="list_operating2">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="379" align="left">您的消费清单如下：</td>
+						</tr>
+					</table>
+				</div>
 
-				<c:forEach var="food" items="${myorders}" varStatus="i">
-					<div class="list_operating3">
+				<c:forEach var="food" items="${foods}" varStatus="i">
+					<div class="list_operating3" id="dishes${i.index }"
+					<c:if test="${food.num==0 }">
+					style="display:none"
+					</c:if>
+					>
 						<table cellpadding="0" cellspacing="0">
 							<tr>
-								<td align="left">菜名:${food.food }&nbsp;
-								<input id="count${i.index }" name="count"
-									type="text" class="carte_input" value="${food.count }"
-									style="width:35px;" readonly="readonly" />份&nbsp;
-									<input id="total${i.index }"
-									name="total" type="text" class="carte_input"
-									value="${food.price }" style="width:68px;" readonly="readonly" />元
-								<input type="hidden" id="foodid${i.index }" name="foodid"
-									value="${food.foodid }" />
-									<input type="hidden" id="price${i.index }" name="price"
-									value="${food.price }" /> <input type="hidden"
-									id="type${i.index }" name="type" value="${food.type }" />
-								</td>
-							</tr>
-						</table><%--
-						<table cellpadding="0" cellspacing="0">
-							<tr>
-								<td width="160" align="left">菜名:${food.food } <!-- <input type="text" id="food${i.index }" name="food" value="${food.food }"/> -->
-									<input type="hidden" id="foodid${i.index }" name="foodid"
-									value="${food.foodid }" /></td>
-								<td width="102" align="right"><div>
-										<input id="count${i.index }" name="count" type="text"
-											class="carte_input" value="${food.count }"
-											style="width:35px;" readonly="readonly" />份&nbsp;
-									</div></td>
-								<td width="117" align="center"><input id="total${i.index }"
-									name="total" type="text" class="carte_input"
-									value="${food.price }" style="width:68px;" readonly="readonly" />元
-									<input type="hidden" id="price${i.index }" name="price"
-									value="${food.price }" /> <input type="hidden"
-									id="type${i.index }" name="type" value="${food.type }" /></td>
+								<td align="left">菜名:${food.food }&nbsp; 
+								<input id="count${i.index }" name="count" type="text" class="carte_input" value="${food.num }" style="width:35px;" readonly="readonly" />份&nbsp; 
+								<input id="total${i.index }" name="total" type="text" class="carte_input" value="${food.price*food.num }" style="width:68px;" readonly="readonly" />元 
+								<input type="hidden" id="foodid${i.index }" name="foodid" value="${food.foodid }" />
+								<input type="hidden" id="type${i.index }" name="type" value="0" /></td>
 							</tr>
 						</table>
-					--%></div>
+					</div>
+				</c:forEach>
+				<c:forEach var="staple" items="${staples}" varStatus="i">
+					<div class="list_operating3" id="dishes${i.index+fn:length(foods) }"
+					<c:if test="${staple.num==0 }">
+					style="display:none"
+					</c:if>
+					>
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+								<td align="left">主食名:${staple.staplefood }&nbsp; 
+								<input id="count${i.index+fn:length(foods) }" name="count" type="text" class="carte_input" value="${staple.num }" style="width:35px;" readonly="readonly" />份&nbsp; 
+								<input id="total${i.index+fn:length(foods) }" name="total" type="text" class="carte_input" value="${staple.price*staple.num }" style="width:68px;" readonly="readonly" />元 
+								<input type="hidden" id="foodid${i.index+fn:length(foods) }" name="foodid" value="${staple.stapleid }" />
+								<input type="hidden" id="type${i.index+fn:length(foods) }" name="type" value="1" /></td>
+							</tr>
+						</table>
+					</div>
+				</c:forEach>
+
+
+				<c:forEach var="drink" items="${drinks}" varStatus="i">
+					<div class="list_operating3" id="dishes${i.index+fn:length(foods)+fn:length(staples)}"
+					
+					<c:if test="${drink.num==0 }">
+					style="display:none"
+					</c:if>
+					>
+						<table cellpadding="0" cellspacing="0">
+							<tr>
+								<td align="left">酒水名:${drink.drinks }&nbsp; 
+								<input id="count${i.index+fn:length(foods)+fn:length(staples) }" name="count" type="text" class="carte_input" value="${drink.num }" style="width:35px;" readonly="readonly" />份&nbsp; 
+								<input id="total${i.index+fn:length(foods)+fn:length(staples) }" name="total" type="text" class="carte_input" value="${drink.price*drink.num }" style="width:68px;" readonly="readonly" />元 
+								<input type="hidden" id="foodid${i.index }" name="foodid" value="${drink.drinksid }" />
+								<input type="hidden" id="type${i.index }" name="type" value="2" /></td>
+							</tr>
+						</table>
+					</div>
 				</c:forEach>
 				<div class="bottom_opreating"></div>
-		</div>
-		<div class="list_operating4">
-			总计消费:<input name="totalpay" id="totalpay" type="text" class="carte_input" value="" style="width:68px; background-color:#e0e1dc" readonly="readonly" />元<img src="images/submit.png" width="96" height="32" onclick="submit()"/>
-			
-		</div>
-	</form>
+			</div>
+			<div class="list_operating4">
+				总计消费:<input name="totalpay" id="totalpay" type="text" class="carte_input" value="" style="width:68px; background-color:#e0e1dc" readonly="readonly" />元<img src="images/submit.png" width="96" height="32" onclick="onsubmit1()" />
+
+			</div>
+		</form>
 	</div>
-<script type="text/javascript">
+	<script type="text/javascript">
 totalpay();
 </script>
 </body>

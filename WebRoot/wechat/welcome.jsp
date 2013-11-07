@@ -194,7 +194,7 @@ body {
 
 			<div class="list_operating0">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='requestmyORDER.action?resultPage=pay'">
+					<tr onclick="location.href='requestallORDER.action'">
 						<td width="57" align="center"><img src="images/icon6.png"
 							width="19" height="24" />
 						</td>
