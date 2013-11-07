@@ -183,7 +183,7 @@ public class StapleFoodAction extends ActionSupport{
 			return "error";
 		}
 	}
-	/**删除酒水
+	/**删除主食
 	 * @return
 	 */
 	public String delete()
@@ -338,12 +338,13 @@ public class StapleFoodAction extends ActionSupport{
 		}
 		
 	}
-	/**微信页面请求菜谱列表
+	/**微信页面请求主食列表
 	 * @return
 	 */
 	public String werequest()
 	{
 		try {
+			//System.out.println("werequeststaple");
 			int count;
 			List<Staple> staplelist;
 			paginator.setPageSize(100);

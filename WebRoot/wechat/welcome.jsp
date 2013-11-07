@@ -148,7 +148,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestFOOD.action?resultPage=wefood'">
+					<tr onclick="location.href='werequestSTAPLE.action?resultPage=westaple'">
 						<td width="57" align="center"><img src="images/icon5.png"
 							width="21" height="19" />
 						</td>

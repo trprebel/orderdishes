@@ -339,7 +339,7 @@ body {
 	</tr>
 	
 	<tr>
-		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; " onclick="location.href='requestFEEDBACK.action'"><div class="list" style="height:42px;" ><img src="images/icon7.png" width="20" height="23"> 反馈信息</div>			</td>
+		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; " onclick="location.href='requestFEEDBACK.action'"><div class="list" style="height:42px;" ><img src="images/icon7.png" width="20" height="23"> 反馈信息</div>		<div class="list" style="height:42px;" ><img src="images/icon7.png" width="20" height="23"> 反馈信息</div>		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>
 	</tr>

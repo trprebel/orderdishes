@@ -65,7 +65,7 @@
 		</action>
 		<action name="*ORDER" class="com.action.OrderAction" method="{1}">
 			<result name="myorder">/wechat/myorder.jsp</result>
-			<result name="pay">/wechat/pay.jsp</result>
+			<result name="pay">/wechat/pay2.jsp</result>
 			<result name="welcome">/wechat/welcome.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>

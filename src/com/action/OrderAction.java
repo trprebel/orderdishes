@@ -7,9 +7,16 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.bean.Drinks;
+import com.bean.Food;
 import com.bean.OrderSpecial;
+import com.bean.Staple;
+import com.dao.impl.DrinksDao;
+import com.dao.impl.FoodDao;
 import com.dao.impl.OrderDao;
+import com.dao.impl.StapleDao;
 import com.opensymphony.xwork2.ActionSupport;
+import com.util.Program;
 
 /**订单相关操作
  * @author zxj
@@ -61,9 +68,32 @@ public class OrderAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		try {
 			//System.out.println(session.getId());
+			List<Food> foods=orderDao.findAllFood();
+			List<Staple> staples=orderDao.findAllStaple();
+			List<Drinks> drinks=orderDao.findAllDrinks();
 			List<OrderSpecial> orderSpecials=orderDao.findMyOrder(session.getId());
+			
+			request.setAttribute("foods", foods);
+			request.setAttribute("drinks", drinks);
+			request.setAttribute("staples", staples);
+		
+			
 			request.setAttribute("myorders", orderSpecials);
 			return resultPage;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "error";
+		}
+	}
+	public String requestAllDishes()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
+		try {
+			//List<OrderSpecial> orderSpecials=orderDao.findMyOrder(session.getId());
+
+			return "alldishes";
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

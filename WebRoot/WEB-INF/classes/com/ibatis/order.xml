@@ -11,6 +11,15 @@
 	<update id="overBook" parameterClass="OrderSpecial">
 		update order_special set state=1,count=$count$,update_date=current_timestamp where foodid=$foodid$ and type=$type$ and tempcus=#tempcus#
 	</update>
+	<select id="findAllFood" resultClass="com.bean.Food">
+		select * from food
+	</select>
+	<select id="findAllDrinks" resultClass="com.bean.Drinks">
+		select * from drinks
+	</select>
+	<select id="findAllStaple" resultClass="com.bean.Staple">
+		select * from staplefood
+	</select>
 
 </sqlMap>
 
