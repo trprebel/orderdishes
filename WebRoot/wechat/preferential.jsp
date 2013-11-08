@@ -29,7 +29,6 @@ body {
 
 .main {
 	min-width: 320px;
-	height: 507px;
 	margin: 0 auto;
 	display: block;
 	background: url(images/mc_top.png) top repeat-x #e0e1dc

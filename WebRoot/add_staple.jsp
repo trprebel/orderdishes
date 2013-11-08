@@ -400,8 +400,8 @@ body {
 	<tr>
 		<td colspan="2" rowspan="4" width="241" height="66">			</td>
 		<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list" onClick="location.href='requestFOOD.action'"><img src="images/icon1.png" width="18"
-						height="19" > 菜谱管理</td>
+						class="list" onClick="location.href='requestSTAPLE.action'"><img src="images/icon_food.png" width="21"
+						height="20" > 主食管理</td>
 		<td width="1" height="10">			</td>
 	</tr>
 	<tr>

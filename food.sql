@@ -140,7 +140,7 @@ CREATE TABLE `drinks` (
 
 LOCK TABLES `drinks` WRITE;
 /*!40000 ALTER TABLE `drinks` DISABLE KEYS */;
-INSERT INTO `drinks` VALUES (1,0,'茅台','WebRoot/images/img.png','WebRoot/images/img.png',500,34,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(2,0,'五粮液','WebRoot/images/img.png','WebRoot/images/img.png',1000,23,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(3,0,'汾酒','WebRoot/images/img.png','WebRoot/images/img.png',300,23,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(4,0,'二锅头','WebRoot/images/img.png','WebRoot/images/img.png',0,2,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(5,0,'老白干','WebRoot/images/img.png','WebRoot/images/img.png',0,12,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(6,0,'马奶酒','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(7,0,'女儿红','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(8,0,'三沟','images/-7059869585075280282.png','images/-413336769536885846.png',123,123,0,'test modify drinks','2013-01-01 03:11:11','2013-01-01 03:11:11'),(9,0,'111111',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(10,0,'2222',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(13,0,'55555',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(14,0,'qwe','images/-3713567433547818117.png','images/-3387340990448685939.png',123,21,0,'test add drinks','2013-10-11 04:21:18','2013-01-01 03:11:11'),(15,0,'dfdfg','images/-1708899676249080847.png','images/7237209600112743493.jpg',12,12,0,'sdfgtydfg','2013-10-24 09:13:17','2013-01-01 03:11:11'),(17,0,NULL,'images/1013914772118532757.png','images/-6167885494313671798.png',12,12,0,'qweradfrtrtytry','2013-11-04 12:50:11','2013-01-01 03:11:11');
+INSERT INTO `drinks` VALUES (1,0,'茅台','WebRoot/images/img.png','WebRoot/images/img.png',500,34,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(2,0,'五粮液','WebRoot/images/img.png','WebRoot/images/img.png',1000,23,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(3,0,'汾酒','WebRoot/images/img.png','WebRoot/images/img.png',300,23,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(4,0,'二锅头','WebRoot/images/img.png','WebRoot/images/img.png',0,2,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(5,0,'老白干','WebRoot/images/img.png','WebRoot/images/img.png',0,12,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(6,0,'马奶酒','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(7,0,'女儿红','WebRoot/images/img.png','WebRoot/images/img.png',0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(8,0,'三沟','images/-7059869585075280282.png','images/-413336769536885846.png',123,123,0,'test modify drinks','2013-01-01 03:11:11','2013-01-01 03:11:11'),(9,0,'111111',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(10,0,'2222',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(13,0,'55555',NULL,NULL,0,0,0,NULL,'2013-01-01 03:11:11','2013-01-01 03:11:11'),(14,0,'qwe','images/-3713567433547818117.png','images/-3387340990448685939.png',123,21,0,'test add drinks','2013-10-11 04:21:18','2013-01-01 03:11:11'),(15,0,'dfdfg','images/-1708899676249080847.png','images/7237209600112743493.jpg',12,12,0,'sdfgtydfg','2013-10-24 09:13:17','2013-01-01 03:11:11');
 /*!40000 ALTER TABLE `drinks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,7 +249,7 @@ CREATE TABLE `message` (
   `isread` int(1) NOT NULL DEFAULT '0',
   `create_date` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
   PRIMARY KEY (`msgid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,6 +258,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
+INSERT INTO `message` VALUES (1,'D871F1D697C64BF4602C2EEE09B0B6D9','admin','游客想与您聊天！',0,'2013-11-08 03:29:22'),(2,'D871F1D697C64BF4602C2EEE09B0B6D9','admin','游客想与您聊天！',0,'2013-11-08 03:34:12');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,7 +285,7 @@ CREATE TABLE `order_special` (
   `CREATE_DATE` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
   `UPDATE_DATE` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
   PRIMARY KEY (`ORDERID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,7 +294,7 @@ CREATE TABLE `order_special` (
 
 LOCK TABLES `order_special` WRITE;
 /*!40000 ALTER TABLE `order_special` DISABLE KEYS */;
-INSERT INTO `order_special` VALUES (1,0,'A9F9DBA0277CF9D9DE0E89F68521B35C',0,1,'qweasd','',12,'images/-7213942456950524769.png',1,0,1,'2013-11-07 14:48:35','2012-12-31 16:00:00');
+INSERT INTO `order_special` VALUES (1,0,'A9F9DBA0277CF9D9DE0E89F68521B35C',0,1,'qweasd','',12,'images/-7213942456950524769.png',1,0,1,'2013-11-07 14:48:35','2012-12-31 16:00:00'),(2,0,'B5F225BAE9E4FA2322DC979FA493C825',0,31,'asd','',21,'images/-7213942456950524769.png',1,0,0,'2013-11-08 02:34:50','2012-12-31 16:00:00'),(3,0,'B5F225BAE9E4FA2322DC979FA493C825',0,36,'qwe','',12,'images/-7213942456950524769.png',1,0,0,'2013-11-08 02:34:52','2012-12-31 16:00:00'),(4,0,'B5F225BAE9E4FA2322DC979FA493C825',0,34,'123','',321,'images/2924328963579930024.png',1,0,0,'2013-11-08 02:35:02','2012-12-31 16:00:00'),(5,0,'B5F225BAE9E4FA2322DC979FA493C825',0,39,'3333','',32,'images/-7213942456950524769.png',1,0,0,'2013-11-08 02:35:07','2012-12-31 16:00:00'),(6,0,'B5F225BAE9E4FA2322DC979FA493C825',0,3,'sfdrt','',12,'images/-7213942456950524769.png',1,0,1,'2013-11-08 02:35:53','2012-12-31 16:00:00'),(7,0,'B5F225BAE9E4FA2322DC979FA493C825',0,2,'五粮液','',1000,'WebRoot/images/img.png',1,0,2,'2013-11-08 02:35:59','2012-12-31 16:00:00');
 /*!40000 ALTER TABLE `order_special` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -480,4 +481,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-07 23:17:16
+-- Dump completed on 2013-11-08 18:11:35

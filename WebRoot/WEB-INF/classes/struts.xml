@@ -29,7 +29,7 @@
 			<result name="request" type="chain">requestSTAPLE</result>
 			<result name="error">/error.jsp</result>
 			<result name="modify">/modify_staple.jsp</result>
-			<result name="westaple">/wechat/food.jsp</result>
+			<result name="westaple">/wechat/staple.jsp</result>
 			<result name="ajaxresult" type="json">
 				<param name="root">resultString</param>
 			</result>

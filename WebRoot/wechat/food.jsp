@@ -28,7 +28,6 @@ body {
 }
 .main {
 	min-width: 320px;
-	height:100%;
 	margin: 0 auto;
 	display: block;
 	background: url(images/mc_top.png) top repeat-x #e0e1dc
@@ -130,13 +129,13 @@ function order(id)
 {
 	//alert(id);
 	var postdata = {
-  			stapleid :id
+  			foodid :id
     	};
   	
 		$.ajax({
      		type:'post',
      		data:postdata,
-     		url:'orderSTAPLE.action',
+     		url:'orderFOOD.action',
      		dataType:'json',
      		success:function(data){
      			//var obj = $.parseJSON(data);        
@@ -167,25 +166,25 @@ function order(id)
 		<div class="bank"></div>
 		<div class="operating">
 			<div class="top_opreating"></div>
-			<div class="welcome_operating">XXX饭店/主食:</div>
+			<div class="welcome_operating">XXX饭店/所有菜:</div>
 			
-			<c:forEach var="staple" items="${paginator.items}">
+			<c:forEach var="food" items="${paginator.items}">
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="75" align="left"><img src="<%=basePath %>${staple.small_pic}"
+						<td width="75" align="left"><img src="<%=basePath %>${food.small_pic}"
 							width="67" height="48" />
 						</td>
 						<td width="167" align="left"><div>
-								${staple.staplefood }<span>${staple.price}元&nbsp;
+								${food.food }<span>${food.price}元&nbsp;
 								<c:choose>
-								<c:when test="${staple.num>10}">充足
+								<c:when test="${food.num>10}">充足
 								</c:when>
-								<c:otherwise>${staple.num }
+								<c:otherwise>${food.num }
 								</c:otherwise>
 								</c:choose>
 								</span><br /> <img src="images/button.png"
-									width="47" height="20" onclick="order('${staple.stapleid}')"/>
+									width="47" height="20" onclick="order('${food.foodid}')"/>
 							</div>
 						</td>
 						<td width="25"><img src="images/left_arrow.png" width="11"

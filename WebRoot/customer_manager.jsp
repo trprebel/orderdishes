@@ -180,16 +180,13 @@ body {
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list" onClick="location.href='requestDRINKS.action'">
-						<img src="images/icon2.png" width="21" height="20">
-						酒水管理
-					</td>
+						class="list" onClick="location.href='requestSTAPLE.action'"><img src="images/icon_food.png" width="21"
+						height="20" > 主食管理</td>
 		<td width="1" height="22">			</td>
 	</tr>
 	<tr>
 		<td rowspan="14" width="81" height="466">		</td>
 		<td colspan="8" rowspan="8" width="712" height="324" style="vertical-align:top" align="center"><div style=" HEIGHT: 324; margin-right:30px; vertical-align:top; OVERFLOW: scroll; OVERFLOW-x:hidden; scrollbar-3dlight-color:#595959; scrollbar-arrow-color:#FFFFFF; scrollbar-base-color:#CFCFCF; scrollbar-darkshadow-color:#FFFFFF; scrollbar-face-color:#CFCFCF; scrollbar-highlight-color:#FFFFFF; scrollbar-shadow-color:#595959">
->
 		<table cellpadding="0" cellspacing="0" class="tab_info"
 								style="border-collapse: collapse">
 								<tr>
@@ -252,10 +249,17 @@ body {
 	</tr>
 	<tr>
 		<td colspan="3" width="208" height="42" align="center"
-						class="list" onClick="location.href='message_release.jsp'">
-						<img src="images/icon3.png" width="20" height="14">
-						信息发布
-					</td>
+						class="list" onClick="location.href='requestDRINKS.action'"><img src="images/icon2.png" width="21"
+						height="20"> 酒水管理</td>
+		<td width="1" height="42">			</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="2">			</td>
+		<td width="1" height="2">			</td>
+	</tr>
+	<tr>
+		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='message_release.jsp'">
+						<img src="images/icon3.png" width="20" height="14"> 信息发布</td>
 		<td width="1" height="42">			</td>
 	</tr>
 	<tr>
@@ -264,25 +268,16 @@ body {
 	</tr>
 	<tr>
 		<td colspan="3" width="208" height="42" align="center" class="list_h">
-						<img src="images/icon4.png" width="20" height="20">
-						客户管理
-					</td>
-		<td width="1" height="42">			</td>
-	</tr>
-	<tr>
-		<td colspan="3" width="208" height="2">			</td>
-		<td width="1" height="2">			</td>
-	</tr>
-	<tr>
-		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='history_info.jsp'">
-						<img src="images/icon5.png" width="20" height="20">
-						历史信息
-					</td>
+						<img src="images/icon4.png" width="20" height="20"> 客户信息</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="42" alt=""></td>
 	</tr>
 	<tr>
-		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; " onclick="location.href='requestFEEDBACK.action'"><div class="list" style="height:42px;" ><img src="images/icon7.png" width="20" height="23"> 反馈信息</div>			</td>
+		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; ">
+		<div class="list" style="height:42px;" onClick="location.href='history_info.jsp'">
+		<img src="images/icon5.png" width="20" height="20"> 历史信息</div>		
+		<div class="list" style="height:42px;" onclick="location.href='requestFEEDBACK.action'">
+		<img src="images/icon7.png" width="20" height="20"> 反馈信息</div>		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>
 	</tr>

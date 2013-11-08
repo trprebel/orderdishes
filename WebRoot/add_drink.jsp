@@ -416,8 +416,8 @@ body {
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="2" width="208" height="42" align="center"
-						class="list" onClick="location.href='requestDRINKS.action'"><img src="images/icon2.png" width="21"
-						height="20" > 酒水管理</td>
+						class="list" onClick="location.href='requestSTAPLE.action'"><img src="images/icon_food.png" width="21"
+						height="20" > 主食管理</td>
 		<td width="1" height="22">			</td>
 	</tr>
 	<tr>

@@ -127,8 +127,8 @@ public class SendHTML {
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache, must-revalidate");
 		response.setDateHeader("Expires", -1);
-		response.setContentType("text/html; charset=gbk");
-		request.setCharacterEncoding("gbk");
+		response.setContentType("text/html; charset=utf-8");
+		request.setCharacterEncoding("utf-8");
 	}
 
 	/**
@@ -140,7 +140,7 @@ public class SendHTML {
 		String[] strOut = new String[] {
 				"<html>",
 				"<head>",
-				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gbk\">",
+				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">",
 				"<title></title>",
 				"<style type=\"text/css\">",
 				"<!--",
@@ -163,7 +163,7 @@ public class SendHTML {
 		String[] strOut = new String[] {
 				"<html>",
 				"<head>",
-				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gbk\">",
+				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">",
 				"<title></title>",
 				"<script language=\"Javascript\" src=\"js/jquery-1.6.js\"  type=\"text/javascript\"></script>",
 				//"<script language=\"Javascript\" src=\"htmlbox.colors.js\"  type=\"text/javascript\"></script>",
@@ -186,7 +186,7 @@ public class SendHTML {
 				
 				"<html>",
 				"<head>",
-				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gbk\" />",
+				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />",
 				"<title>无标题文档</title>",
 				"<link href=\"css/iframe.css\" rel=\"stylesheet\" type=\"text/css\" />",
 				"</head>",
@@ -213,7 +213,7 @@ public class SendHTML {
 		String[] strOut = new String[] {
 				"<html>",
 				"<head>",
-				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gbk\">",
+				"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">",
 				"<title>聊天室</title>",
 				"</head>",
 				"<frameset rows=\"*\" cols=\"100,*\" frameborder=\"YES\" border=\"1\" framespacing=\"0\">",

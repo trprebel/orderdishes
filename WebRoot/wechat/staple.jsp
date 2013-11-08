@@ -26,14 +26,12 @@ body {
 	letter-spacing: 1px;
 	margin: 0px;
 }
-
 .main {
 	min-width: 320px;
 	margin: 0 auto;
 	display: block;
 	background: url(images/mc_top.png) top repeat-x #e0e1dc
 }
-
 .top {
 	height: 42px;
 }
@@ -81,46 +79,83 @@ body {
 	background: #FFFFFF;
 	line-height: 56px;
 	height: 56px;
-	padding-left: 10px;
-	width: 272px;
+	padding-left: 15px;
+	width: 267px;
 	border-left: 2px solid #c7c7c4;
 	border-right: 2px solid #c7c7c4
 }
 
 .list_operating {
-	height: 42px;
+	height: 62px;
 	background: #FFFFFF;
 	color: #555555;
-	line-height: 42px;
+	line-height: 28px;
 	border-top: 2px solid #c7c7c4;
 	border-left: 2px solid #c7c7c4;
 	border-right: 2px solid #c7c7c4
 }
 
+.list_operating span {
+	font-size: 12px;
+	margin-left: 7px;
+}
+
 .list_operating0 {
-	height: 40px;
+	height: 62px;
 	background: #FFFFFF;
 	color: #555555;
-	line-height: 40px;
+	line-height: 60px;
 	border-left: 2px solid #c7c7c4;
 	border-right: 2px solid #c7c7c4
 }
 
 .list_operating0 table {
-	margin-left: 4px;
+	margin-left: 30px;
 }
 
 .list_operating table {
-	margin-left: 20px;
+	margin-left: 13px;
+	margin-top: 6px
 }
 
 .bank {
-	height: 5px;
+	height: 8px;
 }
 </style>
+<script type="text/javascript" src="<%=basePath%>js/jquery-1.6.js"></script>
+<script type="text/javascript">
+
+function order(id)
+{
+	//alert(id);
+	var postdata = {
+  			stapleid :id
+    	};
+  	
+		$.ajax({
+     		type:'post',
+     		data:postdata,
+     		url:'orderSTAPLE.action',
+     		dataType:'json',
+     		success:function(data){
+     			//var obj = $.parseJSON(data);        
+				alert(data);
+				
+     		},
+    		error:function(){
+       			alert("预定失败！");
+    		}
+
+    	});
+}
+
+</script>
 </head>
 
+
+
 <body>
+	<form action="werequestSTAPLE.action?resultPage=wefood" name="werequestform" id="werequestform">
 	<div class="main">
 		<div class="top">
 			<div class="top_back">
@@ -131,49 +166,38 @@ body {
 		<div class="bank"></div>
 		<div class="operating">
 			<div class="top_opreating"></div>
-			<div class="welcome_operating">XXX饭店/菜谱浏览</div>
+			<div class="welcome_operating">XXX饭店/主食:</div>
+			
+			<c:forEach var="staple" items="${paginator.items}">
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestFOOD.action?resultPage=wefood'">
-						<td width="234" align="left">所有菜谱</td>
-						<td width="20"><img src="images/left_arrow.png" width="11"
+					<tr>
+						<td width="75" align="left"><img src="<%=basePath %>${staple.small_pic}"
+							width="67" height="48" />
+						</td>
+						<td width="167" align="left"><div>
+								${staple.staplefood }<span>${staple.price}元&nbsp;
+								<c:choose>
+								<c:when test="${staple.num>10}">充足
+								</c:when>
+								<c:otherwise>${staple.num }
+								</c:otherwise>
+								</c:choose>
+								</span><br /> <img src="images/button.png"
+									width="47" height="20" onclick="order('${staple.stapleid}')"/>
+							</div>
+						</td>
+						<td width="25"><img src="images/left_arrow.png" width="11"
 							height="17" />
 						</td>
 					</tr>
 				</table>
 			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestFOOD.action?resultPage=wefeature'">
-						<td width="234" align="left">特色菜谱</td>
-						<td width="20"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestFOOD.action?resultPage=wespecial'">
-						<td width="234" align="left">最新优惠</td>
-						<td width="20"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="list_operating">
-				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='requestmyORDER.action?resultPage=myorder'">
-						<td width="234" align="left">我的订单</td>
-						<td width="20"><img src="images/left_arrow.png" width="11"
-							height="17" />
-						</td>
-					</tr>
-				</table>
-			</div>
+			</c:forEach>
+			
 			<div class="bottom_opreating"></div>
 		</div>
 	</div>
+	</form>
 </body>
 </html>
