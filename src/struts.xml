@@ -75,6 +75,9 @@
 			<result name="feedbacklist">/feedback.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="*PUBLICSERVICE" class="com.action.PublicServiceAction" method="{1}">
+		
+		</action>
 
 	</package>
 	
