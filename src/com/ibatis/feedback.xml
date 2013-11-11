@@ -6,10 +6,10 @@
 
 	<typeAlias alias="FeedBack" type="com.bean.FeedBack" />
 	<insert id="addFeedBack" parameterClass="FeedBack">
-		insert into feedback (content,isshow,create_date) values(#content#,$isshow$,current_timestamp)
+		insert into feedback (content,businessid,isshow,create_date) values(#content#,$businessid$,$isshow$,current_timestamp)
 	</insert>
-	<select id="findShowFeedBack" resultClass="FeedBack">
-		select * from feedback where isshow=1
+	<select id="findShowFeedBack" parameterClass="int" resultClass="FeedBack">
+		select * from feedback where businessid=$businessid$ and isshow=1
 	</select>
 	<update id="ignoreFeedBack" parameterClass="int">
 		update feedback set isshow=0 where id=$id$

@@ -151,7 +151,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestSTAPLE.action?resultPage=westaple&businessid=<%=businessid%>'">
+					<tr onclick="location.href='werequestSTAPLE.action?resultPage=westaple'">
 						<td width="57" align="center"><img src="images/icon5.png"
 							width="21" height="19" />
 						</td>
@@ -197,7 +197,7 @@ body {
 
 			<div class="list_operating0">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='requestallORDER.action?businessid=<%=businessid%>'">
+					<tr onclick="location.href='requestallORDER.action'">
 						<td width="57" align="center"><img src="images/icon6.png"
 							width="19" height="24" />
 						</td>

@@ -4,6 +4,7 @@ public class FeedBack {
 
 	private int id;
 	private String content;
+	private int businessid;
 	private int isshow;
 	private String create_date;
 	private String update_date;
@@ -19,6 +20,12 @@ public class FeedBack {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public int getBusinessid() {
+		return businessid;
+	}
+	public void setBusinessid(int businessid) {
+		this.businessid = businessid;
 	}
 	public int getIsshow() {
 		return isshow;

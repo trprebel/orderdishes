@@ -10,9 +10,9 @@ public class FeedBackDao {
 	{
 		SqlMap.getSqlMapClient().insert("addFeedBack",feedBack);
 	}
-	public List<FeedBack> findShowFeedBack() throws Exception
+	public List<FeedBack> findShowFeedBack(int businessid) throws Exception
 	{
-		return (List<FeedBack>) SqlMap.getSqlMapClient().queryForList("findShowFeedBack");
+		return (List<FeedBack>) SqlMap.getSqlMapClient().queryForList("findShowFeedBack",businessid);
 	}
 	public void ignoreFeedBack(int id) throws Exception 
 	{

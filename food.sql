@@ -157,11 +157,12 @@ DROP TABLE IF EXISTS `feedback`;
 CREATE TABLE `feedback` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `content` varchar(255) NOT NULL DEFAULT '',
+  `businessid` int(6) NOT NULL DEFAULT '0',
   `isshow` int(1) NOT NULL DEFAULT '1',
   `create_date` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
   `update_date` timestamp NOT NULL DEFAULT '2012-12-31 16:00:00',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +171,7 @@ CREATE TABLE `feedback` (
 
 LOCK TABLES `feedback` WRITE;
 /*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
-INSERT INTO `feedback` VALUES (1,'wqer',0,'2013-11-04 07:12:01','2012-12-31 16:00:00'),(2,'etwet',0,'2012-12-31 16:00:00','2012-12-31 16:00:00'),(3,'sfdgert',1,'2013-11-04 07:59:16','2012-12-31 16:00:00'),(4,'tgsrtyt',1,'2013-11-04 07:59:21','2012-12-31 16:00:00'),(5,'tgsrtyt',1,'2013-11-04 08:44:43','2012-12-31 16:00:00');
+INSERT INTO `feedback` VALUES (1,'wqer',1,0,'2013-11-04 07:12:01','2012-12-31 16:00:00'),(2,'etwet',2,0,'2012-12-31 16:00:00','2012-12-31 16:00:00'),(3,'sfdgert',1,1,'2013-11-04 07:59:16','2012-12-31 16:00:00'),(4,'tgsrtyt',1,1,'2013-11-04 07:59:21','2012-12-31 16:00:00'),(5,'tgsrtyt',2,1,'2013-11-04 08:44:43','2012-12-31 16:00:00'),(6,'safewrwe',1,1,'2013-11-11 15:34:01','2012-12-31 16:00:00');
 /*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -484,4 +485,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-11 23:17:11
+-- Dump completed on 2013-11-11 23:34:53
