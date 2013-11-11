@@ -21,9 +21,9 @@ public class OrderDao {
 	{
 		return (List<Food>)SqlMap.getSqlMapClient().queryForList("findAllFood");
 	}
-	public List<Drinks> findAllDrinks() throws Exception
+	public List<Drinks> findAllDrinks(int businessid) throws Exception
 	{
-		return (List<Drinks>)SqlMap.getSqlMapClient().queryForList("findAllDrinks");
+		return (List<Drinks>)SqlMap.getSqlMapClient().queryForList("findAllDrinks",businessid);
 	}
 	public List<Staple> findAllStaple() throws Exception
 	{

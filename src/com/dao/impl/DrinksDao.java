@@ -9,8 +9,8 @@ import com.util.Program;
 public class DrinksDao {
 
 	/**查找酒水总数*/
-	public Integer findDrinksCount() throws Exception{
-		return (Integer) SqlMap.getSqlMapClient().queryForObject("findDrinksCount");
+	public Integer findDrinksCount(int businessid) throws Exception{
+		return (Integer) SqlMap.getSqlMapClient().queryForObject("findDrinksCount",businessid);
 	}
 
 	/**查找酒水列表*/

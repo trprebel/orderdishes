@@ -5,6 +5,7 @@ public class Program {
 	public int start;
 	public int lenth;
 	public Integer sort;
+	public int businessid;
 	public int getStart() {
 		return start;
 	}
@@ -22,5 +23,11 @@ public class Program {
 	}
 	public void setSort(Integer sort) {
 		this.sort = sort;
+	}
+	public int getBusinessid() {
+		return businessid;
+	}
+	public void setBusinessid(int businessid) {
+		this.businessid = businessid;
 	}
 }

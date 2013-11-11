@@ -5,18 +5,18 @@
 <sqlMap namespace="food">
 
 	<typeAlias alias="Food" type="com.bean.Food" />
-	<select id="findFoodCount" resultClass="int">
-		select count(*) from food
+	<select id="findFoodCount" parameterClass="int" resultClass="int">
+		select count(*) from food where businessid=$businessid$
 	</select>
 	<select id="findFoodList" parameterClass="com.util.Program" resultClass="Food">
-		select * from food limit $start$,$lenth$
+		select * from food where businessid=$businessid$ limit $start$,$lenth$
 	</select>
 	<delete id="deleteFood" parameterClass="int">
 		delete from food where foodid=$foodid$
 	</delete>
 	<insert id="addFood" parameterClass="Food">
-		insert into food (food,price,small_pic,big_pic,isfeature,num,descript,create_date) 
-		values(#food#,$price$,#small_pic#,#big_pic#,$isfeature$,$num$,#descript#,current_timestamp)
+		insert into food (food,businessid,price,small_pic,big_pic,isfeature,num,descript,create_date) 
+		values(#food#,$businessid$,$price$,#small_pic#,#big_pic#,$isfeature$,$num$,#descript#,current_timestamp)
 	</insert>
 	<select id="findFoodById" parameterClass="int" resultClass="Food">
 		select * from food where foodid=$id$
@@ -24,17 +24,17 @@
 	<update id="modifyFood" parameterClass="Food">
 		update food set food=#food#,price=$price$,isfeature=$isfeature$,small_pic=#small_pic#,big_pic=#big_pic#,num=$num$,descript=#descript# where foodid=$foodid$
 	</update>
-	<select id="findSpecialPriceCount" resultClass="int">
-		select count(*) from food where isfeature=2
+	<select id="findSpecialPriceCount" parameterClass="int" resultClass="int">
+		select count(*) from food where businessid=$businessid$ and isfeature=2 
 	</select>
 	<select id="findSpecialPriceList" parameterClass="com.util.Program" resultClass="Food">
-		select * from food where isfeature=2 limit $start$,$lenth$
+		select * from food where businessid=$businessid$ and isfeature=2 limit $start$,$lenth$
 	</select>
-	<select id="findFeatureCount" resultClass="int">
-		select count(*) from food where isfeature=1
+	<select id="findFeatureCount" parameterClass="int" resultClass="int">
+		select count(*) from food where businessid=$businessid$ and isfeature=1
 	</select>
 	<select id="findFeatureList" parameterClass="com.util.Program" resultClass="Food">
-		select * from food where isfeature=1 limit $start$,$lenth$
+		select * from food where businessid=$businessid$ and isfeature=1 limit $start$,$lenth$
 	</select>
 	<insert id="orderFood" parameterClass="com.bean.OrderSpecial">
 		insert into order_special (tempcus,foodid,food,price,small_pic,count,state,type,create_date) values(#tempcus#,$foodid$,#food#,$price$,#small_pic#,$count$,$state$,$type$,current_timestamp)

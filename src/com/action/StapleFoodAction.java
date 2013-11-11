@@ -148,18 +148,20 @@ public class StapleFoodAction extends ActionSupport{
 		try
 		{
 			//String path=StringUtil.getSpPropeurl("imagePath");
-
-			int count=stapleDao.findStapleCount();
+			User user=(User)session.getAttribute("user");
+			int count=stapleDao.findStapleCount(user.getBusinessid());
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
 			//System.out.println(paginator.getOffset());
 			if (paginator.getCurrentPage()==1) {
 				program.setStart(paginator.getOffset());
 				program.setLenth(paginator.getPageSize()-1);
+				program.setBusinessid(user.getBusinessid());
 			}
 			else {
 				program.setStart(paginator.getOffset()-1);
 				program.setLenth(paginator.getPageSize());
+				program.setBusinessid(user.getBusinessid());
 			}
 			if(count==0){
 				paginator.setData(0, null);
@@ -167,7 +169,7 @@ public class StapleFoodAction extends ActionSupport{
 			}
 			List<Staple> staples=stapleDao.findStapleList(program);
 			paginator.setData(count, staples);
-			User user=(User)session.getAttribute("user");
+			
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
@@ -269,10 +271,11 @@ public class StapleFoodAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		try {
 
-			
+			User user=(User)session.getAttribute("user");
 			
 			Staple staple=new Staple();
 			staple.setStaplefood(staplefood);
+			staple.setBusinessid(user.getBusinessid());
 			staple.setPrice(Integer.parseInt(price));
 			staple.setNum(Integer.parseInt(num));
 			staple.setSmall_pic(small_pic);
@@ -280,7 +283,7 @@ public class StapleFoodAction extends ActionSupport{
 			staple.setDescript(descript);
 			stapleDao.addStaple(staple);
 			
-			User user=(User)session.getAttribute("user");
+			
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
@@ -343,16 +346,20 @@ public class StapleFoodAction extends ActionSupport{
 	 */
 	public String werequest()
 	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
 			//System.out.println("werequeststaple");
+			int businessid=Integer.parseInt((String)session.getAttribute("businessid"));
 			int count;
 			List<Staple> staplelist;
 			paginator.setPageSize(100);
 			program.setStart(paginator.getOffset());
 			program.setLenth(paginator.getPageSize());
+			program.setBusinessid(businessid);
 			
 			
-			count=stapleDao.findStapleCount();
+			count=stapleDao.findStapleCount(businessid);
 			staplelist=stapleDao.findStapleList(program);
 
 			if(count==0){

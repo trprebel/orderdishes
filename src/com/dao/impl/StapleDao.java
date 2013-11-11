@@ -8,8 +8,8 @@ import com.util.Program;
 public class StapleDao {
 
 	/**查找主食总数*/
-	public Integer findStapleCount() throws Exception{
-		return (Integer) SqlMap.getSqlMapClient().queryForObject("findStapleCount");
+	public Integer findStapleCount(int businessid) throws Exception{
+		return (Integer) SqlMap.getSqlMapClient().queryForObject("findStapleCount",businessid);
 	}
 
 	/**查找主食列表*/

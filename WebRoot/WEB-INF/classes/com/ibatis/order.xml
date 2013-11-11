@@ -14,8 +14,8 @@
 	<select id="findAllFood" resultClass="com.bean.Food">
 		select * from food
 	</select>
-	<select id="findAllDrinks" resultClass="com.bean.Drinks">
-		select * from drinks
+	<select id="findAllDrinks" parameterClass="int" resultClass="com.bean.Drinks">
+		select * from drinks where businessid=$businessid$
 	</select>
 	<select id="findAllStaple" resultClass="com.bean.Staple">
 		select * from staplefood

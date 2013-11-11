@@ -2,7 +2,13 @@
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.bean.Food;
+import com.bean.User;
 import com.dao.impl.FoodDao;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
@@ -38,13 +44,17 @@ public class SpecialAction extends ActionSupport{
 
 	public String specialprice()
 	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
+			User user=(User)session.getAttribute("user");
 			//System.out.println("request-special");
 			fooddao=new FoodDao();
-			int count=fooddao.findSpecialPriceCount();
+			int count=fooddao.findSpecialPriceCount(user.getBusinessid());
 
 			program.setStart(paginator.getOffset());
 			program.setLenth(paginator.getPageSize());
+			program.setBusinessid(user.getBusinessid());
 			if(count==0){
 				paginator.setData(0, null);
 				return "special";

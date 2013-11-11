@@ -169,7 +169,7 @@ function order(id)
 			<div class="top_opreating"></div>
 			<div class="welcome_operating">XXX饭店/酒水:</div>
 			
-			<c:forEach var="drink" items="${paginator.items}">
+			<c:forEach var="drink" items="${drinklist}">
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
 					<tr>

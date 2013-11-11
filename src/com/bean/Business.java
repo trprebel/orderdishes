@@ -4,6 +4,8 @@ public class Business {
 
 	private int businessid;
 	private String busname;
+	private String corporation;
+	private String license;
 	private String remark;
 	private int type;
 	private int state;
@@ -26,6 +28,18 @@ public class Business {
 	}
 	public void setBusname(String busname) {
 		this.busname = busname;
+	}
+	public String getCorporation() {
+		return corporation;
+	}
+	public void setCorporation(String corporation) {
+		this.corporation = corporation;
+	}
+	public String getLicense() {
+		return license;
+	}
+	public void setLicense(String license) {
+		this.license = license;
 	}
 	public String getRemark() {
 		return remark;

@@ -152,9 +152,10 @@ public class FoodAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		try
 		{
+			User user=(User)session.getAttribute("user");
 			//String path=StringUtil.getSpPropeurl("imagePath");
 			fooddao=new FoodDao();
-			int count=fooddao.findFoodCount();
+			int count=fooddao.findFoodCount(user.getBusinessid());
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
 			
@@ -162,10 +163,12 @@ public class FoodAction extends ActionSupport{
 			if (paginator.getCurrentPage()==1) {
 				program.setStart(paginator.getOffset());
 				program.setLenth(paginator.getPageSize()-1);
+				program.setBusinessid(user.getBusinessid());
 			}
 			else {
 				program.setStart(paginator.getOffset()-1);
 				program.setLenth(paginator.getPageSize());
+				program.setBusinessid(user.getBusinessid());
 			}
 			
 			if(count==0){
@@ -178,7 +181,7 @@ public class FoodAction extends ActionSupport{
 //				food.setBig_pic(path+food.getBig_pic());
 //				//System.out.println(drink.getSmall_pic());
 //			}
-			User user=(User)session.getAttribute("user");
+			
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
@@ -198,22 +201,26 @@ public class FoodAction extends ActionSupport{
 	}
 	public String request1()
 	{
-		//HttpServletRequest request=ServletActionContext.getRequest();
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try
 		{
+			User user=(User)session.getAttribute("user");
 			//String path=StringUtil.getSpPropeurl("imagePath");
 			fooddao=new FoodDao();
-			int count=fooddao.findFoodCount();
+			int count=fooddao.findFoodCount(user.getBusinessid());
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
 			//System.out.println("start:"+paginator.getOffset());
 			if (paginator.getCurrentPage()==1) {
 				program.setStart(paginator.getOffset());
 				program.setLenth(paginator.getPageSize()-1);
+				program.setBusinessid(user.getBusinessid());
 			}
 			else {
 				program.setStart(paginator.getOffset()-1);
 				program.setLenth(paginator.getPageSize());
+				program.setBusinessid(user.getBusinessid());
 			}
 			if(count==0){
 				paginator.setData(0, null);
@@ -239,6 +246,7 @@ public class FoodAction extends ActionSupport{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		try {
+			User user=(User)session.getAttribute("user");
 //			System.out.println(food);
 //			System.out.println(price);
 //			System.out.println(isfeature);
@@ -247,6 +255,7 @@ public class FoodAction extends ActionSupport{
 //			System.out.println(small_pic);
 			Food foodbean=new Food();
 			foodbean.setFood(food);
+			foodbean.setBusinessid(user.getBusinessid());
 			foodbean.setPrice(Integer.parseInt(price));
 			foodbean.setIsfeature(Integer.parseInt(isfeature));
 			foodbean.setNum(Integer.parseInt(num));
@@ -256,7 +265,7 @@ public class FoodAction extends ActionSupport{
 			
 			fooddao=new FoodDao();
 			fooddao.addFood(foodbean);
-			User user=(User)session.getAttribute("user");
+			
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
@@ -418,13 +427,15 @@ public class FoodAction extends ActionSupport{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		try {
+			User user=(User)session.getAttribute("user");
 			fooddao=new FoodDao();
-			int count=fooddao.findFeatureCount();
+			int count=fooddao.findFeatureCount(user.getBusinessid());
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
 			//System.out.println(paginator.getOffset());
 			program.setStart(paginator.getOffset());
 			program.setLenth(paginator.getPageSize());
+			program.setBusinessid(user.getBusinessid());
 			if(count==0){
 				paginator.setData(0, null);
 				return "feature";
@@ -435,7 +446,7 @@ public class FoodAction extends ActionSupport{
 //				food.setBig_pic(path+food.getBig_pic());
 //				//System.out.println(drink.getSmall_pic());
 //			}
-			User user=(User)session.getAttribute("user");
+			
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
@@ -456,29 +467,33 @@ public class FoodAction extends ActionSupport{
 	 */
 	public String werequest()
 	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
 			int count;
 			List<Food> foodlist;
+			int businessid=Integer.parseInt((String)session.getAttribute("businessid"));
 			fooddao=new FoodDao();
 			paginator.setPageSize(100);
 			program.setStart(paginator.getOffset());
 			program.setLenth(paginator.getPageSize());
+			program.setBusinessid(businessid);
 			
 			if (resultPage.equals("wefood")) {
-				count=fooddao.findFoodCount();
+				count=fooddao.findFoodCount(businessid);
 				foodlist=fooddao.findFoodList(program);
 			}
 			else if(resultPage.equals("wefeature"))
 			{
 				
-				count=fooddao.findFeatureCount();
+				count=fooddao.findFeatureCount(businessid);
 				foodlist=fooddao.findFeatureList(program);
 			}else if(resultPage.equals("wespecial"))
 			{
 				//paginator.setPageSize(3);
 				//program.setStart(paginator.getOffset());
 				//program.setLenth(paginator.getPageSize());
-				count=fooddao.findSpecialPriceCount();
+				count=fooddao.findSpecialPriceCount(businessid);
 				foodlist=fooddao.findSpecialPriceList(program);
 			}
 			else return "error";

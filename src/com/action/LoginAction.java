@@ -79,7 +79,7 @@ public class LoginAction extends ActionSupport{
 				SystemUserInfo messageuser = new SystemUserInfo(); // me
 				messageuser.setUserName(username); //
 				request.getSession().setAttribute("session_UserInfo", messageuser); //
-				
+				//System.out.println(user.getBusinessid());
 				
 				session.setAttribute("user", user);
 				return "success";

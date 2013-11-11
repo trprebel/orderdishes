@@ -5,6 +5,9 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	String businessid=(String)request.getParameter("businessid");
+	session.setAttribute("businessid", businessid);
+	//System.out.println(businessid);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -118,6 +121,7 @@ body {
 	height: 5px;
 }
 </style>
+
 </head>
 
 <body>
@@ -147,7 +151,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestSTAPLE.action?resultPage=westaple'">
+					<tr onclick="location.href='werequestSTAPLE.action?resultPage=westaple&businessid=<%=businessid%>'">
 						<td width="57" align="center"><img src="images/icon5.png"
 							width="21" height="19" />
 						</td>
@@ -193,7 +197,7 @@ body {
 
 			<div class="list_operating0">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='requestallORDER.action'">
+					<tr onclick="location.href='requestallORDER.action?businessid=<%=businessid%>'">
 						<td width="57" align="center"><img src="images/icon6.png"
 							width="19" height="24" />
 						</td>

@@ -5,18 +5,18 @@
 <sqlMap namespace="staple">
 
 	<typeAlias alias="Staple" type="com.bean.Staple" />
-	<select id="findStapleCount" resultClass="int">
-		select count(*) from staplefood
+	<select id="findStapleCount" parameterClass="int" resultClass="int">
+		select count(*) from staplefood where businessid=$businessid$
 	</select>
 	<select id="findStapleList" parameterClass="com.util.Program" resultClass="Staple">
-		select * from staplefood limit $start$,$lenth$
+		select * from staplefood where businessid=$businessid$ limit $start$,$lenth$
 	</select>
 	<delete id="deleteStaple" parameterClass="int">
 		delete from staplefood where stapleid=$stapleid$
 	</delete>
 	<insert id="addStaple" parameterClass="Staple">
-		insert into staplefood (staplefood,price,small_pic,big_pic,num,descript,create_date) 
-		values(#staplefood#,$price$,#small_pic#,#big_pic#,$num$,#descript#,current_timestamp)
+		insert into staplefood (staplefood,businessid,price,small_pic,big_pic,num,descript,create_date) 
+		values(#staplefood#,$businessid$,$price$,#small_pic#,#big_pic#,$num$,#descript#,current_timestamp)
 	</insert>
 	<select id="findStapleById" parameterClass="int" resultClass="Staple">
 		select * from staplefood where stapleid=$id$

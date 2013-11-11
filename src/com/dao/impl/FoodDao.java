@@ -9,8 +9,8 @@ import com.util.Program;
 public class FoodDao {
 
 	/**查找菜单总数*/
-	public Integer findFoodCount() throws Exception{
-		return (Integer) SqlMap.getSqlMapClient().queryForObject("findFoodCount");
+	public Integer findFoodCount(int businessid) throws Exception{
+		return (Integer) SqlMap.getSqlMapClient().queryForObject("findFoodCount",businessid);
 	}
 
 	/**查找菜单列表*/
@@ -35,9 +35,9 @@ public class FoodDao {
 		SqlMap.getSqlMapClient().update("modifyFood",food);
 	}
 	/**特价数量*/
-	public Integer findSpecialPriceCount() throws Exception
+	public Integer findSpecialPriceCount(int businessid) throws Exception
 	{
-		return (Integer) SqlMap.getSqlMapClient().queryForObject("findSpecialPriceCount");
+		return (Integer) SqlMap.getSqlMapClient().queryForObject("findSpecialPriceCount",businessid);
 	}
 	/**特价菜列表*/
 	public List<Food> findSpecialPriceList(Program program) throws Exception
@@ -45,9 +45,9 @@ public class FoodDao {
 		return (List<Food>) SqlMap.getSqlMapClient().queryForList("findSpecialPriceList",program);
 	}
 	/**特色数量*/
-	public Integer findFeatureCount() throws Exception
+	public Integer findFeatureCount(int businessid) throws Exception
 	{
-		return (Integer) SqlMap.getSqlMapClient().queryForObject("findFeatureCount");
+		return (Integer) SqlMap.getSqlMapClient().queryForObject("findFeatureCount",businessid);
 	}
 	/**特色菜列表*/
 	public List<Food> findFeatureList(Program program) throws Exception

@@ -21,6 +21,7 @@ import com.bean.User;
 import com.dao.impl.DrinksDao;
 import com.dao.impl.FoodDao;
 import com.dao.impl.MsgDao;
+import com.dao.impl.OrderDao;
 import com.opensymphony.xwork2.ActionSupport;
 import com.util.Paginator;
 import com.util.Program;
@@ -146,19 +147,22 @@ public class DrinksAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		try
 		{
+			User user=(User)session.getAttribute("user");
 			//String path=StringUtil.getSpPropeurl("imagePath");
 			drinksdao=new DrinksDao();
-			int count=drinksdao.findDrinksCount();
+			int count=drinksdao.findDrinksCount(user.getBusinessid());
 			//System.out.println(paginator.getCurrentPage());
 			//paginator.setPageSize(6);
 			//System.out.println(paginator.getOffset());
 			if (paginator.getCurrentPage()==1) {
 				program.setStart(paginator.getOffset());
 				program.setLenth(paginator.getPageSize()-1);
+				program.setBusinessid(user.getBusinessid());
 			}
 			else {
 				program.setStart(paginator.getOffset()-1);
 				program.setLenth(paginator.getPageSize());
+				program.setBusinessid(user.getBusinessid());
 			}
 			if(count==0){
 				paginator.setData(0, null);
@@ -167,7 +171,7 @@ public class DrinksAction extends ActionSupport{
 			List<Drinks> drinks=drinksdao.findDrinksList(program);
 			
 			paginator.setData(count, drinks);
-			User user=(User)session.getAttribute("user");
+			
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
@@ -270,6 +274,7 @@ public class DrinksAction extends ActionSupport{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		try {
+			User user=(User)session.getAttribute("user");
 //			System.out.println(drinks);
 //			System.out.println(price);
 ////			System.out.println(isfeature);
@@ -279,6 +284,7 @@ public class DrinksAction extends ActionSupport{
 //			System.out.println(big_pic);
 			Drinks drinksbean=new Drinks();
 			drinksbean.setDrinks(drinks);
+			drinksbean.setBusinessid(user.getBusinessid());
 			drinksbean.setPrice(Integer.parseInt(price));
 			//drinks.setIsfeature(Integer.parseInt(isfeature));
 			drinksbean.setNum(Integer.parseInt(num));
@@ -287,7 +293,7 @@ public class DrinksAction extends ActionSupport{
 			drinksbean.setDescript(descript);
 			drinksdao=new DrinksDao();
 			drinksdao.addDrink(drinksbean);
-			User user=(User)session.getAttribute("user");
+			
 			//System.out.println(user.getUsername());
 			List<Message> msgs=msgDao.findUnreadMsg(user.getUsername());
 			if (msgs.isEmpty()) {
@@ -354,23 +360,28 @@ public class DrinksAction extends ActionSupport{
 	 */
 	public String werequest()
 	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		HttpSession session=request.getSession();
 		try {
-			int count;
+			//int count;
 			List<Drinks> drinklist;
-			paginator.setPageSize(100);
-			program.setStart(paginator.getOffset());
-			program.setLenth(paginator.getPageSize());
+			//paginator.setPageSize(100);
+			//program.setStart(paginator.getOffset());
+			//program.setLenth(paginator.getPageSize());
+			int businessid=Integer.parseInt((String)session.getAttribute("businessid"));
 			
-
-			count=drinksdao.findDrinksCount();
-			drinklist=drinksdao.findDrinksList(program);
-
-			if(count==0){
-				paginator.setData(0, null);
-				return resultPage;
-			}
+			OrderDao orderDao=new OrderDao();
+			drinklist=orderDao.findAllDrinks(businessid);
+			request.setAttribute("drinklist", drinklist);
+//			count=drinksdao.findDrinksCount(businessid);
+//			drinklist=drinksdao.findDrinksList(program);
+//
+//			if(count==0){
+//				paginator.setData(0, null);
+//				return resultPage;
+//			}
 						
-			paginator.setData(count, drinklist);
+			//paginator.setData(count, drinklist);
 			return resultPage;
 		} catch (Exception e) {
 			// TODO: handle exception

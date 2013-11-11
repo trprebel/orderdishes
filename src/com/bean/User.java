@@ -6,7 +6,7 @@ public class User {
 	private String username;
 	private String passwd;
 	private int roleid;
-	private int bussinessid;
+	private int businessid;
 	private int type;
 	private int state;
 	private String mobile;
@@ -37,11 +37,11 @@ public class User {
 	public void setRoleid(int roleid) {
 		this.roleid = roleid;
 	}
-	public int getBussinessid() {
-		return bussinessid;
+	public int getBusinessid() {
+		return businessid;
 	}
-	public void setBussinessid(int bussinessid) {
-		this.bussinessid = bussinessid;
+	public void setBusinessid(int businessid) {
+		this.businessid = businessid;
 	}
 	public int getType() {
 		return type;
