@@ -2,6 +2,7 @@
 
 public class Information {
 	private int numid;
+	private int businessid;
 	private int type;
 	private int state;
 	private String descript;
@@ -13,6 +14,12 @@ public class Information {
 	}
 	public void setNumid(int numid) {
 		this.numid = numid;
+	}
+	public int getBusinessid() {
+		return businessid;
+	}
+	public void setBusinessid(int businessid) {
+		this.businessid = businessid;
 	}
 	public int getType() {
 		return type;

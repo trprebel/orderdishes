@@ -188,6 +188,32 @@ body {
 		f1.action = "requestoneDRINKS.action";
 		f1.submit();
 	}
+	function drinkdetail(id)
+	{
+		var postdata = {
+	  			drinksid :id
+	    	};
+		$.ajax({
+     		type:'post',
+     		data:postdata,
+     		url:'detailDRINKS.action',
+     		dataType:'json',
+     		success:function(drink){
+     			var category;
+     			var detail=
+     				"酒水名："+drink.drinks+"\n"
+     				+"单价："+drink.price+"\n"
+     				+"剩余数量："+drink.num+"\n"
+     				+"说明："+drink.descript;
+				alert(detail);
+
+     		},
+    		error:function(){
+       			alert("查询失败！");
+    		}
+
+    	});
+	}
 </script>
 <body>
 
@@ -272,7 +298,8 @@ body {
 								<c:forEach var="drink" items="${paginator.items}">
 									<li>
 										<div>
-											<img src="${drink.small_pic}" width="205" height="125"> <img
+											<img src="${drink.small_pic}" width="205" height="125" onclick="drinkdetail('${drink.drinksid}')"> 
+											<img
 												id="position" src="images/close.png" width="14" height="15" style="cursor:pointer"
 												onclick=" javascirpt:deletedrink('${drink.drinksid}')">
 										</div>

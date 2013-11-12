@@ -188,6 +188,31 @@ body {
 		f1.action = "requestoneSTAPLE.action";
 		f1.submit();
 	}
+	function stapledetail(id)
+	{
+		var postdata = {
+	  			stapleid :id
+	    	};
+		$.ajax({
+     		type:'post',
+     		data:postdata,
+     		url:'detailSTAPLE.action',
+     		dataType:'json',
+     		success:function(staple){
+     			var detail=
+     				"主食名："+staple.staplefood+"\n"
+     				+"单价："+staple.price+"\n"
+     				+"剩余数量："+staple.num+"\n"
+     				+"说明："+staple.descript;
+				alert(detail);
+
+     		},
+    		error:function(){
+       			alert("查询失败！");
+    		}
+
+    	});
+	}
 </script>
 <body>
 
@@ -272,7 +297,8 @@ body {
 								<c:forEach var="staple" items="${paginator.items}">
 									<li>
 										<div>
-											<img src="${staple.small_pic}" width="205" height="125"> <img
+											<img src="${staple.small_pic}" width="205" height="125" onclick="stapledetail('${staple.stapleid}')"> 
+											<img
 												id="position" src="images/close.png" width="14" height="15" style="cursor:pointer"
 												onclick=" javascirpt:deletestaple('${staple.stapleid}')">
 										</div>

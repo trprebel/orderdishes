@@ -155,7 +155,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr>
+					<tr onclick="location.href='werequestINFORMATION.action?resultPage=wetraffic&type=1'">
 						<td width="236" align="left">交通信息</td>
 						<td><img src="images/left_arrow.png" width="11" height="17" />
 						</td>
@@ -164,7 +164,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr>
+					<tr onclick="location.href='werequestINFORMATION.action?resultPage=werecruit&type=2'">
 						<td width="236" align="left">招聘信息</td>
 						<td><img src="images/left_arrow.png" width="11" height="17" />
 						</td>

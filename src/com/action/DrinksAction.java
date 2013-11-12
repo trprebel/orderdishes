@@ -43,6 +43,7 @@ public class DrinksAction extends ActionSupport{
 	private String descript;
 	private String small_pic;
 	private String big_pic;
+	private Drinks drinkdetail;
 	
 	private String resultString;
 	private String resultPage;
@@ -137,6 +138,12 @@ public class DrinksAction extends ActionSupport{
 	}
 	public void setPictureFileName(String pictureFileName) {
 		this.pictureFileName = pictureFileName;
+	}
+	public Drinks getDrinkdetail() {
+		return drinkdetail;
+	}
+	public void setDrinkdetail(Drinks drinkdetail) {
+		this.drinkdetail = drinkdetail;
 	}
 	/**请求酒水列表
 	 * @return String
@@ -418,6 +425,16 @@ public class DrinksAction extends ActionSupport{
 		}
 		return "ajaxresult";
 	}
-
+	public String detail()
+	{
+		try {
+			//System.out.println("detail");
+			drinkdetail=drinksdao.findDrinkById(Integer.parseInt(drinksid));
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "detail";
+	}
 
 }

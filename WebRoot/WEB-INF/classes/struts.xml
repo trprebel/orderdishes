@@ -23,6 +23,9 @@
 			<result name="ajaxresult" type="json">
 				<param name="root">resultString</param>
 			</result>
+			<result name="detail" type="json">
+				<param name="root">drinkdetail</param>
+			</result>
 		</action>
 		<action name="*STAPLE" class="com.action.StapleFoodAction" method="{1}">
 			<result name="staplelist">/staple_manager.jsp</result>
@@ -32,6 +35,9 @@
 			<result name="westaple">/wechat/staple.jsp</result>
 			<result name="ajaxresult" type="json">
 				<param name="root">resultString</param>
+			</result>
+			<result name="detail" type="json">
+				<param name="root">stapledetail</param>
 			</result>
 		</action>
 		<action name="*CUSTOMER" class="com.action.CustomerAction" method="{1}">
@@ -50,10 +56,15 @@
 			<result name="ajaxresult" type="json">
 				<param name="root">resultString</param>
 			</result>
+			<result name="detail" type="json">
+				<param name="root">fooddetail</param>
+			</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="*INFORMATION" class="com.action.InformationAction" method="{1}">
 			<result name="success">/message_release.jsp</result>
+			<result name="werecruit">/wechat/recruit.jsp</result>
+			<result name="wetraffic">/wechat/traffic.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="*MESSAGE" class="com.action.MessageAction" method="{1}">

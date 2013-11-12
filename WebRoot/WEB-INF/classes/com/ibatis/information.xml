@@ -6,7 +6,10 @@
 
 	<typeAlias alias="Information" type="com.bean.Information" />
 	<insert id="releaseInfo" parameterClass="Information">
-		insert into information (type,descript,create_date) values($type$,#descript#,current_timestamp)
+		insert into information (type,businessid,descript,create_date) values($type$,$businessid$,#descript#,current_timestamp)
 	</insert>
+	<select id="findInfo" parameterClass="Information" resultClass="String">
+		select descript from information where businessid=$businessid$ and type=$type$
+	</select>
 
 </sqlMap>

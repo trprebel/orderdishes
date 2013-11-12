@@ -197,6 +197,36 @@ body {
 		f1.submit();
 		//alert("deletefood");
 	}
+	function fooddetail(id)
+	{
+		var postdata = {
+	  			foodid :id
+	    	};
+		$.ajax({
+     		type:'post',
+     		data:postdata,
+     		url:'detailFOOD.action',
+     		dataType:'json',
+     		success:function(food){
+     			var category;
+     			if(food.isfeature==0) category="普通";
+     			else if(food.isfeature==1) category="特色";
+     			else category="特价";
+     			var detail=
+     				"菜名："+food.food+"\n"
+     				+"单价："+food.price+"\n"
+     				+"剩余数量："+food.num+"\n"
+     				+"类别："+category+"\n"
+     				+"说明："+food.descript;
+				alert(detail);
+
+     		},
+    		error:function(){
+       			alert("查询失败！");
+    		}
+
+    	});
+	}
 </script>
 <body>
 	<div class="main">
@@ -275,7 +305,7 @@ body {
 								<c:forEach var="food" items="${paginator.items}">
 									<li>
 										<div>
-											<img src="${food.small_pic} " width="205" height="125">
+											<img src="${food.small_pic} " width="205" height="125" onclick="fooddetail('${food.foodid}')">
 											<img id="position" src="images/close.png" width="14"
 												height="15" style="cursor:pointer"
 												onclick=" javascirpt:deletefood('${food.foodid}')">

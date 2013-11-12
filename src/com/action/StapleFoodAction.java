@@ -42,6 +42,7 @@ public class StapleFoodAction extends ActionSupport{
 	private String descript;
 	private String small_pic;
 	private String big_pic;
+	private Staple stapledetail;
 	
 	private String resultString;
 	private String resultPage;
@@ -137,6 +138,12 @@ public class StapleFoodAction extends ActionSupport{
 	}
 	public void setPictureFileName(String pictureFileName) {
 		this.pictureFileName = pictureFileName;
+	}
+	public Staple getStapledetail() {
+		return stapledetail;
+	}
+	public void setStapledetail(Staple stapledetail) {
+		this.stapledetail = stapledetail;
 	}
 	/**请求酒水列表
 	 * @return String
@@ -403,5 +410,16 @@ public class StapleFoodAction extends ActionSupport{
 			resultString="预定失败！";
 		}
 		return "ajaxresult";
+	}
+	public String detail()
+	{
+		try {
+			//System.out.println("detail");
+			stapledetail=stapleDao.findStapleById(Integer.parseInt(stapleid));
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "detail";
 	}
 }

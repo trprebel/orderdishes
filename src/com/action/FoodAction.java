@@ -43,6 +43,7 @@ public class FoodAction extends ActionSupport{
 	private String big_pic;
 	private String resultString;
 	private String resultPage;
+	private Food fooddetail=new Food();
 	private File picture;   //保存上传的文件
 	private String pictureContentType;	 //保存上传的文件类型
 	private String pictureFileName;   //保存上传的文件名
@@ -142,6 +143,13 @@ public class FoodAction extends ActionSupport{
 	}
 	public void setResultPage(String resultPage) {
 		this.resultPage = resultPage;
+	}
+	
+	public Food getFooddetail() {
+		return fooddetail;
+	}
+	public void setFooddetail(Food fooddetail) {
+		this.fooddetail = fooddetail;
 	}
 	/**请求菜谱列表
 	 * @return String
@@ -536,6 +544,17 @@ public class FoodAction extends ActionSupport{
 			resultString="预定失败！";
 		}
 		return "ajaxresult";
+	}
+	public String detail()
+	{
+		try {
+			//System.out.println("detail");
+			fooddetail=fooddao.findFoodById(Integer.parseInt(foodid));
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "detail";
 	}
 
 
