@@ -1,3 +1,4 @@
+<%@page import="com.dao.impl.BusinessDao"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="/jstl/c.tld"%>
 <%
@@ -5,6 +6,11 @@
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+	int businessid=Integer.parseInt((String)session.getAttribute("businessid"));
+	//System.out.println(businessid);
+	BusinessDao businessDao=new BusinessDao();
+	String username=businessDao.findBusUserById(businessid);
+	//System.out.println(username);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -213,7 +219,7 @@ function speak(){
 	
 	var postdata = {
 			content:$("#content").val(),
-			touser:"admin"
+			touser:"<%=username%>"
     	};
   	
 	$.ajax({
@@ -278,7 +284,7 @@ function speak(){
 			<div style="vertical-align:top">
 				<iframe id="frame_content" 
 					style=" width:286px; min-height:300px; background:transparent;  vertical-align:top;"
-					src="messageMESSAGE.action?touser=admin&totype=wechat" marginheight="0" scrolling="yes" frameborder=0></iframe>
+					src="messageMESSAGE.action?touser=<%=username%>&totype=wechat" marginheight="0" scrolling="yes" frameborder=0></iframe>
 		
 			</div>
 

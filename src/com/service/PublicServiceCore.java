@@ -46,7 +46,7 @@ public class PublicServiceCore {
 
 			// 文本消息
 			if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
-				respContent = fromUserName;
+				respContent = "欢迎光临！";
 			}
 			// 图片消息
 			else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {
@@ -70,7 +70,14 @@ public class PublicServiceCore {
 				String eventType = requestMap.get("Event");
 				// 订阅
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
-					respContent = "欢迎使用XX饭店点菜系统！请访问:\n http://14.17.106.206/OrderDishes/wechat/welcome.jsp";
+					//System.out.println(toUserName);
+					if (toUserName.equals("gh_9f3ee86a3710")) {
+						respContent = "欢迎使用XX饭店点菜系统！请访问:\n http://14.17.106.206/OrderDishes/wechat/welcome.jsp?businessid=1";
+					}
+					else if (toUserName.equals("gh_0290fa70241c")) {
+						respContent = "欢迎使用XX饭店点菜系统！请访问:\n http://14.17.106.206/OrderDishes/wechat/welcome.jsp?businessid=2";
+					}
+					else respContent = "商家微信公众平台ID："+toUserName;
 				}
 				// 取消订阅
 				else if (eventType.equals(MessageUtil.EVENT_TYPE_UNSUBSCRIBE)) {

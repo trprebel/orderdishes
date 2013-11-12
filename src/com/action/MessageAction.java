@@ -139,6 +139,7 @@ public class MessageAction extends ActionSupport{
 		HttpSession session=request.getSession();
 		
 		try {
+
 			String username;
 			User user=(User)session.getAttribute("user");
 			if (user!=null) {

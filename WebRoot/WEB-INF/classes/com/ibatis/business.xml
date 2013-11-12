@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="business">
+
+	<typeAlias alias="Business" type="com.bean.Business" />
+	<insert id="addbusiness" parameterClass="Business">
+		insert into business (busname,corporation,license,address,descript,create_date)
+		values(#busname#,#corporation#,#license#,#address#,#descript#,current_timestamp)
+	</insert>
+	<select id="findlastbusinessid" resultClass="int">
+		select @@IDENTITY AS businessid
+	</select>
+	<select id="findBusUserById" parameterClass="java.lang.Integer" resultClass="String">
+		select username from user where businessid=$businessid$
+	</select>
+
+</sqlMap>
+

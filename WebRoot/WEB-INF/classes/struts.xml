@@ -78,6 +78,10 @@
 		<action name="*PUBLICSERVICE" class="com.action.PublicServiceAction" method="{1}">
 		
 		</action>
+		<action name="*BUSINESS" class="com.action.BusinessAction" method="{1}">
+			<result name="success">/add_business.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 
 	</package>
 	

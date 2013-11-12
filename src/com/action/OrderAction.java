@@ -83,7 +83,7 @@ public class OrderAction extends ActionSupport{
 		HttpServletRequest request=ServletActionContext.getRequest();
 		HttpSession session=request.getSession();
 		try {
-			int businessid=Integer.parseInt((String)request.getParameter("businessid"));
+			int businessid=Integer.parseInt((String)session.getAttribute("businessid"));
 			List<Food> foods=orderDao.findAllFood();
 			List<Staple> staples=orderDao.findAllStaple();
 			List<Drinks> drinks=orderDao.findAllDrinks(businessid);

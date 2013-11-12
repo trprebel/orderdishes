@@ -11,7 +11,10 @@
     <update id="modifypasswd" parameterClass="User">
     	update user set passwd=#passwd# where username=#username#
     </update>
-
+	<insert id="addUser" parameterClass="User">
+		insert into user (username,passwd,roleid,businessid,create_date)
+		values(#username#,#passwd#,$roleid$,$businessid$,current_timestamp)
+	</insert>
 	
 
 </sqlMap>

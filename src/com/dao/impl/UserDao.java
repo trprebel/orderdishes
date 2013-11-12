@@ -13,4 +13,8 @@ public class UserDao {
 	public void modifyPassWord(User user) throws Exception{
 		SqlMap.getSqlMapClient().update("modifypasswd",user);
 	}
+	//添加用户
+	public void addUser(User user) throws Exception{
+		SqlMap.getSqlMapClient().insert("addUser",user);
+	}
 }

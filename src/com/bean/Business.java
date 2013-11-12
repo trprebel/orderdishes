@@ -6,6 +6,7 @@ public class Business {
 	private String busname;
 	private String corporation;
 	private String license;
+	private String descript;
 	private String remark;
 	private int type;
 	private int state;
@@ -40,6 +41,12 @@ public class Business {
 	}
 	public void setLicense(String license) {
 		this.license = license;
+	}
+	public String getDescript() {
+		return descript;
+	}
+	public void setDescript(String descript) {
+		this.descript = descript;
 	}
 	public String getRemark() {
 		return remark;
