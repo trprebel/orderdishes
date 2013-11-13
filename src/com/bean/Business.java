@@ -7,6 +7,7 @@ public class Business {
 	private String corporation;
 	private String license;
 	private String descript;
+	private String wechatid;
 	private String remark;
 	private int type;
 	private int state;
@@ -113,6 +114,12 @@ public class Business {
 	}
 	public void setOver_date(String over_date) {
 		this.over_date = over_date;
+	}
+	public String getWechatid() {
+		return wechatid;
+	}
+	public void setWechatid(String wechatid) {
+		this.wechatid = wechatid;
 	}
 	
 }

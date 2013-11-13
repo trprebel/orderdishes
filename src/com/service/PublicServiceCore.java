@@ -5,8 +5,11 @@ import java.util.Map;
 
 import javax.jms.TextMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import com.bean.User;
 import com.bean.publicservice.TextMessageResponse;
+import com.dao.impl.BusinessDao;
 import com.util.MessageUtil;
 
 public class PublicServiceCore {
@@ -70,14 +73,24 @@ public class PublicServiceCore {
 				String eventType = requestMap.get("Event");
 				// 订阅
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
-					//System.out.println(toUserName);
-					if (toUserName.equals("gh_9f3ee86a3710")) {
-						respContent = "欢迎使用XX饭店点菜系统！请访问:\n http://14.17.106.206/OrderDishes/wechat/welcome.jsp?businessid=1";
-					}
-					else if (toUserName.equals("gh_0290fa70241c")) {
-						respContent = "欢迎使用XX饭店点菜系统！请访问:\n http://14.17.106.206/OrderDishes/wechat/welcome.jsp?businessid=2";
+					BusinessDao businessDao=new BusinessDao();
+					String businessid=businessDao.findBusIdByWechatId(toUserName);
+					//System.out.println(businessid);
+					
+					if (businessid!=null) {
+						respContent = "欢迎使用XX饭店点菜系统！请访问:\n http://14.17.106.206/OrderDishes/wechat/welcome.jsp?businessid="+businessid;
 					}
 					else respContent = "商家微信公众平台ID："+toUserName;
+					
+					
+					//System.out.println(toUserName);
+//					if (toUserName.equals("gh_9f3ee86a3710")) {
+//						respContent = "欢迎使用XX饭店点菜系统！请访问:\n http://14.17.106.206/OrderDishes/wechat/welcome.jsp?businessid=1";
+//					}
+//					else if (toUserName.equals("gh_0290fa70241c")) {
+//						respContent = "欢迎使用XX饭店点菜系统！请访问:\n http://14.17.106.206/OrderDishes/wechat/welcome.jsp?businessid=2";
+//					}
+//					else respContent = "商家微信公众平台ID："+toUserName;
 				}
 				// 取消订阅
 				else if (eventType.equals(MessageUtil.EVENT_TYPE_UNSUBSCRIBE)) {

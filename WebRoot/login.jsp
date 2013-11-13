@@ -47,10 +47,9 @@ body {
 }
 
 .login_input {
+
 	width: 270px;
 	height: 28px;
-	vertical-align:text-top;
-	line-height: 28px;
 	border: 0px;
 	background-color: #f1f1f1;
 	font-size: 16px;
@@ -228,7 +227,7 @@ body {
 		<td colspan="2" rowspan="9" width="184" height="285">
 			</td>
 		<td colspan="5" rowspan="3" width="270" height="28"><input
-						type="text" class="login_input" name="username" id="username">			</td>
+						type="text" class="login_input" name="username" id="username" style="line-height:28px;">			</td>
 		<td rowspan="14" width="27" height="377">
 			</td>
 		<td width="1" height="19">
@@ -253,7 +252,7 @@ body {
 	</tr>
 	<tr>
 		<td colspan="5" rowspan="2" width="270" height="29"><input
-						type="password" class="login_input" name="password" id="password">
+						type="password" class="login_input" name="password" id="password" style="vertical-align:text-top;">
 	  </td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>

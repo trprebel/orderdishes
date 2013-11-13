@@ -16,4 +16,8 @@ public class BusinessDao {
 		//System.out.println(businessid);
 		return (java.lang.String)SqlMap.getSqlMapClient().queryForObject("findBusUserById",businessid);
 	}
+	public String findBusIdByWechatId(String wechatid) throws Exception
+	{
+		return (String)SqlMap.getSqlMapClient().queryForObject("findBusIdByWechatId",wechatid);
+	}
 }

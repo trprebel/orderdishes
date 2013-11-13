@@ -147,13 +147,13 @@ body {
 }
 
 .name {
-	font-size: 14px;
+	font-size: 20px;
 	position: relative;
 	top: -13px;
-	*top: -20px;
+	*top: -25px;
 	float: left;
 	font-weight: bold;
-	color: #a9bfdb;
+	color:#00ffff;
 	line-height: 22px;
 }
 

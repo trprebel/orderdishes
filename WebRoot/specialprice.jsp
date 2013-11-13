@@ -52,14 +52,16 @@ display:block;
 width:205px; height:147px;  list-style:none; float:left; background:url(images/add.png) no-repeat; margin-right:8px; margin-left:10px; margin-bottom:19px; overflow:hidden
 }
 .name span{ float:left; width:100px; margin-left:2px;}
-.name{	font-size: 14px;
+.name {
+	font-size: 20px;
 	position: relative;
 	top: -13px;
-	*top: -20px;
+	*top: -25px;
 	float: left;
 	font-weight: bold;
-	color: #a9bfdb;
-	line-height: 22px;}
+	color:#00ffff;
+	line-height: 22px;
+}
 .name img{ float:right; margin-top:1px;}
 #position{position:relative; top:-124px; right:-190px;}
 .special_carte{ position:absolute; height:95px; width:680px; top:128px; *top:142px; left:50px; display:inline}

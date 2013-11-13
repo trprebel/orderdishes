@@ -9,7 +9,7 @@ h1 {
 }
 
 h1 a{
-	color: #fff;
+	color:#000000;
 	text-decoration: none;
 }
 
@@ -62,7 +62,7 @@ code {
 	/* hide link text */
 	#logo a {
 		display: block;
-		color: #fff;
+		color:#000000;
 		text-indent: -5000px;
 		overflow: hidden;
 		height: 106px;
@@ -70,7 +70,7 @@ code {
 	}
 	
 	#version {
-		color: #fff;
+		color:#000000;
 		position: absolute;
 		right: 20px;
 		top: 85px;
@@ -94,8 +94,8 @@ form {
 div.fieldset {
 	position:absolute;
 	height:0px;
-	left:150px;
-	top:70px;
+	left:163px;
+	top:73px;
 	width:350px;
 }
 div.fieldset span.legend {
@@ -136,8 +136,8 @@ label {
 }
 
 .progressContainer {
-	margin: 5px;
-	padding: 4px;
+	margin: 1px;
+	padding: 1px;
 	border: solid 1px #E8E8E8;
 	background-color: #F7F7F7;
 	overflow: hidden;
@@ -170,7 +170,7 @@ label {
 .progressName {
 	font-size: 8pt;
 	font-weight: 700;
-	color: #555;
+	color:#000000;
 	width: 300px;
 	height: 14px;
 	text-align: left;
@@ -201,10 +201,11 @@ label {
 
 .progressBarStatus {
 	width: 300px;
-	font-size: 7pt;
+	font-size:10px;
 	font-family: Arial;
 	text-align: left;
 	white-space: nowrap;
+	color:#000000;
 }
 
 a.progressCancel {

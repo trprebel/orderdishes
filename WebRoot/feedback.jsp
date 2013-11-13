@@ -41,7 +41,6 @@ body {
 	margin-left: 10px;
 	border: 0px;
 	margin-bottom: 10px;
-	background-color: #2eb376;
 	font-size: 24px;
 	color: #FFFFFF;
 	font-weight: bold
@@ -112,6 +111,13 @@ body {
 	font-weight: bold;
 	text-align: center
 }
+.bg_input_search1{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_r_input.png)}
+.bg_input_search1 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search1 input{ float:left; margin-top:10px; 	background-color:#f30a0a;}
+
+.bg_input_search2{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_g_input.png)}
+.bg_input_search2 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search2 input{ float:left; margin-top:10px; 	background-color:#2eb376;}
 </style>
 <script type="text/javascript">
 function ignore(id)
@@ -136,9 +142,15 @@ function ignore(id)
 		<td width="81" height="15"></td>
 		<td width="712" height="15"></td>
 		<td width="28" height="15"></td>
-		<td height="68" colspan="4" width="491" rowspan="4"><input
-					name="textfield" type="text" class="login_input_info"
-					value="${msgs }"></td>
+		<td height="68" colspan="4" width="491" rowspan="4"><div <c:choose>
+		<c:when test="${msgs=='有客户想与您说话' }">
+		class="bg_input_search1"
+		</c:when>
+		<c:otherwise>class="bg_input_search2"
+		</c:otherwise>
+		</c:choose>><img src="images/qu.png" width="28" height="28"><input
+						name="textfield" type="text" class="login_input_info"
+						value="${msgs }"></div></td>
 		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
@@ -146,7 +158,7 @@ function ignore(id)
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="3" width="960" height="53">	  </td>
-		<td width="28" height="28"><img src="images/qu.png" width="28" height="28">			</td>
+		<td width="28" height="28">&nbsp;</td>
 		
 		<td>
 			<img src="images/分隔符.gif" width="1" height="28" alt=""></td>
@@ -211,7 +223,7 @@ function ignore(id)
 										<td>${feedback.id }</td>
 										<td>${feedback.content }</td>
 										<td>${feedback.create_date }</td>
-										<td onclick="ignore('${feedback.id}')" style="cursor:pointer">忽略</td>
+										<td onClick="ignore('${feedback.id}')" style="cursor:pointer">忽略</td>
 									</tr>
 								</c:forEach>
 							</table>

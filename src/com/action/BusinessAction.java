@@ -30,6 +30,7 @@ public class BusinessAction extends ActionSupport{
 	private String license;
 	private String address;
 	private String descript;
+	private String wechatid;
 	private String username;
 	private String password;
 	private File picture;   //保存上传的文件
@@ -60,6 +61,12 @@ public class BusinessAction extends ActionSupport{
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getWechatid() {
+		return wechatid;
+	}
+	public void setWechatid(String wechatid) {
+		this.wechatid = wechatid;
 	}
 	public String getDescript() {
 		return descript;
@@ -107,6 +114,7 @@ public class BusinessAction extends ActionSupport{
 			business.setLicense(license);
 			business.setAddress(address);
 			business.setDescript(descript);
+			business.setWechatid(wechatid);
 			businessDao.addbusiness(business);
 			int businessid=businessDao.findlastbusinessid();
 			UserDao userDao=new UserDao();

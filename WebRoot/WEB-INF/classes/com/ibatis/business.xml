@@ -6,14 +6,17 @@
 
 	<typeAlias alias="Business" type="com.bean.Business" />
 	<insert id="addbusiness" parameterClass="Business">
-		insert into business (busname,corporation,license,address,descript,create_date)
-		values(#busname#,#corporation#,#license#,#address#,#descript#,current_timestamp)
+		insert into business (busname,corporation,license,wechatid,address,descript,create_date)
+		values(#busname#,#corporation#,#license#,#wechatid#,#address#,#descript#,current_timestamp)
 	</insert>
 	<select id="findlastbusinessid" resultClass="int">
 		select @@IDENTITY AS businessid
 	</select>
 	<select id="findBusUserById" parameterClass="java.lang.Integer" resultClass="String">
 		select username from user where businessid=$businessid$
+	</select>
+	<select id="findBusIdByWechatId" parameterClass="String" resultClass="String">
+		select businessid from business where wechatid=#wechatid#
 	</select>
 
 </sqlMap>
