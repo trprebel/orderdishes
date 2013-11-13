@@ -5,7 +5,9 @@ import java.util.Map;
 
 import javax.jms.TextMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import com.bean.User;
 import com.bean.publicservice.TextMessageResponse;
 import com.util.MessageUtil;
 

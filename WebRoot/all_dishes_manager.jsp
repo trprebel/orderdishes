@@ -52,7 +52,6 @@ body {
 	margin-left: 10px;
 	border: 0px;
 	margin-bottom: 10px;
-	background-color: #2eb376;
 	font-size: 24px;
 	color: #FFFFFF;
 	font-weight: bold
@@ -145,13 +144,13 @@ body {
 }
 
 .name {
-	font-size: 14px;
+	font-size: 20px;
 	position: relative;
 	top: -13px;
-	*top: -20px;
+	*top: -25px;
 	float: left;
 	font-weight: bold;
-	color:#2eb398;
+	color:#00ffff;
 	line-height: 22px;
 }
 
@@ -165,6 +164,13 @@ body {
 	top: -124px;
 	right: -190px;
 }
+.bg_input_search1{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_r_input.png)}
+.bg_input_search1 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search1 input{ float:left; margin-top:10px; 	background-color:#f30a0a;}
+
+.bg_input_search2{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_g_input.png)}
+.bg_input_search2 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search2 input{ float:left; margin-top:10px; 	background-color:#2eb376;}
 </style>
 </head>
 <script type="text/javascript" src="js/jquery-1.6.js"></script>
@@ -243,9 +249,19 @@ body {
 		<td width="81" height="15"></td>
 		<td width="712" height="15"></td>
 		<td width="28" height="15"></td>
-		<td height="68" colspan="4" width="491" rowspan="4"><input
+		<td height="68" colspan="4" width="491" rowspan="4">
+		<div 
+		<c:choose>
+		<c:when test="${msgs=='有客户想与您说话' }">
+		class="bg_input_search1"
+		</c:when>
+		<c:otherwise>class="bg_input_search2"
+		</c:otherwise>
+		</c:choose>
+		><img src="images/qu.png" width="28" height="28"><input
 						name="textfield" type="text" class="login_input_info"
-						value="${msgs }"></td>
+						
+						value="${msgs }"></div></td>
 		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
@@ -253,7 +269,7 @@ body {
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="3" width="960" height="53">	  </td>
-		<td width="28" height="28"><img src="images/qu.png" width="28" height="28">			</td>
+		<td width="28" height="28">&nbsp;</td>
 		
 		<td>
 			<img src="images/分隔符.gif" width="1" height="28" alt=""></td>
@@ -310,7 +326,7 @@ body {
 								<c:forEach var="food" items="${paginator.items}" varStatus="i">
 									<li>
 										<div>
-											<img src="${food.small_pic}" width="205" height="125" onclick="fooddetail('${food.foodid}')">
+											<img src="${food.small_pic}" width="205" height="125" onClick="fooddetail('${food.foodid}')">
 											<img id="position" src="images/close.png" width="14"
 												height="15" style="cursor:pointer"
 												onclick=" javascirpt:deletefood('${food.foodid}')">
@@ -363,7 +379,7 @@ body {
 	</tr>
 	<tr>
 		<td colspan="3" width="208" height="42" align="center" class="list" onClick="location.href='requestCUSTOMER.action'">
-						<img src="images/icon4.png" width="20" height="20"> 客户信息</td>
+						<img src="images/icon4.png" width="20" height="20"> 客户管理</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="42" alt=""></td>
 	</tr>
@@ -371,10 +387,10 @@ body {
 	<tr>
 		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; ">
 		<div class="list" style="height:42px;" onClick="location.href='history_info.jsp'">
-		<img src="images/icon5.png" width="20" height="20"> 历史信息</div>		
-		<div class="list" style="height:42px;" onclick="location.href='requestFEEDBACK.action'">
-		<img src="images/icon7.png" width="20" height="20"> 反馈信息</div>
-		<div class="list" style="height:42px;" onclick="location.href='add_business.jsp'">
+		<img src="images/icon5.png" width="20" height="20"> 交谈信息</div>		
+		<div class="list" style="height:42px;" onClick="location.href='requestFEEDBACK.action'">
+		<img src="images/icon7.png" width="20" height="20"> 意见反馈</div>
+		<div class="list" style="height:42px;" onClick="location.href='add_business.jsp'">
 		<img src="images/icon7.png" width="20" height="20"> 添加商家</div>		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>

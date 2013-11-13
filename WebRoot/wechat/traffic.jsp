@@ -87,13 +87,15 @@ body {
 }
 
 .list_operating {
-	height: 52px;
 	background: #FFFFFF;
+	height:100%;
 	color: #555555;
-	line-height: 20px;
-	border-top: 2px solid #c7c7c4;
-	border-left: 2px solid #c7c7c4;
-	border-right: 2px solid #c7c7c4
+	line-height: 30px;
+	font-weight:normal;
+	width:270px;
+	font-size:15px;
+	border-bottom: 2px solid #c7c7c4;
+	margin-left:4px;
 }
 
 .list_operating span {
@@ -184,16 +186,15 @@ body {
 		</div>
 		<div class="operating">
 			<div class="top_opreating"></div>
-
+			
 			<div class="feed_back">
-				<textarea name="content" id="content" class="feed_back_text">
-				<c:forEach var="info" items="${informations}" varStatus="i">
+			<c:forEach var="info" items="${informations}" varStatus="i">
+			<div class="list_operating">
 				${i.index+1 }.${info}
-				</c:forEach>
-
-				</textarea>
 			</div>
-
+			</c:forEach>
+			</div>
+		
 
 			<div class="bottom_opreating"></div>
 		</div>

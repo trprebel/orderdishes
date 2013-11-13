@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="/jstl/c.tld"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -47,7 +48,6 @@ body {
 	margin-left: 10px;
 	border: 0px;
 	margin-bottom: 10px;
-	background-color: #2eb376;
 	font-size: 24px;
 	color: #FFFFFF;
 	font-weight: bold
@@ -155,6 +155,7 @@ body {
 	color: #000000;
 	font-weight: bold;
 	height: 28px;
+	line-height:28px;
 	background-color: #FFFFFF
 }
 
@@ -175,11 +176,17 @@ body {
 	font-size: 16px;
 	font-weight: bold
 }
+.bg_input_search1{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_r_input.png)}
+.bg_input_search1 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search1 input{ float:left; margin-top:10px; 	background-color:#f30a0a;}
+.bg_input_search2{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_g_input.png)}
+.bg_input_search2 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search2 input{ float:left; margin-top:10px; 	background-color:#2eb376;}
 </style>
 	<link href="css/default2.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/swfupload.js"></script>
 <script type="text/javascript" src="js/swfupload.queue.js"></script>
-<script type="text/javascript" src="js/fileprogress.js"></script>
+<script type="text/javascript" src="js/fileprogress2.js"></script>
 <script type="text/javascript" src="js/handlers.js"></script>
 <script type="text/javascript" src="js/jquery-1.6.js"></script>
 	<script type="text/javascript">
@@ -329,9 +336,19 @@ body {
 				<td width="81" height="15"></td>
 				<td width="712" height="15"></td>
 				<td width="28" height="15"></td>
-				<td height="68" colspan="4" width="491" rowspan="4"><input name="textfield" type="text" class="login_input_info" value="暂无处理信息">
+				<td height="68" colspan="4" width="491" rowspan="4"><div 
+		<c:choose>
+		<c:when test="${msgs=='有客户想与您说话' }">
+		class="bg_input_search1"
+		</c:when>
+		<c:otherwise>class="bg_input_search2"
+		</c:otherwise>
+		</c:choose>
+		><img src="images/qu.png" width="28" height="28"><input
+						name="textfield" type="text" class="login_input_info"
+						value="${msgs }"></div>
 				</td>
-				<td rowspan="3" width="141" height="57"><img src="images/handing.png" width="141" height="57"></td>
+				<td rowspan="3" width="141" height="57"><img src="images/handing.png" width="141" height="57" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'"></td>
 				<td colspan="5" rowspan="5" width="241" height="82"></td>
 				<td><img src="images/分隔符.gif" width="1" height="15" alt="">
 				</td>
@@ -426,8 +443,8 @@ body {
 								</td>
 							</tr>
 							<tr>
-								<td width="150" align="right">商家微信ID</td>
-								<td width="500"><input type="text" class="add_input1" name="buswechatid" id="buswechatid">
+								<td width="150" align="right">商家微信号</td>
+								<td width="500"><input type="text" class="add_input1" name="repassword" id="repassword">
 								</td>
 							</tr>
 							<tr>
@@ -447,8 +464,8 @@ body {
 							</tr>
 							
 							<tr>
-								<td width="650" colspan="2" height="50" align="center"><div style="height:10px">&nbsp;</div>
-									<div>
+								<td width="650" colspan="2" align="center">
+									<div style="margin-top:5px;">
 										<img src="images/add_bu.png" width="104" height="42" onClick="submit1()">&nbsp;&nbsp;
 										<img src="images/reset_bu.png" width="104" height="42" onClick="reset()">
 									</div>
@@ -517,8 +534,8 @@ body {
 			<img src="images/分隔符.gif" width="1" height="1" alt=""></td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;" src="images/home.png" width="73" height="22">			</td>
-		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;" src="images/back.png" width="72" height="20">		</td>
+		<td rowspan="2" width="208" height="42" align="center"><img style="*margin-bottom:15px;cursor:pointer" src="images/home.png" width="73" height="22" onClick="location.href='requestFOOD.action'">			</td>
+		<td rowspan="2" width="103" height="42" align="center"><img style="*margin-bottom:15px;cursor:pointer" src="images/back.png" width="72" height="20" onClick="location.href=document.referrer">		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="30" alt=""></td>
 	</tr>

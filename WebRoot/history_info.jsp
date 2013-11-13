@@ -1,4 +1,5 @@
 ﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="/jstl/c.tld"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -41,7 +42,6 @@ body {
 	margin-left: 10px;
 	border: 0px;
 	margin-bottom: 10px;
-	background-color: #2eb376;
 	font-size: 24px;
 	color: #FFFFFF;
 	font-weight: bold
@@ -112,6 +112,13 @@ body {
 	font-weight: bold;
 	text-align: center
 }
+.bg_input_search1{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_r_input.png)}
+.bg_input_search1 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search1 input{ float:left; margin-top:10px; 	background-color:#f30a0a;}
+
+.bg_input_search2{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_g_input.png)}
+.bg_input_search2 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search2 input{ float:left; margin-top:10px; 	background-color:#2eb376;}
 </style>
 </head>
 <body>
@@ -127,9 +134,18 @@ body {
 		<td width="81" height="15"></td>
 		<td width="712" height="15"></td>
 		<td width="28" height="15"></td>
-		<td height="68" colspan="4" width="491" rowspan="4"><input
-					name="textfield" type="text" class="login_input_info"
-					value="${msgs }"></td>
+		<td height="68" colspan="4" width="491" rowspan="4">
+		<div 
+		<c:choose>
+		<c:when test="${msgs=='有客户想与您说话' }">
+		class="bg_input_search1"
+		</c:when>
+		<c:otherwise>class="bg_input_search2"
+		</c:otherwise>
+		</c:choose>
+		><img src="images/qu.png" width="28" height="28"><input
+						name="textfield" type="text" class="login_input_info"
+						value="${msgs }"></div></td>
 		<td rowspan="3" width="141" height="57">	<img src="images/handing.png" width="141" height="57" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
 		<td>
@@ -137,7 +153,7 @@ body {
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="3" width="960" height="53">	  </td>
-		<td width="28" height="28"><img src="images/qu.png" width="28" height="28">			</td>
+		<td width="28" height="28">&nbsp;</td>
 		
 		<td>
 			<img src="images/分隔符.gif" width="1" height="28" alt=""></td>
@@ -267,7 +283,7 @@ body {
 		<td colspan="3" rowspan="2" width="208" height="228" align="center" style="vertical-align:top; ">
 		<div class="list_h" style="height:42px;">
 		<img src="images/icon5.png" width="20" height="20"> 历史信息</div>		
-		<div class="list" style="height:42px;" onclick="location.href='requestFEEDBACK.action'">
+		<div class="list" style="height:42px;" onClick="location.href='requestFEEDBACK.action'">
 		<img src="images/icon7.png" width="20" height="20"> 反馈信息</div>		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>

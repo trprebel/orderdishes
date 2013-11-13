@@ -87,15 +87,13 @@ body {
 }
 
 .list_operating {
+	height: 52px;
 	background: #FFFFFF;
-	height:100%;
 	color: #555555;
-	line-height: 30px;
-	font-weight:normal;
-	width:270px;
-	font-size:15px;
-	border-bottom: 2px solid #c7c7c4;
-	margin-left:4px;
+	line-height: 20px;
+	border-top: 2px solid #c7c7c4;
+	border-left: 2px solid #c7c7c4;
+	border-right: 2px solid #c7c7c4
 }
 
 .list_operating span {
@@ -117,8 +115,8 @@ body {
 }
 
 .list_operating table {
-	margin-left: 5px;
-	margin-top: 0px
+	margin-left: 13px;
+	margin-top: 12px
 }
 
 .bank {
@@ -166,7 +164,6 @@ body {
 	margin-left: 15px;
 	margin-top: 5px;
 }
-
 </style>
 </head>
 
@@ -189,11 +186,12 @@ body {
 			<div class="top_opreating"></div>
 
 			<div class="feed_back">
-			<c:forEach var="info" items="${informations}" varStatus="i">
-			<div class="list_operating">
+				<textarea name="content" id="content" class="feed_back_text">
+				<c:forEach var="info" items="${informations}" varStatus="i">
 				${i.index+1 }.${info}
-			</div>
-			</c:forEach>
+				</c:forEach>
+
+				</textarea>
 			</div>
 
 

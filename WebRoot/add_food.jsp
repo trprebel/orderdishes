@@ -37,7 +37,7 @@ margin-top:0px;
 display:block;
 
 }
-.login_input_info{ width:450px; height:38px; line-height:38px; margin-left:10px; border:0px; margin-bottom:10px; background-color:#2eb376; font-size:24px; color:#FFFFFF; font-weight:bold}
+.login_input_info{ width:450px; height:38px; line-height:38px; margin-left:10px; border:0px; margin-bottom:10px; font-size:24px; color:#FFFFFF; font-weight:bold}
 .login_input{ width:270px; height:28px; border:0px; background-color:#f1f1f1; font-size:16px;  color:#999999}
 .text_foot{font-size:20px; color:#e1e1e1; font-weight:bold; line-height:25px;}
 .list{ font-size:18px; cursor:pointer; color:#e2e2e2; font-weight:bold; height:40px; line-height:40px;}
@@ -59,6 +59,14 @@ width:205px; height:147px;  list-style:none; float:left; background:url(images/a
 .add_icon2{ color:#afcbe2; width:94px; height:38px; line-height:38px; background:url(images/no.png) no-repeat; font-size:20px; font-weight:bold; text-align:center;}
 #specialprice{  position:absolute; top:219px; left:390px; }
 .add_icon2 input{width:94px; height:38px; border:0px;  font-size:20px; font-weight:bold; color:#eeeeee; text-align:center; background:#6a7188}
+
+.bg_input_search1{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_r_input.png)}
+.bg_input_search1 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search1 input{ float:left; margin-top:10px; 	background-color:#f30a0a;}
+
+.bg_input_search2{ width:515px; height:57px; position:absolute; left:42px; top:16px; background:url(images/bg_g_input.png)}
+.bg_input_search2 img{ margin-left:16px; margin-right:6px; float:left; margin-top:15px;}
+.bg_input_search2 input{ float:left; margin-top:10px; 	background-color:#2eb376;}
 </style>
 </head>
 <script type="text/javascript" src="js/jquery-1.6.js"></script>
@@ -226,9 +234,15 @@ width:205px; height:147px;  list-style:none; float:left; background:url(images/a
 		<td width="81" height="15"></td>
 		<td width="712" height="15"></td>
 		<td width="28" height="15"></td>
-		<td height="68" colspan="4" width="491" rowspan="4"><input
+		<td height="68" colspan="4" width="491" rowspan="4"><div <c:choose>
+		<c:when test="${msgs=='有客户想与您说话' }">
+		class="bg_input_search1"
+		</c:when>
+		<c:otherwise>class="bg_input_search2"
+		</c:otherwise>
+		</c:choose>><img src="images/qu.png" width="28" height="28"><input
 						name="textfield" type="text" class="login_input_info"
-						value="${msgs }"></td>
+						value="${msgs }"></div></td>
 		<td rowspan="3" width="141" height="57">	<img
 						src="images/handing.png" width="141" height="57" style="cursor:pointer" onClick="location.href='requestlistMESSAGE.action'">		</td>
 		<td colspan="5" rowspan="5" width="241" height="82">			</td>
@@ -237,7 +251,7 @@ width:205px; height:147px;  list-style:none; float:left; background:url(images/a
 	</tr>
 	<tr>
 		<td colspan="3" rowspan="3" width="960" height="53">	  </td>
-		<td width="28" height="28"><img src="images/qu.png" width="28" height="28">			</td>
+		<td width="28" height="28">&nbsp;</td>
 		
 		<td>
 			<img src="images/分隔符.gif" width="1" height="28" alt=""></td>
