@@ -390,8 +390,11 @@ body {
 		<img src="images/icon5.png" width="20" height="20"> 交谈信息</div>		
 		<div class="list" style="height:42px;" onClick="location.href='requestFEEDBACK.action'">
 		<img src="images/icon7.png" width="20" height="20"> 意见反馈</div>
+		<c:if test="${user.roleid==1}">
 		<div class="list" style="height:42px;" onClick="location.href='add_business.jsp'">
-		<img src="images/icon7.png" width="20" height="20"> 添加商家</div>		</td>
+		<img src="images/icon7.png" width="20" height="20"> 添加商家</div>		
+		</c:if>
+		</td>
 		<td>
 			<img src="images/分隔符.gif" width="1" height="172" alt=""></td>
 	</tr>
