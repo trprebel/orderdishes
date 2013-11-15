@@ -26,6 +26,7 @@
 			<result name="detail" type="json">
 				<param name="root">drinkdetail</param>
 			</result>
+			<result name="wedetail">/wechat/drinkdetail.jsp</result>
 		</action>
 		<action name="*STAPLE" class="com.action.StapleFoodAction" method="{1}">
 			<result name="staplelist">/staple_manager.jsp</result>
@@ -39,6 +40,7 @@
 			<result name="detail" type="json">
 				<param name="root">stapledetail</param>
 			</result>
+			<result name="wedetail">/wechat/stapledetail.jsp</result>
 		</action>
 		<action name="*CUSTOMER" class="com.action.CustomerAction" method="{1}">
 			<result name="customer">/customer_manager.jsp</result>
@@ -59,6 +61,7 @@
 			<result name="detail" type="json">
 				<param name="root">fooddetail</param>
 			</result>
+			<result name="wedetail">/wechat/fooddetail.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="*INFORMATION" class="com.action.InformationAction" method="{1}">

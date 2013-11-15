@@ -202,9 +202,9 @@ function fooddetail(id)
 			<c:forEach var="food" items="${paginator.items}">
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr>
+					<tr onclick="location.href='wedetailFOOD.action?foodid=${food.foodid}'">
 						<td width="75" align="left"><img src="<%=basePath %>${food.small_pic}"
-							width="67" height="48" onclick="fooddetail('${food.foodid}')"/>
+							width="67" height="48"/>
 						</td>
 						<td width="167" align="left"><div>
 								${food.food }<span>${food.price}元&nbsp;

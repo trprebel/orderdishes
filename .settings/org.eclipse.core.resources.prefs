@@ -1,4 +1,4 @@
-#Tue Nov 12 11:06:10 CST 2013
+#Fri Nov 15 09:32:40 CST 2013
 eclipse.preferences.version=1
 encoding//WebRoot/add_business.jsp=UTF-8
 encoding//WebRoot/images/bg_info.png=UTF-8
@@ -8,6 +8,7 @@ encoding//WebRoot/message_list.jsp=UTF-8
 encoding//WebRoot/wechat/chat.jsp=UTF-8
 encoding//WebRoot/wechat/drinks.jsp=UTF-8
 encoding//WebRoot/wechat/food.jsp=UTF-8
+encoding//WebRoot/wechat/fooddetail.jsp=UTF-8
 encoding//WebRoot/wechat/manual.jsp=UTF-8
 encoding//WebRoot/wechat/modifyorder.jsp=UTF-8
 encoding//WebRoot/wechat/more.jsp=UTF-8

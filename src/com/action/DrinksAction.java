@@ -436,5 +436,18 @@ public class DrinksAction extends ActionSupport{
 		}
 		return "detail";
 	}
+	public String wedetail()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		try {
+			//System.out.println("detail");
+			drinkdetail=drinksdao.findDrinkById(Integer.parseInt(drinksid));
+			request.setAttribute("drink", drinkdetail);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "wedetail";
+	}
 
 }

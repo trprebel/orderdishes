@@ -198,9 +198,9 @@ function drinkdetail(id)
 			<c:forEach var="drink" items="${drinklist}">
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr>
+					<tr onclick="location.href='wedetailDRINKS.action?drinksid=${drink.drinksid}'">
 						<td width="75" align="left"><img src="<%=basePath %>${drink.small_pic}"
-							width="67" height="48" onclick="drinkdetail('${drink.drinksid}')"/>
+							width="67" height="48"/>
 						</td>
 						<td width="167" align="left"><div>
 								${drink.drinks }<span>${drink.price}元&nbsp;

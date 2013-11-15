@@ -556,6 +556,19 @@ public class FoodAction extends ActionSupport{
 		}
 		return "detail";
 	}
+	public String wedetail()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		try {
+			//System.out.println("detail");
+			fooddetail=fooddao.findFoodById(Integer.parseInt(foodid));
+			request.setAttribute("food", fooddetail);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "wedetail";
+	}
 
 
 }

@@ -196,9 +196,9 @@ function stapledetail(id)
 			<c:forEach var="staple" items="${paginator.items}">
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr>
+					<tr onclick="location.href='wedetailSTAPLE.action?stapleid=${staple.stapleid}'">
 						<td width="75" align="left"><img src="<%=basePath %>${staple.small_pic}"
-							width="67" height="48" onclick="stapledetail('${staple.stapleid}')"/>
+							width="67" height="48"/>
 						</td>
 						<td width="167" align="left"><div>
 								${staple.staplefood }<span>${staple.price}元&nbsp;

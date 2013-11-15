@@ -422,4 +422,17 @@ public class StapleFoodAction extends ActionSupport{
 		}
 		return "detail";
 	}
+	public String wedetail()
+	{
+		HttpServletRequest request=ServletActionContext.getRequest();
+		try {
+			//System.out.println("detail");
+			stapledetail=stapleDao.findStapleById(Integer.parseInt(stapleid));
+			request.setAttribute("staple", stapledetail);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return "wedetail";
+	}
 }
