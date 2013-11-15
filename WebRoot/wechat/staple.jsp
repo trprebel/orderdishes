@@ -17,7 +17,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="black" name="apple-mobile-web-app-status-bar-style" />
 <meta name="format-detection" content="telephone=no" />
-<title>001</title>
+<title>点菜系统</title>
 <style>
 body {
 	font-size: 16px;
@@ -147,8 +147,33 @@ function order(id)
     		}
 
     	});
+		
 }
+function stapledetail(id)
+{
+	var postdata = {
+  			stapleid :id
+    	};
+	$.ajax({
+ 		type:'post',
+ 		data:postdata,
+ 		url:'detailSTAPLE.action',
+ 		dataType:'json',
+ 		success:function(staple){
+ 			var detail=
+ 				"主食名："+staple.staplefood+"\n"
+ 				+"单价："+staple.price+"\n"
+ 				+"剩余数量："+staple.num+"\n"
+ 				+"说明："+staple.descript;
+			alert(detail);
 
+ 		},
+		error:function(){
+   			alert("查询失败！");
+		}
+
+	});
+}
 </script>
 </head>
 
@@ -173,7 +198,7 @@ function order(id)
 				<table cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="75" align="left"><img src="<%=basePath %>${staple.small_pic}"
-							width="67" height="48" />
+							width="67" height="48" onclick="stapledetail('${staple.stapleid}')"/>
 						</td>
 						<td width="167" align="left"><div>
 								${staple.staplefood }<span>${staple.price}元&nbsp;

@@ -432,7 +432,7 @@ body {
 			</td>
 	</tr>
 	<tr>
-		<td rowspan="2" width="110" height="40" class="title_xinxi">位置信息
+		<td rowspan="2" width="110" height="40" class="title_xinxi">交通信息
 			</td>
 		<td width="1" height="6">
 			</td>

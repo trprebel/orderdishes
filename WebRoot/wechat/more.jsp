@@ -12,7 +12,7 @@
 			<meta content="yes" name="apple-mobile-web-app-capable" />
 			<meta content="black" name="apple-mobile-web-app-status-bar-style" />
 			<meta name="format-detection" content="telephone=no" />
-			<title>001</title>
+			<title>点菜系统</title>
 			<style>
 body {
 	font-size: 16px;
@@ -155,7 +155,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestINFORMATION.action?resultPage=wetraffic&type=1'">
+					<tr onclick="location.href='werequestINFORMATION.action?resultPage=wetraffic&type=2'">
 						<td width="236" align="left">交通信息</td>
 						<td><img src="images/left_arrow.png" width="11" height="17" />
 						</td>
@@ -164,7 +164,7 @@ body {
 			</div>
 			<div class="list_operating">
 				<table cellpadding="0" cellspacing="0">
-					<tr onclick="location.href='werequestINFORMATION.action?resultPage=werecruit&type=2'">
+					<tr onclick="location.href='werequestINFORMATION.action?resultPage=werecruit&type=1'">
 						<td width="236" align="left">招聘信息</td>
 						<td><img src="images/left_arrow.png" width="11" height="17" />
 						</td>

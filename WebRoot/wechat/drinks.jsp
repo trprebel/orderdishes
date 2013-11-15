@@ -10,7 +10,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<title>001</title>
+<title>点菜系统</title>
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="expires" content="0">   
@@ -148,8 +148,34 @@ function order(id)
     		}
 
     	});
+		
 }
+function drinkdetail(id)
+{
+	var postdata = {
+  			drinksid :id
+    	};
+	$.ajax({
+ 		type:'post',
+ 		data:postdata,
+ 		url:'detailDRINKS.action',
+ 		dataType:'json',
+ 		success:function(drink){
+ 			var category;
+ 			var detail=
+ 				"酒水名："+drink.drinks+"\n"
+ 				+"单价："+drink.price+"\n"
+ 				+"剩余数量："+drink.num+"\n"
+ 				+"说明："+drink.descript;
+			alert(detail);
 
+ 		},
+		error:function(){
+   			alert("查询失败！");
+		}
+
+	});
+}
 </script>
 </head>
 
@@ -174,7 +200,7 @@ function order(id)
 				<table cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="75" align="left"><img src="<%=basePath %>${drink.small_pic}"
-							width="67" height="48" />
+							width="67" height="48" onclick="drinkdetail('${drink.drinksid}')"/>
 						</td>
 						<td width="167" align="left"><div>
 								${drink.drinks }<span>${drink.price}元&nbsp;

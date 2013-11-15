@@ -10,7 +10,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<title>001</title>
+<title>点菜系统</title>
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="expires" content="0">   
@@ -148,8 +148,38 @@ function order(id)
     		}
 
     	});
+		
 }
+function fooddetail(id)
+{
+	var postdata = {
+  			foodid :id
+    	};
+	$.ajax({
+ 		type:'post',
+ 		data:postdata,
+ 		url:'detailFOOD.action',
+ 		dataType:'json',
+ 		success:function(food){
+ 			var category;
+ 			if(food.isfeature==0) category="普通";
+ 			else if(food.isfeature==1) category="特色";
+ 			else category="特价";
+ 			var detail=
+ 				"菜名："+food.food+"\n"
+ 				+"单价："+food.price+"\n"
+ 				+"剩余数量："+food.num+"\n"
+ 				+"类别："+category+"\n"
+ 				+"说明："+food.descript;
+			alert(detail);
 
+ 		},
+		error:function(){
+   			alert("查询失败！");
+		}
+
+	});
+}
 </script>
 </head>
 
@@ -174,7 +204,7 @@ function order(id)
 				<table cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="75" align="left"><img src="<%=basePath %>${food.small_pic}"
-							width="67" height="48" />
+							width="67" height="48" onclick="fooddetail('${food.foodid}')"/>
 						</td>
 						<td width="167" align="left"><div>
 								${food.food }<span>${food.price}元&nbsp;

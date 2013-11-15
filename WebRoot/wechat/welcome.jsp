@@ -20,7 +20,7 @@
 <meta content="yes" name="apple-mobile-web-app-capable" />
 <meta content="black" name="apple-mobile-web-app-status-bar-style" />
 <meta name="format-detection" content="telephone=no" />
-<title>001</title>
+<title>点菜系统</title>
 <style>
 body {
 	font-size: 16px;

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>001</title>
+<title>点菜系统</title>
 <style>
 body{ font-size:16px; font-family:"微软雅黑"; font-weight:bold; letter-spacing:1px; margin:0px;}
 .main{ width:320px; height:507px; margin:0 auto; display:block; background:url(images/mc_top.png) top repeat-x #e0e1dc}
